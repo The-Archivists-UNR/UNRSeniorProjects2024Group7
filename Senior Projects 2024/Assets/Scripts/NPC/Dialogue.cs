@@ -265,7 +265,8 @@ public class Dialogue : MonoBehaviour
         GameEventsManager.instance.playerEvents.DisablePlayerMovement();
         playerText.text = "";
         llmConvo = true;
-        LLM.welcome(AIReplyComplete);
+        LLM.welcome();
+        AIReplyComplete();
     }
 
     //This function specifically starts the dialogue in relation to the start of quests - Fenn
@@ -304,11 +305,13 @@ public class Dialogue : MonoBehaviour
         {
             playerText.text = "The Ghost seems busy. Use 'enter' to exit.";
             willingToTalk = false;
-            LLM.EndConversation(message, AIReplyComplete);
+            LLM.EndConversation(message);
+            AIReplyComplete();
         }
         else
         {
-            LLM.getResponse(message, AIReplyComplete);
+            LLM.getResponse(message);
+            AIReplyComplete();
         }
     }
 

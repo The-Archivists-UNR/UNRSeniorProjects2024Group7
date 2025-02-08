@@ -1,50 +1,41 @@
+/*
+ * todo:
+ * manage prompts for different NPCs
+ * move access to AIText box to "Dialogue"
+ * rename to LLMHandling?
+ */
+
 using UnityEngine;
 using LLMUnity;
-using UnityEngine.UI;
 // using UnityEditor.VersionControl;
-using static UnityEngine.InputSystem.InputRemoting;
+using UnityEngine.Networking;
+using System.Collections;
 
 //Authored By Lanielle, based on SimpleInteraction example code from LLM Plugin
-
 public class LLMInteraction : MonoBehaviour
 {
-    public LLMCharacter llmCharacter;
+    //public LLMCharacter llmCharacter;
     public TMPro.TextMeshProUGUI AIText;
     private int count;
     private int rating;
+    [SerializeField] private string gasURL;
 
     void Start()
     {
         count = 0;
     }
 
-    public void welcome(EmptyCallback callback = null)
+    public void welcome()
     {
         //the prompt below should be changed for each NPC, replace with variable later
-        _ = llmCharacter.Chat("Welcome Ophelia to the cursed library", SetAIText, callback, false);
+        _ = StartCoroutine(askLLM("Welcome Ophelia to the cursed library"));
     }
 
-    public void getResponse(string message, EmptyCallback callback = null)
+    public void getResponse(string message)
     {
         AIText.text = "...";
-        _ = llmCharacter.Chat(message, SetAIText, callback);
+        _ = StartCoroutine(askLLM(message));
     }
-
-    //void onInputFieldSubmit(string message)
-    //{
-    //    count++;
-    //    if (count <2)
-    //    {
-    //        playerText.interactable = false;
-    //        AIText.text = "...";
-    //        _ = llmCharacter.Chat(message, SetAIText, AIReplyComplete);
-    //    }
-    //    else
-    //    {
-    //        EndConversation(message);
-    //        count = -1;
-    //    }
-    //}
 
     public void SetAIText(string text)
     {
@@ -67,9 +58,9 @@ public class LLMInteraction : MonoBehaviour
     {
         //_ = llmCharacter.Chat("respond to the following: \""+text+"\" and say goodbye to Ophelia.",
         //    SetAIText, AIReplyComplete);
-        _ = llmCharacter.Chat(text, SetAIGoodbyeText, null);//todo: move setAItext, etc. to Dialogue
-        _ = llmCharacter.Chat("Rate the pleasantness of this conversation on a scale from 1 to 10. " +
-            "Respond with only the number.", setRatingVar, callback, false);
+        _ = StartCoroutine(askLLM(text));//todo: move setAItext, etc. to Dialogue
+        _ = StartCoroutine(askLLM("Rate the pleasantness of this conversation on a scale from 1 to 10. " +
+            "Respond with only the number.", true));
     }
 
     public int getRating()
@@ -106,13 +97,44 @@ public class LLMInteraction : MonoBehaviour
     //    Application.Quit();
     //}
 
-    bool onValidateWarning = true;
-    void OnValidate()
+    //bool onValidateWarning = true;
+    //void OnValidate()
+    //{
+    //    if (onValidateWarning && !llmCharacter.remote && llmCharacter.llm != null && llmCharacter.llm.model == "")
+    //    {
+    //        Debug.LogWarning($"Please select a model in the {llmCharacter.llm.gameObject.name} GameObject!");
+    //        onValidateWarning = false;
+    //    }
+    //}
+
+
+    //from Kat, from Can with Code on YouTube
+    private IEnumerator askLLM(string prompt, bool isScore=false)
     {
-        if (onValidateWarning && !llmCharacter.remote && llmCharacter.llm != null && llmCharacter.llm.model == "")
+        WWWForm form = new WWWForm();
+        form.AddField("parameter", prompt);
+        UnityWebRequest www = UnityWebRequest.Post(gasURL, form);
+
+        yield return www.SendWebRequest();
+        string response = "";
+
+        if (www.result == UnityWebRequest.Result.Success)
         {
-            Debug.LogWarning($"Please select a model in the {llmCharacter.llm.gameObject.name} GameObject!");
-            onValidateWarning = false;
+            response = www.downloadHandler.text;
+        }
+        else
+        {
+            response = "Error";
+        }
+        Debug.Log(response);
+
+        if (isScore)
+        {
+            setRatingVar(response);
+        }
+        else
+        {
+            SetAIText(response);
         }
     }
 }
