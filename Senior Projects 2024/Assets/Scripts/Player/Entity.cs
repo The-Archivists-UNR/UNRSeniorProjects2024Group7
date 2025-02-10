@@ -44,8 +44,9 @@ public class Entity : MonoBehaviour
         if (health < 0){
             enemyAni.SetTrigger("die");
             Destroy(gameObject);
+            if (tag != "Player")
+                GameStatsMgr.inst.enemiesKilled++;
         }
-        
         else
             enemyAni.SetTrigger("damage");
     }
