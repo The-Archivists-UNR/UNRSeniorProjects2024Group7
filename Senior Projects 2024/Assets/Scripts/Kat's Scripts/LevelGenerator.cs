@@ -1,10 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using UnityEngine;
 
+//created by Kat Wayman
 //code provided by sunney valley studio on youtube
+//i pretty faithfully followed this youtube tutorial compared to other tutorials used to teach myself unity because procedural generation is
+//hard TT
 public class LevelGenerator
 {
-    RoomNode, rootNode;
     List<RoomNode> allSpaceNodes = new List<RoomNode>();
     private int levelWidth;
     private int levelLength;
@@ -14,8 +17,10 @@ public class LevelGenerator
         this.levelLength = levelLength;
     }
 
-    internal object CalculateRooms(int maxIterations, int roomWidthMin, int roomLengthMin)
+    public List<Node> CalculateRooms(int maxIterations, int roomWidthMin, int roomLengthMin)
     {
-        throw new NotImplementedException();
+        BinarySpacePartitioner bsp = new BinarySpacePartitoner(levelWidth, levelLength);
+        allSpaceNodes = bsp.PrepareNodesCollection(maxIterations, roomWidthMin, roomLengthMin);
+        return new List<Node> (allSpaceNodes);
     }
 }
