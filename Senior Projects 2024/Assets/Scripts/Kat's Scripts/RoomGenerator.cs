@@ -2,7 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-//code from sunny valley studio on youtube
+//created by Kat Wayman
+//code provided by sunney valley studio on youtube
 public class RoomGenerator : MonoBehaviour
 {
     public int levelWidth, levelLength;
