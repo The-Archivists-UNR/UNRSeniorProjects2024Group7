@@ -1,30 +1,38 @@
-using System.Collections;
+﻿using JetBrains.Annotations;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-//created by Kat Wayman
-//code provided by sunney valley studio on youtube
-public class RoomGenerator : MonoBehaviour
+public class RoomGenerator
 {
-    public int levelWidth, levelLength;
-    public int roomWidthMin, roomLengthMin;
-    public int maxIterations;
-    public int corridorWidth;
-    // Start is called before the first frame update
-    void Start()
+    private int maxIterations;
+    private int roomLengthMin;
+    private int roomWidthMin;
+    private int roomLengthMax;
+    private int roomWidthMax;
+    public RoomGenerator(int maxIterations, int roomLengthMin, int roomWidthMin, int roomLengthMax, int roomWidthMax)
     {
-        CreateLevel();
+        this.maxIterations = maxIterations;
+        this.roomLengthMin = roomLengthMin;
+        this.roomWidthMin = roomWidthMin;
+        this.roomLengthMax = roomLengthMax;
+        this.roomWidthMax = roomWidthMax;
     }
 
-    private void CreateLevel()
+    public List<RoomNode> GenerateRoomsInGivenSpaces(List<Node> roomSpaces, float roomBottomCornerModifier, float roomTopCornerModifier, int roomOffset)
     {
-        LevelGenerator generator = new LevelGenerator(levelWidth, levelLength);
-        var listRooms = generator.CalculateRooms(maxIterations, roomWidthMin, roomLengthMin);  
-    }
+        List<RoomNode> listToReturn = new List<RoomNode>();
+        foreach (var space in roomSpaces)
+        {
+            Vector2Int newBottomLeftPoint = StructureHelper.GenerateBottomLeftCornerBetween(space.BottomLeftAreaCorner, space.TopRightAreaCorner, roomBottomCornerModifier, roomOffset);
+            Vector2Int newTopRightPoint = StructureHelper.GenerateTopRightCornerBetween(space.BottomLeftAreaCorner, space.TopRightAreaCorner, roomTopCornerModifier, roomOffset);
+            space.BottomLeftAreaCorner = newBottomLeftPoint;
+            space.BottomRightAreaCorner = new Vector2Int(newTopRightPoint.x, newBottomLeftPoint.y);
+            space.TopLeftAreaCorner = new Vector2Int(newBottomLeftPoint.x, newTopRightPoint.y);
+            space.TopRightAreaCorner = newTopRightPoint;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+            listToReturn.Add((RoomNode)space);
+        }
+        return listToReturn;
     }
 }

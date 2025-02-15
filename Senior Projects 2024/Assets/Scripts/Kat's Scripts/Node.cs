@@ -13,7 +13,7 @@ public abstract class Node
     public Vector2Int BottomLeftAreaCorner { get; set;}
     public Vector2Int BottomRightAreaCorner { get; set;}
     public Vector2Int TopRightAreaCorner { get; set;}
-    public Vector2 TopLeftAreaCorner { get; set;}
+    public Vector2Int TopLeftAreaCorner { get; set;}
 
     public Node Parent { get; set; }
 
