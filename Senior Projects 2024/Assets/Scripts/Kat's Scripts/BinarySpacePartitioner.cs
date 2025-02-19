@@ -16,7 +16,7 @@ public class BinarySpacePartitioner
         this.rootNode = new RoomNode(new Vector2Int(0, 0), new Vector2Int(levelWidth, levelLength), null, 0);
     }
 
-    public List<RoomNode> PrepareNodesCollection(int maxIterations, int roomWidthMin, int roomLengthMin, int roomWidthMax, int roomLengthMax)
+    public List<RoomNode> PrepareNodesCollection(int maxIterations, int roomWidthMin, int roomLengthMin)
     {
         Queue<RoomNode> graph = new Queue<RoomNode>();
         List<RoomNode> listToReturn = new List<RoomNode>();
@@ -27,24 +27,23 @@ public class BinarySpacePartitioner
         {
             iterations++;
             RoomNode currentNode = graph.Dequeue();
-            if (currentNode.Width > roomWidthMax || currentNode.Length > roomLengthMax)
+            if (currentNode.Width >= roomWidthMin * 2 || currentNode.Length >= roomLengthMin * 2)
             {
-                if (currentNode.Width >= roomWidthMin * 2 || currentNode.Length >= roomLengthMin * 2)
-                {
-                    SplitTheSpace(currentNode, listToReturn, roomWidthMin, roomLengthMin, roomWidthMax, roomLengthMax, graph);
-                }
+                SplitTheSpace(currentNode, listToReturn, roomWidthMin, roomLengthMin, graph);
             }
         }
         return listToReturn;
     }
 
-    private void SplitTheSpace(RoomNode currentNode, List<RoomNode> listToReturn, int roomWidthMin, int roomLengthMin, int roomWidthMax, int roomLengthMax, Queue<RoomNode> graph)
+    private void SplitTheSpace(RoomNode currentNode, List<RoomNode> listToReturn, int roomWidthMin, int roomLengthMin, Queue<RoomNode> graph)
     {
-        Line line = GetLineDividingSpace(currentNode.BottomLeftAreaCorner, currentNode.TopRightAreaCorner, roomWidthMin, roomLengthMin, roomWidthMax, roomLengthMax);
+        Line line = GetLineDividingSpace(currentNode.BottomLeftAreaCorner, currentNode.TopRightAreaCorner, roomWidthMin, roomLengthMin);
         RoomNode node1, node2;
         if (line.Orientation == Orientation.Horizontal)
         {
-            node1 = new RoomNode(currentNode.BottomLeftAreaCorner, new Vector2Int(currentNode.TopRightAreaCorner.x, line.Coordinates.y), currentNode, currentNode.TreeLayerIndex + 1);
+            node1 = new RoomNode(currentNode.BottomLeftAreaCorner, 
+                new Vector2Int(currentNode.TopRightAreaCorner.x, line.Coordinates.y),
+                currentNode, currentNode.TreeLayerIndex + 1);
             node2 = new RoomNode(new Vector2Int(currentNode.BottomLeftAreaCorner.x, line.Coordinates.y), currentNode.TopRightAreaCorner, currentNode, currentNode.TreeLayerIndex + 1);
         }
         else
@@ -62,62 +61,51 @@ public class BinarySpacePartitioner
         graph.Enqueue(node);
     }
 
-    private Line GetLineDividingSpace(Vector2Int bottomLeftAreaCorner, Vector2Int topRightAreaCorner, int roomWidthMin, int roomLengthMin, int roomWidthMax, int roomLengthMax)
+    private Line GetLineDividingSpace(Vector2Int bottomLeftAreaCorner, Vector2Int topRightAreaCorner, int roomWidthMin, int roomLengthMin)
     {
         Orientation orientation;
-        int lengthCurrent = topRightAreaCorner.y - bottomLeftAreaCorner.y;
-        int widthCurrent = topRightAreaCorner.x - bottomLeftAreaCorner.x;
-        float ratio = (float)widthCurrent / lengthCurrent;
-
-        if (ratio > 1.5f && widthCurrent > roomWidthMax)
+        bool lengthStatus = (topRightAreaCorner.y - bottomLeftAreaCorner.y) >= 2 * roomLengthMin;
+        bool widthStatus = (topRightAreaCorner.x - bottomLeftAreaCorner.x) >= 2 * roomWidthMin;
+        if (lengthStatus && widthStatus)
+        {
+            orientation = (Orientation)(Random.Range(0, 2));
+        }
+        else if (widthStatus)
         {
             orientation = Orientation.Vertical;
         }
-        else if (ratio <0.67f && lengthCurrent > roomLengthMax)
+        else
         {
             orientation = Orientation.Horizontal;
         }
-        else if (widthCurrent >= 2 * roomWidthMin && widthCurrent >= 2 * roomWidthMin)
-        {
-            orientation = (Orientation)Random.Range(0, 2);
-        }
-        else
-        {
-            orientation = (widthCurrent > lengthCurrent) ? Orientation.Vertical : Orientation.Horizontal;
-            //orientation = Orientation.Horizontal;
-        }
-        //bool lengthStatus = lengthCurrent >= 2 * roomLengthMin && lengthCurrent <= roomLengthMax;
-        //bool widthStatus = widthCurrent >= 2 * roomWidthMin && widthCurrent <= roomWidthMax;
-        //if (lengthStatus && widthStatus)
-        //{
-        //    orientation = (Orientation)(Random.Range(0, 2));
-        //}
-        //else if (widthStatus)
-        //{
-        //    orientation = Orientation.Vertical;
-        //}
-        //else
-        //{
-        //    orientation = Orientation.Horizontal;
-        //}
-        return new Line(orientation, GetCoordinatesFororientation(orientation, bottomLeftAreaCorner, topRightAreaCorner, roomWidthMin, roomLengthMin, roomWidthMax, roomLengthMax));
-        
-
+        return new Line(orientation, GetCoordinatesFororientation(
+            orientation,
+            bottomLeftAreaCorner,
+            topRightAreaCorner,
+            roomWidthMin,
+            roomLengthMin));
     }
 
 
-    private Vector2Int GetCoordinatesFororientation(Orientation orientation, Vector2Int bottomLeftAreaCorner, Vector2Int topRightAreaCorner, int roomWidthMin, int roomLengthMin, int roomWidthMax, int roomLengthMax)
+    private Vector2Int GetCoordinatesFororientation(Orientation orientation, Vector2Int bottomLeftAreaCorner, Vector2Int topRightAreaCorner, int roomWidthMin, int roomLengthMin)
     {
         Vector2Int coordinates = Vector2Int.zero;
         if (orientation == Orientation.Horizontal)
         {
-            coordinates = new Vector2Int(0, Random.Range((bottomLeftAreaCorner.y + roomLengthMin), (topRightAreaCorner.y - roomLengthMin)));
+            coordinates = new Vector2Int(
+                0,
+                Random.Range(
+                (bottomLeftAreaCorner.y + roomLengthMin),
+                (topRightAreaCorner.y - roomLengthMin)));
         }
         else
         {
-            coordinates = new Vector2Int(Random.Range((bottomLeftAreaCorner.x + roomWidthMin), (topRightAreaCorner.x - roomWidthMin)), 0);
+            coordinates = new Vector2Int(
+                Random.Range(
+                (bottomLeftAreaCorner.x + roomWidthMin),
+                (topRightAreaCorner.x - roomWidthMin))
+                , 0);
         }
         return coordinates;
-
     }
 }

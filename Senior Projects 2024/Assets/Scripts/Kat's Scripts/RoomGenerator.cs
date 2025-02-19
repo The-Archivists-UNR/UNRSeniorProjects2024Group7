@@ -8,15 +8,15 @@ public class RoomGenerator
     private int maxIterations;
     private int roomLengthMin;
     private int roomWidthMin;
-    private int roomLengthMax;
-    private int roomWidthMax;
-    public RoomGenerator(int maxIterations, int roomLengthMin, int roomWidthMin, int roomLengthMax, int roomWidthMax)
+    //private int roomLengthMax;
+    //private int roomWidthMax;
+    public RoomGenerator(int maxIterations, int roomLengthMin, int roomWidthMin)
     {
         this.maxIterations = maxIterations;
         this.roomLengthMin = roomLengthMin;
         this.roomWidthMin = roomWidthMin;
-        this.roomLengthMax = roomLengthMax;
-        this.roomWidthMax = roomWidthMax;
+        //this.roomLengthMax = roomLengthMax;
+        //this.roomWidthMax = roomWidthMax;
     }
 
     public List<RoomNode> GenerateRoomsInGivenSpaces(List<Node> roomSpaces, float roomBottomCornerModifier, float roomTopCornerModifier, int roomOffset)
