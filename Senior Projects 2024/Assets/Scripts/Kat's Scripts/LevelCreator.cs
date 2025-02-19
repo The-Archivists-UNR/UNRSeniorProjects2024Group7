@@ -10,9 +10,9 @@ public class LevelCreator : MonoBehaviour
 {
     public int levelWidth, levelLength;
     public int roomWidthMin, roomLengthMin;
-    public int roomWidthMax, roomLengthMax;
+    //public int roomWidthMax, roomLengthMax;
 
-    [Range(0.0f, 0.3f)]
+    [Range(0.0f, 0.9f)]
     public float roomBottomCornerModifier;
 
     [Range(0.7f, 1.0f)]
@@ -20,8 +20,8 @@ public class LevelCreator : MonoBehaviour
 
     [Range(0.0f, 5.0f)]
     public int roomOffset;
+
     public int maxIterations;
-    public int corridorWidth;
 
     public GameObject verticalWall, horizontalWall;
     List<Vector3Int> possibleDoorVerticalPosition;
@@ -41,8 +41,8 @@ public class LevelCreator : MonoBehaviour
     {
         DestroyAllChildren();
         LevelGenerator generator = new LevelGenerator(levelWidth, levelLength);
-        var listRooms = generator.CalculateLevel(maxIterations, roomWidthMin, roomLengthMin, roomWidthMax, roomLengthMax,
-            roomBottomCornerModifier, roomTopCornerModifier, roomOffset, corridorWidth);
+        var listRooms = generator.CalculateLevel(maxIterations, roomWidthMin, roomLengthMin,
+            roomBottomCornerModifier, roomTopCornerModifier, roomOffset);
 
         GameObject wallParent = new GameObject("WallParent");
         wallParent.transform.parent = transform;
