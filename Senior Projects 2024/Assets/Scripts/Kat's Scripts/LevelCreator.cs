@@ -43,7 +43,6 @@ public class LevelCreator : MonoBehaviour
         LevelGenerator generator = new LevelGenerator(levelWidth, levelLength);
         var listRooms = generator.CalculateLevel(maxIterations, roomWidthMin, roomLengthMin,
             roomBottomCornerModifier, roomTopCornerModifier, roomOffset);
-
         GameObject wallParent = new GameObject("WallParent");
         wallParent.transform.parent = transform;
         possibleDoorVerticalPosition = new List<Vector3Int>();
@@ -54,24 +53,6 @@ public class LevelCreator : MonoBehaviour
         {
             CreateMesh(listRooms[i].BottomLeftAreaCorner, listRooms[i].TopRightAreaCorner);
         }
-        CreateWalls(wallParent);
-    }
-
-    private void CreateWalls(GameObject wallParent)
-    {
-        foreach (var wallPosition in possibleWallHorizontalPosition)
-        {
-            CreateWall(wallParent, wallPosition, horizontalWall);
-        }
-        foreach (var wallPosition in possibleWallVerticalPosition)
-        {
-            CreateWall(wallParent, wallPosition, verticalWall);
-        }
-    }
-
-    private void CreateWall(GameObject wallParent, Vector3Int wallPosition, GameObject wallPrefab)
-    {
-        Instantiate(wallPrefab, wallPosition, Quaternion.identity, wallParent.transform);
     }
 
     private void CreateMesh(Vector2 bottomLeftCorner, Vector2 topRightCorner)
@@ -114,41 +95,33 @@ public class LevelCreator : MonoBehaviour
         levelFloor.GetComponent<MeshRenderer>().material = material;
         levelFloor.transform.parent = transform;
 
-        for (int row = (int)bottomLeftVertex.x; row < (int)bottomRightVertex.x; row++)
-        {
-            var wallPosition = new Vector3(row, 0, bottomLeftVertex.z);
-            AddWallPositionToList(wallPosition, possibleWallHorizontalPosition, possibleDoorHorizontalPosition);
-        }
-        for (int row = (int)topLeftVertex.x; row < (int)topRightCorner.x; row++)
-        {
-            var wallPosition = new Vector3(row, 0, topRightVertex.z);
-            AddWallPositionToList(wallPosition, possibleWallHorizontalPosition, possibleDoorHorizontalPosition);
-        }
-        for (int col = (int)bottomLeftVertex.z; col < (int)topLeftVertex.z; col++)
-        {
-            var wallPosition = new Vector3(bottomLeftVertex.x, 0, col);
-            AddWallPositionToList(wallPosition, possibleWallVerticalPosition, possibleDoorVerticalPosition);
-        }
-        for (int col = (int)bottomRightVertex.z; col < (int)topRightVertex.z; col++)
-        {
-            var wallPosition = new Vector3(bottomRightVertex.x, 0, col);
-            AddWallPositionToList(wallPosition, possibleWallVerticalPosition, possibleDoorVerticalPosition);
-        }
+        CreateWall(bottomLeftVertex, bottomRightVertex, horizontalWall); //southmost wall
+        CreateWall(topLeftVertex, topRightVertex, horizontalWall); //northmost wall
+        CreateWall(bottomLeftVertex, topLeftVertex, horizontalWall);//westmost wall
+        CreateWall(bottomRightVertex, topRightVertex, horizontalWall); //eastmostwall
     }
-
-    private void AddWallPositionToList(Vector3 wallPosition, List<Vector3Int> wallList, List<Vector3Int> doorList)
+    private void CreateWall(Vector3 pointA, Vector3 pointB, GameObject wallPrefab)
     {
-        Vector3Int point = Vector3Int.CeilToInt(wallPosition);
-        if (wallList.Contains(point))
-        {
-            doorList.Add(point);
-            wallList.Remove(point);
-        }
-        else
-        {
-            wallList.Add(point);
-        }
+        Vector3 wallPosition = (pointA + pointB)/2;
+        float length = Vector3.Distance(pointA, pointB);
+        bool isHorizontal = pointA.z == pointB.z;
+        GameObject wall = Instantiate(wallPrefab, wallPosition, Quaternion.identity,transform);
+        wall.transform.localScale = isHorizontal ? new Vector3(length, wall.transform.localScale.y,1) : 
+            new Vector3(1, wall.transform.localScale.y, length);
     }
+    //private void AddWallPositionToList(Vector3 wallPosition, List<Vector3Int> wallList, List<Vector3Int> doorList)
+    //{
+    //    Vector3Int point = Vector3Int.CeilToInt(wallPosition);
+    //    if (wallList.Contains(point))
+    //    {
+    //        doorList.Add(point);
+    //        wallList.Remove(point);
+    //    }
+    //    else
+    //    {
+    //        wallList.Add(point);
+    //    }
+    //}
     private void DestroyAllChildren()
     {
         while (transform.childCount != 0)
