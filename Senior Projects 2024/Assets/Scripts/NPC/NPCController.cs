@@ -6,7 +6,7 @@ using UnityEngine;
 [System.Serializable]
 public class NPCController : MonoBehaviour
 {
-
+    public string name;
     public Vector3 spawnPos;
     public int relationshipScore;
     public string scoreSavingFile;
@@ -18,6 +18,7 @@ public class NPCController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        memory = "";
         dialogueTranscript = new List<string>();
     }
 

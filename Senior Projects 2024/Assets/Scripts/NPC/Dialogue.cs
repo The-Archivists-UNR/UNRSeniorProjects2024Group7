@@ -36,11 +36,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
-//using TMPro.Examples;
-//using Unity.VisualScripting;
-//using Palmmedia.ReportGenerator.Core;
-//using static System.Net.Mime.MediaTypeNames;
-//using LLMUnity;
+using System;
+using static Cinemachine.DocumentationSortingAttribute;
+using System.Runtime.ConstrainedExecution;
+using static UnityEditor.PlayerSettings;
+using Unity.VisualScripting;
 
 //apparently a necessity when using functions as parameters for callbacks
 public delegate void Callback<T>(T message);
@@ -112,7 +112,15 @@ public class Dialogue : MonoBehaviour
         GameEventsManager.instance.playerEvents.DisablePlayerMovement();
         playerText.text = "";
         llmConvo = true;
-        LLM.getResponse(npc.prompt, setAIText, AIReplyComplete);
+
+        if (npc.memory == "")
+        {
+            LLM.getResponse(npc.prompt, setAIText, AIReplyComplete);
+        }
+        else
+        {
+            LLM.getResponse(npc.prompt + "\n here's happened so far:\n" + npc.memory, setAIText, AIReplyComplete);
+        }
     }
 
     public void StartQuestDialogue(List<string> quest)
@@ -128,21 +136,6 @@ public class Dialogue : MonoBehaviour
         StartCoroutine(TypeLine());
     }
 
-    private void setAIText(string text) {   AIText.text = text; }
-
-    private void setRating(string number)
-    {
-        int rating = 0;
-        int.TryParse(number, out rating);
-        Debug.Log("rating: " + rating);
-        if (rating > 5)
-        {
-            rating = 1;
-        }
-        else rating = 0;
-        npc.changeRelationshipScore(rating);
-    }
-
     public void EndQuestDialogue(List<string> quest)
     {
         NPCtextbox.isVisible = true;
@@ -156,31 +149,64 @@ public class Dialogue : MonoBehaviour
         StartCoroutine(TypeLine());
     }
 
+
+
+
+    private void setAIText(string text) 
+    {   
+        AIText.text = text;
+        npc.dialogueTranscript.Add(npc.name + ": " + text);
+    }
+
+    private void setRating(string number)
+    {
+        int rating = 0;
+        int.TryParse(number, out rating);
+        npc.changeRelationshipScore(rating);
+    }
+
+    private void setNPCMemory(string memory)
+    {
+        npc.memory += memory;
+        npc.dialogueTranscript.Clear();
+    }
+
     private void onInputFieldSubmit(string message)
     {
         playerText.interactable = false;
+        npc.dialogueTranscript.Add("Ophelia: " + message);
         if (count > 2)
         {
             playerText.text = "The Ghost seems busy. Use 'enter' to exit.";
             npc.willingToTalk = false;
-
-            LLM.getResponse(message, setAIText, AIReplyComplete);
+            LLM.getResponse(message+" goodbye!", setAIText, AIReplyComplete);
+            string transcript = "";
+            foreach (string str in npc.dialogueTranscript)
+            {
+                transcript += str+"\n";
+            }
+            Debug.Log(transcript);
+            LLM.getResponse("please summarize the following transcript: \n" + transcript, setNPCMemory);
         }
         else
         {
-            LLM.getResponse(message, setAIText, AIReplyComplete);
+            LLM.getResponse(npc.prompt+"Continue the conversation as Sam, here is what has happened so far: "
+                +(npc.dialogueTranscript).ToString(), setAIText, AIReplyComplete);
         }
     }
 
     private void AIReplyComplete()
     {
-        LLM.getResponse("Rate the pleasantness of this conversation on a scale from 1 to 10. " +
-                "Respond with only the number.", setRating);
         if (npc.willingToTalk)
         {
             playerText.text = "";
             playerText.interactable = true;
             playerText.Select();
+        }
+        else
+        {
+            LLM.getResponse("How pleasant is Ophelia in this transcript on a scale from 1 to 10? " +
+                "Respond with only the number."+npc.dialogueTranscript, setRating);
         }
     }
 
