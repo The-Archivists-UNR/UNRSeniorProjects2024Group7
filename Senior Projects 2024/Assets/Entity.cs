@@ -26,16 +26,19 @@ public class Entity : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(healthSlider.value != health)
+        if(healthSlider != null)
         {
-            healthSlider.value = health;
-        }
+            if (healthSlider.value != health)
+            {
+                healthSlider.value = health;
+            }
 
-        if(healthSlider.value != easeHealthSlider.value)
-        {
-            easeHealthSlider.value = Mathf.Lerp(easeHealthSlider.value, health, lerpSpeed);
-        }
+            if (healthSlider.value != easeHealthSlider.value)
+            {
+                easeHealthSlider.value = Mathf.Lerp(easeHealthSlider.value, health, lerpSpeed);
+            }
 
+        }
     }
 
     public void TakeDamage(float damage)
