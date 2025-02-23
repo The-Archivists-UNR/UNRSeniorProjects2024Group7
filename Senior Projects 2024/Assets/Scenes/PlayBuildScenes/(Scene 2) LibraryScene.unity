@@ -11245,52 +11245,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 378220462}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &379679645
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 379679647}
-  - component: {fileID: 379679646}
-  m_Layer: 0
-  m_Name: APIManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &379679646
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 379679645}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 433bcfb07db923f429c8d50a3da7c129, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gasURL: https://script.google.com/macros/s/AKfycbyeRPCdaTCg3Erfv3ML3IZ_rmB4sYKXpgYTC09mHLtdcZvri6fNPSGU1hCMvt0Db24u/exec
-  prompt: Hello
---- !u!4 &379679647
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 379679645}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -121.350006, y: 8.56, z: 36}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &382172177
 GameObject:
   m_ObjectHideFlags: 0
@@ -22876,7 +22830,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 681187263}
-  - component: {fileID: 681187262}
   - component: {fileID: 681187264}
   m_Layer: 0
   m_Name: Ghost
@@ -22885,62 +22838,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &681187262
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 681187261}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3f6c87a428fd5d0be9bbc686bdc8c3c2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  advancedOptions: 0
-  remote: 0
-  llm: {fileID: 2131146981}
-  host: localhost
-  port: 13333
-  numRetries: 10
-  APIKey: 
-  save: 
-  saveCache: 0
-  debugPrompt: 0
-  stream: 1
-  grammar: 
-  cachePrompt: 1
-  slot: -1
-  seed: 0
-  numPredict: 256
-  temperature: 0.2
-  topK: 40
-  topP: 0.9
-  minP: 0.05
-  repeatPenalty: 1.1
-  presencePenalty: 0
-  frequencyPenalty: 0
-  tfsZ: 1
-  typicalP: 1
-  repeatLastN: 64
-  penalizeNl: 1
-  penaltyPrompt: 
-  mirostat: 0
-  mirostatTau: 5
-  mirostatEta: 0.1
-  nProbs: 0
-  ignoreEos: 0
-  nKeep: -1
-  stop: []
-  playerName: Ophelia
-  AIName: Ghost
-  prompt: 'You are a ghost named Sam who haunts a long-abandoned library full of
-    ancient books and curses. Talk to Ophelia, the new librarian, who is attempting
-    to revive the library. Limit your responses to 30 words. Do not include quotation
-    marks. '
-  setNKeepToPrompt: 1
-  chat: []
-  grammarString: 
 --- !u!4 &681187263
 Transform:
   m_ObjectHideFlags: 0
@@ -22971,6 +22868,13 @@ MonoBehaviour:
   spawnPos: {x: 0, y: 0, z: 0}
   relationshipScore: 0
   scoreSavingFile: 
+  prompt: 'You are a ghost named Sam who haunts a long-abandoned library full of
+    ancient books and curses. Talk to Ophelia, the new librarian, who is attempting
+    to revive the library. Limit your responses to 30 words. Do not include quotation
+    marks. '
+  willingToTalk: 1
+  dialogueTranscript: []
+  memory: 
 --- !u!1001 &681829763
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -33255,7 +33159,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 975090330}
-  - component: {fileID: 975090331}
   m_Layer: 0
   m_Name: Game
   m_TagString: Untagged
@@ -33278,41 +33181,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &975090331
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 975090329}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a50e3140c3ecaaf1c848dbf141cc2074, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  advancedOptions: 0
-  remote: 0
-  port: 13333
-  numThreads: -1
-  numGPULayers: 0
-  debug: 0
-  parallelPrompts: -1
-  dontDestroyOnLoad: 1
-  contextSize: 8192
-  batchSize: 512
-  basePrompt: 
-  model: llama-3.2-1b-instruct-q4_k_m.gguf
-  chatTemplate: llama3 chat
-  lora: 
-  loraWeights: 
-  flashAttention: 0
-  APIKey: 
-  SSLCert: 
-  SSLCertPath: 
-  SSLKey: 
-  SSLKeyPath: 
-  minContextLength: 0
-  maxContextLength: 131072
 --- !u!1001 &980902573
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -61095,12 +60963,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textComponent: {fileID: 757835284}
   scriptedTextComponent: {fileID: 1209463190}
+  AIText: {fileID: 757835284}
   textSpeed: 0.05
   textbox: {fileID: 1762147429}
   NPCtextbox: {fileID: 1001462456}
-  LLM: {fileID: 1790758256}
   playerText: {fileID: 1595790910}
   npc: {fileID: 681187264}
+  LLM: {fileID: 1790758256}
   codedlines: []
 --- !u!114 &1762147429
 MonoBehaviour:
@@ -62282,7 +62151,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8fcd57116a6df1b42ba965344711b83f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AIText: {fileID: 757835284}
   gasURL: https://script.google.com/macros/s/AKfycbyeRPCdaTCg3Erfv3ML3IZ_rmB4sYKXpgYTC09mHLtdcZvri6fNPSGU1hCMvt0Db24u/exec
 --- !u!4 &1790758257
 Transform:
@@ -74393,73 +74261,6 @@ Transform:
   - {fileID: 634162042}
   - {fileID: 1071645907}
   m_Father: {fileID: 1311297352}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &2131146980
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2131146982}
-  - component: {fileID: 2131146981}
-  m_Layer: 0
-  m_Name: LLM Model
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &2131146981
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2131146980}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a50e3140c3ecaaf1c848dbf141cc2074, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  advancedOptions: 1
-  remote: 0
-  port: 3306
-  numThreads: -1
-  numGPULayers: 0
-  debug: 0
-  parallelPrompts: -1
-  dontDestroyOnLoad: 1
-  contextSize: 8192
-  batchSize: 512
-  basePrompt: 
-  model: llama-3.2-1b-instruct-q4_k_m.gguf
-  chatTemplate: llama3 chat
-  lora: 
-  loraWeights: 
-  flashAttention: 0
-  APIKey: 
-  SSLCert: 
-  SSLCertPath: 
-  SSLKey: 
-  SSLKeyPath: 
-  minContextLength: 0
-  maxContextLength: 131072
---- !u!4 &2131146982
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2131146980}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2133488655
 GameObject:
@@ -86802,7 +86603,6 @@ SceneRoots:
   - {fileID: 630604191}
   - {fileID: 1575598308}
   - {fileID: 2103796476}
-  - {fileID: 2131146982}
   - {fileID: 975090330}
   - {fileID: 1919138812}
   - {fileID: 1747767451}
@@ -86824,4 +86624,3 @@ SceneRoots:
   - {fileID: 331112236}
   - {fileID: 1894608714}
   - {fileID: 308024383}
-  - {fileID: 379679647}

@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
 
@@ -12,10 +11,11 @@ public class APIManager : MonoBehaviour
     private void Update()
     {
         //change this to something like on trigger when near an NPC
-        if (Input.GetKeyDown(KeyCode.RightShift))
-        {
-            StartCoroutine(SendDataToGAS());
-        }
+        //if (Input.GetKeyDown(KeyCode.RightShift))
+        //{
+        //    StartCoroutine(SendDataToGAS());
+        //}
+        // above 'if' commented out by Lanielle 2/22/25 because API call is being made elsewhere
     }
     private IEnumerator SendDataToGAS()
     {
