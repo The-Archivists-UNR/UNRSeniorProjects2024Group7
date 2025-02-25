@@ -1,5 +1,5 @@
 using UnityEngine;
-using DG.Tweening;
+//using DG.Tweening;
 
 public class FlipItem : MonoBehaviour
 {
@@ -12,6 +12,6 @@ public class FlipItem : MonoBehaviour
     private void Flip()
     {
         tagFlipped = !tagFlipped;
-        transform.DORotate(new(0, tagFlipped? 0f : 180f, 0), 0.25f);
+        //transform.DORotate(new(0, tagFlipped? 0f : 180f, 0), 0.25f);
     }
 }
