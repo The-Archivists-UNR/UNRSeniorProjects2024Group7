@@ -18,6 +18,8 @@ public class NoireKnifeAI : EnemyAI
 
     public float attackCooldown;
     public float attackingTime;
+    public float attackingTimeThreshold;
+    public float attackCooldownThreshold;
     public bool attacking;
     void Update()
     {
@@ -38,15 +40,17 @@ public class NoireKnifeAI : EnemyAI
 
         if (attacking)
         {
+            agent.isStopped = true;
             attackingTime += Time.deltaTime;
-            if(attackingTime > 1.2f)
+            if(attackingTime > attackingTimeThreshold)
             {
+                agent.isStopped = false;
                 attacking = false;
                 attackingTime = 0;
             }
         }
 
-        if (Vector3.Distance(player.transform.position, this.transform.position) < 2 && attackCooldown > 5)
+        if (Vector3.Distance(player.transform.position, this.transform.position) < 2 && attackCooldown > attackCooldownThreshold)
         {
             animator.SetBool("isAttacking", true);
             attackCooldown = 0;
