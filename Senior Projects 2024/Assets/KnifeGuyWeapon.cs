@@ -23,7 +23,7 @@ public class KnifeGuyWeapon : Weapon
         }
     }
 
-    private void OnTriggerEnter(Collider collider)
+    private void OnTriggerStay(Collider collider)
     {
         if (collider.gameObject.tag.Equals("Player") && entity.attacking && numHits == 0)
         {
