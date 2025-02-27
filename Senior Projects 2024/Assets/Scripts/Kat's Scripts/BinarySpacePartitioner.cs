@@ -16,7 +16,7 @@ public class BinarySpacePartitioner
         this.rootNode = new RoomNode(new Vector2Int(0, 0), new Vector2Int(levelWidth, levelLength), null, 0);
     }
 
-    public List<RoomNode> PrepareNodesCollection(int maxIterations, int roomWidthMin, int roomLengthMin)
+    public List<RoomNode> PrepareNodesCollection(int maxIterations, int roomWidthMin, int roomLengthMin, int roomWidthMax, int roomLengthMax)
     {
         Queue<RoomNode> graph = new Queue<RoomNode>();
         List<RoomNode> listToReturn = new List<RoomNode>();
@@ -29,15 +29,15 @@ public class BinarySpacePartitioner
             RoomNode currentNode = graph.Dequeue();
             if (currentNode.Width >= roomWidthMin * 2 || currentNode.Length >= roomLengthMin * 2)
             {
-                SplitTheSpace(currentNode, listToReturn, roomWidthMin, roomLengthMin, graph);
+                SplitTheSpace(currentNode, listToReturn, roomWidthMin, roomLengthMin, roomWidthMax, roomLengthMax, graph);
             }
         }
         return listToReturn;
     }
 
-    private void SplitTheSpace(RoomNode currentNode, List<RoomNode> listToReturn, int roomWidthMin, int roomLengthMin, Queue<RoomNode> graph)
+    private void SplitTheSpace(RoomNode currentNode, List<RoomNode> listToReturn, int roomWidthMin, int roomLengthMin, int roomWidthMax, int roomLengthMax, Queue<RoomNode> graph)
     {
-        Line line = GetLineDividingSpace(currentNode.BottomLeftAreaCorner, currentNode.TopRightAreaCorner, roomWidthMin, roomLengthMin);
+        Line line = GetLineDividingSpace(currentNode.BottomLeftAreaCorner, currentNode.TopRightAreaCorner, roomWidthMin, roomLengthMin, roomWidthMax, roomLengthMax);
         RoomNode node1, node2;
         if (line.Orientation == Orientation.Horizontal)
         {
@@ -61,7 +61,7 @@ public class BinarySpacePartitioner
         graph.Enqueue(node);
     }
 
-    private Line GetLineDividingSpace(Vector2Int bottomLeftAreaCorner, Vector2Int topRightAreaCorner, int roomWidthMin, int roomLengthMin)
+    private Line GetLineDividingSpace(Vector2Int bottomLeftAreaCorner, Vector2Int topRightAreaCorner, int roomWidthMin, int roomLengthMin, int roomWidthMax, int roomLengthMax)
     {
         Orientation orientation;
         bool lengthStatus = (topRightAreaCorner.y - bottomLeftAreaCorner.y) >= 2 * roomLengthMin;
@@ -83,11 +83,11 @@ public class BinarySpacePartitioner
             bottomLeftAreaCorner,
             topRightAreaCorner,
             roomWidthMin,
-            roomLengthMin));
+            roomLengthMin, roomWidthMax, roomLengthMax));
     }
 
 
-    private Vector2Int GetCoordinatesFororientation(Orientation orientation, Vector2Int bottomLeftAreaCorner, Vector2Int topRightAreaCorner, int roomWidthMin, int roomLengthMin)
+    private Vector2Int GetCoordinatesFororientation(Orientation orientation, Vector2Int bottomLeftAreaCorner, Vector2Int topRightAreaCorner, int roomWidthMin, int roomLengthMin, int roomWidthMax, int roomLengthMax)
     {
         Vector2Int coordinates = Vector2Int.zero;
         if (orientation == Orientation.Horizontal)

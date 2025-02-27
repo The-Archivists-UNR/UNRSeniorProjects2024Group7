@@ -10,7 +10,7 @@ public class RoomGenerator
     private int roomWidthMin;
     //private int roomLengthMax;
     //private int roomWidthMax;
-    public RoomGenerator(int maxIterations, int roomLengthMin, int roomWidthMin)
+    public RoomGenerator(int maxIterations, int roomWidthMin, int roomLengthMin, int roomWidthMax, int roomLengthMax)
     {
         this.maxIterations = maxIterations;
         this.roomLengthMin = roomLengthMin;
