@@ -8,8 +8,7 @@ using UnityEngine;
 
 public abstract class QuestStep : MonoBehaviour
 {
-    [HideInInspector]
-    public bool isFinished = false;
+    private bool isFinished = false;
     private string questId;
     private int stepIndex;
 
