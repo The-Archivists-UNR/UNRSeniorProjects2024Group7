@@ -44,6 +44,7 @@ public class Entity : MonoBehaviour
     public void TakeDamage(float damage)
     {
         health -= damage;
+        health = Mathf.Min(health, maxHealth);
         if (health < 0){
             enemyAni.SetTrigger("die");
             Destroy(gameObject);
@@ -51,6 +52,6 @@ public class Entity : MonoBehaviour
                 GameStatsMgr.inst.enemiesKilled++;
         }
         else
-            enemyAni.SetTrigger("damage");
+            enemyAni.SetTrigger("damage"); 
     }
 }
