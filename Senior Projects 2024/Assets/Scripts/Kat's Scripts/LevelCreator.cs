@@ -12,7 +12,6 @@ public class LevelCreator : MonoBehaviour
     public int levelWidth, levelLength;
     public int roomWidthMin, roomLengthMin;
     public int roomWidthMax, roomLengthMax;
-    //public int roomWidthMax, roomLengthMax;
 
     [Range(0.0f, 0.9f)]
     public float roomBottomCornerModifier;
@@ -27,11 +26,6 @@ public class LevelCreator : MonoBehaviour
 
     public GameObject verticalWall, horizontalWall;
     public GameObject verticalDoor, horizontalDoor;
-    //List<Vector3Int> possibleDoorVerticalPosition;
-    //List<Vector3Int> possibleDoorHorizontalPosition;
-    //List<Vector3Int> possibleWallVerticalPosition;
-    //List<Vector3Int> possibleWallHorizontalPosition;
-
 
     public Material material;
     // Start is called before the first frame update
@@ -48,10 +42,6 @@ public class LevelCreator : MonoBehaviour
             roomBottomCornerModifier, roomTopCornerModifier, roomOffset);
         GameObject wallParent = new GameObject("WallParent");
         wallParent.transform.parent = transform;
-        //possibleDoorVerticalPosition = new List<Vector3Int>();
-        //possibleDoorHorizontalPosition = new List<Vector3Int>();
-        //possibleWallVerticalPosition = new List<Vector3Int>();
-        //possibleWallHorizontalPosition = new List<Vector3Int>();
         for (int i = 0; i < listRooms.Count; i++)
         {
             CreateMesh(listRooms[i].BottomLeftAreaCorner, listRooms[i].TopRightAreaCorner);
@@ -127,13 +117,29 @@ public class LevelCreator : MonoBehaviour
     private void CreateDoor(Vector3 pointA, Vector3 pointB, GameObject doorPrefab)
     {
         Vector3 doorPosition = (pointA + pointB)/2;
-        float doorLength = 10;
         bool isHorizontal = pointA.z == pointB.z;
-        doorPosition.y = 5.0f;
+        doorPosition.y = 4.5f; //anything higher than this makes the doors float
         GameObject door = Instantiate(doorPrefab, doorPosition, Quaternion.identity,transform);
-        door.transform.localScale = isHorizontal
-            ? new Vector3(doorLength, door.transform.localScale.y, 2) 
-            : new Vector3(2, door.transform.localScale.y, doorLength);
+        if (isHorizontal) //since i have a test of bool for if the wall is horizontal, and the horizontal walls are ideal, this is the best method to simply rotate the doors when the walls are vertical
+        {
+            door.transform.Rotate(0,0,0); 
+        }
+        else
+        {
+            door.transform.Rotate(0, 90, 0);
+        }
+        door.transform.localScale = isHorizontal //changed the ratios for the doors to fit the rooms
+            ? new Vector3(15, 15, 60) 
+            : new Vector3(15,15,60);
+
+       NewRoom room= door.GetComponentInParent<NewRoom>();
+        if (room != null)
+        {
+            NewDoor doorScript = door.AddComponent<NewDoor>();
+            doorScript.room = room;
+            doorScript.locked = true;
+        }
+
     }
     private void DestroyAllChildren()
     {

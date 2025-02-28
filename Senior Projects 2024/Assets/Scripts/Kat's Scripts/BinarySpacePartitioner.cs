@@ -27,7 +27,7 @@ public class BinarySpacePartitioner
         {
             iterations++;
             RoomNode currentNode = graph.Dequeue();
-            if (currentNode.Width >= roomWidthMin * 2 || currentNode.Length >= roomLengthMin * 2)
+            if ((currentNode.Width > roomWidthMax || currentNode.Length > roomLengthMax)||(currentNode.Width >= roomWidthMin * 2 || currentNode.Length >= roomLengthMin * 2)) //incorporate roomwidthmax and lengthmax here
             {
                 SplitTheSpace(currentNode, listToReturn, roomWidthMin, roomLengthMin, roomWidthMax, roomLengthMax, graph);
             }
@@ -61,50 +61,77 @@ public class BinarySpacePartitioner
         graph.Enqueue(node);
     }
 
-    private Line GetLineDividingSpace(Vector2Int bottomLeftAreaCorner, Vector2Int topRightAreaCorner, int roomWidthMin, int roomLengthMin, int roomWidthMax, int roomLengthMax)
+    private Line GetLineDividingSpace(Vector2Int bottomLeftAreaCorner, Vector2Int topRightAreaCorner, int roomWidthMin, int roomLengthMin, int roomWidthMax, int roomLengthMax) //incorporate maximums here
     {
         Orientation orientation;
-        bool lengthStatus = (topRightAreaCorner.y - bottomLeftAreaCorner.y) >= 2 * roomLengthMin;
-        bool widthStatus = (topRightAreaCorner.x - bottomLeftAreaCorner.x) >= 2 * roomWidthMin;
-        if (lengthStatus && widthStatus)
+        int currentWidth = topRightAreaCorner.x - bottomLeftAreaCorner.x;
+        int currentLength = topRightAreaCorner.y - bottomLeftAreaCorner.y;
+
+        bool forceSplitWidth = currentWidth > roomWidthMax;
+        bool forceSplitLength = currentLength > roomLengthMax;
+
+        //bool lengthStatus = (currentLength >= 2 * roomLengthMin && currentLength > roomLengthMax);
+        //bool widthStatus = (currentWidth >=2 * roomWidthMin && currentWidth > roomWidthMax);
+        if (forceSplitWidth && forceSplitLength)
         {
             orientation = (Orientation)(Random.Range(0, 2));
         }
-        else if (widthStatus)
+        else if (forceSplitWidth)
         {
             orientation = Orientation.Vertical;
         }
-        else
+        else if (forceSplitLength)
         {
             orientation = Orientation.Horizontal;
         }
-        return new Line(orientation, GetCoordinatesFororientation(
-            orientation,
-            bottomLeftAreaCorner,
-            topRightAreaCorner,
-            roomWidthMin,
-            roomLengthMin, roomWidthMax, roomLengthMax));
+        else
+        {
+            orientation = (Orientation)(Random.Range(0, 2));
+        }
+            return new Line(orientation, GetCoordinatesFororientation(
+                orientation,
+                bottomLeftAreaCorner,
+                topRightAreaCorner,
+                roomWidthMin,
+                roomLengthMin, roomWidthMax, roomLengthMax));
+       
     }
 
 
     private Vector2Int GetCoordinatesFororientation(Orientation orientation, Vector2Int bottomLeftAreaCorner, Vector2Int topRightAreaCorner, int roomWidthMin, int roomLengthMin, int roomWidthMax, int roomLengthMax)
     {
         Vector2Int coordinates = Vector2Int.zero;
+        int currentWidth = topRightAreaCorner.x - bottomLeftAreaCorner.x;
+        int currentLength = topRightAreaCorner.y - bottomLeftAreaCorner.y;
         if (orientation == Orientation.Horizontal)
         {
-            coordinates = new Vector2Int(
-                0,
-                Random.Range(
-                (bottomLeftAreaCorner.y + roomLengthMin),
-                (topRightAreaCorner.y - roomLengthMin)));
+            int minimumSplit = bottomLeftAreaCorner.y + roomLengthMin;
+            int maximumSplit = topRightAreaCorner.y - roomLengthMin;
+            int idealSplit = Mathf.Clamp(Random.Range(minimumSplit, maximumSplit), bottomLeftAreaCorner.y + roomLengthMin,topRightAreaCorner.y- roomLengthMin);
+            if (idealSplit - bottomLeftAreaCorner.y > roomLengthMax)
+            {
+                idealSplit = bottomLeftAreaCorner.y + roomLengthMax;
+            }
+            if (topRightAreaCorner.y - idealSplit > roomLengthMax)
+            {
+                idealSplit = topRightAreaCorner.y - roomLengthMax;
+            }
+            coordinates = new Vector2Int(0, idealSplit);
         }
         else
         {
-            coordinates = new Vector2Int(
-                Random.Range(
-                (bottomLeftAreaCorner.x + roomWidthMin),
-                (topRightAreaCorner.x - roomWidthMin))
-                , 0);
+            int minimumSplit = bottomLeftAreaCorner.x + roomWidthMin;
+            int maximumSplit = topRightAreaCorner.x - roomWidthMin;
+            int idealSplit = Mathf.Clamp(Random.Range(minimumSplit, maximumSplit), bottomLeftAreaCorner.x + roomWidthMin, topRightAreaCorner.x - roomWidthMin);
+            if (idealSplit - bottomLeftAreaCorner.x > roomWidthMax)
+            {
+                idealSplit = bottomLeftAreaCorner.x + roomWidthMax;
+            }
+            if (topRightAreaCorner.x - idealSplit > roomWidthMax)
+            {
+                idealSplit = topRightAreaCorner.x - roomWidthMax;
+            }
+            coordinates = new Vector2Int(idealSplit, 0);
         }
         return coordinates;
     }
