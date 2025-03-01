@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
 using UnityEngine.UIElements;
 
 //created by Kat Wayman
@@ -10,7 +11,7 @@ public class LevelCreator : MonoBehaviour
 {
     public int levelWidth, levelLength;
     public int roomWidthMin, roomLengthMin;
-    //public int roomWidthMax, roomLengthMax;
+    public int roomWidthMax, roomLengthMax;
 
     [Range(0.0f, 0.9f)]
     public float roomBottomCornerModifier;
@@ -18,17 +19,13 @@ public class LevelCreator : MonoBehaviour
     [Range(0.7f, 1.0f)]
     public float roomTopCornerModifier;
 
-    [Range(0.0f, 5.0f)]
+    [Range(0.0f, 15.0f)]
     public int roomOffset;
 
     public int maxIterations;
 
     public GameObject verticalWall, horizontalWall;
-    List<Vector3Int> possibleDoorVerticalPosition;
-    List<Vector3Int> possibleDoorHorizontalPosition;
-    List<Vector3Int> possibleWallVerticalPosition;
-    List<Vector3Int> possibleWallHorizontalPosition;
-
+    public GameObject verticalDoor, horizontalDoor;
 
     public Material material;
     // Start is called before the first frame update
@@ -41,37 +38,14 @@ public class LevelCreator : MonoBehaviour
     {
         DestroyAllChildren();
         LevelGenerator generator = new LevelGenerator(levelWidth, levelLength);
-        var listRooms = generator.CalculateLevel(maxIterations, roomWidthMin, roomLengthMin,
+        var listRooms = generator.CalculateLevel(maxIterations, roomWidthMin, roomLengthMin, roomWidthMax, roomLengthMax,
             roomBottomCornerModifier, roomTopCornerModifier, roomOffset);
-
         GameObject wallParent = new GameObject("WallParent");
         wallParent.transform.parent = transform;
-        possibleDoorVerticalPosition = new List<Vector3Int>();
-        possibleDoorHorizontalPosition = new List<Vector3Int>();
-        possibleWallVerticalPosition = new List<Vector3Int>();
-        possibleWallHorizontalPosition = new List<Vector3Int>();
         for (int i = 0; i < listRooms.Count; i++)
         {
             CreateMesh(listRooms[i].BottomLeftAreaCorner, listRooms[i].TopRightAreaCorner);
         }
-        CreateWalls(wallParent);
-    }
-
-    private void CreateWalls(GameObject wallParent)
-    {
-        foreach (var wallPosition in possibleWallHorizontalPosition)
-        {
-            CreateWall(wallParent, wallPosition, horizontalWall);
-        }
-        foreach (var wallPosition in possibleWallVerticalPosition)
-        {
-            CreateWall(wallParent, wallPosition, verticalWall);
-        }
-    }
-
-    private void CreateWall(GameObject wallParent, Vector3Int wallPosition, GameObject wallPrefab)
-    {
-        Instantiate(wallPrefab, wallPosition, Quaternion.identity, wallParent.transform);
     }
 
     private void CreateMesh(Vector2 bottomLeftCorner, Vector2 topRightCorner)
@@ -114,40 +88,58 @@ public class LevelCreator : MonoBehaviour
         levelFloor.GetComponent<MeshRenderer>().material = material;
         levelFloor.transform.parent = transform;
 
-        for (int row = (int)bottomLeftVertex.x; row < (int)bottomRightVertex.x; row++)
+        CreateWall(bottomLeftVertex, bottomRightVertex, horizontalWall, true); //southmost wall
+
+        CreateWall(topLeftVertex, topRightVertex, horizontalWall, false); //northmost wall
+        CreateDoor(topLeftVertex, topRightVertex, horizontalDoor);
+
+        CreateWall(bottomLeftVertex, topLeftVertex, verticalWall, true);//westmost wall
+        CreateWall(bottomRightVertex, topRightVertex, verticalWall, false); //eastmostwall
+        CreateDoor(bottomRightVertex, topRightVertex, verticalDoor);
+    }
+    private void CreateWall(Vector3 pointA, Vector3 pointB, GameObject wallPrefab, bool makeInvisible)
+    {
+        Vector3 wallPosition = (pointA + pointB)/2;
+        float length = Vector3.Distance(pointA, pointB);
+        bool isHorizontal = pointA.z == pointB.z;
+
+        wallPosition.y = 10.0f;
+        GameObject wall = Instantiate(wallPrefab, wallPosition, Quaternion.identity,transform);
+        wall.transform.localScale = isHorizontal 
+            ? new Vector3(length, wall.transform.localScale.y,1) : 
+            new Vector3(1, wall.transform.localScale.y, length);
+        if (makeInvisible && wall.TryGetComponent<MeshRenderer>(out MeshRenderer renderer))
         {
-            var wallPosition = new Vector3(row, 0, bottomLeftVertex.z);
-            AddWallPositionToList(wallPosition, possibleWallHorizontalPosition, possibleDoorHorizontalPosition);
-        }
-        for (int row = (int)topLeftVertex.x; row < (int)topRightCorner.x; row++)
-        {
-            var wallPosition = new Vector3(row, 0, topRightVertex.z);
-            AddWallPositionToList(wallPosition, possibleWallHorizontalPosition, possibleDoorHorizontalPosition);
-        }
-        for (int col = (int)bottomLeftVertex.z; col < (int)topLeftVertex.z; col++)
-        {
-            var wallPosition = new Vector3(bottomLeftVertex.x, 0, col);
-            AddWallPositionToList(wallPosition, possibleWallVerticalPosition, possibleDoorVerticalPosition);
-        }
-        for (int col = (int)bottomRightVertex.z; col < (int)topRightVertex.z; col++)
-        {
-            var wallPosition = new Vector3(bottomRightVertex.x, 0, col);
-            AddWallPositionToList(wallPosition, possibleWallVerticalPosition, possibleDoorVerticalPosition);
+            renderer.shadowCastingMode = ShadowCastingMode.ShadowsOnly;
         }
     }
 
-    private void AddWallPositionToList(Vector3 wallPosition, List<Vector3Int> wallList, List<Vector3Int> doorList)
+    private void CreateDoor(Vector3 pointA, Vector3 pointB, GameObject doorPrefab)
     {
-        Vector3Int point = Vector3Int.CeilToInt(wallPosition);
-        if (wallList.Contains(point))
+        Vector3 doorPosition = (pointA + pointB)/2;
+        bool isHorizontal = pointA.z == pointB.z;
+        doorPosition.y = 4.5f; //anything higher than this makes the doors float
+        GameObject door = Instantiate(doorPrefab, doorPosition, Quaternion.identity,transform);
+        if (isHorizontal) //since i have a test of bool for if the wall is horizontal, and the horizontal walls are ideal, this is the best method to simply rotate the doors when the walls are vertical
         {
-            doorList.Add(point);
-            wallList.Remove(point);
+            door.transform.Rotate(0,0,0); 
         }
         else
         {
-            wallList.Add(point);
+            door.transform.Rotate(0, 90, 0);
         }
+        door.transform.localScale = isHorizontal //changed the ratios for the doors to fit the rooms
+            ? new Vector3(15, 15, 60) 
+            : new Vector3(15,15,60);
+
+       NewRoom room= door.GetComponentInParent<NewRoom>();
+        if (room != null)
+        {
+            NewDoor doorScript = door.AddComponent<NewDoor>();
+            doorScript.room = room;
+            doorScript.locked = true;
+        }
+
     }
     private void DestroyAllChildren()
     {
