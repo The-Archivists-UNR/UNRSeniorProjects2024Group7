@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Diagnostics;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -9,44 +8,93 @@ public class NewRoom : MonoBehaviour
 {
     // Start is called before the first frame update
     public bool isVisited = false; //kat
-    public GameObject enemySpawnPoints;
-    public Transform playerSpawnPoint;
-    public Transform cameraSpawn;
-    public List<Vector3> enemySpawnPositions;
+    public Vector2 dimensions;
+    public Vector3 location;
+    public List<GameObject> spawns;
+    public Vector3 playerSpawnPoint;
     public bool inRoom;
     public int minEnemies;
     public int maxEnemies;
     public int numWaves;
     public int currentWave;
     public List<GameObject> enemyPrefabs;
-    public List<NewDoor> doors;
-    public List<GameObject> enemies;
+    public List<NewDoor> doors = new List<NewDoor>();
+    public List<GameObject> enemies = new List<GameObject>();
 
     //initializes all the potential positions an enemy can spawn in
     void Start()
     {
-        enemySpawnPositions = new List<Vector3>();
-        foreach (Transform transform in enemySpawnPoints.GetComponentsInChildren<Transform>())
+        minEnemies = Random.Range(1, 2);
+        maxEnemies = Random.Range(minEnemies+1, 3);
+        numWaves = Random.Range(1, 2);
+    }
+
+    /*
+    public void GenerateSpawnPositiions()
+    {
+        float x, z;
+        GameObject spawnParents = new GameObject("Spawn Parents");
+        spawnParents.transform.parent = transform;
+        spawnParents.transform.localPosition = location;
+
+        for (int i = 0; i < 10; i++)
         {
-            enemySpawnPositions.Add(transform.position);
+            float minDist;
+            GameObject newSpawn = new GameObject("Spawn");
+            newSpawn.transform.parent = spawnParents.transform;
+
+            int count = spawns.Count;
+
+            while(spawns.Count < count)
+            {
+                minDist = 1000;
+                x = Random.Range(10, dimensions.x - 10);
+                z = Random.Range(10, dimensions.y - 10);
+                newSpawn.transform.localPosition = new Vector3(x, 0, z);
+                foreach (GameObject spawn in spawns)
+                {
+                    float dist = Vector3.Distance(spawn.transform.position, newSpawn.transform.position);
+                    if (dist < minDist)
+                        minDist = dist;
+                }
+                if(minDist > 10)
+                    spawns.Add(newSpawn);
+            }
         }
-        enemySpawnPositions.Remove(transform.position);
+    }
+    */
+
+    public void GenerateSpawnPositions()
+    {
+        float x, z;
+        GameObject spawnParents = new GameObject("Spawns Parent");
+        spawnParents.transform.parent = transform;
+        spawnParents.transform.localPosition = location;
+        spawns = new List<GameObject>();
+
+        for (int i = 0; i < 10; i++)
+        {
+            x = Random.Range(10, dimensions.x - 10);
+            z = Random.Range(10, dimensions.y - 10);
+            Vector3 newPosition = new Vector3(x, 0, z);
+
+            GameObject newSpawn = new GameObject("Spawn");
+            newSpawn.transform.parent = spawnParents.transform;
+            newSpawn.transform.localPosition = newPosition;
+            spawns.Add(newSpawn);
+        }
     }
 
     //spawns the player in the room and initializes the current wave to zero
-    public void EnterRoom(Transform player, Transform camera, int minEnemies, int maxEnemies, int numWaves)
+    public void EnterRoom(Transform player)
     {
         if (!isVisited)
         {
             isVisited = true; //kat
             inRoom = true;
-            camera.position = cameraSpawn.position;
             player.gameObject.GetComponent<NavMeshAgent>().enabled = false;
-            player.position = playerSpawnPoint.position;
+            player.position = playerSpawnPoint;
             player.gameObject.GetComponent<NavMeshAgent>().enabled = true;
-            this.minEnemies = minEnemies;
-            this.maxEnemies = maxEnemies;
-            this.numWaves = numWaves;
             currentWave = 0;
             SetDoors(true);
         }
@@ -60,14 +108,16 @@ public class NewRoom : MonoBehaviour
     //spawns a new wave in the room after a previous wave has been defeated
     public void SpawnWave()
     {
-        int upperBound = Mathf.Min(maxEnemies, enemySpawnPositions.Count);
+        Debug.Log("in spawn");
+        int upperBound = Mathf.Min(maxEnemies, spawns.Count);
         int numToSpawn = Random.Range(minEnemies, upperBound);
-        List<Vector3> spawnsToUse = new List<Vector3>(enemySpawnPositions);
+        List<GameObject> spawnsToUse = new List<GameObject>(spawns);
+        enemies = new List<GameObject>();
         for (int i = 0; i < numToSpawn; i++)
         {
             int spawnPosIndex = Random.Range(0, spawnsToUse.Count);
             int enemyPrefabIndex = Random.Range(0, enemyPrefabs.Count);
-            GameObject newEnemy = Instantiate(enemyPrefabs[enemyPrefabIndex], spawnsToUse[spawnPosIndex], Quaternion.identity);
+            GameObject newEnemy = Instantiate(enemyPrefabs[enemyPrefabIndex], spawnsToUse[spawnPosIndex].transform.position, Quaternion.identity);
             enemies.Add(newEnemy);
             spawnsToUse.RemoveAt(spawnPosIndex);
         }
@@ -102,7 +152,7 @@ public class NewRoom : MonoBehaviour
             if (currentWave == numWaves && enemies.Count == 0)
             {
                 SetDoors(false);
-                NewGameMgr.inst.loadNext = true;
+                //NewGameMgr.inst.loadNext = true;
             }
         }
     }
