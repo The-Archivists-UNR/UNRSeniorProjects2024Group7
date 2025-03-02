@@ -29826,7 +29826,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4426922557922260978, guid: 641c1030bbfba7346bda8207fafb799f, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4426922557922260978, guid: 641c1030bbfba7346bda8207fafb799f, type: 3}
       propertyPath: m_TagString
@@ -33713,6 +33713,7 @@ MonoBehaviour:
   dialogueTranscript: []
   memory: 
   nameText: {fileID: 1608472048}
+  scoreText: {fileID: 705130025}
   AIText: {fileID: 757835284}
   textbox: {fileID: 1762147429}
   playerText: {fileID: 1595790910}
@@ -60467,6 +60468,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 1762147429}
+        m_TargetAssemblyTypeName: PanelMover, Assembly-CSharp
+        m_MethodName: set_isVisible
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 1
       - m_Target: {fileID: 919132149383878266}
         m_TargetAssemblyTypeName: NPCController, Assembly-CSharp
         m_MethodName: EndDialogue
@@ -60479,6 +60492,30 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 1
+      - m_Target: {fileID: 747445559}
+        m_TargetAssemblyTypeName: NPCController, Assembly-CSharp
+        m_MethodName: EndDialogue
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1382439680}
+        m_TargetAssemblyTypeName: NPCController, Assembly-CSharp
+        m_MethodName: EndDialogue
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1309482779
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -62433,6 +62470,7 @@ MonoBehaviour:
   dialogueTranscript: []
   memory: 
   nameText: {fileID: 1608472048}
+  scoreText: {fileID: 705130025}
   AIText: {fileID: 757835284}
   textbox: {fileID: 1762147429}
   playerText: {fileID: 1595790910}
@@ -99434,6 +99472,7 @@ MonoBehaviour:
   dialogueTranscript: []
   memory: 
   nameText: {fileID: 1608472048}
+  scoreText: {fileID: 705130025}
   AIText: {fileID: 757835284}
   textbox: {fileID: 1762147429}
   playerText: {fileID: 1595790910}

@@ -41,6 +41,7 @@ public class NPCController : MonoBehaviour
     //public Boolean willingToTalk = true;
 
     public TextMeshProUGUI nameText;
+    public TextMeshProUGUI scoreText;
     public TextMeshProUGUI AIText;
     public PanelMover textbox;
     public InputField playerText;
@@ -48,6 +49,7 @@ public class NPCController : MonoBehaviour
     public LLMInteraction LLM;
 
     private bool playerIsNear = false;
+    private bool inConversation = false;
     //private int count;
     //private bool llmConvo = false;
 
@@ -72,8 +74,9 @@ public class NPCController : MonoBehaviour
 
     public void EndDialogue()
     {
-        textbox.isVisible = false;
+        //textbox.isVisible = false;
         GameEventsManager.instance.playerEvents.EnablePlayerMovement();
+        inConversation = false;
 
         //change the following to call a numResponsesThisNPCIsWillingToGive variable that gets decremented
         //count = 0;
@@ -93,7 +96,8 @@ public class NPCController : MonoBehaviour
     {
         nameText.text = name;
         textbox.isVisible = true;
-        //SET NPC NAME BOX
+        inConversation = true;
+        scoreText.text = "Relationship: " + relationshipScore;
 
         //modify the following based on npc and quests?
         GameEventsManager.instance.miscEvents.PatronTalked();
@@ -107,6 +111,7 @@ public class NPCController : MonoBehaviour
 
     private void onInputFieldSubmit(string message)
     {
+        if(!inConversation) { return; }
         if (message.Trim() != "")
         {
             playerText.interactable = false;
@@ -115,7 +120,6 @@ public class NPCController : MonoBehaviour
             LLM.getResponse(message, setAIText, AIReplyComplete);
             LLM.getResponse("How pleasant is this message on a scale from 1 to 10? " +
                 "Respond with only the number." + message, setRating);
-
         }
     }
 
@@ -137,6 +141,7 @@ public class NPCController : MonoBehaviour
         int rating = 0;
         int.TryParse(number, out rating);
         if (rating > 5) { relationshipScore += 1; }
+        scoreText.text = "Relationship: "+relationshipScore;
     }
 
     private void setNPCMemory(string memory)
