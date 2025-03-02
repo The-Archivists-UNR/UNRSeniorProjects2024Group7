@@ -27,6 +27,11 @@ public class InitialDoor : NewDoor
         if (other.CompareTag("Player") && !locked)
         {
             interactable = true;
+            PlayerMgr.inst.interactText.text = "Press 'E' to Enter";
+        }
+        if (other.CompareTag("Player") && locked)
+        {
+            PlayerMgr.inst.interactText.text = "Locked";
         }
     }
 
@@ -36,6 +41,7 @@ public class InitialDoor : NewDoor
         if (other.CompareTag("Player"))
         {
             interactable = false;
+            PlayerMgr.inst.interactText.text = "";
         }
     }
 }

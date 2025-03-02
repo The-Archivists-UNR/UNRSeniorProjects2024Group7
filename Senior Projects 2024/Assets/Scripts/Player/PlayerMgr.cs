@@ -3,6 +3,7 @@
 //Summary: Handles player aspcets like speed and health
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class PlayerMgr : MonoBehaviour
@@ -16,6 +17,8 @@ public class PlayerMgr : MonoBehaviour
     public static PlayerMgr inst;
 
     public List<Interactable> interactables;
+
+    public TextMeshProUGUI interactText;
     
     // Start is called before the first frame update
     void Awake()
