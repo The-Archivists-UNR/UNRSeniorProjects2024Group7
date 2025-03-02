@@ -20,13 +20,17 @@ public class NewRoom : MonoBehaviour
     public List<GameObject> enemyPrefabs;
     public List<NewDoor> doors = new List<NewDoor>();
     public List<GameObject> enemies = new List<GameObject>();
+    public bool overrideValues;
 
     //initializes all the potential positions an enemy can spawn in
     void Start()
     {
-        minEnemies = Random.Range(1, 2);
-        maxEnemies = Random.Range(minEnemies+1, 3);
-        numWaves = Random.Range(1, 2);
+        if (!overrideValues)
+        {
+            minEnemies = Random.Range(1, 2);
+            maxEnemies = Random.Range(minEnemies + 1, 3);
+            numWaves = Random.Range(1, 2);
+        }
     }
 
     /*
