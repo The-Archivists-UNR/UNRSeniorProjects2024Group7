@@ -1,3 +1,4 @@
+#if UNITY_EDITOR      
 using UnityEngine;
 using UnityEditor;
 [CustomEditor(typeof(LevelCreator))]
@@ -15,3 +16,5 @@ public class RoomEditor : Editor
     }
        
 }
+
+#endif

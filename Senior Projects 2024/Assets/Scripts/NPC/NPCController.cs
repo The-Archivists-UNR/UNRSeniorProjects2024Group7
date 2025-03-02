@@ -6,7 +6,7 @@ using UnityEngine;
 [System.Serializable]
 public class NPCController : MonoBehaviour
 {
-    public string name;
+    new public string name;
     public Vector3 spawnPos;
     public int relationshipScore;
     public string scoreSavingFile;
