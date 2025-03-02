@@ -3412,6 +3412,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: GeminiManager
       objectReference: {fileID: 0}
+    - target: {fileID: 2226882521313964509, guid: a66bfde88dbe0e846b45bc643b3e6124, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6015506993103287062, guid: a66bfde88dbe0e846b45bc643b3e6124, type: 3}
       propertyPath: uiText
       value: 
@@ -81903,7 +81907,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8fcd57116a6df1b42ba965344711b83f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gasURL: https://script.google.com/macros/s/AKfycbyeRPCdaTCg3Erfv3ML3IZ_rmB4sYKXpgYTC09mHLtdcZvri6fNPSGU1hCMvt0Db24u/exec
+  jsonApi: {fileID: 4900000, guid: b4e59984f219ae04f8bb19705bb3b510, type: 3}
 --- !u!4 &1790758257
 Transform:
   m_ObjectHideFlags: 0

@@ -100,6 +100,7 @@ public class NPCController : MonoBehaviour
 
     private void StartDialogue()
     {
+        if (inConversation) { return; }
         nameText.text = name;
         textbox.isVisible = true;
         inConversation = true;
