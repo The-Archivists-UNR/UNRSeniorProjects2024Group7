@@ -9,6 +9,7 @@ using UnityEngine.UIElements;
 //code provided by sunney valley studio on youtube
 public class LevelCreator : MonoBehaviour
 {
+    public static LevelCreator inst;
     public int levelWidth, levelLength;
     public int roomWidthMin, roomLengthMin;
     public int roomWidthMax, roomLengthMax;
@@ -29,9 +30,9 @@ public class LevelCreator : MonoBehaviour
 
     public Material material;
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
-        CreateLevel();
+        inst = this;
     }
 
     public void CreateLevel()
@@ -40,16 +41,41 @@ public class LevelCreator : MonoBehaviour
         LevelGenerator generator = new LevelGenerator(levelWidth, levelLength);
         var listRooms = generator.CalculateLevel(maxIterations, roomWidthMin, roomLengthMin, roomWidthMax, roomLengthMax,
             roomBottomCornerModifier, roomTopCornerModifier, roomOffset);
-        GameObject wallParent = new GameObject("WallParent");
-        wallParent.transform.parent = transform;
+        //GameObject wallParent = new GameObject("WallParent");
+        //wallParent.transform.parent = transform;
         for (int i = 0; i < listRooms.Count; i++)
         {
             CreateMesh(listRooms[i].BottomLeftAreaCorner, listRooms[i].TopRightAreaCorner);
         }
     }
 
+    public List<NewRoom> rooms;
+    public List<GameObject> enemyPrefabs;
+    //assumes create level has been called already
+    public void GetRooms()
+    {
+        rooms = new List<NewRoom>(GetComponentsInChildren<NewRoom>());
+    }
+
+    public void SetUpRooms()
+    {
+        foreach (NewRoom room in rooms)
+        {
+            Debug.Log(rooms.Count);
+            room.GenerateSpawnPositions();
+            room.enemyPrefabs = enemyPrefabs;
+        }
+    }
+
     private void CreateMesh(Vector2 bottomLeftCorner, Vector2 topRightCorner)
     {
+        GameObject roomParent = new GameObject("Room");
+        NewRoom room = roomParent.AddComponent<NewRoom>();    
+        roomParent.transform.parent = transform;
+        room.dimensions = new Vector2(topRightCorner.x - bottomLeftCorner.x, topRightCorner.y - bottomLeftCorner.y);
+        room.location = new Vector3(bottomLeftCorner.x, 0, bottomLeftCorner.y);
+        room.playerSpawnPoint = room.location + new Vector3(10, 0, 10);
+
         Vector3 bottomLeftVertex = new Vector3(bottomLeftCorner.x, 0, bottomLeftCorner.y);
         Vector3 bottomRightVertex = new Vector3(topRightCorner.x, 0, bottomLeftCorner.y);
         Vector3 topLeftVertex = new Vector3(bottomLeftCorner.x, 0, topRightCorner.y);
@@ -86,18 +112,18 @@ public class LevelCreator : MonoBehaviour
         levelFloor.transform.localScale = Vector3.one;
         levelFloor.GetComponent<MeshFilter>().mesh = mesh;
         levelFloor.GetComponent<MeshRenderer>().material = material;
-        levelFloor.transform.parent = transform;
+        levelFloor.transform.parent = roomParent.transform;
 
-        CreateWall(bottomLeftVertex, bottomRightVertex, horizontalWall, true); //southmost wall
+        CreateWall(bottomLeftVertex, bottomRightVertex, horizontalWall, true, roomParent.transform); //southmost wall
 
-        CreateWall(topLeftVertex, topRightVertex, horizontalWall, false); //northmost wall
-        CreateDoor(topLeftVertex, topRightVertex, horizontalDoor);
+        CreateWall(topLeftVertex, topRightVertex, horizontalWall, false, roomParent.transform); //northmost wall
+        CreateDoor(topLeftVertex, topRightVertex, horizontalDoor, roomParent.transform);
 
-        CreateWall(bottomLeftVertex, topLeftVertex, verticalWall, true);//westmost wall
-        CreateWall(bottomRightVertex, topRightVertex, verticalWall, false); //eastmostwall
-        CreateDoor(bottomRightVertex, topRightVertex, verticalDoor);
+        CreateWall(bottomLeftVertex, topLeftVertex, verticalWall, true, roomParent.transform);//westmost wall
+        CreateWall(bottomRightVertex, topRightVertex, verticalWall, false, roomParent.transform); //eastmostwall
+        CreateDoor(bottomRightVertex, topRightVertex, verticalDoor, roomParent.transform);
     }
-    private void CreateWall(Vector3 pointA, Vector3 pointB, GameObject wallPrefab, bool makeInvisible)
+    private void CreateWall(Vector3 pointA, Vector3 pointB, GameObject wallPrefab, bool makeInvisible, Transform parent)
     {
         Vector3 wallPosition = (pointA + pointB)/2;
         float length = Vector3.Distance(pointA, pointB);
@@ -112,9 +138,10 @@ public class LevelCreator : MonoBehaviour
         {
             renderer.shadowCastingMode = ShadowCastingMode.ShadowsOnly;
         }
+        wall.transform.parent = parent;
     }
 
-    private void CreateDoor(Vector3 pointA, Vector3 pointB, GameObject doorPrefab)
+    private void CreateDoor(Vector3 pointA, Vector3 pointB, GameObject doorPrefab, Transform parent)
     {
         Vector3 doorPosition = (pointA + pointB)/2;
         bool isHorizontal = pointA.z == pointB.z;
@@ -132,14 +159,16 @@ public class LevelCreator : MonoBehaviour
             ? new Vector3(15, 15, 60) 
             : new Vector3(15,15,60);
 
-       NewRoom room= door.GetComponentInParent<NewRoom>();
+        door.transform.parent = parent;
+
+        NewRoom room= door.GetComponentInParent<NewRoom>();
         if (room != null)
         {
             NewDoor doorScript = door.AddComponent<NewDoor>();
             doorScript.room = room;
             doorScript.locked = true;
+            room.doors.Add(doorScript);
         }
-
     }
     private void DestroyAllChildren()
     {

@@ -30,7 +30,6 @@ public class NewDoor : Interactable
         if (!locked)
         {
             NewGameMgr.inst.NextRoom();
-
         }
     }
 
