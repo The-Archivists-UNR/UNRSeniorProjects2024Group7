@@ -403,6 +403,7 @@ GameObject:
   - component: {fileID: 3127281964703029218}
   - component: {fileID: 1554512796792743824}
   - component: {fileID: 5080545626183387912}
+  - component: {fileID: 2586420063891927510}
   m_Layer: 5
   m_Name: EnemyCanvas
   m_TagString: Untagged
@@ -493,6 +494,18 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &2586420063891927510
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4714538726622074768}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc26d2c03d28c2545b4d97b1605ac25d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4719412853303334600
 GameObject:
   m_ObjectHideFlags: 0

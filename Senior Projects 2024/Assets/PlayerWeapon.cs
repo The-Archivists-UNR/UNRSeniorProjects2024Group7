@@ -2,15 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class KnifeGuyWeapon : Weapon
+public class PlayerWeapon : Weapon
 {
-    public NoireKnifeAI entity;
+    public PlayerController entity;
     int numHits;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -28,7 +28,7 @@ public class KnifeGuyWeapon : Weapon
         {
             numHits++;
             collider.GetComponent<Entity>().TakeDamage(baseDamage);
-            Debug.Log("hit");
+            Debug.Log("player hit enemy");
         }
     }
 }

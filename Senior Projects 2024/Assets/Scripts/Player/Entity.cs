@@ -21,6 +21,10 @@ public class Entity : MonoBehaviour
     void Start()
     {
         health = maxHealth;
+        healthSlider.value = health;
+        healthSlider.maxValue = maxHealth;
+        easeHealthSlider.value = health;
+        easeHealthSlider.maxValue = maxHealth;
     }
 
     // Update is called once per frame
@@ -45,13 +49,13 @@ public class Entity : MonoBehaviour
     {
         health -= damage;
         health = Mathf.Min(health, maxHealth);
-        if (health < 0){
-            enemyAni.SetTrigger("die");
-            Destroy(gameObject);
+        if (health <= 0){
+            //enemyAni.SetTrigger("die");
             if (tag != "Player")
                 GameStatsMgr.inst.enemiesKilled++;
+            Destroy(gameObject);
         }
-        else
-            enemyAni.SetTrigger("damage"); 
+        //else
+            //enemyAni.SetTrigger("damage"); 
     }
 }

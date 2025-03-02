@@ -14,6 +14,11 @@ public class SceneSetUp : MonoBehaviour
     {
         LevelCreator.inst.CreateLevel();
         LevelCreator.inst.GetRooms();
+        while (LevelCreator.inst.rooms.Count < 5)
+        {
+            LevelCreator.inst.CreateLevel();
+            LevelCreator.inst.GetRooms();
+        }
         LevelCreator.inst.SetUpRooms();
         NewGameMgr.inst.rooms = LevelCreator.inst.rooms.OrderBy(x => Random.value).ToList();
         NewGameMgr.inst.numRooms = Random.Range(5, NewGameMgr.inst.rooms.Count);

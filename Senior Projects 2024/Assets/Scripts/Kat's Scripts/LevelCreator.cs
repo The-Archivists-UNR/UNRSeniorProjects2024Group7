@@ -113,6 +113,9 @@ public class LevelCreator : MonoBehaviour
         levelFloor.GetComponent<MeshFilter>().mesh = mesh;
         levelFloor.GetComponent<MeshRenderer>().material = material;
         levelFloor.transform.parent = roomParent.transform;
+        BoxCollider collider = levelFloor.AddComponent<BoxCollider>();
+        collider.size = new Vector3(collider.size.x, 0.1f, collider.size.z);
+
 
         CreateWall(bottomLeftVertex, bottomRightVertex, horizontalWall, true, roomParent.transform); //southmost wall
 

@@ -7,6 +7,7 @@ using UnityEngine;
 using UnityEngine.InputSystem.HID;
 using UnityEngine.Windows;
 using UnityEngine.InputSystem;
+using Unity.VisualScripting;
 
 
 public class PlayerController : MonoBehaviour
@@ -22,6 +23,9 @@ public class PlayerController : MonoBehaviour
     public float dashCooldownTimer;
     public float attackCooldown;
     public float attackCooldownTimer;
+    public float attackingTime;
+    public float attackingTimeThreshold;
+    public bool attacking;
 
     private Vector3 dashStartPosiiton;
     private Vector3 dashEndPosiiton;
@@ -41,34 +45,63 @@ public class PlayerController : MonoBehaviour
             Dash();
         dashCooldownTimer += Time.deltaTime;
         attackCooldownTimer += Time.deltaTime;
+        if (attacking)
+        {
+            //
+            attackingTime += Time.deltaTime;
+            if(attackingTime > attackingTimeThreshold)
+            {
+                attacking = false;
+                attackingTime = 0;
+                playerAni.SetBool("isAttacking", false);
+            }
+        }
     }
 
     public void MovePlayer(Vector2 input)
     {
-        if (input.x >=.5)
-            playerAni.SetBool("isrunning", true);
+        Vector3 forward = Camera.main.transform.forward;
+        Vector3 right = Camera.main.transform.right;
+        Vector3 moveVector = Vector3.zero;
+        //new Vector3(input.x * Time.deltaTime, 0, input.y * Time.deltaTime) * playerEnt.speed;
+        forward.y = 0;
+        right.y = 0;
 
+        if (input.x >= .5)
+        {
+            playerAni.SetBool("isForward", true);
+            moveVector += right*Time.deltaTime;
+        }
+            
         if (input.x <= -.5)
-            playerAni.SetBool("isbackwards", true);
+        {
+            playerAni.SetBool("isBackward", true);
+            moveVector -= right * Time.deltaTime;
+        }
 
         if (input.y >= .5)
-            playerAni.SetBool("isrunning", true);
-
+        {
+            playerAni.SetBool("isForward", true);
+            moveVector += forward * Time.deltaTime;
+        }
+            
         if (input.y <= -.5)
-            playerAni.SetBool("isrunning", true);
-
+        {
+            playerAni.SetBool("isBackward", true);
+            moveVector -= forward * Time.deltaTime;
+        }
+            
         if (input.y == 0 && input.x == 0)
         {
-            playerAni.SetBool("isrunning", false);
-            playerAni.SetBool("isbackwards", false);
+            playerAni.SetBool("isForward", false);
+            playerAni.SetBool("isBackward", false);
         }
 
         // playerAni.SetBool("isrunning", true);
         if (dashing)
             return;
 
-        Vector3 moveVector = new Vector3(input.x * Time.deltaTime, 0, input.y * Time.deltaTime) * playerEnt.speed;
-
+        moveVector *= playerEnt.speed;
         transform.position += moveVector;
     }
 
@@ -112,11 +145,13 @@ public class PlayerController : MonoBehaviour
 
     public void StartAttack()
     {
+        Debug.Log("attack");
         if(attackCooldown < attackCooldownTimer)
         {
-            playerEnt.weapons[0].StartAttack();
-            // playerAni.SetTrigger("attack");
+            //playerEnt.weapons[0].StartAttack();
+            playerAni.SetBool("isAttacking", true);
             // print("here");
+            attacking = true;
             attackCooldownTimer = 0;
         }
     }
