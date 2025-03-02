@@ -36,16 +36,17 @@ public class LLMInteraction : MonoBehaviour
         UnityAndGeminiKey jsonApiKey = JsonUtility.FromJson<UnityAndGeminiKey>(jsonApi.text);
         apiKey = jsonApiKey.key;
         chatHistory = new Content[] { };
+        StartCoroutine(SendPromptRequestToGemini(""));
         //StartCoroutine(SendPromptRequestToGemini(prompt));
     }
 
-    //public void getResponse(string message, Callback<string> handleOutput = null, EmptyCallback onComplete = null)
-    //{
-    //    _ = StartCoroutine(askLLM(message, handleOutput, onComplete));
-    //}
+    public void getResponse(string message, Callback<string> handleOutput = null, EmptyCallback onComplete = null)
+    {
+        _ = StartCoroutine(SendChatRequestToGemini(message, handleOutput, onComplete));
+    }
 
 
-    public IEnumerator SendPromptRequestToGemini(string promptText, Callback<string> handleOutput = null, EmptyCallback onComplete = null)
+    private IEnumerator SendPromptRequestToGemini(string promptText, Callback<string> handleOutput = null, EmptyCallback onComplete = null)
     {
         string url = $"{apiEndpoint}?key={apiKey}";
         string jsonData = "{\"contents\": [{\"parts\": [{\"text\": \"{" + promptText + "}\"}]}]}";
@@ -81,13 +82,13 @@ public class LLMInteraction : MonoBehaviour
         }
     }
 
-    public void SendChat(string userMessage)
-    {
-        //string userMessage = inputField.text;
-        StartCoroutine(SendChatRequestToGemini(userMessage));
-        }
+    //public void SendChat(string userMessage)
+    //{
+    //    //string userMessage = inputField.text;
+    //    StartCoroutine(SendChatRequestToGemini(userMessage));
+    //    }
 
-    public IEnumerator SendChatRequestToGemini(string newMessage, Callback<string> handleOutput = null, EmptyCallback onComplete = null)
+    private IEnumerator SendChatRequestToGemini(string newMessage, Callback<string> handleOutput = null, EmptyCallback onComplete = null)
     {
         string url = $"{apiEndpoint}?key={apiKey}";
         Content userContent = new Content

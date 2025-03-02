@@ -85,7 +85,7 @@ public class NPCController : MonoBehaviour
             Debug.Log(transcript);
 
             //make a special function in llm dialogue for this case so it will not be remembered
-            LLM.SendChatRequestToGemini("How pleasant is Ophelia in this transcript on a scale from 1 to 10? " +
+            LLM.getResponse("How pleasant is Ophelia in this transcript on a scale from 1 to 10? " +
                     "Respond with only the number." + transcript, setRating);
             //LLM.getResponse("please summarize the following transcript: \n" + transcript, setNPCMemory);
             inConversation = false;
@@ -111,8 +111,8 @@ public class NPCController : MonoBehaviour
         playerText.text = "";
         //llmConvo = true;
 
-        if (memory == "") { LLM.SendPromptRequestToGemini(prompt, setAIText, AIReplyComplete); }
-        else { LLM.SendChatRequestToGemini(prompt + "\n here's what happened so far:\n" + memory, setAIText, AIReplyComplete); }
+        if (memory == "") { LLM.getResponse(prompt, setAIText, AIReplyComplete); }
+        else { LLM.getResponse(prompt + "\n here's what happened so far:\n" + memory, setAIText, AIReplyComplete); }
     }
 
     private void onInputFieldSubmit(string message)
@@ -123,7 +123,7 @@ public class NPCController : MonoBehaviour
             playerText.interactable = false;
             dialogueTranscript.Add("Ophelia: " + message);
 
-            LLM.SendChatRequestToGemini(message, setAIText, AIReplyComplete);
+            LLM.getResponse(message, setAIText, AIReplyComplete);
             //LLM.getResponse("How pleasant is this message on a scale from 1 to 10? " +
             //    "Respond with only the number." + message, setRating);
         }
