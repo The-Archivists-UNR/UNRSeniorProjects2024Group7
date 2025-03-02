@@ -7765,7 +7765,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4426922557922260978, guid: 641c1030bbfba7346bda8207fafb799f, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4426922557922260978, guid: 641c1030bbfba7346bda8207fafb799f, type: 3}
       propertyPath: m_TagString
@@ -29826,7 +29826,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4426922557922260978, guid: 641c1030bbfba7346bda8207fafb799f, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4426922557922260978, guid: 641c1030bbfba7346bda8207fafb799f, type: 3}
       propertyPath: m_TagString
@@ -33666,8 +33666,9 @@ GameObject:
   - component: {fileID: 747445558}
   - component: {fileID: 747445560}
   - component: {fileID: 747445559}
+  - component: {fileID: 747445561}
   m_Layer: 0
-  m_Name: pico2
+  m_Name: KidPico2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -33704,16 +33705,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   name: Julie
-  spawnPos: {x: 4, y: 0, z: 0}
   relationshipScore: 0
-  scoreSavingFile: 
   prompt: Pretend to be an adventerous little kid who has wandered into an abandoned
     library. Ask Ophelia who she is and ask her to help you find a book. Your favorite
     types of stories are fairy tales. Limit your response to 30 words and exclude
     quotation marks.
-  willingToTalk: 1
   dialogueTranscript: []
   memory: 
+  AIText: {fileID: 757835284}
+  textbox: {fileID: 1762147429}
+  playerText: {fileID: 1595790910}
+  LLM: {fileID: 1790758256}
 --- !u!95 &747445560
 Animator:
   serializedVersion: 5
@@ -33735,6 +33737,27 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!135 &747445561
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 747445557}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 1
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &747693024
 GameObject:
   m_ObjectHideFlags: 0
@@ -45491,7 +45514,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4426922557922260978, guid: 641c1030bbfba7346bda8207fafb799f, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4426922557922260978, guid: 641c1030bbfba7346bda8207fafb799f, type: 3}
       propertyPath: m_TagString
@@ -60443,10 +60466,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1762147429}
-        m_TargetAssemblyTypeName: PanelMover, Assembly-CSharp
-        m_MethodName: set_isVisible
-        m_Mode: 6
+      - m_Target: {fileID: 919132149383878266}
+        m_TargetAssemblyTypeName: NPCController, Assembly-CSharp
+        m_MethodName: EndDialogue
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -62363,8 +62386,9 @@ GameObject:
   - component: {fileID: 1382439679}
   - component: {fileID: 1382439681}
   - component: {fileID: 1382439680}
+  - component: {fileID: 1382439682}
   m_Layer: 0
-  m_Name: pico2
+  m_Name: DetectivePico2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -62401,15 +62425,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   name: Bonnie
-  spawnPos: {x: 0, y: 0, z: 0}
   relationshipScore: 0
-  scoreSavingFile: 
   prompt: Pretend to be an elderly woman, a retired detective, searching the library
     to collect old newspapers about the murder of an old friend. Limit your responses
     to 30 words. Exclude quotation marks.
-  willingToTalk: 1
   dialogueTranscript: []
   memory: 
+  AIText: {fileID: 757835284}
+  textbox: {fileID: 1762147429}
+  playerText: {fileID: 1595790910}
+  LLM: {fileID: 1790758256}
 --- !u!95 &1382439681
 Animator:
   serializedVersion: 5
@@ -62431,6 +62456,27 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!135 &1382439682
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1382439678}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 1
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &1383777771
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -97065,6 +97111,60 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: b31c62c35ced11c4383176ecffe930c9, type: 3}
   m_PrefabInstance: {fileID: 2134007713}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &2134810144
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2134810146}
+  - component: {fileID: 2134810145}
+  m_Layer: 0
+  m_Name: TempDialogueObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!114 &2134810145
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2134810144}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 178403474a1c2994ab06c7908f23367d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textComponent: {fileID: 0}
+  scriptedTextComponent: {fileID: 0}
+  AIText: {fileID: 0}
+  textSpeed: 0
+  textbox: {fileID: 0}
+  NPCtextbox: {fileID: 0}
+  playerText: {fileID: 0}
+  npc: {fileID: 0}
+  LLM: {fileID: 0}
+  codedlines: []
+--- !u!4 &2134810146
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2134810144}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2135701110
 GameObject:
   m_ObjectHideFlags: 0
@@ -99282,8 +99382,9 @@ GameObject:
   - component: {fileID: 543450653370518722}
   - component: {fileID: 919132149383878265}
   - component: {fileID: 919132149383878266}
+  - component: {fileID: 919132149383878267}
   m_Layer: 0
-  m_Name: pico2
+  m_Name: GhostPico2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -99323,16 +99424,38 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   name: Sam
-  spawnPos: {x: 0, y: 0, z: 0}
   relationshipScore: 0
-  scoreSavingFile: 
   prompt: 'You are a ghost named Sam who haunts a long-abandoned library full of
     ancient books and curses. Talk to Ophelia, the new librarian, who is attempting
     to revive the library. Limit your responses to 30 words. Do not include quotation
     marks. '
-  willingToTalk: 1
   dialogueTranscript: []
   memory: 
+  AIText: {fileID: 757835284}
+  textbox: {fileID: 1762147429}
+  playerText: {fileID: 1595790910}
+  LLM: {fileID: 1790758256}
+--- !u!135 &919132149383878267
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 919132149383878264}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 1
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &927329813999275504
 GameObject:
   m_ObjectHideFlags: 0
@@ -109539,6 +109662,7 @@ SceneRoots:
   - {fileID: 444063016}
   - {fileID: 72746897}
   - {fileID: 1790758257}
+  - {fileID: 2134810146}
   - {fileID: 347570954}
   - {fileID: 1213519624}
   - {fileID: 836827201}
