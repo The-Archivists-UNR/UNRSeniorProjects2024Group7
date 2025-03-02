@@ -26,10 +26,6 @@ using System.Runtime.ConstrainedExecution;
 using static UnityEditor.PlayerSettings;
 using Unity.VisualScripting;
 
-//apparently a necessity when using functions as parameters for callbacks
-//public delegate void Callback<T>(T message);
-//public delegate void EmptyCallback();
-
 [System.Serializable]
 [RequireComponent(typeof(SphereCollider))]
 
@@ -44,7 +40,7 @@ public class NPCController : MonoBehaviour
     //public string scoreSavingFile;
     //public Boolean willingToTalk = true;
 
-    //public TextMeshProUGUI textComponent;
+    public TextMeshProUGUI nameText;
     public TextMeshProUGUI AIText;
     public PanelMover textbox;
     public InputField playerText;
@@ -71,32 +67,31 @@ public class NPCController : MonoBehaviour
         if (mouse.leftButton.wasPressedThisFrame)
         {
             StartDialogue();
-            Debug.Log("player near " + name + ", and left click");        
         }
     }
 
     public void EndDialogue()
     {
         textbox.isVisible = false;
-        //textComponent.text = string.Empty;
         GameEventsManager.instance.playerEvents.EnablePlayerMovement();
 
         //change the following to call a numResponsesThisNPCIsWillingToGive variable that gets decremented
         //count = 0;
         //npc.willingToTalk = true;
 
-        string transcript = "";
-        foreach (string str in dialogueTranscript) { transcript += str + "\n"; }
-        Debug.Log(transcript);
+        //string transcript = "";
+        //foreach (string str in dialogueTranscript) { transcript += str + "\n"; }
+        //Debug.Log(transcript);
 
-        LLM.getResponse("How pleasant is Ophelia in this transcript on a scale from 1 to 10? " +
-                "Respond with only the number." + transcript, setRating);
-        LLM.getResponse("please summarize the following transcript: \n" + transcript, setNPCMemory);
+        //LLM.getResponse("How pleasant is Ophelia in this transcript on a scale from 1 to 10? " +
+        //        "Respond with only the number." + transcript, setRating);
+        //LLM.getResponse("please summarize the following transcript: \n" + transcript, setNPCMemory);
 
     }
 
     private void StartDialogue()
     {
+        nameText.text = name;
         textbox.isVisible = true;
         //SET NPC NAME BOX
 
@@ -118,6 +113,9 @@ public class NPCController : MonoBehaviour
             dialogueTranscript.Add("Ophelia: " + message);
 
             LLM.getResponse(message, setAIText, AIReplyComplete);
+            LLM.getResponse("How pleasant is this message on a scale from 1 to 10? " +
+                "Respond with only the number." + message, setRating);
+
         }
     }
 
@@ -138,7 +136,7 @@ public class NPCController : MonoBehaviour
     {
         int rating = 0;
         int.TryParse(number, out rating);
-        relationshipScore += rating;
+        if (rating > 5) { relationshipScore += 1; }
     }
 
     private void setNPCMemory(string memory)
