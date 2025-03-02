@@ -12554,14 +12554,24 @@ MonoBehaviour:
   isVisited: 0
   dimensions: {x: 74, y: 48}
   location: {x: -225.048, y: 0, z: -1.099998}
-  spawns: []
+  spawns:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   playerSpawnPoint: {x: -215.048, y: 0, z: 9}
   inRoom: 0
-  minEnemies: 0
-  maxEnemies: 0
-  numWaves: 0
+  minEnemies: 3
+  maxEnemies: 3
+  numWaves: 4
   currentWave: 0
-  enemyPrefabs: []
+  enemyPrefabs:
+  - {fileID: 8965087860494261274, guid: 1da26ad060748ea40a4f858dda0d98fb, type: 3}
+  - {fileID: 5205392927338015331, guid: c3eacbdeff14e4d48a9953137c59aa91, type: 3}
+  - {fileID: 7484254712799200906, guid: d1dafbcc4abd084419e83e48ae95f201, type: 3}
+  - {fileID: 7559645804069928520, guid: 86d8fcdf9dd9624409e3b7d58ba29962, type: 3}
+  - {fileID: 989033290676487672, guid: f074f201e954ef9429f23ad6613be217, type: 3}
   doors:
   - {fileID: 1407637688}
   enemies: []
