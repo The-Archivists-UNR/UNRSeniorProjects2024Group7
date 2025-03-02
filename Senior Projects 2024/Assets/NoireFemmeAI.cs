@@ -86,7 +86,7 @@ public class NoireFemmeAI : EnemyAI
         }
 
         if (checkForEnemiesTimer > checkForEnemiesThreshold)
-            checkForEnemiesTimer = 0;    
-
+            checkForEnemiesTimer = 0;
+        //Debug.Log(Vector3.Distance(player.transform.position, transform.position));
     }
 }

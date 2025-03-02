@@ -77,8 +77,8 @@ public class NoireTommyGuy : EnemyAI
 
         if(animator.GetBool("isMoving") && !attacking)
         {
-            gun.transform.localPosition = new Vector3(0.0018f, 0.0416f, 0.0186f);
-            gun.transform.localEulerAngles = new Vector3(-17.657f, -174.526f, -11.5f);
+            gun.transform.localPosition = new Vector3(0.0162f, 0.0351f, 0.0151f);
+            gun.transform.localEulerAngles = new Vector3(-17.657f, -174.526f, 10.3f);
         }
 
         if (!animator.GetBool("isMoving") && !attacking)

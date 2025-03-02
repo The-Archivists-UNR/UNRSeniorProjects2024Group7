@@ -20,6 +20,7 @@ public class NoireKnifeAI : EnemyAI
     public float attackingTime;
     public float attackingTimeThreshold;
     public float attackCooldownThreshold;
+    public float distanceThreshold;
     public bool attacking;
     void Update()
     {
@@ -50,7 +51,9 @@ public class NoireKnifeAI : EnemyAI
             }
         }
 
-        if (Vector3.Distance(player.transform.position, this.transform.position) < 2 && attackCooldown > attackCooldownThreshold)
+
+        //Debug.Log(Vector3.Distance(player.transform.position, transform.position));
+        if (Vector3.Distance(player.transform.position, transform.position) < distanceThreshold && attackCooldown > attackCooldownThreshold)
         {
             animator.SetBool("isAttacking", true);
             attackCooldown = 0;
