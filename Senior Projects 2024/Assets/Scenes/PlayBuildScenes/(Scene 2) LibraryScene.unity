@@ -10015,7 +10015,7 @@ GameObject:
   - component: {fileID: 347570954}
   - component: {fileID: 347570953}
   m_Layer: 0
-  m_Name: PicoChan
+  m_Name: Ghost
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -22821,61 +22821,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: b31c62c35ced11c4383176ecffe930c9, type: 3}
   m_PrefabInstance: {fileID: 677772768}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &681187261
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 681187263}
-  - component: {fileID: 681187264}
-  m_Layer: 0
-  m_Name: Ghost
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &681187263
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 681187261}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &681187264
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 681187261}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c4baa814721f926418a06dfcaefb114b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  name: Sam
-  spawnPos: {x: 0, y: 0, z: 0}
-  relationshipScore: 0
-  scoreSavingFile: 
-  prompt: 'You are a ghost named Sam who haunts a long-abandoned library full of
-    ancient books and curses. Talk to Ophelia, the new librarian, who is attempting
-    to revive the library. Limit your responses to 30 words. Do not include quotation
-    marks. '
-  willingToTalk: 1
-  dialogueTranscript: []
-  memory: 
 --- !u!1001 &681829763
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -23928,7 +23873,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5843c1108c85ea944bf4bd7077e97d63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  controller: {fileID: 681187264}
+  controller: {fileID: 919132149383878266}
   text: {fileID: 705130025}
 --- !u!1 &707793522
 GameObject:
@@ -61237,7 +61182,7 @@ MonoBehaviour:
   textbox: {fileID: 1762147429}
   NPCtextbox: {fileID: 1001462456}
   playerText: {fileID: 1595790910}
-  npc: {fileID: 681187264}
+  npc: {fileID: 919132149383878266}
   LLM: {fileID: 1790758256}
   codedlines: []
 --- !u!114 &1762147429
@@ -76654,6 +76599,7 @@ GameObject:
   m_Component:
   - component: {fileID: 543450653370518722}
   - component: {fileID: 919132149383878265}
+  - component: {fileID: 919132149383878266}
   m_Layer: 0
   m_Name: pico2
   m_TagString: Untagged
@@ -76682,6 +76628,29 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &919132149383878266
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 919132149383878264}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4baa814721f926418a06dfcaefb114b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  name: Sam
+  spawnPos: {x: 0, y: 0, z: 0}
+  relationshipScore: 0
+  scoreSavingFile: 
+  prompt: 'You are a ghost named Sam who haunts a long-abandoned library full of
+    ancient books and curses. Talk to Ophelia, the new librarian, who is attempting
+    to revive the library. Limit your responses to 30 words. Do not include quotation
+    marks. '
+  willingToTalk: 1
+  dialogueTranscript: []
+  memory: 
 --- !u!1 &927329813999275504
 GameObject:
   m_ObjectHideFlags: 0
@@ -86889,7 +86858,6 @@ SceneRoots:
   - {fileID: 72746897}
   - {fileID: 1790758257}
   - {fileID: 347570954}
-  - {fileID: 681187263}
   - {fileID: 331112236}
   - {fileID: 1894608714}
   - {fileID: 308024383}
