@@ -3,6 +3,8 @@
  * add/use count as interaction limit
  * can setAIText and AIReplyComplete be merged?
  * handle quest completion based on which npc player talked to
+ * make a  function in llm dialogue to forget some prompts
+ * use history housed in NPC controller instead of llm dialogue
  */
 
 /**
@@ -76,19 +78,23 @@ public class NPCController : MonoBehaviour
     {
         //textbox.isVisible = false;
         GameEventsManager.instance.playerEvents.EnablePlayerMovement();
-        inConversation = false;
+        if (inConversation)
+        {
+            string transcript = "";
+            foreach (string str in dialogueTranscript) { transcript += str + "\n"; }
+            Debug.Log(transcript);
+
+            //make a special function in llm dialogue for this case so it will not be remembered
+            LLM.SendChatRequestToGemini("How pleasant is Ophelia in this transcript on a scale from 1 to 10? " +
+                    "Respond with only the number." + transcript, setRating);
+            //LLM.getResponse("please summarize the following transcript: \n" + transcript, setNPCMemory);
+            inConversation = false;
+        }
 
         //change the following to call a numResponsesThisNPCIsWillingToGive variable that gets decremented
         //count = 0;
         //npc.willingToTalk = true;
 
-        //string transcript = "";
-        //foreach (string str in dialogueTranscript) { transcript += str + "\n"; }
-        //Debug.Log(transcript);
-
-        //LLM.getResponse("How pleasant is Ophelia in this transcript on a scale from 1 to 10? " +
-        //        "Respond with only the number." + transcript, setRating);
-        //LLM.getResponse("please summarize the following transcript: \n" + transcript, setNPCMemory);
 
     }
 
@@ -105,8 +111,8 @@ public class NPCController : MonoBehaviour
         playerText.text = "";
         //llmConvo = true;
 
-        if (memory == "") { LLM.getResponse(prompt, setAIText, AIReplyComplete); }
-        else { LLM.getResponse(prompt + "\n here's what happened so far:\n" + memory, setAIText, AIReplyComplete); }
+        if (memory == "") { LLM.SendPromptRequestToGemini(prompt, setAIText, AIReplyComplete); }
+        else { LLM.SendChatRequestToGemini(prompt + "\n here's what happened so far:\n" + memory, setAIText, AIReplyComplete); }
     }
 
     private void onInputFieldSubmit(string message)
@@ -117,9 +123,9 @@ public class NPCController : MonoBehaviour
             playerText.interactable = false;
             dialogueTranscript.Add("Ophelia: " + message);
 
-            LLM.getResponse(message, setAIText, AIReplyComplete);
-            LLM.getResponse("How pleasant is this message on a scale from 1 to 10? " +
-                "Respond with only the number." + message, setRating);
+            LLM.SendChatRequestToGemini(message, setAIText, AIReplyComplete);
+            //LLM.getResponse("How pleasant is this message on a scale from 1 to 10? " +
+            //    "Respond with only the number." + message, setRating);
         }
     }
 
