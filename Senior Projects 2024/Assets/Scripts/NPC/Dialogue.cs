@@ -36,11 +36,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
-using System;
-using static Cinemachine.DocumentationSortingAttribute;
-using System.Runtime.ConstrainedExecution;
-using static UnityEditor.PlayerSettings;
-using Unity.VisualScripting;
 
 //apparently a necessity when using functions as parameters for callbacks
 public delegate void Callback<T>(T message);
