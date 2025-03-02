@@ -19,15 +19,17 @@ public class SniperWeapon : Weapon
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Q))
-            StartAttack();
+
     }
 
     //spawns projectile and sets dirction
     public override void StartAttack()
     {
         GameObject newProjectile = Instantiate(projectile, spawn.position, Quaternion.identity);
-        newProjectile.GetComponent<Projectile>().direction = transform.up;
-        AudioMgr.Instance.PlaySFX("Ranged Attack", attackSound);
+        Vector3 shot = PlayerMgr.inst.player.transform.position;
+        shot.y = spawn.position.y;
+        newProjectile.GetComponent<Projectile>().direction = shot - spawn.position;
+        if(attackSound != null)
+            AudioMgr.Instance.PlaySFX("Ranged Attack", attackSound);
     }
 }
