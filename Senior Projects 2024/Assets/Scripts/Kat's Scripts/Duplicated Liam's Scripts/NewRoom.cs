@@ -8,6 +8,7 @@ public class NewRoom : MonoBehaviour
 {
     // Start is called before the first frame update
     public bool isVisited = false; //kat
+    public bool enemiesDead = false;
     public Vector2 dimensions;
     public Vector3 location;
     public List<GameObject> spawns;
@@ -156,6 +157,7 @@ public class NewRoom : MonoBehaviour
             if (currentWave == numWaves && enemies.Count == 0)
             {
                 SetDoors(false);
+                enemiesDead = true;
                 //NewGameMgr.inst.loadNext = true;
             }
         }

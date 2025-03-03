@@ -25,6 +25,7 @@ public class SceneSetUp : MonoBehaviour
         NewGameMgr.inst.numRooms = Random.Range(5, NewGameMgr.inst.rooms.Count);
         foreach(NewRoom room in NewGameMgr.inst.rooms)
         {
+            roomItemPlacement.decorationsParent = room.gameObject.transform;
             roomItemPlacement.roomPosition = room.location;
             roomItemPlacement.roomSize = new Vector3(room.dimensions.x, 0 , room.dimensions.y);
             roomItemPlacement.PlacePrefabs();

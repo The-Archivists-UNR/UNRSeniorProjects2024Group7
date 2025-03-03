@@ -9,7 +9,7 @@ public class RoomItemPlacement : MonoBehaviour
     public Vector3 roomPosition; // Bottom-left corner of the room
     public Vector3 roomSize; // Width, height, and depth of the room
     public float minDistance; // Minimum distance between prefabs
-
+    public Transform decorationsParent;
     public List<Vector3> placedPositions = new List<Vector3>(); // Store placed prefab positions
 
     void Start()
@@ -43,6 +43,7 @@ public class RoomItemPlacement : MonoBehaviour
             // Instantiate the prefab at the chosen position
             GameObject newPrefab = Instantiate(prefab, newPosition, Quaternion.identity);
             newPrefab.transform.eulerAngles = new Vector3 (newPrefab.transform.eulerAngles.x, Random.Range(0,360), newPrefab.transform.eulerAngles.z);
+            newPrefab.transform.parent = decorationsParent;
             placedPositions.Add(newPosition);
         }
     }

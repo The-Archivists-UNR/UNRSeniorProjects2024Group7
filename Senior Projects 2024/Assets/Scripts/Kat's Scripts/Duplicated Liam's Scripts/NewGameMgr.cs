@@ -19,6 +19,7 @@ public class NewGameMgr : MonoBehaviour
     public PanelMover gameWon;
     public bool loadNext;
     bool inLastRoom;
+    public bool bossDead;
     private void Awake()
     {
         inst = this;
@@ -33,7 +34,7 @@ public class NewGameMgr : MonoBehaviour
     // checks whether or not the current room is in a valid state for the next room to be loaded.
     void Update()
     {
-        if ((inLastRoom && BossRoom.currentWave == BossRoom.numWaves && BossRoom.enemies.Count == 0))
+        if ((inLastRoom && BossRoom.currentWave == BossRoom.numWaves && BossRoom.enemies.Count == 0 && bossDead))
         {
             gameWon.isVisible = true;
             //Time.timeScale = 0;
