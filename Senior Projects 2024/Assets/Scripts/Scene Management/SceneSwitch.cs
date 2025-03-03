@@ -24,7 +24,7 @@ public class SceneSwitch : MonoBehaviour
     }
 
     //Basic Load
-   IEnumerator LoadYourAsyncScene()
+    public IEnumerator LoadYourAsyncScene()
     {
         AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(currentScene);
 

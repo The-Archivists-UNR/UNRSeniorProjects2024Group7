@@ -13,6 +13,9 @@ public class ButtonHandler : MonoBehaviour
     public void pressedButton()
     {
         sceneSwitch.currentScene = sceneIndex;
+        if(SaveMgr.inst != null )
+            SaveMgr.inst.SaveData();
+        StartCoroutine(sceneSwitch.LoadYourAsyncScene());
     }
 
     // Start is called before the first frame update
