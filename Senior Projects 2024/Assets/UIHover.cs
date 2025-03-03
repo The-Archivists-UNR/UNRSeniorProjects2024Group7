@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
  
@@ -10,9 +11,18 @@ public class UIHover : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler 
     bool clicked = false;
     public saveSelect slotChoosen;
     public int assignedSlot;
+    public TextMeshProUGUI playerName;
+    public bool slotExists;
 
     void Start() {
-
+        SaveMgr.inst.saveName = "slot" + assignedSlot + ".game";
+        SaveMgr.inst.LoadData();
+        if(SaveMgr.inst.saveName != "" && SaveMgr.inst.gameData != null)
+        {
+            playerName.text = SaveMgr.inst.gameData.playerName;
+            slotExists = true;
+        }
+            
         cachedScale = transform.localScale;
     }
 

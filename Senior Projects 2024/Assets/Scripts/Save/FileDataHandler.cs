@@ -91,6 +91,7 @@ public class FileDataHandler
     }
 }
 
+[System.Serializable]
 public class GameData
 {
     public string playerName;
