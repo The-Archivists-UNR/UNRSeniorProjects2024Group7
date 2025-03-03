@@ -22,6 +22,10 @@ public class URPSwitchScript : MonoBehaviour
         {
             SwitchToNoire();
         }
+        else if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name == "(Scene 2) Library")
+        {
+            SwitchToStandard();
+        }
         else
         {
             SwitchToStandard();
