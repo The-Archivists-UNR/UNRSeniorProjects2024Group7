@@ -63,7 +63,7 @@ public class QuestPoint : MonoBehaviour
         if (currentQuestState != QuestState.CAN_START && currentQuestState != QuestState.CAN_FINISH)
         {
             // dialogue.isVisible = true;
-            script.StartDialogue();
+            //script.StartDialogue();
         }
 
         else if (currentQuestState.Equals(QuestState.CAN_FINISH) && finishPoint)
