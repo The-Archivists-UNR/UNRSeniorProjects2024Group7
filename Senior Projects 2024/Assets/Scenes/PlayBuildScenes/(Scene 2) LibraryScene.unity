@@ -9701,6 +9701,8 @@ Transform:
   - {fileID: 1093227997}
   - {fileID: 517846930}
   - {fileID: 576325475}
+  - {fileID: 723934525}
+  - {fileID: 2050518460}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &444516072
@@ -17599,6 +17601,55 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: b31c62c35ced11c4383176ecffe930c9, type: 3}
   m_PrefabInstance: {fileID: 721597886}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &723934524
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 723934525}
+  - component: {fileID: 723934526}
+  m_Layer: 0
+  m_Name: SaveMgr
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &723934525
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 723934524}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 444063016}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &723934526
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 723934524}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 798ba224461a82c4bbb0e8afbde41703, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  useEncryption: 0
+  saveName: slot1.game
+  kid: {fileID: 8822567508641887095}
+  ghost: {fileID: 8951413706725690228}
+  detective: {fileID: 1533691465088879265}
 --- !u!1 &727003468
 GameObject:
   m_ObjectHideFlags: 0
@@ -52152,6 +52203,52 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2049467689}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &2050518459
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2050518460}
+  - component: {fileID: 2050518461}
+  m_Layer: 0
+  m_Name: GameStatsMgr
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2050518460
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2050518459}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 444063016}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2050518461
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2050518459}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5daec8da7fd6f24da1d0ee37df0415e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemiesKilled: 0
+  timePlayed: 0
 --- !u!1001 &2054270723
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -59910,6 +60007,7 @@ MonoBehaviour:
     to revive the library. Limit your responses to 30 words. Do not include quotation
     marks. '
   dialogueTranscript: []
+  recentTranscript: []
   memory: 
   nameText: {fileID: 0}
   scoreText: {fileID: 0}
@@ -62527,6 +62625,7 @@ MonoBehaviour:
     to collect old newspapers about the murder of an old friend. Limit your responses
     to 30 words. Exclude quotation marks.
   dialogueTranscript: []
+  recentTranscript: []
   memory: 
   nameText: {fileID: 1608472048}
   scoreText: {fileID: 705130025}
@@ -96099,6 +96198,7 @@ MonoBehaviour:
     Your favorite types of stories are fairy tales. Limit your response to 30 words
     and exclude quotation marks.
   dialogueTranscript: []
+  recentTranscript: []
   memory: 
   nameText: {fileID: 1608472048}
   scoreText: {fileID: 705130025}
@@ -96489,6 +96589,7 @@ MonoBehaviour:
     to revive the library. Limit your responses to 30 words. Do not include quotation
     marks. '
   dialogueTranscript: []
+  recentTranscript: []
   memory: 
   nameText: {fileID: 1608472048}
   scoreText: {fileID: 705130025}

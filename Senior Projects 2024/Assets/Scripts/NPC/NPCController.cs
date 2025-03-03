@@ -38,6 +38,7 @@ public class NPCController : MonoBehaviour
     public int relationshipScore;
     public string prompt;
     public List<string> dialogueTranscript;
+    public List<string> recentTranscript;
     public string memory;
     //public Vector3 spawnPos;
     //public string scoreSavingFile;
@@ -82,13 +83,13 @@ public class NPCController : MonoBehaviour
         if (inConversation)
         {
             string transcript = "";
-            foreach (string str in dialogueTranscript) { transcript += str + "\n"; }
+            foreach (string str in recentTranscript) { transcript += str + "\n"; }
             Debug.Log(transcript);
 
             //make a special function in llm dialogue for this case so it will not be remembered
             LLM.getResponse("How pleasant is Ophelia in this transcript on a scale from 1 to 10? " +
                     "Respond with only the number." + transcript, setRating);
-            //LLM.getResponse("please summarize the following transcript: \n" + transcript, setNPCMemory);
+            LLM.getResponse("please summarize the following transcript: \n" + transcript, setNPCMemory);
             inConversation = false;
         }
 
@@ -115,8 +116,8 @@ public class NPCController : MonoBehaviour
         playerText.text = "";
         //llmConvo = true;
 
-        if (memory == "") { LLM.getResponse(prompt, setAIText, AIReplyComplete); }
-        else { LLM.getResponse(prompt + "\n here's what happened so far:\n" + memory, setAIText, AIReplyComplete); }
+        if (memory == "") { LLM.getResponse(prompt, setAIText, AIReplyComplete); Debug.Log("1"); }
+        else { LLM.getResponse(prompt + "\n here's what happened so far:\n" + memory, setAIText, AIReplyComplete); Debug.Log("2"); }
     }
 
     private void onInputFieldSubmit(string message)
@@ -126,6 +127,7 @@ public class NPCController : MonoBehaviour
         {
             playerText.interactable = false;
             dialogueTranscript.Add("Ophelia: " + message);
+            recentTranscript.Add("Ophelia: " + message);
 
             LLM.getResponse(message, setAIText, AIReplyComplete);
             //LLM.getResponse("How pleasant is this message on a scale from 1 to 10? " +
@@ -144,6 +146,7 @@ public class NPCController : MonoBehaviour
     {
         AIText.text = text;
         dialogueTranscript.Add(name + ": " + text);
+        recentTranscript.Add(name + ": " + text);
     }
 
     private void setRating(string number)
@@ -156,8 +159,8 @@ public class NPCController : MonoBehaviour
 
     private void setNPCMemory(string memory)
     {
-        memory += memory;
-        dialogueTranscript.Clear();
+        this.memory += memory;
+        recentTranscript.Clear();
     }
 
 

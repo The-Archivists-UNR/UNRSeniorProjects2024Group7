@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -9,6 +10,13 @@ public class SceneSwitch : MonoBehaviour
 {
     [HideInInspector]
     public int currentScene = 0;
+    public static SceneSwitch inst;
+
+    public void Awake()
+    {
+
+        inst = this;
+    }
 
     public void LoadScene()
     {

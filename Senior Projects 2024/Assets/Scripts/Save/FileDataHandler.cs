@@ -93,8 +93,12 @@ public class FileDataHandler
 
 public class GameData
 {
+    public string playerName;
     public int enemiesKilled;
     public float timePlayed;
+    public string ghostMemory;
+    public string kidMemory;
+    public string detectiveMemory;
     public List<string> ghostConvo;
     public List<string> kidConvo;
     public List<string> detectiveConvo;
