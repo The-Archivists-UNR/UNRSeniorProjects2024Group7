@@ -22,7 +22,7 @@ public class SceneSetUp : MonoBehaviour
         }
         LevelCreator.inst.SetUpRooms();
         NewGameMgr.inst.rooms = LevelCreator.inst.rooms.OrderBy(x => Random.value).ToList();
-        NewGameMgr.inst.numRooms = Random.Range(5, NewGameMgr.inst.rooms.Count);
+        NewGameMgr.inst.numRooms = Random.Range(2, 3);
         if(roomItemPlacement != null)
         {
             foreach (NewRoom room in NewGameMgr.inst.rooms)

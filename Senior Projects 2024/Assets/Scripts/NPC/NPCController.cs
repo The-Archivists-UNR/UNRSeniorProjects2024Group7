@@ -18,16 +18,8 @@ using System.Collections.Generic;
 using TMPro.Examples;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
-using System;
-using static Cinemachine.DocumentationSortingAttribute;
-using System.Runtime.ConstrainedExecution;
-using static UnityEditor.PlayerSettings;
-using Unity.VisualScripting;
 
 [System.Serializable]
 [RequireComponent(typeof(SphereCollider))]
