@@ -1,12 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using UnityEngine;
 
 public class SaveMgr : MonoBehaviour
 {
     public static SaveMgr inst;
-    private GameData gameData;
+    public GameData gameData;
     private FileDataHandler dataHandler;
     public bool useEncryption = false;
     public string saveName;
@@ -41,8 +42,12 @@ public class SaveMgr : MonoBehaviour
     }
     public void SaveData()
     {
-        gameData.enemiesKilled = GameStatsMgr.inst.enemiesKilled;
-        gameData.timePlayed = GameStatsMgr.inst.timePlayed;
+        gameData = new GameData();
+        if (GameStatsMgr.inst != null)
+        {
+            gameData.enemiesKilled = GameStatsMgr.inst.enemiesKilled;
+            gameData.timePlayed = GameStatsMgr.inst.timePlayed;
+        }
         gameData.playerName = playerName;
         if(kid != null)
         {
@@ -69,11 +74,19 @@ public class SaveMgr : MonoBehaviour
     public void LoadData()
     {
         gameData = dataHandler.Load(saveName);
-        GameStatsMgr.inst.enemiesKilled = gameData.enemiesKilled;
-        GameStatsMgr.inst.timePlayed = gameData.timePlayed;
-        playerName = gameData.playerName;
+        if(GameStatsMgr.inst != null)
+        {
+            GameStatsMgr.inst.enemiesKilled = gameData.enemiesKilled;
+            GameStatsMgr.inst.timePlayed = gameData.timePlayed;
+        }
+        if(gameData !=  null)
+        {
+            playerName = gameData.playerName;
+        }
+        
         if (kid != null)
         {
+            Debug.Log("does it work");
             kid.dialogueTranscript = gameData.kidConvo;
             kid.memory = gameData.kidMemory;
         }
@@ -103,6 +116,16 @@ public class SaveMgr : MonoBehaviour
         string path = Path.Combine(Application.persistentDataPath, "saves");
         Debug.Log(path);
         dataHandler = new FileDataHandler(path, useEncryption);
+        SaveData();
         SceneSwitch.inst.LoadScene();
+    }
+
+    public void LoadSaveSlot()
+    {
+        if (saveSelect.inst.slots[saveSelect.inst.saveSlotNum - 1].GetComponent<UIHover>().slotExists)
+        {
+            saveName = "slot" + saveSelect.inst.saveSlotNum + ".game";
+            SceneSwitch.inst.LoadScene();
+        }
     }
 }

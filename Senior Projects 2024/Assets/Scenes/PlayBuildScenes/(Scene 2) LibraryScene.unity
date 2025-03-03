@@ -9703,6 +9703,7 @@ Transform:
   - {fileID: 576325475}
   - {fileID: 723934525}
   - {fileID: 2050518460}
+  - {fileID: 1179109699}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &444516072
@@ -17647,6 +17648,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   useEncryption: 0
   saveName: slot1.game
+  playerName: 
   kid: {fileID: 8822567508641887095}
   ghost: {fileID: 8951413706725690228}
   detective: {fileID: 1533691465088879265}
@@ -30282,6 +30284,53 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: b31c62c35ced11c4383176ecffe930c9, type: 3}
   m_PrefabInstance: {fileID: 1175433547}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1179109698
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1179109699}
+  - component: {fileID: 1179109700}
+  m_Layer: 0
+  m_Name: Loader
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1179109699
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1179109698}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 444063016}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1179109700
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1179109698}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8bcf7877bcbd7842b82de3839293285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  kid: {fileID: 8822567508641887095}
+  ghost: {fileID: 8951413706725690228}
+  detective: {fileID: 1533691465088879265}
 --- !u!1001 &1179323094
 PrefabInstance:
   m_ObjectHideFlags: 0
