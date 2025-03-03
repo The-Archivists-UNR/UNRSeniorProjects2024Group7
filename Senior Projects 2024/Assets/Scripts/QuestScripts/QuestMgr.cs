@@ -11,6 +11,24 @@ public class QuestMgr : MonoBehaviour
     [SerializeField] private bool loadQuestState = true;
     private Dictionary<string, Quests> questMap;
 
+    [ContextMenu("Display Status")]
+    public void statusDisplay()
+    {
+        showQuestStates();
+    }
+
+    [ContextMenu("FinishAll")]
+    public void setFinsihed()
+    {
+        FinishAllQuests();
+    }
+
+    [ContextMenu("ResetAll")]
+    public void setNotFinished()
+    {
+        ResetAllQuests();
+    }
+
     //Start with creating a dictonary of id's and quests
     private void Awake()
     {
@@ -176,11 +194,44 @@ public class QuestMgr : MonoBehaviour
     }
 
     //Theoretically saves quests if we quit
-     private void OnApplicationQuit()
+    private void OnApplicationQuit()
     {
         foreach (Quests quest in questMap.Values)
         {
             SaveQuest(quest);
+        }
+    }
+
+    //mostly for debugging purposes
+    public void showQuestStates()
+    {
+        foreach (Quests quest in questMap.Values)
+        {
+            QuestData questDataLog = quest.GetQuestData();
+            Debug.Log(quest.info.id);
+            Debug.Log("state: = " + questDataLog.state);
+            Debug.Log("index: = " + questDataLog.questStepIndex);
+            foreach(QuestStepState setpStateLog in questDataLog.questStepStates )
+            {
+                Debug.Log("step state: = " + questDataLog.state);
+            }
+        }
+    }
+
+    //mostly for debugging purposes
+    public void FinishAllQuests()
+    {
+        foreach (Quests quest in questMap.Values)
+        {
+            ChangeQuestState(quest.info.id, QuestState.FINISHED);
+        }
+    }
+
+    public void ResetAllQuests()
+    {
+        foreach (Quests quest in questMap.Values)
+        {
+            ChangeQuestState(quest.info.id, QuestState.CAN_START);
         }
     }
 
