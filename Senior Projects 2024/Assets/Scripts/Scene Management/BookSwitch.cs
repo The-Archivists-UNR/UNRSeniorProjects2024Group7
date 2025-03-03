@@ -7,6 +7,7 @@ using UnityEngine;
 public class BookSwitch : MonoBehaviour
 {
     private bool playerIsNear = false; //This just checks for if the player is close to activate the trigger
+    public int sceneChosen;
 
     public SceneSwitch sceneSwitch; //Reference to switch scenes
 
@@ -43,7 +44,7 @@ public class BookSwitch : MonoBehaviour
         }
 
         print("Here");
-        sceneSwitch.currentScene = 2;
+        sceneSwitch.currentScene = sceneChosen;
         sceneSwitch.LoadScene();
         
     }
