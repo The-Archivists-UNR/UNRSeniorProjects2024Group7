@@ -6,6 +6,7 @@ using UnityEngine.InputSystem.EnhancedTouch;
 public class GameStatsMgr : MonoBehaviour
 {
     public int enemiesKilled;
+    public float timePlayed = 0;
     public static GameStatsMgr inst;
     // Start is called before the first frame update
     void Awake()
@@ -22,6 +23,6 @@ public class GameStatsMgr : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        timePlayed += Time.deltaTime;
     }
 }

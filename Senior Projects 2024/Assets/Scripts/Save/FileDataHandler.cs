@@ -2,6 +2,7 @@ using System.IO;
 using System;
 using UnityEngine.Playables;
 using UnityEngine;
+using System.Collections.Generic;
 
 public class FileDataHandler
 {
@@ -93,4 +94,8 @@ public class FileDataHandler
 public class GameData
 {
     public int enemiesKilled;
+    public float timePlayed;
+    public List<string> ghostConvo;
+    public List<string> kidConvo;
+    public List<string> detectiveConvo;
 }
