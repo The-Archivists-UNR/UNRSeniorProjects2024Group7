@@ -158,10 +158,10 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1682920785253158726}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 3.16, y: 1.06, z: 14.1}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 3, y: 3, z: 3}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 3790857477753216490}
   - {fileID: 959649341116225008}
@@ -279,7 +279,6 @@ MonoBehaviour:
   player: {fileID: 0}
   enemyAni: {fileID: 3880779364090346264}
   dashSound: {fileID: 8317136201003917611}
-  dashing: 0
   minRange: 3
   maxRange: 5
   dashCoolDownTimer: 0
@@ -291,7 +290,7 @@ NavMeshAgent:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1682920785253158726}
   m_Enabled: 1
-  m_AgentTypeID: 1479372276
+  m_AgentTypeID: -902729914
   m_Radius: 0.5
   m_Speed: 3
   m_Acceleration: 8

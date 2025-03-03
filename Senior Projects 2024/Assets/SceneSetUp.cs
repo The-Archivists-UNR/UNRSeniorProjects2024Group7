@@ -23,14 +23,16 @@ public class SceneSetUp : MonoBehaviour
         LevelCreator.inst.SetUpRooms();
         NewGameMgr.inst.rooms = LevelCreator.inst.rooms.OrderBy(x => Random.value).ToList();
         NewGameMgr.inst.numRooms = Random.Range(5, NewGameMgr.inst.rooms.Count);
-        foreach(NewRoom room in NewGameMgr.inst.rooms)
+        if(roomItemPlacement != null)
         {
-            roomItemPlacement.decorationsParent = room.gameObject.transform;
-            roomItemPlacement.roomPosition = room.location;
-            roomItemPlacement.roomSize = new Vector3(room.dimensions.x, 0 , room.dimensions.y);
-            roomItemPlacement.PlacePrefabs();
+            foreach (NewRoom room in NewGameMgr.inst.rooms)
+            {
+                roomItemPlacement.decorationsParent = room.gameObject.transform;
+                roomItemPlacement.roomPosition = room.location;
+                roomItemPlacement.roomSize = new Vector3(room.dimensions.x, 0, room.dimensions.y);
+                roomItemPlacement.PlacePrefabs();
+            }
         }
-
         surface.BuildNavMesh();
     }
 
