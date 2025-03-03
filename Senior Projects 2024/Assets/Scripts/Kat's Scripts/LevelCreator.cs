@@ -13,6 +13,7 @@ public class LevelCreator : MonoBehaviour
     public int levelWidth, levelLength;
     public int roomWidthMin, roomLengthMin;
     public int roomWidthMax, roomLengthMax;
+    public int doorx, doory, doorz;
 
     [Range(0.0f, 0.9f)]
     public float roomBottomCornerModifier;
@@ -159,8 +160,8 @@ public class LevelCreator : MonoBehaviour
             door.transform.Rotate(0, 90, 0);
         }
         door.transform.localScale = isHorizontal //changed the ratios for the doors to fit the rooms
-            ? new Vector3(15, 15, 60) 
-            : new Vector3(15,15,60);
+            ? new Vector3(doorx, doory, doorz) 
+            : new Vector3(doorx,doory,doorz);
 
         door.transform.parent = parent;
 
