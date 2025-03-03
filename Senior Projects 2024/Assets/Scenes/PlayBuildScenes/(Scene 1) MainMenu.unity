@@ -217,6 +217,96 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!1 &184944170
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 184944172}
+  - component: {fileID: 184944171}
+  m_Layer: 0
+  m_Name: GameStatsMgr
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &184944171
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 184944170}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5daec8da7fd6f24da1d0ee37df0415e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemiesKilled: 0
+  timePlayed: 0
+--- !u!4 &184944172
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 184944170}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -111.375175, y: 8.074879, z: 46.40057}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &221720106
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 221720108}
+  - component: {fileID: 221720107}
+  m_Layer: 0
+  m_Name: MenuLoader
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &221720107
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 221720106}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3cb86b7c2ec0134e8aa2c590c779b67, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &221720108
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 221720106}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 3423, y: 96, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &236280783
 GameObject:
   m_ObjectHideFlags: 0
@@ -450,8 +540,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2002177943}
-        m_TargetAssemblyTypeName: SaveMgr, Assembly-CSharp
+      - m_Target: {fileID: 221720107}
+        m_TargetAssemblyTypeName: MenuLoader, Assembly-CSharp
         m_MethodName: NewSaveSlot
         m_Mode: 1
         m_Arguments:
@@ -2283,6 +2373,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 798ba224461a82c4bbb0e8afbde41703, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameData:
+    playerName: 
+    enemiesKilled: 0
+    timePlayed: 0
+    ghostMemory: 
+    kidMemory: 
+    detectiveMemory: 
+    ghostConvo: []
+    kidConvo: []
+    detectiveConvo: []
   useEncryption: 0
   saveName: 
   playerName: 
@@ -3705,8 +3805,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2002177943}
-        m_TargetAssemblyTypeName: SaveMgr, Assembly-CSharp
+      - m_Target: {fileID: 221720107}
+        m_TargetAssemblyTypeName: MenuLoader, Assembly-CSharp
         m_MethodName: LoadSaveSlot
         m_Mode: 1
         m_Arguments:
@@ -5758,3 +5858,5 @@ SceneRoots:
   - {fileID: 1235018577}
   - {fileID: 1730945138}
   - {fileID: 2002177944}
+  - {fileID: 184944172}
+  - {fileID: 221720108}

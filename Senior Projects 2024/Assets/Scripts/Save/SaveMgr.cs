@@ -42,7 +42,6 @@ public class SaveMgr : MonoBehaviour
     }
     public void SaveData()
     {
-        gameData = new GameData();
         if (GameStatsMgr.inst != null)
         {
             gameData.enemiesKilled = GameStatsMgr.inst.enemiesKilled;

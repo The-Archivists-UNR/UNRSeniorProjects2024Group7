@@ -29,4 +29,9 @@ public class Loader : MonoBehaviour
         yield return new WaitForSeconds(1);
         SaveMgr.inst.LoadData();
     }
+
+    public void Save()
+    {
+        SaveMgr.inst.SaveData();
+    }
 }

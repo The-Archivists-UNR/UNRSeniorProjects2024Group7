@@ -44,6 +44,8 @@ public class BookSwitch : MonoBehaviour
         }
 
         print("Here");
+        if (SaveMgr.inst != null)
+            SaveMgr.inst.SaveData();
         sceneSwitch.currentScene = sceneChosen;
         sceneSwitch.LoadScene();
         
