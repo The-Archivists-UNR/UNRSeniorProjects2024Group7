@@ -87,6 +87,8 @@ public class Dialogue : MonoBehaviour
 
     public void StartQuestDialogue(List<string> quest)
     {
+        npc.EndDialogue();
+        //maybe call end on all other npcs to guarantee no corner case glitches
         NPCtextbox.isVisible = true;
         GameEventsManager.instance.miscEvents.PatronTalked();
         GameEventsManager.instance.playerEvents.DisablePlayerMovement();

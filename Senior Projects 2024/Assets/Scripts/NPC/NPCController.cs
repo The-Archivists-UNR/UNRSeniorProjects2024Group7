@@ -3,8 +3,9 @@
  * add/use count as interaction limit
  * can setAIText and AIReplyComplete be merged?
  * handle quest completion based on which npc player talked to
- * make a  function in llm dialogue to forget some prompts
+ * make a  function in llm dialogue to forget some prompts -----what does this mean???
  * use history housed in NPC controller instead of llm dialogue
+ * handle casses where player is already viewing quest dialogue
  */
 
 /**
@@ -100,6 +101,8 @@ public class NPCController : MonoBehaviour
 
     private void StartDialogue()
     {
+        // TO DO: DO NOT ALLOW THE REMAINDER OF THIS FUNCTION TO RUN IF PLAYER IS
+        // ENGAGED IN HARDCODED QUEST DIALOGUE
         if (inConversation) { return; }
         nameText.text = name;
         textbox.isVisible = true;
