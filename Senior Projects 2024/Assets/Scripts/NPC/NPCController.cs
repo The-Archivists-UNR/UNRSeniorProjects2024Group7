@@ -49,6 +49,8 @@ public class NPCController : MonoBehaviour
     public TextMeshProUGUI AIText;
     public PanelMover textbox;
     public InputField playerText;
+    public Sprite NPCSprite;
+    public Image spriteBox;
 
     public LLMInteraction LLM;
 
@@ -106,6 +108,7 @@ public class NPCController : MonoBehaviour
         // ENGAGED IN HARDCODED QUEST DIALOGUE
         if (inConversation) { return; }
         nameText.text = name;
+        spriteBox.sprite = NPCSprite;
         textbox.isVisible = true;
         inConversation = true;
         scoreText.text = "Relationship: " + relationshipScore;
