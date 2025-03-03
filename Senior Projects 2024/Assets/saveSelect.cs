@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class saveSelect : MonoBehaviour
 {
+    public static saveSelect inst;
     public int saveSlotNum = 1;
 
     public List<GameObject> slots;
@@ -11,6 +12,7 @@ public class saveSelect : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        inst = this;
         UIHover firstSlot = slots[1].GetComponent<UIHover>();
         firstSlot.onClick();
     }
