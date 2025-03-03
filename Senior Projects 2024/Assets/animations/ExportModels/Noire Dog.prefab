@@ -5862,8 +5862,9 @@ MonoBehaviour:
   attackingTime: 0
   attackingTimeThreshold: 3
   attackCooldownThreshold: 2
-  distanceThreshold: 5
+  distanceThreshold: 6
   attacking: 0
+  attackSoundID: Dog Bark
 --- !u!114 &595390548850776849
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5883,6 +5884,7 @@ MonoBehaviour:
   easeHealthSlider: {fileID: 4128906197077192009}
   weapons: []
   enemyAni: {fileID: 4879185162094134055}
+  damageSoundID: Dog Hurt
 --- !u!65 &7845448679013008776
 BoxCollider:
   m_ObjectHideFlags: 0

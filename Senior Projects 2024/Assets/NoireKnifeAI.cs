@@ -22,6 +22,7 @@ public class NoireKnifeAI : EnemyAI
     public float attackCooldownThreshold;
     public float distanceThreshold;
     public bool attacking;
+    public string attackSoundID;
     void Update()
     {
         attackCooldown += Time.deltaTime;
@@ -56,6 +57,7 @@ public class NoireKnifeAI : EnemyAI
         if (Vector3.Distance(player.transform.position, transform.position) < distanceThreshold && attackCooldown > attackCooldownThreshold)
         {
             animator.SetBool("isAttacking", true);
+            AudioMgr.Instance.PlaySFX(attackSoundID, AudioMgr.Instance.sfxSource);
             attackCooldown = 0;
         }
     }

@@ -26,6 +26,7 @@ public class PlayerController : MonoBehaviour
     public float attackingTime;
     public float attackingTimeThreshold;
     public bool attacking;
+    public string attackSoundID;
 
     private Vector3 dashStartPosiiton;
     private Vector3 dashEndPosiiton;
@@ -152,6 +153,7 @@ public class PlayerController : MonoBehaviour
             playerAni.SetBool("isAttacking", true);
             // print("here");
             attacking = true;
+            AudioMgr.Instance.PlaySFX(attackSoundID, AudioMgr.Instance.sfxSource);
             attackCooldownTimer = 0;
         }
     }

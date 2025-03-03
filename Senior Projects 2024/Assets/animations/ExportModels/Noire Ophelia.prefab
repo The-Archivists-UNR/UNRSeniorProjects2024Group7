@@ -1098,6 +1098,7 @@ MonoBehaviour:
   weapons:
   - {fileID: 8559965361451074628}
   enemyAni: {fileID: 3015702614711294160}
+  damageSoundID: Girl Hurt
 --- !u!114 &2459104715523322486
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1122,6 +1123,7 @@ MonoBehaviour:
   attackingTime: 0
   attackingTimeThreshold: 0.5
   attacking: 0
+  attackSoundID: 
 --- !u!195 &3886854509915873758
 NavMeshAgent:
   m_ObjectHideFlags: 0

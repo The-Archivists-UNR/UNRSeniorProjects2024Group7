@@ -16,6 +16,7 @@ public class Entity : MonoBehaviour
     private float lerpSpeed = 0.05f;
     public List<Weapon> weapons;
     public Animator enemyAni;
+    public string damageSoundID;
 
     // Start is called before the first frame update
     void Start()
@@ -49,6 +50,7 @@ public class Entity : MonoBehaviour
     {
         health -= damage;
         health = Mathf.Min(health, maxHealth);
+        AudioMgr.Instance.PlaySFX(damageSoundID, AudioMgr.Instance.sfxSource);
         if (health <= 0){
             //enemyAni.SetTrigger("die");
             if (tag != "Player")

@@ -2095,6 +2095,7 @@ MonoBehaviour:
   weapons:
   - {fileID: 5738825420425417284}
   enemyAni: {fileID: 6660190800338033541}
+  damageSoundID: Boy Hurt
 --- !u!114 &3816679040905502858
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2116,6 +2117,7 @@ MonoBehaviour:
   attackCooldownThreshold: 3
   distanceThreshold: 6.2
   attacking: 0
+  attackSoundID: Bat Swing
 --- !u!195 &4759934616619862835
 NavMeshAgent:
   m_ObjectHideFlags: 0
