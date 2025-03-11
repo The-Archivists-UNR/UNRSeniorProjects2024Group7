@@ -8,16 +8,16 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: InnerWall
-  m_Shader: {fileID: 4800000, guid: 128c5f1edaefa4c4fb3f9f7a4615edb2, type: 3}
+  m_Shader: {fileID: 4800000, guid: be891319084e9d147b09d89e80ce60e0, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
-  m_ValidKeywords: []
-  m_InvalidKeywords:
+  m_ValidKeywords:
   - _EMISSIVE_SIMPLE
   - _IS_ANGELRING_OFF
   - _IS_CLIPPING_OFF
   - _IS_OUTLINE_CLIPPING_NO
   - _OUTLINE_POS
+  m_InvalidKeywords:
   - _SEGMENTED_ON
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -25,6 +25,7 @@ Material:
   m_CustomRenderQueue: -1
   stringTagMap:
     IgnoreProjection: False
+    RenderType: Opaque
   disabledShaderPasses: []
   m_LockedProperties: 
   m_SavedProperties:
@@ -220,11 +221,11 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _1st2nd_Shades_Feather: 0.233
+    - _1st2nd_Shades_Feather: 0.0001
     - _1st_ShadeColor_Feather: 0.0001
     - _1st_ShadeColor_Step: 0.5
-    - _2nd_ShadeColor_Feather: 0.233
-    - _2nd_ShadeColor_Step: 0.5
+    - _2nd_ShadeColor_Feather: 0.0001
+    - _2nd_ShadeColor_Step: 0
     - _AORemapMax: 1
     - _AORemapMin: 0
     - _ARSampler_AlphaOn: 0
@@ -271,7 +272,7 @@ Material:
     - _ColIntense: 1
     - _ColorShift_Speed: 0
     - _ComposerMaskMode: 0
-    - _CullMode: 0
+    - _CullMode: 2
     - _CullModeForward: 2
     - _Cutoff: 0.5
     - _DepthOffsetEnable: 0
@@ -415,7 +416,7 @@ Material:
     - _SecondShadeVisible: 1
     - _Segmented: 1
     - _Set_SystemShadowsToBase: 1
-    - _ShadeColor_Step: 0.5
+    - _ShadeColor_Step: 0
     - _ShnIntense: 0
     - _ShnOverlap: 0
     - _ShnRange: 0.15
@@ -497,15 +498,15 @@ Material:
     - _utsVersionY: 10
     - _utsVersionZ: 2
     m_Colors:
-    - _1st_ShadeColor: {r: 0, g: 0.015094344, b: 0.0754717, a: 1}
+    - _1st_ShadeColor: {r: 0.30980393, g: 0.15294118, b: 0.15294118, a: 1}
     - _2nd_ShadeColor: {r: 0.060216743, g: 0, b: 0.11320752, a: 1}
     - _AngelRingMaskColor: {r: 0, g: 1, b: 0, a: 1}
     - _AngelRing_Color: {r: 1, g: 1, b: 1, a: 1}
     - _Ap_RimLightColor: {r: 1, g: 1, b: 1, a: 1}
-    - _BaseColor: {r: 0.02830188, g: 0.048113216, b: 0.11320752, a: 1}
+    - _BaseColor: {r: 0.5019608, g: 0.3882353, b: 0.25882354, a: 1}
     - _BaseColorMap_MipInfo: {r: 0, g: 0, b: 0, a: 0}
     - _BaseColorMaskColor: {r: 1, g: 1, b: 1, a: 1}
-    - _Color: {r: 1, g: 0.7122642, b: 0.7122642, a: 1}
+    - _Color: {r: 0.5019608, g: 0.38823527, b: 0.2588235, a: 1}
     - _ColorShift: {r: 0, g: 0, b: 0, a: 1}
     - _DiffusionProfileAsset: {r: 0, g: 0, b: 0, a: 0}
     - _DoubleSidedConstants: {r: 1, g: 1, b: -1, a: 0}
@@ -514,7 +515,7 @@ Material:
     - _EmissiveColorLDR: {r: 0, g: 0, b: 0, a: 1}
     - _Emissive_Color: {r: 0, g: 0, b: 0, a: 1}
     - _FirstShadeMaskColor: {r: 0, g: 1, b: 1, a: 1}
-    - _HighColor: {r: 0.97616464, g: 0.3820755, b: 1, a: 1}
+    - _HighColor: {r: 0, g: 0, b: 0, a: 1}
     - _HighlightMaskColor: {r: 1, g: 1, b: 0, a: 1}
     - _InvPrimScale: {r: 1, g: 1, b: 0, a: 0}
     - _IridescenceThicknessRemap: {r: 0, g: 1, b: 0, a: 0}

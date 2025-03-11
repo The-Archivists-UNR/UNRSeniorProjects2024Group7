@@ -6,9 +6,15 @@ using UnityEngine.Rendering;
 public class URPSwitchScript : MonoBehaviour
 {
     public RenderPipelineAsset NoireURP;
+    public RenderPipelineAsset TempLibraryURP;
     public void SwitchToNoire()
     {
         GraphicsSettings.renderPipelineAsset = NoireURP;
+    }
+
+    public void SwitchToLibrary()
+    {
+        GraphicsSettings.renderPipelineAsset = TempLibraryURP;
     }
 
     public void SwitchToStandard()
@@ -24,11 +30,11 @@ public class URPSwitchScript : MonoBehaviour
         }
         else if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name == "(Scene 2) Library")
         {
-            SwitchToStandard();
+            SwitchToLibrary();
         }
         else
         {
-            SwitchToStandard();
+            SwitchToLibrary();
         }
     }
 
