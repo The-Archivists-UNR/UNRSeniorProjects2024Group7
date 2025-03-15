@@ -7,6 +7,8 @@ public class URPSwitchScript : MonoBehaviour
 {
     public RenderPipelineAsset NoireURP;
     public RenderPipelineAsset TempLibraryURP;
+    public RenderPipelineAsset FantasyURP;
+    //public RenderPipelineAsset SciFiURP;
     public void SwitchToNoire()
     {
         GraphicsSettings.renderPipelineAsset = NoireURP;
@@ -16,6 +18,16 @@ public class URPSwitchScript : MonoBehaviour
     {
         GraphicsSettings.renderPipelineAsset = TempLibraryURP;
     }
+
+    public void SwitchToFantasy()
+    {
+        GraphicsSettings.renderPipelineAsset = FantasyURP;
+    }
+
+    //public void SwitchToSciFi()
+    //{
+    //    GraphicsSettings.renderPipelineAsset = SciFiURP;
+   // }
 
     public void SwitchToStandard()
     {
@@ -32,6 +44,14 @@ public class URPSwitchScript : MonoBehaviour
         {
             SwitchToLibrary();
         }
+        else if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name == "(Scene 3) Fantasy")
+        {
+            SwitchToFantasy();
+        }
+        //else if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name == "(Scene 5) SciFi")
+        //{
+        // SwitchToSciFi();
+        //}
         else
         {
             SwitchToLibrary();
