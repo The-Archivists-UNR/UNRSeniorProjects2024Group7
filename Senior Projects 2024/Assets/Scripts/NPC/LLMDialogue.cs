@@ -33,27 +33,22 @@ public class LLMInteraction : MonoBehaviour
 
     void Start()
     {
-        Debug.Log("start function called");
         UnityAndGeminiKey jsonApiKey = JsonUtility.FromJson<UnityAndGeminiKey>(jsonApi.text);
         apiKey = jsonApiKey.key;
         chatHistory = new Content[] { };
         StartCoroutine(SendPromptRequestToGemini(""));
         //StartCoroutine(SendPromptRequestToGemini(prompt));
-        Debug.Log("start function concluded");
         //startAPIUnitTest();
     }
 
     public void getResponse(string message, Callback<string> handleOutput = null, EmptyCallback onComplete = null)
     {
-        Debug.Log("getResponse called");
         _ = StartCoroutine(SendChatRequestToGemini(message, handleOutput, onComplete));
-        Debug.Log("getResponse concluded");
     }
 
 
     private IEnumerator SendPromptRequestToGemini(string promptText, Callback<string> handleOutput = null, EmptyCallback onComplete = null)
     {
-        Debug.Log("sentPrompt called");
         string url = $"{apiEndpoint}?key={apiKey}";
         string jsonData = "{\"contents\": [{\"parts\": [{\"text\": \"{" + promptText + "}\"}]}]}";
         byte[] jsonToSend = new System.Text.UTF8Encoding().GetBytes(jsonData);
@@ -86,7 +81,6 @@ public class LLMInteraction : MonoBehaviour
                 }
             }
         }
-        Debug.Log("sendPrompt concluded");
     }
 
     //public void SendChat(string userMessage)
@@ -97,7 +91,6 @@ public class LLMInteraction : MonoBehaviour
 
     private IEnumerator SendChatRequestToGemini(string newMessage, Callback<string> handleOutput = null, EmptyCallback onComplete = null)
     {
-        Debug.Log("sendChat called");
         string url = $"{apiEndpoint}?key={apiKey}";
         Content userContent = new Content
         {
@@ -157,7 +150,18 @@ public class LLMInteraction : MonoBehaviour
                 else { Debug.Log("No text found."); }
             }
         }
-        Debug.Log("sendChat concluded");
+    }
+
+    private void startAPIUnitTest()
+    {
+        StartCoroutine(SendPromptRequestToGemini("", finishAPIUnitTest));
+    }
+        
+    private void finishAPIUnitTest(string response)
+    {
+        if (response == null) Debug.Log("api test failed");
+        if (response == "") Debug.Log("api test failed");
+        Debug.Log("api test passed");
     }
 }
 
