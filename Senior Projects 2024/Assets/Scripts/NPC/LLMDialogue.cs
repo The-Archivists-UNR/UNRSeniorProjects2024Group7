@@ -40,6 +40,7 @@ public class LLMInteraction : MonoBehaviour
         StartCoroutine(SendPromptRequestToGemini(""));
         //StartCoroutine(SendPromptRequestToGemini(prompt));
         Debug.Log("start function concluded");
+        //startAPIUnitTest();
     }
 
     public void getResponse(string message, Callback<string> handleOutput = null, EmptyCallback onComplete = null)
