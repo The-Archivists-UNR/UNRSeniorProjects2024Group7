@@ -87,7 +87,7 @@ public class NPCController : MonoBehaviour
 
             //make a special function in llm dialogue for this case so it will not be remembered
             LLM.getResponse("How pleasant is Ophelia in this transcript on a scale from 1 to 10? " +
-                    "Respond with only the number." + transcript, setRating);
+                    "Respond with only the number." + transcript, setRating, null);
             //LLM.getResponse("please summarize the following transcript: \n" + transcript, setNPCMemory);
             inConversation = false;
         }
