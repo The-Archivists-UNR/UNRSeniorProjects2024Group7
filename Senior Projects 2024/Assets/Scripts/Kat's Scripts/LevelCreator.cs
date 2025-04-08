@@ -133,7 +133,7 @@ public class LevelCreator : MonoBehaviour
         float length = Vector3.Distance(pointA, pointB);
         bool isHorizontal = pointA.z == pointB.z;
 
-        wallPosition.y = 10.0f;
+        wallPosition.y = 6.35f;
         GameObject wall = Instantiate(wallPrefab, wallPosition, Quaternion.identity,transform);
         wall.transform.localScale = isHorizontal 
             ? new Vector3(length, wall.transform.localScale.y,1) : 
