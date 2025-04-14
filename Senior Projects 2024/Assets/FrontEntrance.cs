@@ -47,7 +47,7 @@ public class FrontEntrance : MonoBehaviour
         }
         //interactable = true;
         if (PlayerMgr.inst.interactText != null)
-            PlayerMgr.inst.interactText.text = "It's not time to leave yet.";
+            PlayerMgr.inst.interactText.text = "My shift isn't over yet...";
         else
             Debug.LogWarning("interactText is null!");
         print("Here4");
