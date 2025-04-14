@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: TestLitHatching 2
+  m_Name: TestLitHatching 3
   m_Shader: {fileID: -6465566751694194690, guid: 657cbf9152c7337448e5815bd798edeb, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -37,7 +37,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _Alpha_Texture:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 6ee51bb9e4096ad4fb80a68ac5b84f7c, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Alpha_Texture_2:
@@ -88,13 +88,13 @@ Material:
     - _Detail_Tiling: 1
     - _Detail_Tiling_2: 0.44
     - _Detail_World_Position: 0
-    - _Diffuse_Color_Texture_Tiling: 4.1
-    - _Edge_1: -9.51
-    - _Edge_2: -2.43
-    - _Gradient_Edge_1: 0.717
+    - _Diffuse_Color_Texture_Tiling: 9.6
+    - _Edge_1: 0.61
+    - _Edge_2: 1
+    - _Gradient_Edge_1: 0
     - _Gradient_Edge_2: 1
-    - _Gradient_Offset: -1.94
-    - _Gradient_Rotation: 0
+    - _Gradient_Offset: 0.61
+    - _Gradient_Rotation: 0.266
     - _Gradient_World_Space: 0
     - _Noise_Mask_Step: 0
     - _Noise_Mask_Tiling: 5
@@ -107,11 +107,11 @@ Material:
     - _Strength_2: 0
     - _Strength_3: 1
     m_Colors:
-    - _Color: {r: 0.9265542, g: 0.9339623, b: 0.7445265, a: 0}
-    - _Color_2: {r: 0.6698113, g: 0.47708258, b: 0.65900403, a: 0}
-    - _Diffuse_Color_Ramp_Step: {r: 0.5, g: 1, b: 0, a: 0}
-    - _Diffuse_Texture_Ting: {r: 0.44233847, g: 0, b: 0.5, a: 0}
-    - _Edge_Color: {r: 1, g: 1, b: 1, a: 0}
+    - _Color: {r: 1, g: 0.81144047, b: 0.6462264, a: 1}
+    - _Color_2: {r: 0.33962262, g: 0, b: 0.20908727, a: 1}
+    - _Diffuse_Color_Ramp_Step: {r: 0.73, g: 1, b: 0, a: 0}
+    - _Diffuse_Texture_Ting: {r: 0.5849056, g: 0.25658596, b: 0.25658596, a: 0}
+    - _Edge_Color: {r: 0.1981132, g: 0.1981132, b: 0.1981132, a: 0}
     - _Tiling: {r: 1, g: 1, b: 0, a: 0}
     - _Tiling_2: {r: 1, g: 1, b: 0, a: 0}
     - _Tiling_3: {r: 1, g: 1, b: 0, a: 0}
