@@ -1,7 +1,8 @@
 # Spell-Bound
 
-[is this a link?](/UNRSeniorProjects2024Group7/people)
+[People](/UNRSeniorProjects2024Group7/people) [Progress](/progress) 
 
+![alt text](/UNRSeniorProjects2024Group7/purple%20squiggles.jpg){width=x height=y}
 
 ## CS 426 Senior Project in Computer Science, Spring 2025, at UNR, CSE Department
 Group 7: Fenn Edmonds, Liam Francisco, Lanielle Pavlik, Kat Wayman
@@ -24,6 +25,8 @@ When engaging in combat, players will experience up to three different levels, e
 
 Upon speaking to NPC’s a text box prompting the user to input their own message will appear, and using an LLM, the NPC will both respond and perform sentiment analysis to change their relationship status with the player. Talk to the patrons for as long (or as short) as you would like, they don’t mind! Keep in mind that your relationship status with each patron will directly affect your stats when it comes to combat, so try to appeal to your customers, unless you’re looking for a challenge. As you develop your relationships with the many new and old patrons of the library, the events that unfolded many years ago may finally start to come to light…
 
+
+# TECH STACK
 
 
 # Related Resources:
