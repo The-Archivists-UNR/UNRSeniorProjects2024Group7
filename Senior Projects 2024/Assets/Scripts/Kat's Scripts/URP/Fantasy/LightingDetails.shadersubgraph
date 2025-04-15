@@ -55,6 +55,34 @@
         {
             "m_OutputSlot": {
                 "m_Node": {
+                    "m_Id": "5105eb100ad94992b463525bde9cf277"
+                },
+                "m_SlotId": 5
+            },
+            "m_InputSlot": {
+                "m_Node": {
+                    "m_Id": "60ae27f3766a4bee93a221cd98b1d46c"
+                },
+                "m_SlotId": 2
+            }
+        },
+        {
+            "m_OutputSlot": {
+                "m_Node": {
+                    "m_Id": "5105eb100ad94992b463525bde9cf277"
+                },
+                "m_SlotId": 6
+            },
+            "m_InputSlot": {
+                "m_Node": {
+                    "m_Id": "60ae27f3766a4bee93a221cd98b1d46c"
+                },
+                "m_SlotId": 3
+            }
+        },
+        {
+            "m_OutputSlot": {
+                "m_Node": {
                     "m_Id": "e3e5fd7c0a094bb89b5f62d20a62149a"
                 },
                 "m_SlotId": 0
@@ -152,36 +180,21 @@
 }
 
 {
-    "m_SGVersion": 0,
-    "m_Type": "UnityEditor.ShaderGraph.Vector1MaterialSlot",
-    "m_ObjectId": "508388a4b3f348d3a915cbd1037c845b",
-    "m_Id": 1,
-    "m_DisplayName": "ShadowAttenuation",
-    "m_SlotType": 0,
-    "m_Hidden": false,
-    "m_ShaderOutputName": "ShadowAttenuation",
-    "m_StageCapability": 3,
-    "m_Value": 0.0,
-    "m_DefaultValue": 0.0,
-    "m_Labels": []
-}
-
-{
     "m_SGVersion": 1,
     "m_Type": "UnityEditor.ShaderGraph.CustomFunctionNode",
     "m_ObjectId": "5105eb100ad94992b463525bde9cf277",
     "m_Group": {
         "m_Id": ""
     },
-    "m_Name": "ShadowAttenuation (Custom Function)",
+    "m_Name": "LightingDetails (Custom Function)",
     "m_DrawState": {
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -314.9999694824219,
-            "y": -45.99999237060547,
+            "x": -194.99996948242188,
+            "y": -47.00000762939453,
             "width": 277.0,
-            "height": 278.0
+            "height": 302.0000305175781
         }
     },
     "m_Slots": [
@@ -189,7 +202,13 @@
             "m_Id": "a6e48330627c4ab9bd7cb3ab3d0cc94a"
         },
         {
-            "m_Id": "fe962bf3080542ca963526769b2f5547"
+            "m_Id": "a86482d6778f4100b820945a12deaab5"
+        },
+        {
+            "m_Id": "afc84d808c0c4ac0a51e6472b49ba26c"
+        },
+        {
+            "m_Id": "7c65f2748cce49ddad8b170260af63fb"
         }
     ],
     "synonyms": [
@@ -204,9 +223,24 @@
         "m_SerializableColors": []
     },
     "m_SourceType": 1,
-    "m_FunctionName": "ShadowAttenuation",
+    "m_FunctionName": "LightingDetails",
     "m_FunctionSource": "fd04a86ca133d4c3e9fbcec891df47ee",
-    "m_FunctionBody": "#ifdef SHADERGRAPH_PREVIEW\n    ShadowAttenuation = 1.0; // In Shader Graph preview, assume fully lit\n#else\n    #if defined(UNIVERSAL_LIGHTING_INCLUDED)\n        Light mainLight = GetMainLight();\n        ShadowAttenuation = mainLight.shadowAttenuation;\n    #elif defined(HD_LIGHTING_INCLUDED)\n        // For HDRP, you might need a different approach.\n        // This is a basic example and might need adjustments based on your HDRP setup.\n        float shadow = 1.0;\n        Ray ray = UnityWorldSpaceRay(WorldPosition);\n        Light mainLight = GetMainLight(ray);\n        shadow = MainLightShadow(ray, mainLight.shadowData);\n        ShadowAttenuation = shadow;\n    #else\n        ShadowAttenuation = 1.0; // Default to fully lit if no lighting pipeline is detected\n    #endif\n#endif"
+    "m_FunctionBody": "#ifdef SHADERGRAPH_PREVIEW\n       Color = 1;\n       DistanceAtten = 1.0;\n       ShadowAtten = 1.0; // In Shader Graph preview, assume fully lit\n#else\n        Light mainLight = GetMainLight();\n        Color = light.color;   \n        DistanceAtten = mainLight.distanceAttenuation;\n        ShadowAtten = mainLight.shadowAttenuation;\n#endif"
+}
+
+{
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.Vector1MaterialSlot",
+    "m_ObjectId": "563d2ad5b75c4511b5c3314a5fd7efa9",
+    "m_Id": 1,
+    "m_DisplayName": "ShadowAtten",
+    "m_SlotType": 0,
+    "m_Hidden": false,
+    "m_ShaderOutputName": "ShadowAtten",
+    "m_StageCapability": 3,
+    "m_Value": 0.0,
+    "m_DefaultValue": 0.0,
+    "m_Labels": []
 }
 
 {
@@ -221,15 +255,21 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": 47.00001525878906,
-            "y": 10.99999713897705,
-            "width": 156.0,
-            "height": 76.99998474121094
+            "x": 139.99996948242188,
+            "y": -51.00001525878906,
+            "width": 156.00003051757813,
+            "height": 101.0
         }
     },
     "m_Slots": [
         {
-            "m_Id": "508388a4b3f348d3a915cbd1037c845b"
+            "m_Id": "85240ee209be4137821b07c3d25a8cd0"
+        },
+        {
+            "m_Id": "563d2ad5b75c4511b5c3314a5fd7efa9"
+        },
+        {
+            "m_Id": "def7fcf261e54eeca5cb485d653ac9b8"
         }
     ],
     "synonyms": [],
@@ -241,6 +281,21 @@
         "m_SerializableColors": []
     },
     "IsFirstSlotValid": true
+}
+
+{
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.Vector1MaterialSlot",
+    "m_ObjectId": "7c65f2748cce49ddad8b170260af63fb",
+    "m_Id": 6,
+    "m_DisplayName": "DistanceAtten",
+    "m_SlotType": 1,
+    "m_Hidden": false,
+    "m_ShaderOutputName": "DistanceAtten",
+    "m_StageCapability": 3,
+    "m_Value": 0.0,
+    "m_DefaultValue": 0.0,
+    "m_Labels": []
 }
 
 {
@@ -266,6 +321,27 @@
 
 {
     "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.Vector2MaterialSlot",
+    "m_ObjectId": "85240ee209be4137821b07c3d25a8cd0",
+    "m_Id": 2,
+    "m_DisplayName": "Color",
+    "m_SlotType": 0,
+    "m_Hidden": false,
+    "m_ShaderOutputName": "Color",
+    "m_StageCapability": 3,
+    "m_Value": {
+        "x": 0.0,
+        "y": 0.0
+    },
+    "m_DefaultValue": {
+        "x": 0.0,
+        "y": 0.0
+    },
+    "m_Labels": []
+}
+
+{
+    "m_SGVersion": 0,
     "m_Type": "UnityEditor.ShaderGraph.Vector3MaterialSlot",
     "m_ObjectId": "a6e48330627c4ab9bd7cb3ab3d0cc94a",
     "m_Id": 0,
@@ -284,6 +360,44 @@
         "y": 0.0,
         "z": 0.0
     },
+    "m_Labels": []
+}
+
+{
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.Vector3MaterialSlot",
+    "m_ObjectId": "a86482d6778f4100b820945a12deaab5",
+    "m_Id": 5,
+    "m_DisplayName": "Color",
+    "m_SlotType": 1,
+    "m_Hidden": false,
+    "m_ShaderOutputName": "Color",
+    "m_StageCapability": 3,
+    "m_Value": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+    },
+    "m_DefaultValue": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+    },
+    "m_Labels": []
+}
+
+{
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.Vector1MaterialSlot",
+    "m_ObjectId": "afc84d808c0c4ac0a51e6472b49ba26c",
+    "m_Id": 4,
+    "m_DisplayName": "ShadowAtten",
+    "m_SlotType": 1,
+    "m_Hidden": false,
+    "m_ShaderOutputName": "ShadowAtten",
+    "m_StageCapability": 3,
+    "m_Value": 0.0,
+    "m_DefaultValue": 0.0,
     "m_Labels": []
 }
 
@@ -336,6 +450,21 @@
 }
 
 {
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.Vector1MaterialSlot",
+    "m_ObjectId": "def7fcf261e54eeca5cb485d653ac9b8",
+    "m_Id": 3,
+    "m_DisplayName": "DistanceAtten",
+    "m_SlotType": 0,
+    "m_Hidden": false,
+    "m_ShaderOutputName": "DistanceAtten",
+    "m_StageCapability": 3,
+    "m_Value": 0.0,
+    "m_DefaultValue": 0.0,
+    "m_Labels": []
+}
+
+{
     "m_SGVersion": 1,
     "m_Type": "UnityEditor.ShaderGraph.ShaderKeyword",
     "m_ObjectId": "e328fff329184f5ea35c47aeafcf7fa7",
@@ -372,9 +501,9 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -513.0,
-            "y": 126.00003051757813,
-            "width": 207.99990844726563,
+            "x": -580.0,
+            "y": -50.0000114440918,
+            "width": 208.00003051757813,
             "height": 314.9999694824219
         }
     },
@@ -395,20 +524,5 @@
     },
     "m_Space": 2,
     "m_PositionSource": 0
-}
-
-{
-    "m_SGVersion": 0,
-    "m_Type": "UnityEditor.ShaderGraph.Vector1MaterialSlot",
-    "m_ObjectId": "fe962bf3080542ca963526769b2f5547",
-    "m_Id": 4,
-    "m_DisplayName": "ShadowAttenuation",
-    "m_SlotType": 1,
-    "m_Hidden": false,
-    "m_ShaderOutputName": "ShadowAttenuation",
-    "m_StageCapability": 3,
-    "m_Value": 0.0,
-    "m_DefaultValue": 0.0,
-    "m_Labels": []
 }
 
