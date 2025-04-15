@@ -152,6 +152,29 @@
 }
 
 {
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.Vector3MaterialSlot",
+    "m_ObjectId": "4afdbaf4b57c4c30bcf77f9e802bc0dd",
+    "m_Id": 2,
+    "m_DisplayName": "Color",
+    "m_SlotType": 0,
+    "m_Hidden": false,
+    "m_ShaderOutputName": "Color",
+    "m_StageCapability": 3,
+    "m_Value": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+    },
+    "m_DefaultValue": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+    },
+    "m_Labels": []
+}
+
+{
     "m_SGVersion": 1,
     "m_Type": "UnityEditor.ShaderGraph.Internal.Vector3ShaderProperty",
     "m_ObjectId": "4e83519d1a014066bfd992ffe0e437d9",
@@ -225,7 +248,7 @@
     "m_SourceType": 1,
     "m_FunctionName": "LightingDetails",
     "m_FunctionSource": "fd04a86ca133d4c3e9fbcec891df47ee",
-    "m_FunctionBody": "#ifdef SHADERGRAPH_PREVIEW\n       Color = 1;\n       DistanceAtten = 1.0;\n       ShadowAtten = 1.0; // In Shader Graph preview, assume fully lit\n#else\n        Light mainLight = GetMainLight();\n        Color = light.color;   \n        DistanceAtten = mainLight.distanceAttenuation;\n        ShadowAtten = mainLight.shadowAttenuation;\n#endif"
+    "m_FunctionBody": "#ifdef SHADERGRAPH_PREVIEW\n       Color = 1;\n       DistanceAtten = 1;\n       ShadowAtten = 1;\n#else\n        Light mainLight = GetMainLight();\n        Color = mainLight.color;   \n        DistanceAtten = mainLight.distanceAttenuation;\n        ShadowAtten = mainLight.shadowAttenuation;\n#endif"
 }
 
 {
@@ -255,15 +278,15 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": 139.99996948242188,
-            "y": -51.00001525878906,
-            "width": 156.00003051757813,
-            "height": 101.0
+            "x": 109.00001525878906,
+            "y": -47.000003814697269,
+            "width": 127.00001525878906,
+            "height": 125.00001525878906
         }
     },
     "m_Slots": [
         {
-            "m_Id": "85240ee209be4137821b07c3d25a8cd0"
+            "m_Id": "4afdbaf4b57c4c30bcf77f9e802bc0dd"
         },
         {
             "m_Id": "563d2ad5b75c4511b5c3314a5fd7efa9"
@@ -317,27 +340,6 @@
             "m_Id": "4e83519d1a014066bfd992ffe0e437d9"
         }
     ]
-}
-
-{
-    "m_SGVersion": 0,
-    "m_Type": "UnityEditor.ShaderGraph.Vector2MaterialSlot",
-    "m_ObjectId": "85240ee209be4137821b07c3d25a8cd0",
-    "m_Id": 2,
-    "m_DisplayName": "Color",
-    "m_SlotType": 0,
-    "m_Hidden": false,
-    "m_ShaderOutputName": "Color",
-    "m_StageCapability": 3,
-    "m_Value": {
-        "x": 0.0,
-        "y": 0.0
-    },
-    "m_DefaultValue": {
-        "x": 0.0,
-        "y": 0.0
-    },
-    "m_Labels": []
 }
 
 {
