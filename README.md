@@ -1,6 +1,6 @@
 # Spell-Bound
 
-[is this a link?](/page2)
+[is this a link?](/UNRSeniorProjects2024Group7/people)
 
 
 ## CS 426 Senior Project in Computer Science, Spring 2025, at UNR, CSE Department
@@ -14,7 +14,7 @@ Secondary Advisor:	Dr. Emily Hand, UNR, CSE Department
 
 
 
-Repository:  https://github.com/The-Archivists-UNR/UNRSeniorProjects2024Group7
+Repository:  [https://github.com/The-Archivists-UNR/UNRSeniorProjects2024Group7](https://github.com/The-Archivists-UNR/UNRSeniorProjects2024Group7)
 
 # Summary
 
