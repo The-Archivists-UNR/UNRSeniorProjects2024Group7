@@ -1,5 +1,8 @@
 # Spell-Bound
 
+[is this a link?](/page2)
+
+
 ## CS 426 Senior Project in Computer Science, Spring 2025, at UNR, CSE Department
 Group 7: Fenn Edmonds, Liam Francisco, Lanielle Pavlik, Kat Wayman
 
