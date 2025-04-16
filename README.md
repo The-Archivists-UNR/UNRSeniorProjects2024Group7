@@ -1,3 +1,4 @@
+<h1><i>Spell-Bound</i></h1>
   
 ###### [People](./people.md)     •     [Progress](./progress.md)     •     [Poster](./CS426SeniorProjects_Team07.jpg)      •     [Sources](./sources.md)     •     [Tech Stack](./techstack.md)
 
@@ -9,7 +10,6 @@
 </p>
 
 
-<h1><i>Spell-Bound</i></h1>
 Repository:  [https://github.com/The-Archivists-UNR/UNRSeniorProjects2024Group7](https://github.com/The-Archivists-UNR/UNRSeniorProjects2024Group7)
 
 
