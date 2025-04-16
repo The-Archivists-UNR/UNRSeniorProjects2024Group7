@@ -16,3 +16,9 @@ Hi! We are group 7: Fenn Edmonds, Liam Francisco, Lanielle Pavlik, and Kat Wayma
 ## Lanielle
 
 ## Kat
+- created individual shaders for each level to match it's theme.
+- enabled procedural room generation that is scalable for each level
+- designed and implemented the library hub
+- created the 2D sprites for Ophelia as well as the NPC's: Julie, Bonnie, _____, Sam, and Oswald
+- lighting design for all scenes
+- 
