@@ -6,7 +6,7 @@
 
 [People](/UNRSeniorProjects2024Group7/people) [Progress](/UNRSeniorProjects2024Group7/progress) 
 
-<img src="/UNRSeniorProjects2024Group7/purple_squiggles.jpg" height="150">
+<img src="./purple_squiggles.jpg" height="150">
 
 ## CS 426 Senior Project in Computer Science, Spring 2025, at UNR, CSE Department
 Group 7: Fenn Edmonds, Liam Francisco, Lanielle Pavlik, Kat Wayman
