@@ -1,6 +1,6 @@
 <h1><i>Spell-Bound</i></h1>
   
-###### [People](./people.md)     •     [Progress](./progress.md)     •     [Poster](./CS426SeniorProjects_Team07.jpg)      •     [Sources](./sources.md)     •     [Tech Stack](./techstack.md)
+##### [People](./people.md)     •     [Progress](./progress.md)     •     [Poster](./CS426SeniorProjects_Team07.jpg)      •     [Sources](./sources.md)     •     [Tech Stack](./techstack.md)
 
 
 <p align=center>
@@ -25,5 +25,5 @@ This project was developed in Spring 2025 as part of the course CS 426 Senior Pr
 
 <style>
   h1 {text-align: center;}
-  h6 {text-align: center;}
+  h5 {text-align: center;}
 </style>
