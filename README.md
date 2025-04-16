@@ -1,10 +1,8 @@
-[People](./people)     •     [Progress](./progress)     •     [Poster](./CS426SeniorProjects_Team07.jpg)      •     [Sources](./sources)
+[People](./people)     •     [Progress](./progress)     •     [Poster](./CS426SeniorProjects_Team07.jpg)      •     [Sources](./sources)     •     [Tech Stack](./techstack)
 
-<img src="./purple_squiggles.jpg" width="100vw">
+<img src="./purple_squiggles.jpg" width="100%">
 
-<style>
-  h1 {text-align: center;}
-</style>
+
 
 
 <h1><i>Spell-Bound</i></h1>
@@ -22,7 +20,35 @@ Upon speaking to NPC’s a text box prompting the user to input their own messag
 
 This project was developed in Spring 2025 as part of the course CS 426 Senior Projects in Computer Science.​​
 
-# TECH STACK
 
-
+<style>
+  h1 {text-align: center;}
+</style>
 ----------------------------------------------------------------------------------------
+
+
+
+
+<p align="center">
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset=".github/logo_white.png">
+  <source media="(prefers-color-scheme: light)" srcset=".github/logo.png">
+  <img src=".github/logo.png" height="150"/>
+</picture>
+</p>
+
+<h3 align="center">Create characters in Unity with LLMs!</h3>
+
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+<a href="https://discord.gg/RwXKQb6zdv"><img src="https://discordapp.com/api/guilds/1194779009284841552/widget.png?style=shield"/></a>
+[![Reddit](https://img.shields.io/badge/Reddit-%23FF4500.svg?style=flat&logo=Reddit&logoColor=white)](https://www.reddit.com/user/UndreamAI)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-blue?style=flat&logo=linkedin&labelColor=blue)](https://www.linkedin.com/company/undreamai)
+[![Asset Store](https://img.shields.io/badge/Asset%20Store-black.svg?style=flat&logo=unity)](https://assetstore.unity.com/packages/slug/273604)
+[![GitHub Repo stars](https://img.shields.io/github/stars/undreamai/LLMUnity?style=flat&logo=github&color=f5f5f5)](https://github.com/undreamai/LLMUnity)
+
+
+<sub>
+<a href="#at-a-glance" style="color: black">At a glance</a>&nbsp;&nbsp;•&nbsp;
+<a href="#how-to-help" style=color: black>How to help</a>&nbsp;&nbsp;•&nbsp;
+<a href="#games--projects-using-llm-for-unity" style=color: black>Games / Projects using LLM for Unity</a>&nbsp;&nbsp;•&nbsp;
+<a href="#setup" style=color: black>Setup</a>&nbsp;&nbsp;•&nbsp;
