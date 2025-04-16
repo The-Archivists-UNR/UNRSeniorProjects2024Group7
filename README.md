@@ -1,10 +1,12 @@
 [People](./people)     •     [Progress](./progress)
+<img src="./purple_squiggles.jpg">
 
-<p align=center>
+<style>
+  h1 {text-align: center;}
+</style>
+
+
 <h1><i>Spell-Bound</i></h1>
-Proof that we can add images <br>
-<img src="./purple_squiggles.jpg" height="150">
-</p>
 
 
 ## CS 426 Senior Project in Computer Science, Spring 2025, at UNR, CSE Department
@@ -47,3 +49,6 @@ J. Hocking, *Unity in Action: Multiplatform Game Development in C#*, 2nd ed. She
 P. Sweetser, “Large Language Models and Video Games: A preliminary Scoping Review,” in *Proceedings of the 6th ACM Conference on Conversational User Interfaces 2024 (CUI ’24)*, Association for Computing Machinery, New York, NY, USA, Article 45, 1–8, 2024. [Online]. Available: https://doi.org/10.1145/3640794.3665582 [Accessed Nov. 2, 2024].
 
 ----------------------------------------------------------------------------------------
+
+
+
