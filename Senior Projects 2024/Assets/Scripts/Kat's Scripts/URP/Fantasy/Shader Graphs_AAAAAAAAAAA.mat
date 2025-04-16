@@ -53,7 +53,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Diffuse_Color_Alpha_Texture:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 4deeb98341ac5ae418b959d4239798b7, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _RenderTexture:
@@ -78,9 +78,10 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Cross_Hatch_Frequency: 200
+    - _Angle: 65
+    - _Cross_Hatch_Frequency: 15
     - _Debug_Mode_Colormap: 0
-    - _Diffuse_Color_Texture_Tiling: 0
+    - _Diffuse_Color_Texture_Tiling: 1.86
     - _Gradient_Edge_1: 0
     - _Gradient_Edge_2: 1
     - _Gradient_Offset: 0
@@ -97,8 +98,8 @@ Material:
     m_Colors:
     - _Color: {r: 1, g: 0, b: 0, a: 0}
     - _Color_2: {r: 0.6155216, g: 0.8658146, b: 0.9811321, a: 0}
-    - _Diffuse_Color_Ramp_Step: {r: 0, g: 1, b: 0, a: 0}
-    - _Diffuse_Texture_Ting: {r: 0, g: 0, b: 0, a: 0}
+    - _Diffuse_Color_Ramp_Step: {r: -0.75, g: 1, b: 0, a: 0}
+    - _Diffuse_Texture_Ting: {r: 0.27171594, g: 0.72016555, b: 0.8113208, a: 0}
     - _Edge_Color: {r: 0.27358484, g: 0.27358484, b: 0.27358484, a: 0}
     - _Texture_Tiling: {r: 0, g: 0, b: 0, a: 0}
     - _Tiling: {r: 1, g: 1, b: 0, a: 0}
