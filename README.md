@@ -1,5 +1,6 @@
 [People](./people)     •     [Progress](./progress)
-<img src="./purple_squiggles.jpg">
+
+<img src="./purple_squiggles.jpg" width="100vw">
 
 <style>
   h1 {text-align: center;}
