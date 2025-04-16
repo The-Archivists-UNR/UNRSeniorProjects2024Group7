@@ -4,7 +4,7 @@
 
 
 
-[People](/UNRSeniorProjects2024Group7/people) [Progress](/UNRSeniorProjects2024Group7/progress) 
+[People](./people) [Progress](./progress) 
 
 <img src="./purple_squiggles.jpg" height="150">
 
