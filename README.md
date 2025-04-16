@@ -1,7 +1,7 @@
 <p align=center>
   
 [People](./people)     •     [Progress](./progress)     •     [Poster](./CS426SeniorProjects_Team07.jpg)      •     [Sources](./sources)     •     [Tech Stack](./techstack)
-<img src="./title.png" width="100%">
+<img src="./title%20screen%20spellbound.png" width="100%">
 
 </p>
 
