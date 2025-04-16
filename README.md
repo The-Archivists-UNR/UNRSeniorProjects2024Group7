@@ -1,9 +1,8 @@
-[People](./people)      [Progress](./progress)
+[People](./people)     •     [Progress](./progress)
 
 <p align=center>
-# _Spell-Bound_
-
-Proof that we can add images
+<h1><i>Spell-Bound</i></h1>
+Proof that we can add images <br>
 <img src="./purple_squiggles.jpg" height="150">
 </p>
 
@@ -17,11 +16,10 @@ Primary Advisor: 	Dr. Alireza Tavakkoli, UNR, CSE Department
 
 Secondary Advisor:	Dr. Emily Hand, UNR, CSE Department
 
-
-
 Repository:  [https://github.com/The-Archivists-UNR/UNRSeniorProjects2024Group7](https://github.com/The-Archivists-UNR/UNRSeniorProjects2024Group7)
 
-# Summary
+
+# Welcome
 
 As the first person to enter The Athenaeum, an infamously haunted library, in decades, you’ll find yourself far deeper in the stacks that you originally expected. Legends claim that the library was once a beacon of knowledge filled with enthusiastic scholars and cheerful bookworms. Now all that is left are ghosts and cobwebs. Revive this mythical library by breaking the long-standing curse and bringing back its patrons. Fight through a variety of stories and befriend library visitors to restore The Athenaeum to its former glory. In this game, a Unity-based combination of a roguelite and social simulator, players will be able to engage in unique, dynamic dialogue facilitated by a Large Language Model and experience new worlds as they free books from a mysterious curse. 
 
