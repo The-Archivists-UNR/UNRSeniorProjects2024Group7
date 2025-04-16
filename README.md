@@ -1,5 +1,5 @@
   
-### [People](./people)     •     [Progress](./progress)     •     [Poster](./CS426SeniorProjects_Team07.jpg)      •     [Sources](./sources)     •     [Tech Stack](./techstack)
+### [People](./people.md)     •     [Progress](./progress.md)     •     [Poster](./CS426SeniorProjects_Team07.jpg)      •     [Sources](./sources.md)     •     [Tech Stack](./techstack.md)
 
 
 <p align=center>
