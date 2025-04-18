@@ -6,10 +6,34 @@ using UnityEngine.Rendering;
 public class URPSwitchScript : MonoBehaviour
 {
     public RenderPipelineAsset NoireURP;
+    public RenderPipelineAsset TempLibraryURP;
+    public RenderPipelineAsset FantasyURP;
+    public RenderPipelineAsset SciFiURP;
+    //public RenderPipelineAsset BossBattle;
     public void SwitchToNoire()
     {
         GraphicsSettings.renderPipelineAsset = NoireURP;
     }
+
+    public void SwitchToLibrary()
+    {
+        GraphicsSettings.renderPipelineAsset = TempLibraryURP;
+    }
+
+    public void SwitchToFantasy()
+    {
+        GraphicsSettings.renderPipelineAsset = FantasyURP;
+    }
+
+    public void SwitchToSciFi()
+    {
+        GraphicsSettings.renderPipelineAsset = SciFiURP;
+    }
+   // public void SwitchToBoss()
+   // {
+    //    GraphicsSettings.renderPipelineAsset = BossBattle;
+    //}
+
 
     public void SwitchToStandard()
     {
@@ -24,11 +48,23 @@ public class URPSwitchScript : MonoBehaviour
         }
         else if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name == "(Scene 2) Library")
         {
-            SwitchToStandard();
+            SwitchToLibrary();
         }
+        else if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name == "(Scene 3) Fantasy")
+        {
+            SwitchToFantasy();
+        }
+        else if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name == "(Scene 5) SciFi")
+        {
+            SwitchToSciFi();
+        }
+        //else if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name == "(Scene 6) Boss Battle")
+        //{
+        //    SwitchToLibrary();
+        //}
         else
         {
-            SwitchToStandard();
+            SwitchToLibrary();
         }
     }
 

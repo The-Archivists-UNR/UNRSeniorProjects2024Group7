@@ -1,0 +1,216 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Scifi
+  m_Shader: {fileID: -6465566751694194690, guid: 1b221c8bbe7de8846b49faf61515d63f, type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords:
+  - _OVERLAY
+  m_InvalidKeywords: []
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_LockedProperties: 
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _BaseMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Base_Texture:
+        m_Texture: {fileID: 2800000, guid: fb6d66976997f6e45828eede0790354a, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _BumpMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DetailAlbedoMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DetailMask:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DetailNormalMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DiffuseTexture:
+        m_Texture: {fileID: 2800000, guid: 03412bed0eae0d640b55c6d6605cea5e, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _EmissionMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _EmissionTexture:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex:
+        m_Texture: {fileID: 2800000, guid: fb6d66976997f6e45828eede0790354a, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MaskMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MetallicGlossMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _OcclusionMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _ParallaxMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SpecGlossMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SpecularTexture:
+        m_Texture: {fileID: 2800000, guid: 9cabc3cfd3d60b444b9fc0e6af8d6227, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Texture2D:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_Lightmaps:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_LightmapsInd:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_ShadowMasks:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - _AlphaClip: 0
+    - _AlphaToMask: 0
+    - _AmbientCategory: 0
+    - _AmbientShadowStrength: 0
+    - _BaseReflectStrength: 1
+    - _Blend: 0
+    - _BlendModePreserveSpecular: 1
+    - _BumpScale: 1
+    - _Circle_Density: 44
+    - _ClearCoatMask: 0
+    - _ClearCoatSmoothness: 0
+    - _Color_Threshold: 10
+    - _Cull: 2
+    - _Cutoff: 0.5
+    - _CutoffEnabled: 0
+    - _DetailAlbedoMapScale: 1
+    - _DetailNormalMapScale: 1
+    - _DiffuseCategory: 0
+    - _DiffuseHatching: 0
+    - _DiffuseLightingStyle: 0
+    - _DiffuseRim: 0.1
+    - _DiffuseSteps: 1
+    - _DiffuseTextureContrast: 1
+    - _DiffuseTextureMapping: 2
+    - _DiffuseTextureSize: 1
+    - _DstBlend: 0
+    - _DstBlendAlpha: 0
+    - _Emission: 0
+    - _EnvironmentReflections: 1
+    - _Falloff_Threshold: 0.63
+    - _GlossMapScale: 0
+    - _Glossiness: 0
+    - _GlossyReflections: 0
+    - _Highlighting_Multiplier: 1.94
+    - _InvertShadowedLines: 1
+    - _KeepLinesThicc: 1
+    - _LIGHTINGFOLDOUT: 0
+    - _LINESFOLDOUT: 0
+    - _LightmapEmissionStr: 1
+    - _LinesOn: 1
+    - _Lit_Threshold: 0.29
+    - _MaskMapNote: 0
+    - _Metallic: 0
+    - _MinMaxDiffEdge: 0
+    - _MinMaxPaintEdge: 0
+    - _MinMaxSpecEdge: 0
+    - _NormalMapStr: 1
+    - _Normal_Threshold: 10
+    - _OVERLAY: 1
+    - _OcclusionStrength: 1
+    - _Parallax: 0.005
+    - _QueueControl: 0
+    - _QueueOffset: 0
+    - _ReceiveShadows: 1
+    - _ReflectionsCategory: 0
+    - _ReflectionsEnabled: 1
+    - _Rotation: 1.86
+    - _ScreenStableDistanceScale: 0
+    - _ScreenStableDistanceScaleSpec: 0
+    - _Shading_Multiplier: -2
+    - _Smoothness: 0.5
+    - _SmoothnessTextureChannel: 0
+    - _Softness: 0.1
+    - _Spacer: 0
+    - _SpecularCategory: 0
+    - _SpecularHatching: 0
+    - _SpecularHighlights: 1
+    - _SpecularLightingStyle: 0
+    - _SpecularSteps: 1
+    - _SpecularTextureContrast: 1
+    - _SpecularTextureMapping: 2
+    - _SpecularTextureSize: 1
+    - _SpecularType: 0
+    - _SrcBlend: 1
+    - _SrcBlendAlpha: 1
+    - _Surface: 0
+    - _TEXTURESFOLDOUT: 0
+    - _USE_SCREEN_SPACE: 0
+    - _WorkflowMode: 1
+    - _ZWrite: 1
+    m_Colors:
+    - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
+    - _Base_Color: {r: 1, g: 1, b: 1, a: 0}
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _DiffuseEdge: {r: 0, g: 1, b: 0, a: 0}
+    - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
+    - _HatchingRanges: {r: 0.33, g: 0.66, b: 1, a: 1}
+    - _HatchingRangesSpec: {r: 0.33, g: 0.66, b: 1, a: 1}
+    - _Outline_Color: {r: 0, g: 0, b: 0, a: 0}
+    - _PaintMaskEdges: {r: 0, g: 1, b: 0, a: 0}
+    - _ReflectionFresnelParams: {r: 0.429, g: 0.126, b: 1, a: 0.924}
+    - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
+    - _SpecularEdge: {r: 0, g: 1, b: 0, a: 0}
+    - _TilingOffset: {r: 1, g: 1, b: 0, a: 0}
+  m_BuildTextureStacks: []
+--- !u!114 &5184205255864848206
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0353a89b1f911e48b9e16bdc9f2e058, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 7
