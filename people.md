@@ -12,6 +12,11 @@ Hi! We are group 7: Fenn Edmonds, Liam Francisco, Lanielle Pavlik, and Kat Wayma
 ## Fenn
 
 ## Liam
+- designed the AI for the enemies in all the levels
+- hooked up the inputs for the player in combat levels
+- set up the system that controls level flow and moving from room to room
+- created the minigames
+- created the save system
 
 ## Lanielle
 
