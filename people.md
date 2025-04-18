@@ -10,6 +10,13 @@ Secondary Advisor:	Dr. Emily Hand, UNR CSE Department
 Hi! We are group 7: Fenn Edmonds, Liam Francisco, Lanielle Pavlik, and Kat Wayman. Here's a little more information on us.
 
 ## Fenn
+- Modeled NPC characters for the library
+- Modeled most Noire Level enemies (sans the dog)
+- Modeled all Ophelia models
+- Implemented health bars
+- Implemented Items
+- Created animations for modeled characters
+- Worked on all the UI
 
 ## Liam
 - designed the AI for the enemies in all the levels
