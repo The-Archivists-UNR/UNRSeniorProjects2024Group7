@@ -36,4 +36,4 @@ Hi! We are group 7: Fenn Edmonds, Liam Francisco, Lanielle Pavlik, and Kat Wayma
 - implemented audio manager and pause feature.
 - created opening cutscene for SpellBound.
 - created collectibles system + artwork.
-- drew the artwork for temporary powerups.
+- drew the artwork for Items.
