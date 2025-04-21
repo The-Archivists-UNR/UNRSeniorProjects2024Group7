@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 //so this code works in that it does teleport the player but it only teleports the player to the corner of the room closest to the desired room.
 //many such cases
 public class DoorTeleporter : MonoBehaviour
@@ -38,11 +39,14 @@ public class DoorTeleporter : MonoBehaviour
 
     public void Teleport()
     {
+        
         if (playerTransform != null && doorDestination != null)
         {
+            NavMeshAgent playerAgent = playerTransform.GetComponent<NavMeshAgent>();
+            playerAgent.enabled = false;
             playerTransform.position = doorDestination.position;
             playerTransform.rotation = doorDestination.rotation;
-
+            playerAgent.enabled = true;
         }
         else
         {
