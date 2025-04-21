@@ -25,7 +25,7 @@ public class OpheliaStats : MonoBehaviour
 
     void updateStats()
     {
-        entity.maxHealth = changedHealth;
+        entity.maxHealth = playerMgr.baseHealth + changedHealth;
         playerMgr.baseSpeed = playerMgr.baseSpeed * changedSpeed;
         weapon.baseDamage = weapon.baseDamage * changedDamage;
     }
