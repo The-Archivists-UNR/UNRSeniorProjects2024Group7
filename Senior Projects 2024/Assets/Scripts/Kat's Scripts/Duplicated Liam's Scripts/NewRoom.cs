@@ -23,6 +23,9 @@ public class NewRoom : MonoBehaviour
     public List<GameObject> enemies = new List<GameObject>();
     public bool overrideValues;
 
+    // [HideInInspector]
+    public GameObject itemHolder;
+
     //initializes all the potential positions an enemy can spawn in
     void Start()
     {
@@ -158,6 +161,7 @@ public class NewRoom : MonoBehaviour
             {
                 SetDoors(false);
                 enemiesDead = true;
+                itemHolder.SetActive(true);
                 //NewGameMgr.inst.loadNext = true;
             }
         }

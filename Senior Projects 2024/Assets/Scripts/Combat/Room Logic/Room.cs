@@ -99,7 +99,29 @@ public class Room : MonoBehaviour
             if (currentWave == numWaves && enemies.Count == 0)
             {
                 SetDoors(false);
+                GameObject item = FindGameObjectInChildWithTag(gameObject);
+                item.SetActive(true);
+                
             }
         }
     }
+
+    //Fenn's helper function
+    public static GameObject FindGameObjectInChildWithTag (GameObject parent)
+	{
+		Transform t = parent.transform;
+
+		for (int i = 0; i < t.childCount; i++) 
+		{
+            string itemChild = t.GetChild(i).gameObject.name;
+			if(itemChild == "HealthItem" ||itemChild == "AttackItem" || itemChild == "SpeedItem" )
+			{
+                print("found!");
+				return t.GetChild(i).gameObject;
+			}
+				
+		}
+			
+		return null;
+	}
 }
