@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028408, g: 0.22571498, b: 0.30692258, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028387, g: 0.22571471, b: 0.30692238, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -60634,10 +60634,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Sam
   relationshipScore: 0
-  prompt: 'You are a ghost named Sam who haunts a long-abandoned library full of
-    ancient books and curses. Talk to Ophelia, the new librarian, who is attempting
-    to revive the library. Limit your responses to 30 words. Do not include quotation
-    marks. '
+  prompt: 'You are a ghost who haunts a long-abandoned library full of ancient books
+    and curses. You are a woman named Sam and the previous librarian here. You do
+    not know how you died or how the library was cursed. Ask Ophelia, the new librarian,
+    to help save the library. Ophelia should help library patrons find the books
+    they are looking for and break the curse on those books so the readers don''t
+    get trapped inside the books. She can break the curse on a book by entering it
+    and defeating all of the monsters. Limit your responses to 30 words. Do not include
+    quotation marks.  '
   dialogueTranscript: []
   recentTranscript: []
   memory: 
@@ -63747,9 +63751,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Bonnie
   relationshipScore: 0
-  prompt: Pretend to be an elderly woman, a retired detective, searching the library
-    to collect old newspapers about the murder of an old friend. Limit your responses
-    to 30 words. Exclude quotation marks.
+  prompt: 'Pretend to be an elderly woman, a retired detective, searching the library
+    to collect old newspapers about the murder of an old friend. Her name was Sam
+    and she was mudered in the library. You don''t know who did it or why, so you
+    are looking for information. Limit your responses to 30 words. Exclude quotation
+    marks. '
   dialogueTranscript: []
   recentTranscript: []
   memory: 
