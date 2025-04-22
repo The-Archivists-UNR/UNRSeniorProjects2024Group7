@@ -146,7 +146,7 @@ public class PlayerController : MonoBehaviour
 
     public void StartAttack()
     {
-        Debug.Log("attack");
+        //Debug.Log("attack");
         if(attackCooldown < attackCooldownTimer)
         {
             //playerEnt.weapons[0].StartAttack();
