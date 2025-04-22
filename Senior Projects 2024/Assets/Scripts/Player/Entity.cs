@@ -60,4 +60,28 @@ public class Entity : MonoBehaviour
         //else
             //enemyAni.SetTrigger("damage"); 
     }
+
+    public void PaperCrown(float avalue)
+    {
+        //this might need to be in combat
+    }
+
+    public void PocketWatch(float svalue)
+    {
+        svalue = 1;
+        speed += svalue;
+
+    }
+
+    public void LeadMan(float dvalue)
+    {
+        dvalue = 10;
+        //damage -= dvalue;
+    }
+
+    public void Crystal(float mhvalue)
+    {
+        mhvalue = 30;
+        maxHealth += mhvalue;
+    }
 }
