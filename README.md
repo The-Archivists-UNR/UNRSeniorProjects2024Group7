@@ -1,6 +1,6 @@
 <h1><i>Spell-Bound</i></h1>
   
-### [People](./people.md) • [Progress](./progress.md) • [Poster](./CS426SeniorProjects_Team07.jpg) • [Sources](./sources.md) • [Tech Stack](./techstack.md)
+### [People](./people.md) • [Progress](./progress.md) • [Poster](./CS426SeniorProjects_Team07.jpg) • [Sources](./sources.md) 
 
 
 <p align=center>
