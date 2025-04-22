@@ -13,7 +13,8 @@ public class LevelCreator : MonoBehaviour
     public int levelWidth, levelLength;
     public int roomWidthMin, roomLengthMin;
     public int roomWidthMax, roomLengthMax;
-    public int doorx, doory, doorz;
+    public float doorYHeight;
+    public float doorx, doory, doorz;
 
     [Range(0.0f, 0.9f)]
     public float roomBottomCornerModifier;
@@ -149,7 +150,7 @@ public class LevelCreator : MonoBehaviour
     {
         Vector3 doorPosition = (pointA + pointB)/2;
         bool isHorizontal = pointA.z == pointB.z;
-        doorPosition.y = 4.5f; //anything higher than this makes the doors float
+        doorPosition.y = doorYHeight; //anything higher than this makes the doors float
         GameObject door = Instantiate(doorPrefab, doorPosition, Quaternion.identity,transform);
         if (isHorizontal) //since i have a test of bool for if the wall is horizontal, and the horizontal walls are ideal, this is the best method to simply rotate the doors when the walls are vertical
         {
