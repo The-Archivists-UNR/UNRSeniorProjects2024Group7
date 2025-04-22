@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028408, g: 0.22571498, b: 0.30692258, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028437, g: 0.22571525, b: 0.3069233, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -18692,6 +18692,7 @@ GameObject:
   - component: {fileID: 726639321}
   - component: {fileID: 726639320}
   - component: {fileID: 726639319}
+  - component: {fileID: 726639322}
   m_Layer: 0
   m_Name: CourtyardEntrance
   m_TagString: Untagged
@@ -18785,6 +18786,21 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 726639317}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &726639322
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 726639317}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18c4db6e7dd09f144ae57ff693fc1d01, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  doorDestination: {fileID: 859420193}
+  playerTag: Player
+  interactKey: e
 --- !u!1 &729994154
 GameObject:
   m_ObjectHideFlags: 0
@@ -22279,7 +22295,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18c4db6e7dd09f144ae57ff693fc1d01, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  doorDestination: {fileID: 505569463}
+  doorDestination: {fileID: 1300191039}
   playerTag: Player
   interactKey: e
 --- !u!1001 &846139134
@@ -41755,7 +41771,7 @@ SphereCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -42888,7 +42904,7 @@ SphereCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
