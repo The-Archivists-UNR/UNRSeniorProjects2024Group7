@@ -7,10 +7,10 @@ Primary Advisor: 	Dr. Alireza Tavakkoli, UNR CSE Department
 Secondary Advisor:	Dr. Emily Hand, UNR CSE Department
 
 
-Hi! We are group 7: Fenn Edmonds, Liam Francisco, Lanielle Pavlik, and Kat Wayman. Here's a little more information on us.
+Hi! We are group 7: Fenn Edmonds, Liam Francisco, Lanielle Pavlik, and Kat Wayman. Here's what we worked on.
 
 ## Fenn
-- Modeled NPC characters for the library
+- Modeled non-playable characters for the library
 - Modeled most Noire Level enemies (sans the dog)
 - Modeled all Ophelia models
 - Implemented health bars
@@ -26,6 +26,10 @@ Hi! We are group 7: Fenn Edmonds, Liam Francisco, Lanielle Pavlik, and Kat Wayma
 - created the save system
 
 ## Lanielle
+- handled calls to language model
+- designed prompts so model behaves like different characters
+- checked appropriateness of user input
+- handled updates to relationship scores
 
 ## Kat
 - created individual shaders to match level's theme.
