@@ -12,7 +12,7 @@ public class moneyMgr : MonoBehaviour
     public int currency;
     public TextMeshProUGUI moneyText;
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         DontDestroyOnLoad(this.gameObject);
         moneyText.text = "Tokens: " + currency;
