@@ -12,6 +12,8 @@ public class RoomItemPlacement : MonoBehaviour
     public Transform decorationsParent;
     public List<Vector3> placedPositions = new List<Vector3>(); // Store placed prefab positions
 
+    public itemMgr items; //Fenn's item placement
+
     void Start()
     {
 
@@ -46,6 +48,41 @@ public class RoomItemPlacement : MonoBehaviour
             newPrefab.transform.parent = decorationsParent;
             placedPositions.Add(newPosition);
         }
+    }
+
+    //Fenn's item placement code
+    public GameObject PlaceItems()
+    {
+
+            Vector3 newPosition;
+            int attempts = 0;
+            bool validPosition = false;
+
+            do
+            {
+                newPosition = GetRandomPosition();
+                validPosition = IsPositionValid(newPosition);
+                attempts++;
+
+                // Prevent infinite loop by limiting attempts
+                if (attempts > 100)
+                {
+                    Debug.LogWarning("Could not find a valid position after 100 attempts.");
+                    return null;
+                }
+
+            } while (!validPosition);
+
+            // Instantiate the prefab at the chosen position
+            GameObject instItem = items.ChooseItem();
+            GameObject newPrefab = Instantiate(instItem, new Vector3(newPosition.x, newPosition.y+5, newPosition.z), Quaternion.identity);
+            newPrefab.tag = "item";
+            newPrefab.transform.eulerAngles = new Vector3 (newPrefab.transform.eulerAngles.x, Random.Range(0,360), newPrefab.transform.eulerAngles.z);
+            newPrefab.transform.parent = decorationsParent;
+            placedPositions.Add(new Vector3(newPosition.x, newPosition.y+5, newPosition.z));
+            items.spawnedItems.Add(newPrefab);
+            newPrefab.SetActive(false);
+            return newPrefab;
     }
 
     Vector3 GetRandomPosition()

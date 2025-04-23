@@ -27,10 +27,13 @@ public class SceneSetUp : MonoBehaviour
         {
             foreach (NewRoom room in NewGameMgr.inst.rooms)
             {
+                GameObject itemTemp;
                 roomItemPlacement.decorationsParent = room.gameObject.transform;
                 roomItemPlacement.roomPosition = room.location;
                 roomItemPlacement.roomSize = new Vector3(room.dimensions.x, 0, room.dimensions.y);
                 roomItemPlacement.PlacePrefabs();
+                itemTemp = roomItemPlacement.PlaceItems();
+                room.itemHolder = itemTemp;
             }
         }
         surface.BuildNavMesh();
