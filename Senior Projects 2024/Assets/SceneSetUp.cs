@@ -9,10 +9,13 @@ public class SceneSetUp : MonoBehaviour
     public NavMeshSurface surface;
     public GameObject player;
     public RoomItemPlacement roomItemPlacement;
+    public Weapon opheliaWeapon;
     
     // Start is called before the first frame update
     void Start()
     {
+        Entity opheliaEntity = player.GetComponent<Entity>();
+        OpheliaStats.inst.AppplyStats(opheliaEntity, opheliaWeapon);
         LevelCreator.inst.CreateLevel();
         LevelCreator.inst.GetRooms();
         while (LevelCreator.inst.rooms.Count < 5)
