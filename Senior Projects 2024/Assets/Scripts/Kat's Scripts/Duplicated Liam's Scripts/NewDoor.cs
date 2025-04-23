@@ -29,6 +29,7 @@ public class NewDoor : Interactable
         base.Interact();
         if (!locked)
         {
+            Debug.Log("here");
             NewGameMgr.inst.NextRoom();
         }
     }

@@ -15,16 +15,13 @@ public class moneyMgr : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        void Awake()
+        if (inst == null)
         {
-            if (inst == null)
-            {
-                inst = this;
-                DontDestroyOnLoad(this.gameObject);
-            }
-            else
-                Destroy(this);
+            inst = this;
+            DontDestroyOnLoad(this.gameObject);
         }
+        else
+            Destroy(this);
         //moneyText.text = "Tokens: " + currency;
     }
 
