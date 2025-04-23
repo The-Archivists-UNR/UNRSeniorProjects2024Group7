@@ -22,19 +22,24 @@ public class TimellineController : MonoBehaviour
 
     string[] linesNPCS = {"These three patrons can be freely chatted with.", "They're very excited to meet you!" };
     string[] linesMinigames = {"Here you'll find different minigames you can play.", "Each was intended to making working the library fun!"};
-    string[] linesStatbuff = {"Lastly, at your desk you'll find where you can buy stat increases!"};
+    string[] linesStatbuff = {"Lastly, at your desk you'll find where you can buy stat increases!", "Now that you know everything, its up to you to lift the books curse", "Good luck!"};
 
-    bool greetingStart = false;
-    bool StartDone = false;
-    bool NPCDone = false;
-    bool MinigamesDone = false;
-    bool BuffDone = false;
+    public bool dialogueCanStart;
 
     //Wow this is super redudant but i am brainfried and can't think of a better way to do this
+    bool sceneZero = true;
     bool sceneOne = false;
     bool sceneTwo = false;
     bool sceneThree = false;
     bool sceneFour = false;
+    bool sceneFive = false;
+    bool sceneSix = false;
+    bool sceneSeven = false;
+    bool sceneEight = false;
+    bool sceneNine = false;
+
+    public SceneSwitch sceneSwitch;
+
 
     // Start is called before the first frame update
     void Start()
@@ -45,30 +50,95 @@ public class TimellineController : MonoBehaviour
     void Update()
     {
         //print("state:" + playableDirectorStart.state);
-        if(playableDirectorStart.state == PlayState.Paused && sceneOne == false)
+        if(playableDirectorStart.state == PlayState.Paused && sceneZero == true)
         {
             //print("This is being sent through");
-            greetingStart = true;
+            //dialogueCanStart = true;
             sceneOne = true;
+            sceneZero = false;
+            //sceneOne = true;
         }
-        if (greetingStart == true && dialogue.inprogress == false)
+        if (sceneOne == true && dialogue.inprogress == false)
         {
-            //print("This is being sent through");
-            dialogue.StartDialogue();
-            StartDone = true;
-            greetingStart = false;
+            //dialogueCanStart = false;
+            StartSpeaking();
+            sceneOne = false;
+            sceneTwo = true;
         }
 
-        if (StartDone == true && dialogue.inprogress == false)
+        if (playableDirectorNPC.state != PlayState.Playing && sceneTwo == true && dialogue.inprogress == false)
         {
-            //print("This is being sent through");
+            GameObject child = playableDirectorNPC.transform.GetChild(0).gameObject;
+            child.SetActive(true);
+            playableDirectorNPC.Play();
+            sceneTwo = false;
+            sceneThree = true;
+        }
+
+        if (playableDirectorNPC.state == PlayState.Paused == true && sceneThree == true )
+        {
             dialogue.lines = linesNPCS;
-            dialogue.StartDialogue();
-            NPCDone = true;
-            StartDone = false;
+            StartSpeaking();
+            sceneThree = false;
+            sceneFour = true;
+        }
+
+        if (playableDirectorMinigames.state != PlayState.Playing && sceneFour == true && dialogue.inprogress == false)
+        {
+            GameObject child = playableDirectorMinigames.transform.GetChild(0).gameObject;
+            child.SetActive(true);
+            playableDirectorNPC.Play();
+            sceneFour = false;
+            sceneFive = true;
+        }
+
+        if (playableDirectorMinigames.state == PlayState.Paused == true && sceneFive == true)
+        {
+            dialogue.lines = linesMinigames;
+            StartSpeaking();
+            sceneFive = false;
+            sceneSix = true;
+        }
+
+        if (playableDirectorBuffs.state != PlayState.Playing && sceneSix == true && dialogue.inprogress == false)
+        {
+            GameObject child = playableDirectorBuffs.transform.GetChild(0).gameObject;
+            child.SetActive(true);
+            playableDirectorBuffs.Play();
+            sceneSix = false;
+            sceneSeven = true;
+        }
+
+        if (playableDirectorBuffs.state == PlayState.Paused == true && sceneSeven == true)
+        {
+            dialogue.lines = linesStatbuff;
+            StartSpeaking();
+            sceneSeven = false;
+            sceneEight = true;
+        }
+
+        if (playableDirectorEnd.state != PlayState.Playing && sceneEight == true && dialogue.inprogress == false)
+        {
+            GameObject child = playableDirectorEnd.transform.GetChild(0).gameObject;
+            child.SetActive(true);
+            playableDirectorEnd.Play();
+            sceneEight = false;
+            sceneNine = true;
+        }
+
+        if (playableDirectorEnd.state == PlayState.Paused == true && sceneNine == true)
+        {
+            sceneSwitch.currentScene = 2;
+            sceneSwitch.LoadScene();
         }
 
 
+
+    }
+
+    void StartSpeaking()
+    {
+        dialogue.StartDialogue();
     }
 
     public void play()

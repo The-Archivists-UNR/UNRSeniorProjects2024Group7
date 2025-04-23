@@ -9,6 +9,7 @@ public class CutsceneDialogue : MonoBehaviour
     public string[] lines;
     public float textSpeed;
     public PanelMover textbox;
+    public TimellineController timelineMgr;
 
     private int index;
     public bool inprogress;
@@ -71,6 +72,7 @@ public class CutsceneDialogue : MonoBehaviour
         {
             textbox.isVisible = false;
             inprogress = false;
+            //timelineMgr.dialogueCanStart = true;
             // GameEventsManager.instance.playerEvents.EnablePlayerMovement();
         }
     }
