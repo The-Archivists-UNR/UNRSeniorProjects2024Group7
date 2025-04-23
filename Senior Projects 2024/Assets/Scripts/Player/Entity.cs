@@ -46,7 +46,7 @@ public class Entity : MonoBehaviour
         }
     }
 
-    public void TakeDamage(float damage)
+    public virtual void TakeDamage(float damage)
     {
         health -= damage;
         health = Mathf.Min(health, maxHealth);
