@@ -35,7 +35,7 @@ public class itemMgr : MonoBehaviour
     {
         int chosenRarity = Random.Range(1, 41);
         // ItemRarity assignedRarity;
-        int chosenItem = Random.Range(0, 3);
+        int chosenItem = Random.Range(0, 4);
         if (chosenRarity <= 20)
         {
             assignedRarity = ItemRarity.Common;
@@ -80,7 +80,14 @@ public class itemMgr : MonoBehaviour
                 SpriteRenderer renderer2 = child2.GetComponent<SpriteRenderer>();
                 renderer2.color = assignedColor;
                 return items[2];
-            
+            case 3:
+                CoinScript coinItem = items[3].GetComponent<CoinScript>();
+                coinItem.rarity = assignedRarity;
+                GameObject child3 = coinItem.transform.GetChild(0).gameObject;
+                SpriteRenderer renderer3 = child3.GetComponent<SpriteRenderer>();
+                renderer3.color = assignedColor;
+                return items[3];
+
         }
 
         return null;

@@ -6,7 +6,7 @@ public class HealthItem : MonoBehaviour
 {
     public PlayerMgr playerMgr;
     public Entity entity;
-    private int healthRestore;
+    private float healthRestore;
     public ItemRarity rarity;
     private Vector3 initPos;
     private float amp = .5f;
@@ -26,11 +26,8 @@ public class HealthItem : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(active == true)
-        {
             transform.position = new Vector3(initPos.x, Mathf.Sin(Time.time * freq) * amp + initPos.y, initPos.z);
             // Translate object up and down on y axis
-        }
     }
 
    
@@ -42,9 +39,9 @@ public class HealthItem : MonoBehaviour
         active = true;
     }
 
-    void OnCollisionEnter(Collision collision)
+    void OnTriggerEnter(Collider collision)
     {
-        if(collision.gameObject.name == "Player")
+        if(collision.gameObject.tag == "Player")
         {
             switch (rarity)
             {
@@ -67,8 +64,8 @@ public class HealthItem : MonoBehaviour
 
             entity.maxHealth = entity.maxHealth + healthRestore;
             entity.health = entity.health + healthRestore;
-            gameObject.SetActive(false);
-            child.SetActive(false);
+            Destroy(gameObject);
+            //child.SetActive(false);
         }
     }
 }

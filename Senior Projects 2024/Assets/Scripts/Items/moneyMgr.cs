@@ -10,12 +10,22 @@ public class moneyMgr : MonoBehaviour
 {
 
     public int currency;
-    public TextMeshProUGUI moneyText;
+    //public TextMeshProUGUI moneyText;
+    public static moneyMgr inst;
     // Start is called before the first frame update
     void Awake()
     {
-        DontDestroyOnLoad(this.gameObject);
-        moneyText.text = "Tokens: " + currency;
+        void Awake()
+        {
+            if (inst == null)
+            {
+                inst = this;
+                DontDestroyOnLoad(this.gameObject);
+            }
+            else
+                Destroy(this);
+        }
+        //moneyText.text = "Tokens: " + currency;
     }
 
     // Update is called once per frame
@@ -27,6 +37,6 @@ public class moneyMgr : MonoBehaviour
     public void UpdateMoney(int newMoney)
     {
         currency = currency + newMoney;
-        moneyText.text = "Tokens: " + currency;
+        //moneyText.text = "Tokens: " + currency;
     }
 }

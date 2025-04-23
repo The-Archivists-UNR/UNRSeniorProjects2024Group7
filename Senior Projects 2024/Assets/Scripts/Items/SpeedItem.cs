@@ -9,7 +9,7 @@ public class SpeedItem : MonoBehaviour
 {
     public PlayerMgr playerMgr;
     public Entity entity;
-    private int speedIncrease;
+    private float speedIncrease;
     public ItemRarity rarity;
     private bool active = true;
     private GameObject child;
@@ -28,11 +28,8 @@ public class SpeedItem : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(active == true)
-        {
             transform.position = new Vector3(initPos.x, Mathf.Sin(Time.time * freq) * amp + initPos.y, initPos.z);
             // Translate object up and down on y axis
-        }
     }
 
     public void ItemAppear()
@@ -42,7 +39,7 @@ public class SpeedItem : MonoBehaviour
         active = true;
     }
 
-     void OnCollisionEnter(Collision collision)
+    void OnTriggerEnter(Collider collision)
     {
         if(collision.gameObject.tag == "Player")
         {
@@ -66,8 +63,7 @@ public class SpeedItem : MonoBehaviour
             }
 
             playerMgr.baseSpeed = playerMgr.baseSpeed + speedIncrease;
-            gameObject.SetActive(false);
-            child.SetActive(false);
+            Destroy(gameObject);
         }
     }
 }

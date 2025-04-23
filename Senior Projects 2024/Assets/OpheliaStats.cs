@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+//Author: Fenn Edmonds
+
 public class OpheliaStats : MonoBehaviour
 {
 
@@ -10,8 +13,8 @@ public class OpheliaStats : MonoBehaviour
     float savedHealthStat;
 
     public float ogHP = 100;
-    public float ogSpeed = 1;
-    public float ogDamage = 20;
+    public float ogSpeed = 15;
+    public float ogDamage = 15;
 
     public float HpPercent = 1 ;
     public float SpeedPercent = 1;
@@ -34,5 +37,14 @@ public class OpheliaStats : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void AppplyStats(Entity player, Weapon weapon)
+    {
+        player.maxHealth = ogHP * HpPercent;
+        player.health = player.maxHealth;
+        player.speed = ogSpeed * SpeedPercent;
+        weapon.baseDamage = ogDamage * AttackPercent;
+
     }
 }
