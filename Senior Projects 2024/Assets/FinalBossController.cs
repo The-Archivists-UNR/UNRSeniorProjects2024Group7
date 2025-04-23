@@ -4,20 +4,62 @@ using UnityEngine;
 
 public class FinalBossController : MonoBehaviour
 {
+    public static FinalBossController inst;
+
     public List<GameObject> spawns;
     public List<GameObject> enemyPrefabs;
     public List<GameObject> enemies;
-    
+    public int currentWave = 0;
+    public int numWaves;
+    public int numEnemies;
+    public List<int> crystalWaves;
+    public List<Crystal> crystalObjects;
+
+    bool crystalSet;
+
+    private void Awake()
+    {
+        inst = this;
+    }
+
     // Start is called before the first frame update
     void Start()
     {
-        SpawnWave(1, 4);
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (currentWave < numWaves && enemies.Count == 0)
+        {
+            if(!crystalWaves.Contains(currentWave))
+            {
+                currentWave++;
+                SpawnWave(1, 4);
+            }
+            else
+            {
+                if (!crystalSet)
+                {
+                    int index = crystalWaves.IndexOf(currentWave);
+                    crystalObjects[index].MakeHitable();
+                    crystalSet = true;
+                }
+            }
+        }
+
+        for (int i = enemies.Count - 1; i > -1; i--)
+        {
+            if (enemies[i] == null)
+                enemies.RemoveAt(i);
+        }
+    }
+
+    public void IncreaseWaveFromCrystal()
+    {
+        currentWave++;
+        crystalSet = false;
     }
 
     public void SpawnWave(int minEnemies, int maxEnemies)

@@ -24,7 +24,8 @@ public class PlayerMgr : MonoBehaviour
     void Awake()
     {
         inst = this;
-        //    speed = baseSpeed;
+        speed = baseSpeed;
+        player.speed = speed;
     }
 
     // Update is called once per frame
