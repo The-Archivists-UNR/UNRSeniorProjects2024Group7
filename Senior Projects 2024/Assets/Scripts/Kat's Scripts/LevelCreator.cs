@@ -89,10 +89,19 @@ public class LevelCreator : MonoBehaviour
         };
 
         Vector2[] uvs = new Vector2[vertices.Length];
-        for (int i = 0; i < uvs.Length; i++)
-        {
-            uvs[i] = new Vector2(vertices[i].x, vertices[i].y);
-        }
+
+        float roomWidth = topRightCorner.x - bottomLeftCorner.x;
+        float roomDepth = topRightCorner.y - bottomLeftCorner.y;
+        float textureScale = 0.1f;
+
+        uvs[0] = new Vector2(0f, roomDepth * textureScale);       // Top Left
+        uvs[1] = new Vector2(roomWidth * textureScale, roomDepth * textureScale);    // Top Right
+        uvs[2] = new Vector2(0f, 0f);                            // Bottom Left
+        uvs[3] = new Vector2(roomWidth * textureScale, 0f);     // Bottom Right
+        //for (int i = 0; i < uvs.Length; i++)
+        //{
+        //    uvs[i] = new Vector2(vertices[i].x, vertices[i].y);
+        //}
 
         int[] triangles = new int[]
         {
@@ -107,6 +116,7 @@ public class LevelCreator : MonoBehaviour
         mesh.vertices = vertices;
         mesh.uv = uvs;
         mesh.triangles = triangles;
+        mesh.RecalculateNormals();
 
         GameObject levelFloor = new GameObject("Mesh" + bottomLeftCorner, typeof(MeshFilter), typeof(MeshRenderer));
 
@@ -116,8 +126,9 @@ public class LevelCreator : MonoBehaviour
         levelFloor.GetComponent<MeshRenderer>().material = material;
         levelFloor.transform.parent = roomParent.transform;
         BoxCollider collider = levelFloor.AddComponent<BoxCollider>();
-        collider.size = new Vector3(collider.size.x, 0.1f, collider.size.z);
-
+        //collider.size = new Vector3(collider.size.x, 0.1f, collider.size.z);
+        collider.size = new Vector3(roomWidth, 0.1f, roomDepth);
+        collider.center = new Vector3(bottomLeftCorner.x + roomWidth / 2f, -0.05f, bottomLeftCorner.y + roomDepth / 2f);
 
         CreateWall(bottomLeftVertex, bottomRightVertex, horizontalWall, true, roomParent.transform); //southmost wall
 
