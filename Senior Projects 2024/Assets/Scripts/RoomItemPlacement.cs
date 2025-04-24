@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class RoomItemPlacement : MonoBehaviour
 {
-    public GameObject prefab; // The prefab to place
+    public List<GameObject> prefabs; // The prefab to place
     public int numberOfPrefabs; // Number of prefabs to place
     public Vector3 roomPosition; // Bottom-left corner of the room
     public Vector3 roomSize; // Width, height, and depth of the room
@@ -43,8 +43,11 @@ public class RoomItemPlacement : MonoBehaviour
             } while (!validPosition);
 
             // Instantiate the prefab at the chosen position
-            GameObject newPrefab = Instantiate(prefab, newPosition, Quaternion.identity);
-            newPrefab.transform.eulerAngles = new Vector3 (newPrefab.transform.eulerAngles.x, Random.Range(0,360), newPrefab.transform.eulerAngles.z);
+            GameObject newPrefab = Instantiate(prefabs[Random.Range(0, prefabs.Count)], newPosition, Quaternion.identity);
+
+            List<float> angles = new List<float>{ 0, 90, 180, 270 };
+            float chosenAngle = angles[Random.Range(0,4)];
+            newPrefab.transform.eulerAngles = new Vector3 (newPrefab.transform.eulerAngles.x, chosenAngle, newPrefab.transform.eulerAngles.z);
             newPrefab.transform.parent = decorationsParent;
             placedPositions.Add(newPosition);
         }

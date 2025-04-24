@@ -164,7 +164,8 @@ public class NewRoom : MonoBehaviour
                 enemiesDead = true;
                 if (itemVisible == true)
                 {
-                    itemHolder.SetActive(true);
+                    if(itemHolder != null)
+                        itemHolder.SetActive(true);
                     itemVisible = false;
                 }
                 //NewGameMgr.inst.loadNext = true;
