@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 //author: Kat
 //taking code from fenn's book switch 
@@ -6,6 +7,7 @@ public class OpenCollectibles : MonoBehaviour
     public GameObject Collectibles;
     public string interactKey = "e";
     private bool playerInCollider = false;
+    public TextMeshProUGUI interactText;
 
     // Pauses the time for when you're in a menu
     public void pauseTime()
@@ -25,6 +27,7 @@ public class OpenCollectibles : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            interactText.text = "[E] Open Collectables";
             playerInCollider = true;
             print("entered collectibles");
         }
@@ -34,6 +37,7 @@ public class OpenCollectibles : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            interactText.text = "";
             playerInCollider = false;
             if (Collectibles != null)
             {
@@ -51,12 +55,14 @@ public class OpenCollectibles : MonoBehaviour
             {
                 if (Collectibles != null)
                 {
+                    interactText.text = "";
                     Collectibles.SetActive(true);
                     print("Opened UI");
                     pauseTime();
                 }
                 else
                 {
+                    interactText.text = "";
                     print("What UI?");
                 }
             }
