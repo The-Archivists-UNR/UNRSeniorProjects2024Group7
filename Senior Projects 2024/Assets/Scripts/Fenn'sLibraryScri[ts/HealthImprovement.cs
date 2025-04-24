@@ -5,13 +5,14 @@ using UnityEngine;
 
 public class HealthImprovement : MonoBehaviour
 {
+    public static HealthImprovement inst;
+
     float[] healthArray = { 0, 0.05f, 0.1f, 0.15f, 0.2f, 0.25f };
     string[] healthTextArray = { "0%", "5%", "10%", "15%", "20%", "25%" };
     public int healthCounter;
 
     public TextMeshProUGUI healthText;
     public OpheliaStats oStats;
-    public HealthImprovement otherButton;
 
     public TextMeshProUGUI healthPricetext;
 
@@ -21,7 +22,7 @@ public class HealthImprovement : MonoBehaviour
     string[] stringPrices = {"50", "100", "150", "200", "250", "Maxed"};
     int[] prices = {50, 100, 150, 200, 250, 0};
 
-    int maxBuff = 0;
+    public int maxBuff = 0;
 
     bool firstMax = false;
     bool secondMax = false;
@@ -30,6 +31,11 @@ public class HealthImprovement : MonoBehaviour
     bool fifthMax = false;
 
     public CoinTextUpdator coinText;
+
+    private void Awake()
+    {
+        inst = this;
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -63,7 +69,6 @@ public class HealthImprovement : MonoBehaviour
         if (healthCounter < maxBuff)
         {
             healthCounter++;
-            otherButton.healthCounter++;
         }
     }
 
@@ -72,7 +77,6 @@ public class HealthImprovement : MonoBehaviour
         if (healthCounter > 0)
         {
             healthCounter--;
-            otherButton.healthCounter--;
         }
     }
 
@@ -86,7 +90,6 @@ public class HealthImprovement : MonoBehaviour
             healthPricetext.text = stringPrices[maxBuff];
             healthPrice = prices[maxBuff];
             firstMax = true;
-            otherButton.firstMax = true;
             coinText.UpdateMoneyText();
             // firstMax = true;
             print(firstMax);
@@ -100,7 +103,6 @@ public class HealthImprovement : MonoBehaviour
             healthPrice = prices[maxBuff];
             coinText.UpdateMoneyText();
             secondMax = true;
-            otherButton.secondMax = true;
         }
 
         if (mMgr.currency >= healthPrice && secondMax == true && thirdMax == false && healthCounter == 2)
@@ -111,7 +113,6 @@ public class HealthImprovement : MonoBehaviour
             healthPrice = prices[maxBuff];
             coinText.UpdateMoneyText();
             thirdMax = true;
-            otherButton.thirdMax = true;
         }
 
         if (mMgr.currency >= healthPrice && thirdMax == true && fourthMax == false && healthCounter == 3)
@@ -122,7 +123,6 @@ public class HealthImprovement : MonoBehaviour
             healthPrice = prices[maxBuff];
             coinText.UpdateMoneyText();
             fourthMax = true;
-            otherButton.fourthMax = true;
         }
     }
 }

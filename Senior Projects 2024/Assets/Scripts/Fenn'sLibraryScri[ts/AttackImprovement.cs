@@ -9,13 +9,14 @@ using UnityEngine.UI;
 
 public class AttackImprovement : MonoBehaviour
 {
+    public static AttackImprovement inst;
+    
     float[] attackArray = {0, 0.05f, 0.1f, 0.15f, 0.2f, 0.25f};
     string[] attackTextArray = { "0%", "5%", "10%", "15%", "20%", "25%" };
     public int attackCounter;
 
     public TextMeshProUGUI attackText;
     public OpheliaStats oStats;
-    public AttackImprovement otherButton;
 
     public TextMeshProUGUI attackPricetext;
 
@@ -25,7 +26,7 @@ public class AttackImprovement : MonoBehaviour
     string[] stringPrices = {"50", "100", "150", "200", "250", "Maxed"};
     int[] prices = {50, 100, 150, 200, 250, 0};
 
-    int maxBuff = 0;
+    public int maxBuff = 0;
 
     bool firstMax = false;
     bool secondMax = false;
@@ -34,6 +35,11 @@ public class AttackImprovement : MonoBehaviour
     bool fifthMax = false;
 
     public CoinTextUpdator coinText;
+
+    private void Awake()
+    {
+        inst = this;
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -72,7 +78,6 @@ public class AttackImprovement : MonoBehaviour
         if (attackCounter < maxBuff)
         {
             attackCounter++;
-            otherButton.attackCounter++;
         }
     }
 
@@ -86,7 +91,6 @@ public class AttackImprovement : MonoBehaviour
             attackPricetext.text = stringPrices[maxBuff];
             attackPrice = prices[maxBuff];
             firstMax = true;
-            otherButton.firstMax = true;
             coinText.UpdateMoneyText();
             // firstMax = true;
             print(firstMax);
@@ -100,7 +104,6 @@ public class AttackImprovement : MonoBehaviour
             attackPrice = prices[maxBuff];
             coinText.UpdateMoneyText();
             secondMax = true;
-            otherButton.secondMax = true;
         }
 
         if (mMgr.currency >= attackPrice && secondMax == true && thirdMax == false && attackCounter == 2)
@@ -111,7 +114,6 @@ public class AttackImprovement : MonoBehaviour
             attackPrice = prices[maxBuff];
             coinText.UpdateMoneyText();
             thirdMax = true;
-            otherButton.thirdMax = true;
         }
 
         if (mMgr.currency >= attackPrice && thirdMax == true && fourthMax == false && attackCounter == 3)
@@ -122,7 +124,6 @@ public class AttackImprovement : MonoBehaviour
             attackPrice = prices[maxBuff];
             coinText.UpdateMoneyText();
             fourthMax = true;
-            otherButton.fourthMax = true;
         }
     }
 
@@ -131,7 +132,6 @@ public class AttackImprovement : MonoBehaviour
         if (attackCounter > 0)
         {
             attackCounter--;
-            otherButton.attackCounter--;
         }
     }
 }

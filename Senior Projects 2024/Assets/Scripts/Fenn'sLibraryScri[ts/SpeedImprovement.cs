@@ -5,13 +5,14 @@ using UnityEngine;
 
 public class SpeedImprovement : MonoBehaviour
 {
+    public static SpeedImprovement inst;
+    
     float[] speedArray = { 0, 0.05f, 0.1f, 0.15f, 0.2f, 0.25f };
     string[] speedTextArray = { "0%", "5%", "10%", "15%", "20%", "25%" };
     public int speedCounter;
 
     public TextMeshProUGUI speedText;
     public OpheliaStats oStats;
-    public SpeedImprovement otherButton;
 
     public TextMeshProUGUI speedPricetext;
 
@@ -21,7 +22,7 @@ public class SpeedImprovement : MonoBehaviour
     string[] stringPrices = {"50", "100", "150", "200", "250", "Maxed"};
     int[] prices = {50, 100, 150, 200, 250, 0};
 
-    int maxBuff = 0;
+    public int maxBuff = 0;
 
     bool firstMax = false;
     bool secondMax = false;
@@ -30,6 +31,11 @@ public class SpeedImprovement : MonoBehaviour
     bool fifthMax = false;
 
     public CoinTextUpdator coinText;
+
+    private void Awake()
+    {
+        inst = this;
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -63,7 +69,6 @@ public class SpeedImprovement : MonoBehaviour
         if (speedCounter < maxBuff)
         {
             speedCounter++;
-            otherButton.speedCounter++;
         }
     }
 
@@ -72,7 +77,6 @@ public class SpeedImprovement : MonoBehaviour
         if (speedCounter > 0)
         {
             speedCounter--;
-            otherButton.speedCounter--;
         }
     }
 
@@ -86,7 +90,6 @@ public class SpeedImprovement : MonoBehaviour
             speedPricetext.text = stringPrices[maxBuff];
             speedPrice = prices[maxBuff];
             firstMax = true;
-            otherButton.firstMax = true;
             coinText.UpdateMoneyText();
             // firstMax = true;
             print(firstMax);
@@ -100,7 +103,6 @@ public class SpeedImprovement : MonoBehaviour
             speedPrice = prices[maxBuff];
             coinText.UpdateMoneyText();
             secondMax = true;
-            otherButton.secondMax = true;
         }
 
         if (mMgr.currency >= speedPrice && secondMax == true && thirdMax == false && speedCounter == 2)
@@ -111,7 +113,6 @@ public class SpeedImprovement : MonoBehaviour
             speedPrice = prices[maxBuff];
             coinText.UpdateMoneyText();
             thirdMax = true;
-            otherButton.thirdMax = true;
         }
 
         if (mMgr.currency >= speedPrice && thirdMax == true && fourthMax == false && speedCounter == 3)
@@ -122,7 +123,6 @@ public class SpeedImprovement : MonoBehaviour
             speedPrice = prices[maxBuff];
             coinText.UpdateMoneyText();
             fourthMax = true;
-            otherButton.fourthMax = true;
         }
     }
 }
