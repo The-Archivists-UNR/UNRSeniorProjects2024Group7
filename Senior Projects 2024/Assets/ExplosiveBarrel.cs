@@ -7,6 +7,8 @@ public class ExplosiveBarrel : Entity
 {
     public GameObject explosion;
     public Renderer meshRenderer;
+    public float radius;
+    public float damage;
     // Start is called before the first frame update
     void Start()
     {
@@ -38,19 +40,31 @@ public class ExplosiveBarrel : Entity
         VisualEffect vfx = vfxObject.GetComponent<VisualEffect>();
         meshRenderer.enabled = false;
 
+
         if (vfx != null)
         {
             vfx.Play();
 
-            if (vfx != null)
-            {
-                vfx.Play();
-
-                float estimatedLifetime = 2f; 
-                yield return new WaitForSeconds(estimatedLifetime);
-            }
-
-            Destroy(vfxObject);
+            float estimatedLifetime = 2f; 
+            yield return new WaitForSeconds(estimatedLifetime);
         }
+
+        GameObject player = GameObject.FindWithTag("Player");
+        List<GameObject> enemies = new List<GameObject>(GameObject.FindGameObjectsWithTag("Enemy"));
+        enemies.Add(player);
+        if(enemies.Contains(this.gameObject))
+        {
+            enemies.Remove(this.gameObject);
+        }
+
+        foreach(GameObject enemy in enemies)
+        {
+            if (Vector3.Distance(enemy.transform.position, vfx.transform.position) < radius)
+                enemy.GetComponent<Entity>().TakeDamage(damage);
+        }
+
+        Destroy(vfxObject);
+        //GetComponent<BoxCollider>().enabled = false;
+        this.gameObject.SetActive(false);
     }
 }
