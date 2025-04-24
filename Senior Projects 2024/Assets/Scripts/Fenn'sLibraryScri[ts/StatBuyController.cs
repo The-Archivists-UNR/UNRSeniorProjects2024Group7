@@ -1,23 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Net.Sockets;
-using TMPro;
 using UnityEngine;
-using UnityEngine.AI;
-using UnityEngine.SceneManagement;
+using TMPro;
 
-
-//Author: Fenn Edmonods
-public class InteractTextLibrary : MonoBehaviour
+//Author: Fenn Edmonds
+public class StatBuyController : MonoBehaviour
 {
-
+    public PanelMover panelMover;
     public GameObject interactableText;
     public TextMeshProUGUI interactText;
-    int sceneHolder;
-
     public int interactableType;
 
-    public SceneSwitch sceneMgr;
     public string playerTag = "Player";
     public string interactKey = "e";
     private bool playerInRange = false;
@@ -26,14 +19,13 @@ public class InteractTextLibrary : MonoBehaviour
     {
         if (other.CompareTag(playerTag))
         {
-            variableUpdate();
+            interactText.text = "[E] Increase Stats";
             playerInRange = true;
             playerTransform = other.transform;
         }
     }
     public void OnTriggerExit(Collider other)
     {
-        variableUpdate();
         if (other.CompareTag(playerTag))
         {
             interactText.text = "";
@@ -47,29 +39,8 @@ public class InteractTextLibrary : MonoBehaviour
     {
         if (playerInRange && Input.GetKeyDown(interactKey))
         {
-            sceneMgr.currentScene = sceneHolder;
-            sceneMgr.LoadScene();
-        }
-    }
-
-    public void variableUpdate()
-    {
-        switch(interactableType)
-        {
-            case 0:
-                interactText.text = "[E] Write Reports (Minigame)";
-                sceneHolder = 9;
-            break;
-
-            case 1:
-                interactText.text = "[E] Fish (Minigame)";
-                sceneHolder = 8;
-            break;
-
-            case 2:
-                interactText.text = "[E] Stamp Books (Minigame)";
-                sceneHolder = 10;
-            break;
+            interactText.text = "";
+            panelMover.isVisible = true;
         }
     }
 }

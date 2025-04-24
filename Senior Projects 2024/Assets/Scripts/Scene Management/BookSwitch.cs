@@ -2,10 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using TMPro;
 
 //Author: Fenn
 public class BookSwitch : MonoBehaviour
 {
+
+    public GameObject interactableText;
+    public TextMeshProUGUI interactText;
+    public string displayedPhrase;
     private bool playerIsNear = false; //This just checks for if the player is close to activate the trigger
     public int sceneChosen;
 
@@ -39,11 +44,10 @@ public class BookSwitch : MonoBehaviour
         if (!playerIsNear)
         {
             
-            print("Here2");
+            
             return;
         }
 
-        print("Here");
         if (SaveMgr.inst != null)
             SaveMgr.inst.SaveData();
         sceneSwitch.currentScene = sceneChosen;
@@ -56,6 +60,7 @@ public class BookSwitch : MonoBehaviour
     {
         if (otherColldier.tag == "Player")
         {
+            interactText.text = displayedPhrase;
             playerIsNear = true;
         }
     }
@@ -66,6 +71,7 @@ public class BookSwitch : MonoBehaviour
     {
         if (otherColldier.tag == "Player")
         {
+            interactText.text = "";
             playerIsNear = false;
         }
     }

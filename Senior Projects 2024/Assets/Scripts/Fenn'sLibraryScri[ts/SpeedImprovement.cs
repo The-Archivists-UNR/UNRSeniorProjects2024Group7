@@ -13,6 +13,24 @@ public class SpeedImprovement : MonoBehaviour
     public OpheliaStats oStats;
     public SpeedImprovement otherButton;
 
+    public TextMeshProUGUI speedPricetext;
+
+    public moneyMgr mMgr;
+
+    int speedPrice = 50;
+    string[] stringPrices = {"50", "100", "150", "200", "250", "Maxed"};
+    int[] prices = {50, 100, 150, 200, 250, 0};
+
+    int maxBuff = 0;
+
+    bool firstMax = false;
+    bool secondMax = false;
+    bool thirdMax = false;
+    bool fourthMax = false;
+    bool fifthMax = false;
+
+    public CoinTextUpdator coinText;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -42,7 +60,7 @@ public class SpeedImprovement : MonoBehaviour
 
     public void Increase()
     {
-        if (speedCounter < 5)
+        if (speedCounter < maxBuff)
         {
             speedCounter++;
             otherButton.speedCounter++;
@@ -55,6 +73,56 @@ public class SpeedImprovement : MonoBehaviour
         {
             speedCounter--;
             otherButton.speedCounter--;
+        }
+    }
+
+    public void CheckMax()
+    {
+        if (mMgr.currency >= speedPrice && firstMax == false && speedCounter == 0)
+        {
+            print("I have increased");
+            mMgr.currency = mMgr.currency - speedPrice;
+            maxBuff++;
+            speedPricetext.text = stringPrices[maxBuff];
+            speedPrice = prices[maxBuff];
+            firstMax = true;
+            otherButton.firstMax = true;
+            coinText.UpdateMoneyText();
+            // firstMax = true;
+            print(firstMax);
+        }
+
+        if (mMgr.currency >= speedPrice && firstMax == true && secondMax == false && speedCounter == 1)
+        {
+            mMgr.currency = mMgr.currency - speedPrice;
+            maxBuff++;
+            speedPricetext.text = stringPrices[maxBuff];
+            speedPrice = prices[maxBuff];
+            coinText.UpdateMoneyText();
+            secondMax = true;
+            otherButton.secondMax = true;
+        }
+
+        if (mMgr.currency >= speedPrice && secondMax == true && thirdMax == false && speedCounter == 2)
+        {
+            mMgr.currency = mMgr.currency - speedPrice;
+            maxBuff++;
+            speedPricetext.text = stringPrices[maxBuff];
+            speedPrice = prices[maxBuff];
+            coinText.UpdateMoneyText();
+            thirdMax = true;
+            otherButton.thirdMax = true;
+        }
+
+        if (mMgr.currency >= speedPrice && thirdMax == true && fourthMax == false && speedCounter == 3)
+        {
+            mMgr.currency = mMgr.currency - speedPrice;
+            maxBuff++;
+            speedPricetext.text = stringPrices[maxBuff];
+            speedPrice = prices[maxBuff];
+            coinText.UpdateMoneyText();
+            fourthMax = true;
+            otherButton.fourthMax = true;
         }
     }
 }

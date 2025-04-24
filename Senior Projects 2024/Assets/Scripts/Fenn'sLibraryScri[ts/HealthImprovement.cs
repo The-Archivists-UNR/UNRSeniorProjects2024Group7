@@ -13,6 +13,24 @@ public class HealthImprovement : MonoBehaviour
     public OpheliaStats oStats;
     public HealthImprovement otherButton;
 
+    public TextMeshProUGUI healthPricetext;
+
+    public moneyMgr mMgr;
+
+    int healthPrice = 50;
+    string[] stringPrices = {"50", "100", "150", "200", "250", "Maxed"};
+    int[] prices = {50, 100, 150, 200, 250, 0};
+
+    int maxBuff = 0;
+
+    bool firstMax = false;
+    bool secondMax = false;
+    bool thirdMax = false;
+    bool fourthMax = false;
+    bool fifthMax = false;
+
+    public CoinTextUpdator coinText;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -42,7 +60,7 @@ public class HealthImprovement : MonoBehaviour
 
     public void Increase()
     {
-        if (healthCounter < 5)
+        if (healthCounter < maxBuff)
         {
             healthCounter++;
             otherButton.healthCounter++;
@@ -55,6 +73,56 @@ public class HealthImprovement : MonoBehaviour
         {
             healthCounter--;
             otherButton.healthCounter--;
+        }
+    }
+
+    public void CheckMax()
+    {
+        if (mMgr.currency >= healthPrice && firstMax == false && healthCounter == 0)
+        {
+            print("I have increased");
+            mMgr.currency = mMgr.currency - healthPrice;
+            maxBuff++;
+            healthPricetext.text = stringPrices[maxBuff];
+            healthPrice = prices[maxBuff];
+            firstMax = true;
+            otherButton.firstMax = true;
+            coinText.UpdateMoneyText();
+            // firstMax = true;
+            print(firstMax);
+        }
+
+        if (mMgr.currency >= healthPrice && firstMax == true && secondMax == false && healthCounter == 1)
+        {
+            mMgr.currency = mMgr.currency - healthPrice;
+            maxBuff++;
+            healthPricetext.text = stringPrices[maxBuff];
+            healthPrice = prices[maxBuff];
+            coinText.UpdateMoneyText();
+            secondMax = true;
+            otherButton.secondMax = true;
+        }
+
+        if (mMgr.currency >= healthPrice && secondMax == true && thirdMax == false && healthCounter == 2)
+        {
+            mMgr.currency = mMgr.currency - healthPrice;
+            maxBuff++;
+            healthPricetext.text = stringPrices[maxBuff];
+            healthPrice = prices[maxBuff];
+            coinText.UpdateMoneyText();
+            thirdMax = true;
+            otherButton.thirdMax = true;
+        }
+
+        if (mMgr.currency >= healthPrice && thirdMax == true && fourthMax == false && healthCounter == 3)
+        {
+            mMgr.currency = mMgr.currency - healthPrice;
+            maxBuff++;
+            healthPricetext.text = stringPrices[maxBuff];
+            healthPrice = prices[maxBuff];
+            coinText.UpdateMoneyText();
+            fourthMax = true;
+            otherButton.fourthMax = true;
         }
     }
 }
