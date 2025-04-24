@@ -87,7 +87,7 @@ public class TimellineController : MonoBehaviour
         {
             GameObject child = playableDirectorMinigames.transform.GetChild(0).gameObject;
             child.SetActive(true);
-            playableDirectorNPC.Play();
+            playableDirectorMinigames.Play();
             sceneFour = false;
             sceneFive = true;
         }
@@ -128,7 +128,7 @@ public class TimellineController : MonoBehaviour
 
         if (playableDirectorEnd.state == PlayState.Paused == true && sceneNine == true)
         {
-            sceneSwitch.currentScene = 2;
+            sceneSwitch.currentScene = 1;
             sceneSwitch.LoadScene();
         }
 
