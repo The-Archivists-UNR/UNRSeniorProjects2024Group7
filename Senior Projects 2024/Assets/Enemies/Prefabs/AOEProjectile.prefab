@@ -64,7 +64,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: d1ba8d7da8fe69e4086e851588d3e6cb, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -151,4 +151,6 @@ MonoBehaviour:
   acceleration: 0
   lifetime: 6
   baseDamage: 5
-  debugSphere: {fileID: 3581881726750862898, guid: e62dd3761e31e6c4fa6194549965e068, type: 3}
+  damageTag: 
+  player: {fileID: 0}
+  debugSphere: {fileID: 2873640494991948751, guid: e6155aee079d4b74cba6b392f50de9e1, type: 3}
