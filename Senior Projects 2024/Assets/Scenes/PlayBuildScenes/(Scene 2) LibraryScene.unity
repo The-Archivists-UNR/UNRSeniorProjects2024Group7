@@ -4026,7 +4026,6 @@ GameObject:
   - component: {fileID: 163446213}
   - component: {fileID: 163446212}
   - component: {fileID: 163446211}
-  - component: {fileID: 163446210}
   m_Layer: 5
   m_Name: Button (1)
   m_TagString: Untagged
@@ -4053,25 +4052,6 @@ RectTransform:
   m_AnchoredPosition: {x: -106.5, y: -37.32518}
   m_SizeDelta: {x: 41.3796, y: 31.4503}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &163446210
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 163446208}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7bec977145ec9ee4ba2e3876c0dfcf6f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  healthCounter: 0
-  healthText: {fileID: 2107966036}
-  oStats: {fileID: 1737859673}
-  otherButton: {fileID: 1730005383}
-  healthPricetext: {fileID: 1777082978}
-  mMgr: {fileID: 101465288}
-  coinText: {fileID: 978308977}
 --- !u!114 &163446211
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4116,7 +4096,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 163446210}
+      - m_Target: {fileID: 1884092556}
         m_TargetAssemblyTypeName: HealthImprovement, Assembly-CSharp
         m_MethodName: Decrease
         m_Mode: 1
@@ -4128,7 +4108,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 163446210}
+      - m_Target: {fileID: 1884092556}
         m_TargetAssemblyTypeName: HealthImprovement, Assembly-CSharp
         m_MethodName: UpdateHealth
         m_Mode: 1
@@ -5882,7 +5862,6 @@ GameObject:
   - component: {fileID: 218924843}
   - component: {fileID: 218924842}
   - component: {fileID: 218924841}
-  - component: {fileID: 218924840}
   m_Layer: 5
   m_Name: Button (1)
   m_TagString: Untagged
@@ -5909,25 +5888,6 @@ RectTransform:
   m_AnchoredPosition: {x: -126.10004, y: -88.72519}
   m_SizeDelta: {x: 41.3796, y: 31.4503}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &218924840
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 218924838}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 83ab635de40abe94db09fabb23594f97, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  attackCounter: 0
-  attackText: {fileID: 429347326}
-  oStats: {fileID: 1737859673}
-  otherButton: {fileID: 1184155341}
-  attackPricetext: {fileID: 224826612}
-  mMgr: {fileID: 101465288}
-  coinText: {fileID: 978308977}
 --- !u!114 &218924841
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5972,7 +5932,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 218924840}
+      - m_Target: {fileID: 219161800}
         m_TargetAssemblyTypeName: AttackImprovement, Assembly-CSharp
         m_MethodName: Decrease
         m_Mode: 1
@@ -5984,7 +5944,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 218924840}
+      - m_Target: {fileID: 219161800}
         m_TargetAssemblyTypeName: AttackImprovement, Assembly-CSharp
         m_MethodName: updateAttack
         m_Mode: 1
@@ -6034,6 +5994,56 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 218924838}
   m_CullTransparentMesh: 1
+--- !u!1 &219161798
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 219161799}
+  - component: {fileID: 219161800}
+  m_Layer: 0
+  m_Name: AttackImprovementMgr
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &219161799
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 219161798}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 444063016}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &219161800
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 219161798}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83ab635de40abe94db09fabb23594f97, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackCounter: 0
+  attackText: {fileID: 429347326}
+  oStats: {fileID: 1737859673}
+  attackPricetext: {fileID: 224826612}
+  mMgr: {fileID: 101465288}
+  coinText: {fileID: 978308977}
 --- !u!1001 &221548480
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11325,7 +11335,6 @@ GameObject:
   - component: {fileID: 408304256}
   - component: {fileID: 408304255}
   - component: {fileID: 408304254}
-  - component: {fileID: 408304253}
   m_Layer: 5
   m_Name: Button (1)
   m_TagString: Untagged
@@ -11352,25 +11361,6 @@ RectTransform:
   m_AnchoredPosition: {x: -106.5, y: -37.32518}
   m_SizeDelta: {x: 41.3796, y: 31.4503}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &408304253
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 408304251}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6b244168f6874484f8f96babdfe47fd4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speedCounter: 0
-  speedText: {fileID: 718419348}
-  oStats: {fileID: 1737859673}
-  otherButton: {fileID: 1656236136}
-  speedPricetext: {fileID: 873753514}
-  mMgr: {fileID: 101465288}
-  coinText: {fileID: 978308977}
 --- !u!114 &408304254
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11415,7 +11405,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 408304253}
+      - m_Target: {fileID: 1333843235}
         m_TargetAssemblyTypeName: SpeedImprovement, Assembly-CSharp
         m_MethodName: Decrease
         m_Mode: 1
@@ -11427,7 +11417,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 408304253}
+      - m_Target: {fileID: 1333843235}
         m_TargetAssemblyTypeName: SpeedImprovement, Assembly-CSharp
         m_MethodName: UpdateSpeed
         m_Mode: 1
@@ -12554,6 +12544,9 @@ Transform:
   - {fileID: 1176013184}
   - {fileID: 101465287}
   - {fileID: 1737859672}
+  - {fileID: 1884092555}
+  - {fileID: 219161799}
+  - {fileID: 1333843234}
   - {fileID: 1141376743}
   - {fileID: 775281251}
   m_Father: {fileID: 0}
@@ -34979,7 +34972,6 @@ GameObject:
   - component: {fileID: 1184155344}
   - component: {fileID: 1184155343}
   - component: {fileID: 1184155342}
-  - component: {fileID: 1184155341}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -34987,25 +34979,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1184155341
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1184155340}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 83ab635de40abe94db09fabb23594f97, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  attackCounter: 0
-  attackText: {fileID: 429347326}
-  oStats: {fileID: 1737859673}
-  otherButton: {fileID: 218924840}
-  attackPricetext: {fileID: 224826612}
-  mMgr: {fileID: 101465288}
-  coinText: {fileID: 978308977}
 --- !u!114 &1184155342
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -35050,7 +35023,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1184155341}
+      - m_Target: {fileID: 219161800}
         m_TargetAssemblyTypeName: AttackImprovement, Assembly-CSharp
         m_MethodName: CheckMax
         m_Mode: 1
@@ -35062,7 +35035,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1184155341}
+      - m_Target: {fileID: 219161800}
         m_TargetAssemblyTypeName: AttackImprovement, Assembly-CSharp
         m_MethodName: Increase
         m_Mode: 1
@@ -35074,7 +35047,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1184155341}
+      - m_Target: {fileID: 219161800}
         m_TargetAssemblyTypeName: AttackImprovement, Assembly-CSharp
         m_MethodName: updateAttack
         m_Mode: 1
@@ -39906,6 +39879,56 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: e9fbc6bde886f83429ac24356bbff961, type: 3}
   m_PrefabInstance: {fileID: 1333559073}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1333843233
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1333843234}
+  - component: {fileID: 1333843235}
+  m_Layer: 0
+  m_Name: SpeedImprovementMgr
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1333843234
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1333843233}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 444063016}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1333843235
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1333843233}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b244168f6874484f8f96babdfe47fd4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speedCounter: 0
+  speedText: {fileID: 718419348}
+  oStats: {fileID: 1737859673}
+  speedPricetext: {fileID: 873753514}
+  mMgr: {fileID: 101465288}
+  coinText: {fileID: 978308977}
 --- !u!1 &1347691252
 GameObject:
   m_ObjectHideFlags: 0
@@ -48859,7 +48882,6 @@ GameObject:
   - component: {fileID: 1656236139}
   - component: {fileID: 1656236138}
   - component: {fileID: 1656236137}
-  - component: {fileID: 1656236136}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -48867,25 +48889,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1656236136
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1656236135}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6b244168f6874484f8f96babdfe47fd4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speedCounter: 0
-  speedText: {fileID: 718419348}
-  oStats: {fileID: 1737859673}
-  otherButton: {fileID: 408304253}
-  speedPricetext: {fileID: 873753514}
-  mMgr: {fileID: 101465288}
-  coinText: {fileID: 978308977}
 --- !u!114 &1656236137
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -48930,7 +48933,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1656236136}
+      - m_Target: {fileID: 1333843235}
         m_TargetAssemblyTypeName: SpeedImprovement, Assembly-CSharp
         m_MethodName: CheckMax
         m_Mode: 1
@@ -48942,7 +48945,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1656236136}
+      - m_Target: {fileID: 1333843235}
         m_TargetAssemblyTypeName: SpeedImprovement, Assembly-CSharp
         m_MethodName: Increase
         m_Mode: 1
@@ -48954,7 +48957,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1656236136}
+      - m_Target: {fileID: 1333843235}
         m_TargetAssemblyTypeName: SpeedImprovement, Assembly-CSharp
         m_MethodName: UpdateSpeed
         m_Mode: 1
@@ -51392,7 +51395,6 @@ GameObject:
   - component: {fileID: 1730005386}
   - component: {fileID: 1730005385}
   - component: {fileID: 1730005384}
-  - component: {fileID: 1730005383}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -51400,25 +51402,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1730005383
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1730005382}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7bec977145ec9ee4ba2e3876c0dfcf6f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  healthCounter: 0
-  healthText: {fileID: 2107966036}
-  oStats: {fileID: 1737859673}
-  otherButton: {fileID: 163446210}
-  healthPricetext: {fileID: 1777082978}
-  mMgr: {fileID: 101465288}
-  coinText: {fileID: 978308977}
 --- !u!114 &1730005384
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -51463,7 +51446,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1730005383}
+      - m_Target: {fileID: 1884092556}
         m_TargetAssemblyTypeName: HealthImprovement, Assembly-CSharp
         m_MethodName: CheckMax
         m_Mode: 1
@@ -51475,9 +51458,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1730005383}
+      - m_Target: {fileID: 1884092556}
         m_TargetAssemblyTypeName: HealthImprovement, Assembly-CSharp
-        m_MethodName: Increase
+        m_MethodName: UpdateHealth
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -51487,9 +51470,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1730005383}
+      - m_Target: {fileID: 1884092556}
         m_TargetAssemblyTypeName: HealthImprovement, Assembly-CSharp
-        m_MethodName: UpdateHealth
+        m_MethodName: Increase
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -56668,6 +56651,56 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: e9fbc6bde886f83429ac24356bbff961, type: 3}
   m_PrefabInstance: {fileID: 1870144616}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1884092554
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1884092555}
+  - component: {fileID: 1884092556}
+  m_Layer: 0
+  m_Name: HealthImprovementMgr
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1884092555
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1884092554}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 444063016}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1884092556
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1884092554}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bec977145ec9ee4ba2e3876c0dfcf6f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthCounter: 0
+  healthText: {fileID: 2107966036}
+  oStats: {fileID: 1737859673}
+  healthPricetext: {fileID: 1777082978}
+  mMgr: {fileID: 101465288}
+  coinText: {fileID: 978308977}
 --- !u!1001 &1885088979
 PrefabInstance:
   m_ObjectHideFlags: 0
