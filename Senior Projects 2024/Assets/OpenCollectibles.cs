@@ -5,6 +5,7 @@ using UnityEngine;
 public class OpenCollectibles : MonoBehaviour
 {
     public GameObject Collectibles;
+    public PanelMover panel;
     public string interactKey = "e";
     private bool playerInCollider = false;
     public TextMeshProUGUI interactText;
@@ -41,8 +42,9 @@ public class OpenCollectibles : MonoBehaviour
             playerInCollider = false;
             if (Collectibles != null)
             {
-                Collectibles.SetActive(false);
-                print("Closed UI");
+                //Collectibles.SetActive(false);
+                panel.isVisible = false;
+                 print("Closed UI");
             }
             print("exited collectibles");
         }
@@ -51,12 +53,15 @@ public class OpenCollectibles : MonoBehaviour
     {
         if (other.CompareTag("Player") && playerInCollider)
         {
+            interactText.text = "[E] Open Collectables";
             if (Input.GetKeyDown(interactKey))
             {
+                panel.isVisible = true;
                 if (Collectibles != null)
                 {
                     interactText.text = "";
-                    Collectibles.SetActive(true);
+                    //Collectibles.SetActive(true);
+                    //panel.isVisible = true;
                     print("Opened UI");
                     pauseTime();
                 }

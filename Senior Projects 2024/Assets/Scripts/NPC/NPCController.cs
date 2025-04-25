@@ -133,6 +133,7 @@ public class NPCController : MonoBehaviour
                 kBuff.ChangeStats();
                 break;
             case ItemType.Sam:
+                print("statcalled2");
                 sBuff.ChangeStats();
                 break;
 
@@ -168,6 +169,25 @@ public class NPCController : MonoBehaviour
         {
             relationshipScore -= 1;
             AIText.text = "I'm not sure I understand.";
+            switch (currentNPC)
+            {
+               
+                case ItemType.Julie:
+                    print("statcalled");
+                    jBuff.NegStat();
+                    break;
+                case ItemType.Bonnie:
+                    bBuff.NegStat();
+                    break;
+                case ItemType.Kirk:
+                    kBuff.NegStat();
+                    break;
+                case ItemType.Sam:
+                    print("statcalled");
+                    sBuff.NegStat();
+                    break;
+
+            }
         }
         else
         {

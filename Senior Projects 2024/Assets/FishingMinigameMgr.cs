@@ -9,6 +9,7 @@ public class FishingMinigameMgr : MonoBehaviour
     bool playerReacted;
     bool playing;
     public GameObject menu;
+    public GameObject menu2;
     public OpheliaStats stats;
     // Start is called before the first frame update
     void Start()
@@ -31,6 +32,7 @@ public class FishingMinigameMgr : MonoBehaviour
     public void StartFishing()
     {
         menu.SetActive(false);
+        menu2.SetActive(false);
         StartCoroutine(FishingSequence());
     }
 
@@ -57,6 +59,7 @@ public class FishingMinigameMgr : MonoBehaviour
 
         biteWindowActive = false;
         menu.SetActive(true);
+        menu2.SetActive(true);
     }
 
     public IEnumerator TriggerNibble(Transform bobber, float duration = 0.5f, float intensity = 10.1f)
