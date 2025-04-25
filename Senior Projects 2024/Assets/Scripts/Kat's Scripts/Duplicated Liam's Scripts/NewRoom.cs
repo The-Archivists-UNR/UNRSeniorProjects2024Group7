@@ -22,6 +22,10 @@ public class NewRoom : MonoBehaviour
     public List<NewDoor> doors = new List<NewDoor>();
     public List<GameObject> enemies = new List<GameObject>();
     public bool overrideValues;
+    bool itemVisible = true;
+
+    // [HideInInspector]
+    public GameObject itemHolder;
 
     //initializes all the potential positions an enemy can spawn in
     void Start()
@@ -158,6 +162,12 @@ public class NewRoom : MonoBehaviour
             {
                 SetDoors(false);
                 enemiesDead = true;
+                if (itemVisible == true)
+                {
+                    if(itemHolder != null)
+                        itemHolder.SetActive(true);
+                    itemVisible = false;
+                }
                 //NewGameMgr.inst.loadNext = true;
             }
         }

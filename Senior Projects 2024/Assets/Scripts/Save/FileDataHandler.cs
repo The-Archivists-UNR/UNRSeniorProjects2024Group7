@@ -97,10 +97,25 @@ public class GameData
     public string playerName;
     public int enemiesKilled;
     public float timePlayed;
+
     public string ghostMemory;
     public string kidMemory;
     public string detectiveMemory;
     public List<string> ghostConvo;
     public List<string> kidConvo;
     public List<string> detectiveConvo;
+
+    public float ogHP;
+    public float ogSpeed;
+    public float ogDamage;
+    public float HpPercent;
+    public float SpeedPercent;
+    public float AttackPercent;
+
+    public int healthCounter;
+    public int healthMaxBuff;
+    public int attackCounter;
+    public int attackMaxBuff;
+    public int speedCounter;
+    public int speedMaxBuff;
 }

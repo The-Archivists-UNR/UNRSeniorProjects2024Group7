@@ -19,18 +19,19 @@ public class PlayerMgr : MonoBehaviour
     public List<Interactable> interactables;
 
     public TextMeshProUGUI interactText;
-    
-    // Start is called before the first frame update
+
+    //Start is called before the first frame update
     void Awake()
     {
         inst = this;
         speed = baseSpeed;
+        player.speed = speed;
     }
 
     // Update is called once per frame
     void Update()
     {
-        player.speed = speed;
+        //player.speed = speed;
     }
 
     public IEnumerator SlowDown(float multiplier, float timeSlowed)

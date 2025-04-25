@@ -46,7 +46,7 @@ public class Entity : MonoBehaviour
         }
     }
 
-    public void TakeDamage(float damage)
+    public virtual void TakeDamage(float damage)
     {
         health -= damage;
         health = Mathf.Min(health, maxHealth);
@@ -59,5 +59,29 @@ public class Entity : MonoBehaviour
         }
         //else
             //enemyAni.SetTrigger("damage"); 
+    }
+
+    public void PaperCrown(float avalue)
+    {
+        //this might need to be in combat
+    }
+
+    public void PocketWatch(float svalue)
+    {
+        svalue = 1;
+        speed += svalue;
+
+    }
+
+    public void LeadMan(float dvalue)
+    {
+        dvalue = 10;
+        //damage -= dvalue;
+    }
+
+    public void Crystal(float mhvalue)
+    {
+        mhvalue = 30;
+        maxHealth += mhvalue;
     }
 }
