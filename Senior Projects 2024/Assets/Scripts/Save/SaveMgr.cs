@@ -108,6 +108,13 @@ public class SaveMgr : MonoBehaviour
             gameData.currency = moneyMgr.inst.currency;
         }
 
+        if(LibraryLock.inst != null)
+        {
+            gameData.isFantasyCompleted = LibraryLock.inst.isFantasyCompleted;
+            gameData.isNoireCompleted = LibraryLock.inst.isNoireCompleted;
+            gameData.isScifiCompleted = LibraryLock.inst.isScifiCompleted;
+        }
+
         dataHandler.Save(gameData, saveName);
     }
 
@@ -183,6 +190,14 @@ public class SaveMgr : MonoBehaviour
             CollectableManagers.inst.previouslyActiveOswald = gameData.previouslyActiveOswald;
             CollectableManagers.inst.previouslyActiveJulie = gameData.previouslyActiveJulie;
         }
+
+        if (LibraryLock.inst != null)
+        {
+            LibraryLock.inst.isFantasyCompleted = gameData.isFantasyCompleted;
+            LibraryLock.inst.isNoireCompleted = gameData.isNoireCompleted;
+            LibraryLock.inst.isScifiCompleted = gameData.isScifiCompleted;
+        }
+
     }
 
     public void SetPlayerName(string name)

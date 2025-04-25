@@ -43,6 +43,6 @@ public class LibraryLock : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        checkValidity();
     }
 }

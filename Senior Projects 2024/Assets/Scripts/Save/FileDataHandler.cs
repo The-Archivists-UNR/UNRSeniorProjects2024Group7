@@ -126,4 +126,8 @@ public class GameData
     public bool previouslyActiveBonnie;
 
     public int currency;
+
+    public bool isFantasyCompleted;
+    public bool isNoireCompleted;
+    public bool isScifiCompleted;
 }
