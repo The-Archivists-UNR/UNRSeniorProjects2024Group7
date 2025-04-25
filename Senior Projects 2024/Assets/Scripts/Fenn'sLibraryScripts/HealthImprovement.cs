@@ -55,11 +55,11 @@ public class HealthImprovement : MonoBehaviour
         if (healthCounter > 0)
         {
             float healthBuff = 1 + healthArray[healthCounter];
-            oStats.HpPercent = healthBuff;
+            OpheliaStats.inst.HpPercent = healthBuff;
         }
         if (healthCounter == 0)
         {
-            oStats.HpPercent = 1;
+            OpheliaStats.inst.HpPercent = 1;
         }
         healthText.text = healthTextArray[healthCounter];
     }

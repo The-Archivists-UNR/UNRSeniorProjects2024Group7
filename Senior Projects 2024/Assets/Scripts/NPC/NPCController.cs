@@ -55,6 +55,8 @@ public class NPCController : MonoBehaviour
 
     private bool playerIsNear = false;
     private bool inConversation = false;
+
+    public TextMeshProUGUI interactText;
     //private int count;
     //private bool llmConvo = false;
 
@@ -70,8 +72,7 @@ public class NPCController : MonoBehaviour
     void Update()
     {
         if (!playerIsNear) { return; }
-        Mouse mouse = Mouse.current;
-        if (mouse.leftButton.wasPressedThisFrame)
+        if (Input.GetKeyDown(KeyCode.E))
         {
             StartDialogue();
         }
@@ -214,11 +215,14 @@ public class NPCController : MonoBehaviour
 
     private void OnTriggerEnter(Collider otherColldier)
     {
-        if (otherColldier.tag == "Player") { playerIsNear = true; }
+        if (otherColldier.tag == "Player") { 
+            playerIsNear = true;
+            interactText.text = "[E] Talk";
+        }
     }
     private void OnTriggerExit(Collider otherColldier)
     {
-        if (otherColldier.tag == "Player") { playerIsNear = false; }
+        if (otherColldier.tag == "Player") { playerIsNear = false; interactText.text = ""; }
     }
 
 

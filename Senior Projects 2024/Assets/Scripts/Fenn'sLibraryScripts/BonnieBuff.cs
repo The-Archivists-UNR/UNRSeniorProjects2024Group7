@@ -46,7 +46,7 @@ public class BonnieBuff : MonoBehaviour
 
     public void NegStat()
     {
-        oStats.ogSpeed -= 1;
+        OpheliaStats.inst.ogSpeed -= 1;
     }
 
     public void BonnieAdjuster(int relationLVL)
@@ -54,13 +54,13 @@ public class BonnieBuff : MonoBehaviour
         switch (relationLVL)
         {
             case 1:
-                oStats.ogSpeed += 1;
+                OpheliaStats.inst.ogSpeed += 1;
                 break;
             case 2:
-                oStats.ogSpeed += 2;
+                OpheliaStats.inst.ogSpeed += 2;
                 break;
             case 3:
-                oStats.ogSpeed += 3;
+                OpheliaStats.inst.ogSpeed += 3;
                 break;
         }
     }

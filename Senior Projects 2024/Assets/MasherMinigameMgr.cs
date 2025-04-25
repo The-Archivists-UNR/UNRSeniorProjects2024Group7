@@ -19,7 +19,7 @@ public class MasherMinigameMgr : MonoBehaviour
     public TextMeshProUGUI maxScoreText;
     public float distance;
 
-    public OpheliaStats stats;
+    //public OpheliaStats stats;
 
     // Start is called before the first frame update
     void Start()
@@ -57,7 +57,7 @@ public class MasherMinigameMgr : MonoBehaviour
         timer = 0;
         score = 0;
         scoreText.text = "Score: " + score;
-        stats.ogDamage += 1;
+        OpheliaStats.inst.ogDamage += 1;
     }
 
     public void UpdateDifficulty(int setting)

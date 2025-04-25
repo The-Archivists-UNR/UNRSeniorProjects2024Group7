@@ -61,11 +61,11 @@ public class AttackImprovement : MonoBehaviour
         if (attackCounter > 0)
         {
             float attackBuff = 1 + attackArray[attackCounter];
-            oStats.AttackPercent = attackBuff;
+            OpheliaStats.inst.AttackPercent = attackBuff;
         }
         if (attackCounter == 0)
         {
-            oStats.AttackPercent = 1;
+            OpheliaStats.inst.AttackPercent = 1;
         }
         attackText.text = attackTextArray[attackCounter];
         
