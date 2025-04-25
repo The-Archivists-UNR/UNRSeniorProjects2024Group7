@@ -10151,6 +10151,7 @@ MonoBehaviour:
   gameOver: {fileID: 9015093029685046196}
   gameWon: {fileID: 6756891752546800995}
   loadNext: 0
+  inLastRoom: 0
   bossDead: 0
 --- !u!1 &1422242996
 GameObject:
@@ -13634,6 +13635,7 @@ MonoBehaviour:
   player: {fileID: 1605608089}
   roomItemPlacement: {fileID: 1838468662}
   opheliaWeapon: {fileID: 2008478487}
+  sceneMusic: Noire
 --- !u!114 &1838468662
 MonoBehaviour:
   m_ObjectHideFlags: 0
