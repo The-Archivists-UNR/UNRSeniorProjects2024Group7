@@ -1,3 +1,5 @@
+//unity-gemini plugin, modifications by Lanielle
+
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Networking;
@@ -14,17 +16,25 @@ public class UnityAndGeminiKey
 public class Response
 {
     public Candidate[] candidates;
+    //line below added apr 24, 2025  -  remove if it breaks everything
+    public PromptFeedback promptFeedback;
 }
 
 public class ChatRequest
 {
     public Content[] contents;
+    //line below added apr 24, 2025  -  remove if it breaks everything
+    public List<SafetySetting> safetySettings;
 }
 
 [System.Serializable]
 public class Candidate
 {
     public Content content;
+    //new variables below
+    public string finishReason;
+    public int index;
+    public SafetyRating[] safetyRatings;
 }
 
 [System.Serializable]
@@ -34,10 +44,38 @@ public class Content
     public Part[] parts;
 }
 
+
 [System.Serializable]
 public class Part
 {
     public string text;
+}
+
+
+//created to facilitate use of safety settings
+[System.Serializable]
+public class SafetySetting
+{
+    public string category;
+    public string threshold;
+}
+
+//created to facilitate use of safety settings
+[System.Serializable]
+public class PromptFeedback
+{
+    public string blockReason;
+    public SafetyRating[] safetyRatings;
+}
+
+//created to facilitate use of safety settings
+[System.Serializable]
+public class SafetyRating
+{
+    public string category;
+    public string probability;
+    public string severity;
+    public bool blocked;//"bool?"?
 }
 
 
@@ -64,15 +102,22 @@ public class UnityAndGeminiV3: MonoBehaviour
         UnityAndGeminiKey jsonApiKey = JsonUtility.FromJson<UnityAndGeminiKey>(jsonApi.text);
         apiKey = jsonApiKey.key;   
         chatHistory = new Content[] { };
-        StartCoroutine( SendPromptRequestToGemini(prompt));        
+
+        var safetySettings = new List<SafetySetting> {
+            new SafetySetting { category = "HARM_CATEGORY_HARASSMENT", threshold = "BLOCK_MEDIUM_AND_ABOVE" },
+            new SafetySetting { category = "HARM_CATEGORY_HATE_SPEECH", threshold = "BLOCK_MEDIUM_AND_ABOVE" },
+            new SafetySetting { category = "HARM_CATEGORY_SEXUALLY_EXPLICIT", threshold = "BLOCK_LOW_AND_ABOVE" }, // Stricter example
+            new SafetySetting { category = "HARM_CATEGORY_DANGEROUS_CONTENT", threshold = "BLOCK_MEDIUM_AND_ABOVE" }
+        };
+
+        StartCoroutine( SendPromptRequestToGemini(prompt, safetySettings));        
     }
 
-    private IEnumerator SendPromptRequestToGemini(string promptText)
+    private IEnumerator SendPromptRequestToGemini(string promptText, List<SafetySetting> safetySettings)
     {
         string url = $"{apiEndpoint}?key={apiKey}";
-     
-        string jsonData = "{\"contents\": [{\"parts\": [{\"text\": \"{" + promptText + "}\"}]}]}";
-
+        string settings = JsonUtility.ToJson(safetySettings);
+        string jsonData = "{\"contents\": [{\"parts\": [{\"text\": \"{" + promptText + "}\"}]}], \"safetySettings\": "+settings+"}";
         byte[] jsonToSend = new System.Text.UTF8Encoding().GetBytes(jsonData);
 
         // Create a UnityWebRequest with the JSON data

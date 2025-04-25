@@ -76,7 +76,7 @@ public class PlayerController : MonoBehaviour
             
         if (input.x <= -.5)
         {
-            playerAni.SetBool("isBackward", true);
+            //playerAni.SetBool("isBackward", true);
             moveVector -= right * Time.deltaTime;
         }
 
@@ -88,14 +88,14 @@ public class PlayerController : MonoBehaviour
             
         if (input.y <= -.5)
         {
-            playerAni.SetBool("isBackward", true);
+            //playerAni.SetBool("isBackward", true);
             moveVector -= forward * Time.deltaTime;
         }
             
         if (input.y == 0 && input.x == 0)
         {
             playerAni.SetBool("isForward", false);
-            playerAni.SetBool("isBackward", false);
+            //playerAni.SetBool("isBackward", false);
         }
 
         // playerAni.SetBool("isrunning", true);

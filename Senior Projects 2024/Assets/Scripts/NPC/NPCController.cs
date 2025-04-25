@@ -81,8 +81,8 @@ public class NPCController : MonoBehaviour
             Debug.Log(transcript);
 
             //make a special function in llm dialogue for this case so it will not be remembered
-            LLM.getResponse("How pleasant is Ophelia in this transcript on a scale from 1 to 10? " +
-                    "Respond with only the number." + transcript, setRating);
+            //LLM.getResponse("How pleasant is Ophelia in this transcript on a scale from 1 to 10? " +
+            //        "Respond with only the number." + transcript, setRating);
             LLM.getResponse("please summarize the following transcript: \n" + transcript, setNPCMemory);
             inConversation = false;
         }
@@ -125,8 +125,8 @@ public class NPCController : MonoBehaviour
             recentTranscript.Add("Ophelia: " + message);
 
             LLM.getResponse(message, setAIText, AIReplyComplete);
-            //LLM.getResponse("How pleasant is this message on a scale from 1 to 10? " +
-            //    "Respond with only the number." + message, setRating);
+            LLM.getResponse("How pleasant is this message on a scale from 1 to 10? " +
+                "Respond with only the number." + message, setRating);
         }
     }
 

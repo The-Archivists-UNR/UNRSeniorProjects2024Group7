@@ -19,42 +19,49 @@ using TMPro;
 
 public class LLMInteraction : MonoBehaviour
 {
-    //[SerializeField] private string gasURL;
 
     [Header("JSON API Configuration")]
     public TextAsset jsonApi;
     private string apiKey = "";
-    private string apiEndpoint = "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent"; // Edit it and choose your prefer model
+    private string apiEndpoint = "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent"; 
 
     [Header("ChatBot Function")]
-    //public TMP_InputField inputField;
-    //public TMP_Text uiText;
     private Content[] chatHistory;
 
     void Start()
     {
-        Debug.Log("start function called");
         UnityAndGeminiKey jsonApiKey = JsonUtility.FromJson<UnityAndGeminiKey>(jsonApi.text);
         apiKey = jsonApiKey.key;
         chatHistory = new Content[] { };
-        StartCoroutine(SendPromptRequestToGemini(""));
-        //StartCoroutine(SendPromptRequestToGemini(prompt));
-        Debug.Log("start function concluded");
+
+        var safetySettings = new List<SafetySetting> {
+            new SafetySetting { category = "HARM_CATEGORY_HARASSMENT", threshold = "BLOCK_MEDIUM_AND_ABOVE" },
+            new SafetySetting { category = "HARM_CATEGORY_HATE_SPEECH", threshold = "BLOCK_MEDIUM_AND_ABOVE" },
+            new SafetySetting { category = "HARM_CATEGORY_SEXUALLY_EXPLICIT", threshold = "BLOCK_LOW_AND_ABOVE" },
+            new SafetySetting { category = "HARM_CATEGORY_DANGEROUS_CONTENT", threshold = "BLOCK_MEDIUM_AND_ABOVE" }
+        };
+
+        StartCoroutine(SendPromptRequestToGemini("", safetySettings));
     }
 
     public void getResponse(string message, Callback<string> handleOutput = null, EmptyCallback onComplete = null)
     {
-        Debug.Log("getResponse called");
-        _ = StartCoroutine(SendChatRequestToGemini(message, handleOutput, onComplete));
-        Debug.Log("getResponse concluded");
+        var safetySettings = new List<SafetySetting> {
+            new SafetySetting { category = "HARM_CATEGORY_HARASSMENT", threshold = "BLOCK_MEDIUM_AND_ABOVE" },
+            new SafetySetting { category = "HARM_CATEGORY_HATE_SPEECH", threshold = "BLOCK_MEDIUM_AND_ABOVE" },
+            new SafetySetting { category = "HARM_CATEGORY_SEXUALLY_EXPLICIT", threshold = "BLOCK_LOW_AND_ABOVE" }, 
+            new SafetySetting { category = "HARM_CATEGORY_DANGEROUS_CONTENT", threshold = "BLOCK_MEDIUM_AND_ABOVE" }
+        };
+        _ = StartCoroutine(SendChatRequestToGemini(message, safetySettings, handleOutput, onComplete));
     }
 
 
-    private IEnumerator SendPromptRequestToGemini(string promptText, Callback<string> handleOutput = null, EmptyCallback onComplete = null)
+    private IEnumerator SendPromptRequestToGemini(string promptText, List<SafetySetting> safetySettings, Callback<string> handleOutput = null, EmptyCallback onComplete = null)
     {
-        Debug.Log("sentPrompt called");
+        //Debug.Log("sentPrompt called");
         string url = $"{apiEndpoint}?key={apiKey}";
-        string jsonData = "{\"contents\": [{\"parts\": [{\"text\": \"{" + promptText + "}\"}]}]}";
+        string settings = JsonUtility.ToJson(safetySettings);
+        string jsonData = "{\"contents\": [{\"parts\": [{\"text\": \"{" + promptText + "}\"}]}], \"safetySettings\": " + settings + "}";
         byte[] jsonToSend = new System.Text.UTF8Encoding().GetBytes(jsonData);
 
         // Create a UnityWebRequest with the JSON data
@@ -66,12 +73,20 @@ public class LLMInteraction : MonoBehaviour
 
             yield return www.SendWebRequest();
 
-            if (www.result != UnityWebRequest.Result.Success) { Debug.LogError(www.error); }
+            if (www.result != UnityWebRequest.Result.Success) {
+                Debug.LogError("error");
+                Debug.Log(www.error); 
+            }
             else
             {
-                //Debug.Log("Request complete!");
+                Debug.Log("EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE");
                 Response response = JsonUtility.FromJson<Response>(www.downloadHandler.text);
-                if (response.candidates.Length > 0 && response.candidates[0].content.parts.Length > 0)
+                if (response.promptFeedback != null && !string.IsNullOrEmpty(response.promptFeedback.blockReason))
+                {
+                    Debug.LogWarning($"Prompt blocked by Gemini. Reason: {response.promptFeedback.blockReason}");
+                    //HANDLING GOES HERE
+                }
+                else if (response.candidates.Length > 0 && response.candidates[0].content.parts.Length > 0)
                 {
                     //This is the response to your request
                     string text = response.candidates[0].content.parts[0].text;
@@ -85,18 +100,11 @@ public class LLMInteraction : MonoBehaviour
                 }
             }
         }
-        Debug.Log("sendPrompt concluded");
     }
 
-    //public void SendChat(string userMessage)
-    //{
-    //    //string userMessage = inputField.text;
-    //    StartCoroutine(SendChatRequestToGemini(userMessage));
-    //    }
 
-    private IEnumerator SendChatRequestToGemini(string newMessage, Callback<string> handleOutput = null, EmptyCallback onComplete = null)
+    private IEnumerator SendChatRequestToGemini(string newMessage, List<SafetySetting> safetySettings, Callback<string> handleOutput = null, EmptyCallback onComplete = null)
     {
-        Debug.Log("sendChat called");
         string url = $"{apiEndpoint}?key={apiKey}";
         Content userContent = new Content
         {
@@ -127,10 +135,17 @@ public class LLMInteraction : MonoBehaviour
             if (www.result != UnityWebRequest.Result.Success) { Debug.LogError(www.error); }
             else
             {
-                Debug.Log("Request complete!");
+                Debug.Log("Chat request complete!");
                 Response response = JsonUtility.FromJson<Response>(www.downloadHandler.text);
+                /////////////////////////
+                Debug.Log(www.downloadHandler.text);
 
-                if (response.candidates.Length > 0 && response.candidates[0].content.parts.Length > 0)
+                if (response.promptFeedback != null && !string.IsNullOrEmpty(response.promptFeedback.blockReason))
+                {
+                    Debug.LogWarning($"Prompt blocked by Gemini. Reason: {response.promptFeedback.blockReason}");
+                    //HANDLING GOES HERE
+                }
+                else if (response.candidates.Length > 0 && response.candidates[0].content.parts.Length > 0)
                 {
                     //This is the response to your request
                     string reply = response.candidates[0].content.parts[0].text;
@@ -156,11 +171,23 @@ public class LLMInteraction : MonoBehaviour
                 else { Debug.Log("No text found."); }
             }
         }
-        Debug.Log("sendChat concluded");
     }
 }
 
 
 
+/* Gemini's suggested Java implementation of safety settings:
 
+SafetySetting harassmentSafety = new SafetySetting(HarmCategory.HARASSMENT, BlockThreshold.LOW_AND_ABOVE);
 
+SafetySetting hateSpeechSafety = new SafetySetting(HarmCategory.HATE_SPEECH, BlockThreshold.LOW_AND_ABOVE);
+
+GenerativeModel gm = new GenerativeModel(
+    "gemini-1.5-flash",
+    BuildConfig.apiKey,
+    null, // generation config is optional
+    Arrays.asList(harassmentSafety, hateSpeechSafety)
+);
+
+GenerativeModelFutures model = GenerativeModelFutures.from(gm);
+*/
