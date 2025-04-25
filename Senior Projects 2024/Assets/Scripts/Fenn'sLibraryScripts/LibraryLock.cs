@@ -5,9 +5,9 @@ using UnityEngine;
 public class LibraryLock : MonoBehaviour
 {
 
-    bool isFantasyCompleted = false;
-    bool isNoireCompleted = false;
-    bool isScifiCompeleted = false;
+    public bool isFantasyCompleted = false;
+    public bool isNoireCompleted = false;
+    public bool isScifiCompleted = false;
     [HideInInspector]
     public bool isBossOpen = false;
     
@@ -26,8 +26,18 @@ public class LibraryLock : MonoBehaviour
 
     private void checkValidity()
     {
-        if (isFantasyCompleted == true && isNoireCompleted == true && isScifiCompeleted == true)
+        if (isFantasyCompleted == true && isNoireCompleted == true && isScifiCompleted == true)
             isBossOpen = true;
+    }
+
+    public void UnlockNoire()
+    {
+        isNoireCompleted = true;
+    }
+
+    public void UnlockScifi()
+    {
+        isScifiCompleted = true;
     }
 
     // Update is called once per frame

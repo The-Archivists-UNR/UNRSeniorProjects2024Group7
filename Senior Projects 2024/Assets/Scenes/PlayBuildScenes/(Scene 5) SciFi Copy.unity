@@ -5293,6 +5293,7 @@ GameObject:
   m_Component:
   - component: {fileID: 395633933}
   - component: {fileID: 395633932}
+  - component: {fileID: 395633934}
   m_Layer: 0
   m_Name: Boss Room
   m_TagString: Untagged
@@ -5353,6 +5354,19 @@ Transform:
   - {fileID: 1057385244}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &395633934
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 395633931}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7b989a6e747c964182337b3b95668f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  NewRoom: {fileID: 395633932}
 --- !u!1 &405347037
 GameObject:
   m_ObjectHideFlags: 0
@@ -10893,6 +10907,7 @@ MonoBehaviour:
   gameOver: {fileID: 258603178}
   gameWon: {fileID: 1405251175}
   loadNext: 0
+  inLastRoom: 0
   bossDead: 0
 --- !u!1 &973022117
 GameObject:
@@ -21406,6 +21421,56 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1770197176}
   m_CullTransparentMesh: 1
+--- !u!1 &1773819015
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1773819017}
+  - component: {fileID: 1773819016}
+  m_Layer: 0
+  m_Name: OpheliaStatsMgr
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1773819016
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1773819015}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: daf2f110efa080042935efe2439517fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ogHP: 100
+  ogSpeed: 15
+  ogDamage: 15
+  HpPercent: 1
+  SpeedPercent: 1
+  AttackPercent: 1
+--- !u!4 &1773819017
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1773819015}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -836.7087, y: 350.92053, z: 13040.048}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1785834434
 GameObject:
   m_ObjectHideFlags: 0
@@ -26173,3 +26238,4 @@ SceneRoots:
   - {fileID: 1663003996}
   - {fileID: 60490817}
   - {fileID: 395633933}
+  - {fileID: 1773819017}

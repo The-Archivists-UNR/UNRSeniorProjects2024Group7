@@ -18,7 +18,7 @@ public class NewGameMgr : MonoBehaviour
     public PanelMover gameOver;
     public PanelMover gameWon;
     public bool loadNext;
-    bool inLastRoom;
+    public bool inLastRoom;
     public bool bossDead;
     private void Awake()
     {
