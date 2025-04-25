@@ -94,6 +94,7 @@ public class FileDataHandler
 [System.Serializable]
 public class GameData
 {
+    public bool savedBefore = false;
     public string playerName;
     public int enemiesKilled;
     public float timePlayed;
@@ -101,9 +102,11 @@ public class GameData
     public string ghostMemory;
     public string kidMemory;
     public string detectiveMemory;
+    public string dudeMemory;
     public List<string> ghostConvo;
     public List<string> kidConvo;
     public List<string> detectiveConvo;
+    public List<string> dudeConvo;
 
     public float ogHP;
     public float ogSpeed;

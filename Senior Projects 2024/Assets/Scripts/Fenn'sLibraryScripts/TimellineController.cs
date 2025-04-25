@@ -16,6 +16,8 @@ public class TimellineController : MonoBehaviour
     public PlayableDirector playableDirectorBuffs;
     public PlayableDirector playableDirectorEnd;
 
+    bool loading;
+
 
 
     public CutsceneDialogue dialogue;
@@ -126,10 +128,11 @@ public class TimellineController : MonoBehaviour
             sceneNine = true;
         }
 
-        if (playableDirectorEnd.state == PlayState.Paused == true && sceneNine == true)
+        if (playableDirectorEnd.state == PlayState.Paused == true && sceneNine == true && !loading)
         {
             sceneSwitch.currentScene = 1;
             sceneSwitch.LoadScene();
+            loading = true;
         }
 
 

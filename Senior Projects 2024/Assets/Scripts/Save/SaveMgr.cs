@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SaveMgr : MonoBehaviour
 {
@@ -15,6 +16,8 @@ public class SaveMgr : MonoBehaviour
     public NPCController kid;
     public NPCController ghost;
     public NPCController detective;
+    public NPCController dude;
+    
 
     // Start is called before the first frame update
     void Awake()
@@ -35,13 +38,13 @@ public class SaveMgr : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Alpha1))
-            SaveData();
-        if(Input.GetKeyDown(KeyCode.Alpha2))
-            LoadData();
+        if (SceneManager.GetActiveScene().buildIndex == 1)
+        {
+
+        }
     }
     public void SaveData()
-    {
+    {   
         if (GameStatsMgr.inst != null)
         {
             gameData.enemiesKilled = GameStatsMgr.inst.enemiesKilled;
@@ -67,7 +70,14 @@ public class SaveMgr : MonoBehaviour
             gameData.ghostMemory = ghost.memory;
         }
 
-        if(OpheliaStats.inst != null)
+        if (dude != null)
+        {
+            List<string> memory = dude.dialogueTranscript;
+            gameData.dudeConvo = memory;
+            gameData.dudeMemory = dude.memory;
+        }
+
+        if (OpheliaStats.inst != null)
         {
             gameData.ogHP = OpheliaStats.inst.ogHP;
             gameData.ogSpeed = OpheliaStats.inst.ogSpeed;
@@ -148,6 +158,12 @@ public class SaveMgr : MonoBehaviour
             ghost.memory = gameData.ghostMemory;
         }
 
+        if (dude != null)
+        {
+            dude.dialogueTranscript = gameData.dudeConvo;
+            dude.memory = gameData.dudeMemory;
+        }
+
         if (OpheliaStats.inst != null)
         {
             OpheliaStats.inst.ogHP = gameData.ogHP;
@@ -222,7 +238,9 @@ public class SaveMgr : MonoBehaviour
     {
         if (saveSelect.inst.slots[saveSelect.inst.saveSlotNum - 1].GetComponent<UIHover>().slotExists)
         {
+            
             saveName = "slot" + saveSelect.inst.saveSlotNum + ".game";
+            LoadData();
             SceneSwitch.inst.LoadScene();
         }
     }

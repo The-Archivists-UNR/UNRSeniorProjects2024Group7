@@ -10202,6 +10202,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a12e6a56db8f76640b05dcea5a11b326, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  kid: {fileID: 8822567508641887095}
+  ghost: {fileID: 460937340}
+  detective: {fileID: 1533691465088879265}
+  dude: {fileID: 221548485}
 --- !u!4 &350324726
 Transform:
   m_ObjectHideFlags: 0
@@ -21046,9 +21050,11 @@ MonoBehaviour:
     ghostMemory: 
     kidMemory: 
     detectiveMemory: 
+    dudeMemory: 
     ghostConvo: []
     kidConvo: []
     detectiveConvo: []
+    dudeConvo: []
     ogHP: 0
     ogSpeed: 0
     ogDamage: 0
@@ -21075,6 +21081,7 @@ MonoBehaviour:
   kid: {fileID: 8822567508641887095}
   ghost: {fileID: 460937340}
   detective: {fileID: 1533691465088879265}
+  dude: {fileID: 0}
 --- !u!1 &724564827
 GameObject:
   m_ObjectHideFlags: 0
