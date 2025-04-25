@@ -46,27 +46,27 @@ public class KirkBuff : MonoBehaviour
 
     public void NegStat()
     {
-        oStats.ogDamage -= 1;
-        oStats.ogHP -= 1;
+        OpheliaStats.inst.ogDamage -= 1;
+        OpheliaStats.inst.ogHP -= 1;
     }
     public void KirkAdjuster(int relationLVL)
     {
         switch (relationLVL)
         {
             case 1:
-                oStats.ogHP += 2;
-                oStats.ogSpeed += 1;
-                oStats.ogDamage += 2;
+                OpheliaStats.inst.ogHP += 2;
+                OpheliaStats.inst.ogSpeed += 1;
+                OpheliaStats.inst.ogDamage += 2;
                 break;
             case 2:
-                oStats.ogHP += 2;
-                oStats.ogSpeed += 1;
-                oStats.ogDamage += 2;
+                OpheliaStats.inst.ogHP += 2;
+                OpheliaStats.inst.ogSpeed += 1;
+                OpheliaStats.inst.ogDamage += 2;
                 break;
             case 3:
-                oStats.ogHP += 2;
-                oStats.ogSpeed += 1;
-                oStats.ogDamage += 2;
+                OpheliaStats.inst.ogHP += 2;
+                OpheliaStats.inst.ogSpeed += 1;
+                OpheliaStats.inst.ogDamage += 2;
                 break;
         }
 

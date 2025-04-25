@@ -199,6 +199,7 @@ public class SaveMgr : MonoBehaviour
         Debug.Log(path);
         dataHandler = new FileDataHandler(path, useEncryption);
         SaveData();
+        SceneSwitch.inst.currentScene = 11;
         SceneSwitch.inst.LoadScene();
     }
 

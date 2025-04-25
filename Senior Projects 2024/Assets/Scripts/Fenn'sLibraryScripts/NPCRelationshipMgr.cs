@@ -93,13 +93,13 @@ public class NPCRelationshipMgr : MonoBehaviour
         switch(relationLVL)
         {
             case 1:
-                oStats.ogHP += 5;
+                OpheliaStats.inst.ogHP += 5;
             break;
             case 2:
-                oStats.ogHP += 10;
+                OpheliaStats.inst.ogHP += 10;
             break;
             case 3:
-                oStats.ogHP += 15;
+                OpheliaStats.inst.ogHP += 15;
             break;
         }
 
@@ -127,13 +127,13 @@ public class NPCRelationshipMgr : MonoBehaviour
         switch(relationLVL)
         {
             case 1:
-                oStats.ogSpeed += 2;
+                OpheliaStats.inst.ogSpeed += 2;
             break;
             case 2:
-                oStats.ogSpeed += 3;
+                OpheliaStats.inst.ogSpeed += 3;
             break;
             case 3:
-                oStats.ogSpeed += 5;
+                OpheliaStats.inst.ogSpeed += 5;
             break;
         }
     }
@@ -143,13 +143,13 @@ public class NPCRelationshipMgr : MonoBehaviour
         switch(relationLVL)
         {
             case 1:
-                oStats.ogDamage += 5;
+                OpheliaStats.inst.ogDamage += 5;
             break;
             case 2:
-                oStats.ogDamage += 10;
+                OpheliaStats.inst.ogDamage += 10;
             break;
             case 3:
-                oStats.ogDamage += 15;
+                OpheliaStats.inst.ogDamage += 15;
             break;
         }
     }

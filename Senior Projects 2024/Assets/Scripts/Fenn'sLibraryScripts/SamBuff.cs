@@ -45,7 +45,7 @@ public class SamBuff : MonoBehaviour
 
     public void NegStat()
     {
-        oStats.ogDamage -= 1;
+        OpheliaStats.inst.ogDamage -= 1;
     }
 
     public void SamAdjuster(int relationLVL)
@@ -53,13 +53,13 @@ public class SamBuff : MonoBehaviour
         switch (relationLVL)
         {
             case 1:
-                oStats.ogDamage += 5;
+                OpheliaStats.inst.ogDamage += 5;
                 break;
             case 2:
-                oStats.ogDamage += 10;
+                OpheliaStats.inst.ogDamage += 10;
                 break;
             case 3:
-                oStats.ogDamage += 15;
+                OpheliaStats.inst.ogDamage += 15;
                 break;
         }
 

@@ -31,24 +31,24 @@ public class CollectableManagers : MonoBehaviour
         switch (type)
         {
             case ItemType.Julie:
-                oStats.ogHP = oStats.ogHP + 25;
+                OpheliaStats.inst.ogHP = OpheliaStats.inst.ogHP + 25;
                 previouslyActiveJulie = true;
                 break;
 
             case ItemType.Kirk:
-                 oStats.ogHP = oStats.ogHP + 5;
-                oStats.ogSpeed = oStats.ogSpeed + 2;
-                oStats.ogDamage = oStats.ogDamage + 5;
+                 OpheliaStats.inst.ogHP = OpheliaStats.inst.ogHP + 5;
+                OpheliaStats.inst.ogSpeed = OpheliaStats.inst.ogSpeed + 2;
+                OpheliaStats.inst.ogDamage = OpheliaStats.inst.ogDamage + 5;
                 previouslyActiveKirk = true;
                 break;
 
             case ItemType.Bonnie:
-                oStats.ogSpeed = oStats.ogSpeed + 5;
+                OpheliaStats.inst.ogSpeed = OpheliaStats.inst.ogSpeed + 5;
                 previouslyActiveBonnie = true;
                 break;
 
             case ItemType.Oswald:
-                oStats.ogDamage = oStats.ogDamage + 20;
+                OpheliaStats.inst.ogDamage = OpheliaStats.inst.ogDamage + 20;
                 previouslyActiveOswald = true;
                 break;
         }
@@ -60,27 +60,27 @@ public class CollectableManagers : MonoBehaviour
         print("running check");
         if (previouslyActiveJulie == true)
         {
-            oStats.ogHP = oStats.ogHP - 25;
+            OpheliaStats.inst.ogHP = OpheliaStats.inst.ogHP - 25;
             previouslyActiveJulie = false;
         }
 
         if (previouslyActiveKirk == true)
         {
-            oStats.ogHP = oStats.ogHP - 5;
-            oStats.ogSpeed = oStats.ogSpeed - 2;
-            oStats.ogDamage = oStats.ogDamage - 5;
+            OpheliaStats.inst.ogHP = OpheliaStats.inst.ogHP - 5;
+            OpheliaStats.inst.ogSpeed = OpheliaStats.inst.ogSpeed - 2;
+            OpheliaStats.inst.ogDamage = OpheliaStats.inst.ogDamage - 5;
             previouslyActiveKirk = false;
         }
 
         if (previouslyActiveBonnie == true)
         {
-            oStats.ogSpeed = oStats.ogSpeed - 5;
+            OpheliaStats.inst.ogSpeed = OpheliaStats.inst.ogSpeed - 5;
             previouslyActiveBonnie = false;
         }
 
         if (previouslyActiveOswald == true)
         {
-            oStats.ogDamage = oStats.ogDamage - 20;
+            OpheliaStats.inst.ogDamage = OpheliaStats.inst.ogDamage - 20;
             previouslyActiveOswald = false;
         }
     }

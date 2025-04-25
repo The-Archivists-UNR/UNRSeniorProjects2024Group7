@@ -45,7 +45,7 @@ public class JulieBuff : MonoBehaviour
 
     public void NegStat()
     {
-        oStats.ogHP -= 5;
+        OpheliaStats.inst.ogHP -= 5;
     }
 
     public void JulieAdjuster(int relationLVL)
@@ -53,13 +53,13 @@ public class JulieBuff : MonoBehaviour
         switch (relationLVL)
         {
             case 1:
-                oStats.ogHP += 5;
+                OpheliaStats.inst.ogHP += 5;
                 break;
             case 2:
-                oStats.ogHP += 10;
+                OpheliaStats.inst.ogHP += 10;
                 break;
             case 3:
-                oStats.ogHP += 15;
+                OpheliaStats.inst.ogHP += 15;
                 break;
         }
 

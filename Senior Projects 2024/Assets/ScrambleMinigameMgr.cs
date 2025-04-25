@@ -9,7 +9,7 @@ using UnityEngine.Windows;
 
 public class ScrambleMinigameMgr : MonoBehaviour
 {
-    public OpheliaStats ostats;
+    //public OpheliaStats ostats;
     static List<string> sixLetterWords = new List<string>
     {
         "animal", "bottle", "candle", "desert", "empire", "flight", "garden", "hammer", "island", "jungle",
@@ -230,7 +230,7 @@ public class ScrambleMinigameMgr : MonoBehaviour
         guessesText.text = "";
         scoreText.text = "Score: " + score;
         GetNewWord();
-        ostats.ogDamage += 1;
+        OpheliaStats.inst.ogDamage += 1;
     }
 
     public void ResetBoard()
