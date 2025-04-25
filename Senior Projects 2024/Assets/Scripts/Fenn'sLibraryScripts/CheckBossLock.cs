@@ -4,13 +4,12 @@ using UnityEngine;
 
 public class CheckBossLock : MonoBehaviour
 {
-    public LibraryLock libraryLock;
     public BookSwitch bookSwitch;
 
     // Start is called before the first frame update
     void Start()
     {
-        if (libraryLock.isBossOpen == true)
+        if (LibraryLock.inst.isBossOpen == true)
         {
             bookSwitch.enabled = true;
         }
@@ -30,7 +29,7 @@ public class CheckBossLock : MonoBehaviour
     {
         if (otherColldier.tag == "Player")
         {
-            if (libraryLock.isBossOpen == true)
+            if (LibraryLock.inst.isBossOpen == true)
             {
                 bookSwitch.enabled = true;
             }

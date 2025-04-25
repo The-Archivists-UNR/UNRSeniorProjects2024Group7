@@ -44,7 +44,7 @@ public class SpeedImprovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        speedPricetext.text = stringPrices[maxBuff];
     }
 
     public void UpdateSpeed()

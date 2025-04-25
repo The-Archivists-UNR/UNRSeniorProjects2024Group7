@@ -50,7 +50,7 @@ public class AttackImprovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        attackPricetext.text = stringPrices[maxBuff];
     }
 
     public void updateAttack()

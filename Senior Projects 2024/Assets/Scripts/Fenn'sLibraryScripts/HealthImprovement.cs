@@ -45,7 +45,7 @@ public class HealthImprovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        healthPricetext.text = stringPrices[maxBuff];
     }
 
     public void UpdateHealth()

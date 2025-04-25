@@ -54,7 +54,7 @@ public class OpenCollectibles : MonoBehaviour
         if (other.CompareTag("Player") && playerInCollider)
         {
             interactText.text = "[E] Open Collectables";
-            if (Input.GetKeyDown(interactKey))
+            if (Input.GetKeyDown(KeyCode.E))
             {
                 panel.isVisible = true;
                 if (Collectibles != null)
