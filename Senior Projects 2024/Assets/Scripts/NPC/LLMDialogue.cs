@@ -91,6 +91,7 @@ public class LLMInteraction : MonoBehaviour
                     //This is the response to your request
                     string text = response.candidates[0].content.parts[0].text;
                     Debug.Log(text);
+
                     if (handleOutput != null) handleOutput(text);
                     if (onComplete != null) onComplete();
                 }
@@ -111,7 +112,7 @@ public class LLMInteraction : MonoBehaviour
             role = "user",
             parts = new Part[]
             {
-                    new Part { text = newMessage }
+                    new Part { text = "If the following dialogue is rude or incoherent respond with only the word \"TRUE\", other wise respond normally.\n\n"+newMessage }
             }
         };
 
@@ -159,8 +160,7 @@ public class LLMInteraction : MonoBehaviour
                     };
 
                     Debug.Log(reply);
-                    //This part shows the text in the Canvas
-                    //uiText.text = reply;
+
                     if (handleOutput != null) handleOutput(reply);
                     if (onComplete != null) onComplete();
 

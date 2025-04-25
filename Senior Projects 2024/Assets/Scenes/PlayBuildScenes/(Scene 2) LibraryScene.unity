@@ -19955,7 +19955,6 @@ GameObject:
   - component: {fileID: 705130024}
   - component: {fileID: 705130026}
   - component: {fileID: 705130025}
-  - component: {fileID: 705130027}
   m_Layer: 5
   m_Name: RelationshipText
   m_TagString: Untagged
@@ -20002,7 +20001,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Relationship: 0'
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1eb2d1949e9dd7f4b9d7fe80bf250089, type: 2}
   m_sharedMaterial: {fileID: -1880921338395475303, guid: 1eb2d1949e9dd7f4b9d7fe80bf250089, type: 2}
@@ -20079,20 +20078,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 705130023}
   m_CullTransparentMesh: 1
---- !u!114 &705130027
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 705130023}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5843c1108c85ea944bf4bd7077e97d63, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  controller: {fileID: 919132149383878266}
-  text: {fileID: 705130025}
 --- !u!1001 &707689569
 PrefabInstance:
   m_ObjectHideFlags: 0
