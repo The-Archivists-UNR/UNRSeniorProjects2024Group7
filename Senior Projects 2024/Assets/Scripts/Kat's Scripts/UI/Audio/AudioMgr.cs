@@ -36,9 +36,13 @@ public class AudioMgr : MonoBehaviour
         if (level == 0)
             PlayMusic("Library");
         else if (level == 1)
-            PlayMusic("BookOne");
+            PlayMusic("Fantasy");
         else if (level == 2)
-            PlayMusic("BookTwo");
+            PlayMusic("Noire");
+        else if (level == 3)
+            PlayMusic("SciFi");
+        else if (level == 4)
+            PlayMusic("FinalBoss");
     }
     public void PlayMusic(string name)
     {

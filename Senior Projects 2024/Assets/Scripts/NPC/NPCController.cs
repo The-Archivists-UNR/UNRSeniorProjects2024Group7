@@ -46,6 +46,13 @@ public class NPCController : MonoBehaviour
 
     public LLMInteraction LLM;
 
+    public ItemType currentNPC;
+
+    public JulieBuff jBuff;
+    public BonnieBuff bBuff;
+    public KirkBuff kBuff;
+    public SamBuff sBuff;
+
     private bool playerIsNear = false;
     private bool inConversation = false;
     //private int count;
@@ -81,8 +88,8 @@ public class NPCController : MonoBehaviour
             Debug.Log(transcript);
 
             //make a special function in llm dialogue for this case so it will not be remembered
-            LLM.getResponse("How pleasant is Ophelia in this transcript on a scale from 1 to 10? " +
-                    "Respond with only the number." + transcript, setRating);
+            //LLM.getResponse("How pleasant is Ophelia in this transcript on a scale from 1 to 10? " +
+            //        "Respond with only the number." + transcript, setRating);
             LLM.getResponse("please summarize the following transcript: \n" + transcript, setNPCMemory);
             inConversation = false;
         }
@@ -113,6 +120,24 @@ public class NPCController : MonoBehaviour
 
         if (memory == "") { LLM.getResponse(prompt, setAIText, AIReplyComplete); Debug.Log("1"); }
         else { LLM.getResponse(prompt + "\n here's what happened so far:\n" + memory, setAIText, AIReplyComplete); Debug.Log("2"); }
+
+        switch (currentNPC)
+        {
+            case ItemType.Julie:
+                jBuff.ChangeStats();
+                break;
+            case ItemType.Bonnie:
+                bBuff.ChangeStats();
+                break;
+            case ItemType.Kirk:
+                kBuff.ChangeStats();
+                break;
+            case ItemType.Sam:
+                sBuff.ChangeStats();
+                break;
+
+        }
+
     }
 
     private void onInputFieldSubmit(string message)
@@ -125,8 +150,8 @@ public class NPCController : MonoBehaviour
             recentTranscript.Add("Ophelia: " + message);
 
             LLM.getResponse(message, setAIText, AIReplyComplete);
-            //LLM.getResponse("How pleasant is this message on a scale from 1 to 10? " +
-            //    "Respond with only the number." + message, setRating);
+            LLM.getResponse("How pleasant is this message on a scale from 1 to 10? " +
+                "Respond with only the number." + message, setRating);
         }
     }
 
