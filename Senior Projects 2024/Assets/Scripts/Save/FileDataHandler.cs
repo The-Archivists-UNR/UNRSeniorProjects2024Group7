@@ -3,6 +3,7 @@ using System;
 using UnityEngine.Playables;
 using UnityEngine;
 using System.Collections.Generic;
+using UnityEditor.ShaderGraph.Internal;
 
 public class FileDataHandler
 {
@@ -118,4 +119,11 @@ public class GameData
     public int attackMaxBuff;
     public int speedCounter;
     public int speedMaxBuff;
+
+    public bool previouslyActiveJulie;
+    public bool previouslyActiveKirk;
+    public bool previouslyActiveOswald;
+    public bool previouslyActiveBonnie;
+
+    public int currency;
 }

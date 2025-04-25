@@ -20853,6 +20853,11 @@ MonoBehaviour:
     attackMaxBuff: 0
     speedCounter: 0
     speedMaxBuff: 0
+    previouslyActiveJulie: 0
+    previouslyActiveKirk: 0
+    previouslyActiveOswald: 0
+    previouslyActiveBonnie: 0
+    currency: 0
   useEncryption: 0
   saveName: test.game
   playerName: help
@@ -34041,6 +34046,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   oStats: {fileID: 1737859673}
+  previouslyActiveJulie: 0
+  previouslyActiveKirk: 0
+  previouslyActiveOswald: 0
+  previouslyActiveBonnie: 0
 --- !u!1001 &1143104953
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -101976,7 +101985,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8fcd57116a6df1b42ba965344711b83f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jsonApi: {fileID: 4900000, guid: 08677c020f96e6640bc328f7d0ed3c74, type: 3}
+  jsonApi: {fileID: 4900000, guid: cf5a2b369c044034a817901603885218, type: 3}
 --- !u!4 &7185279441405546524
 Transform:
   m_ObjectHideFlags: 0
