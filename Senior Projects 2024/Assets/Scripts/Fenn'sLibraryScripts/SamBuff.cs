@@ -43,6 +43,11 @@ public class SamBuff : MonoBehaviour
         }
     }
 
+    public void NegStat()
+    {
+        oStats.ogDamage -= 1;
+    }
+
     public void SamAdjuster(int relationLVL)
     {
         switch (relationLVL)

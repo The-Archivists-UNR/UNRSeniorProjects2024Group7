@@ -44,6 +44,11 @@ public class BonnieBuff : MonoBehaviour
         }
     }
 
+    public void NegStat()
+    {
+        oStats.ogSpeed -= 1;
+    }
+
     public void BonnieAdjuster(int relationLVL)
     {
         switch (relationLVL)

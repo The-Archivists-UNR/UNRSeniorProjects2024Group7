@@ -43,6 +43,11 @@ public class JulieBuff : MonoBehaviour
         }
     }
 
+    public void NegStat()
+    {
+        oStats.ogHP -= 5;
+    }
+
     public void JulieAdjuster(int relationLVL)
     {
         switch (relationLVL)

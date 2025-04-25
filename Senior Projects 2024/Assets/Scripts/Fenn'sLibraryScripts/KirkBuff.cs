@@ -44,6 +44,11 @@ public class KirkBuff : MonoBehaviour
         }
     }
 
+    public void NegStat()
+    {
+        oStats.ogDamage -= 1;
+        oStats.ogHP -= 1;
+    }
     public void KirkAdjuster(int relationLVL)
     {
         switch (relationLVL)
