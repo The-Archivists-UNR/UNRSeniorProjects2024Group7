@@ -8,7 +8,8 @@ public enum ItemType
     Julie,
     Bonnie,
     Kirk,
-    Oswald
+    Oswald,
+    Sam
 }
 
 public class FlipItem : MonoBehaviour, IPointerClickHandler
