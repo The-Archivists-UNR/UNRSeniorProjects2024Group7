@@ -11,7 +11,7 @@ public class AOEProjectile : Projectile
     public GameObject debugSphere; // shows explosion radius
     void Start()
     {
-        baseDamage = 5;
+        baseDamage = 15;
     }
 
     // handles projectile physics
@@ -31,7 +31,7 @@ public class AOEProjectile : Projectile
         {
             GameObject debug = Instantiate(debugSphere, transform.position, Quaternion.identity);
             debug.transform.localScale = 6f*Vector3.one;
-            if(Vector3.Distance(player.position, transform.position) < 3)
+            if(Vector3.Distance(player.position, transform.position) < 10)
             {
                 Debug.Log(Vector3.Distance(player.position, transform.position));
                 player.GetComponent<Entity>().TakeDamage(baseDamage);

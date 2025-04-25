@@ -8,10 +8,10 @@ public class CollectableManagers : MonoBehaviour
     public OpheliaStats oStats;
     public static CollectableManagers inst;
 
-    bool previouslyActiveJulie = false;
-    bool previouslyActiveKirk = false;
-    bool previouslyActiveOswald = false;
-    bool previouslyActiveBonnie = false;
+    public bool previouslyActiveJulie = false;
+    public bool previouslyActiveKirk = false;
+    public bool previouslyActiveOswald = false;
+    public bool previouslyActiveBonnie = false;
 
 
     void Awake()

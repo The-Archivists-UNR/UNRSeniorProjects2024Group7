@@ -67,6 +67,47 @@ public class SaveMgr : MonoBehaviour
             gameData.ghostMemory = ghost.memory;
         }
 
+        if(OpheliaStats.inst != null)
+        {
+            gameData.ogHP = OpheliaStats.inst.ogHP;
+            gameData.ogSpeed = OpheliaStats.inst.ogSpeed;
+            gameData.ogDamage = OpheliaStats.inst.ogDamage;
+            gameData.HpPercent = OpheliaStats.inst.HpPercent;
+            gameData.SpeedPercent = OpheliaStats.inst.SpeedPercent;
+            gameData.AttackPercent = OpheliaStats.inst.AttackPercent;
+        }
+
+        if(HealthImprovement.inst != null)
+        {
+            gameData.healthCounter = HealthImprovement.inst.healthCounter;
+            gameData.healthMaxBuff = HealthImprovement.inst.maxBuff;
+        }
+
+        if(SpeedImprovement.inst != null)
+        {
+            gameData.speedCounter = SpeedImprovement.inst.speedCounter;
+            gameData.speedMaxBuff = SpeedImprovement.inst.maxBuff;
+        }
+
+        if(AttackImprovement.inst != null)
+        {
+            gameData.attackCounter = AttackImprovement.inst.attackCounter;
+            gameData.attackMaxBuff = AttackImprovement.inst.maxBuff;
+        }
+
+        if(CollectableManagers.inst != null)
+        {
+            gameData.previouslyActiveBonnie = CollectableManagers.inst.previouslyActiveBonnie;
+            gameData.previouslyActiveKirk = CollectableManagers.inst.previouslyActiveKirk;
+            gameData.previouslyActiveOswald = CollectableManagers.inst.previouslyActiveOswald;
+            gameData.previouslyActiveJulie = CollectableManagers.inst.previouslyActiveJulie;
+        }
+
+        if(moneyMgr.inst != null)
+        {
+            gameData.currency = moneyMgr.inst.currency;
+        }
+
         dataHandler.Save(gameData, saveName);
     }
 
@@ -100,6 +141,48 @@ public class SaveMgr : MonoBehaviour
             ghost.memory = gameData.ghostMemory;
         }
 
+        if (OpheliaStats.inst != null)
+        {
+            OpheliaStats.inst.ogHP = gameData.ogHP;
+            OpheliaStats.inst.ogSpeed = gameData.ogSpeed;
+            OpheliaStats.inst.ogDamage = gameData.ogDamage;
+            OpheliaStats.inst.HpPercent = gameData.HpPercent;
+            OpheliaStats.inst.SpeedPercent = gameData.SpeedPercent;
+            OpheliaStats.inst.AttackPercent = gameData.AttackPercent;
+        }
+
+        if (moneyMgr.inst != null)
+            moneyMgr.inst.currency = gameData.currency;
+
+        if (HealthImprovement.inst != null)
+        {
+            HealthImprovement.inst.healthCounter = gameData.healthCounter;
+            HealthImprovement.inst.maxBuff = gameData.healthMaxBuff;
+            HealthImprovement.inst.UpdateHealth();
+            HealthImprovement.inst.coinText.UpdateMoneyText();
+        }
+
+        if (SpeedImprovement.inst != null)
+        {
+            SpeedImprovement.inst.speedCounter = gameData.speedCounter;
+            SpeedImprovement.inst.maxBuff = gameData.speedMaxBuff;
+            SpeedImprovement.inst.UpdateSpeed();
+        }
+
+        if (AttackImprovement.inst != null)
+        {
+            AttackImprovement.inst.attackCounter = gameData.attackCounter;
+            AttackImprovement.inst.maxBuff = gameData.attackMaxBuff;
+            AttackImprovement.inst.updateAttack();
+        }
+
+        if (CollectableManagers.inst != null)
+        {
+            CollectableManagers.inst.previouslyActiveBonnie = gameData.previouslyActiveBonnie;
+            CollectableManagers.inst.previouslyActiveKirk = gameData.previouslyActiveKirk;
+            CollectableManagers.inst.previouslyActiveOswald = gameData.previouslyActiveOswald;
+            CollectableManagers.inst.previouslyActiveJulie = gameData.previouslyActiveJulie;
+        }
     }
 
     public void SetPlayerName(string name)
