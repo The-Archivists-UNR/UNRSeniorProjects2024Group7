@@ -139,9 +139,17 @@ public class NPCController : MonoBehaviour
 
     private void setAIText(string text)
     {
-        AIText.text = text;
-        dialogueTranscript.Add(name + ": " + text);
-        recentTranscript.Add(name + ": " + text);
+        if (text.Contains("TRUE"))
+        {
+            relationshipScore -= 1;
+            AIText.text = "I'm not sure I understand.";
+        }
+        else
+        {
+            AIText.text = text;
+            dialogueTranscript.Add(name + ": " + text);
+            recentTranscript.Add(name + ": " + text);
+        }
     }
 
     private void setRating(string number)
