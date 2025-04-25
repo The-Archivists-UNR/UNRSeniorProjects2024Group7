@@ -10945,6 +10945,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: ef26fc05d9d5d1e4998f8d61ad463596, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1299509296}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: ef26fc05d9d5d1e4998f8d61ad463596, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1299509297}
   m_SourcePrefab: {fileID: 100100000, guid: ef26fc05d9d5d1e4998f8d61ad463596, type: 3}
 --- !u!4 &398710965 stripped
 Transform:
@@ -12459,6 +12462,7 @@ Transform:
   - {fileID: 1333843234}
   - {fileID: 1141376743}
   - {fileID: 775281251}
+  - {fileID: 599981962}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &444516072
@@ -14158,7 +14162,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Anakin
+  m_text: Kirk
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -16138,6 +16142,51 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: e9fbc6bde886f83429ac24356bbff961, type: 3}
   m_PrefabInstance: {fileID: 595783718}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &599981961
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 599981962}
+  - component: {fileID: 599981963}
+  m_Layer: 0
+  m_Name: LibraryLock
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &599981962
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 599981961}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 444063016}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &599981963
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 599981961}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a45f7ed0a4c5c6d48b99ba9d804329c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isBossOpen: 0
 --- !u!1 &601202805
 GameObject:
   m_ObjectHideFlags: 0
@@ -37815,8 +37864,22 @@ MonoBehaviour:
   interactableText: {fileID: 1550999902}
   interactText: {fileID: 1550999904}
   displayedPhrase: '[E] Enter Boss Fight'
-  sceneChosen: 5
+  sceneChosen: 12
   sceneSwitch: {fileID: 517846931}
+--- !u!114 &1299509297
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1299509294}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d5d2d35587dba245a269e57e0f55f81, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  libraryLock: {fileID: 599981963}
+  bookSwitch: {fileID: 1299509296}
 --- !u!1 &1300191038
 GameObject:
   m_ObjectHideFlags: 0
@@ -43740,7 +43803,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1496442335
 RectTransform:
   m_ObjectHideFlags: 0
