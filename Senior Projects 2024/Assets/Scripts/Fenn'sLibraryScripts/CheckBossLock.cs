@@ -6,6 +6,7 @@ public class CheckBossLock : MonoBehaviour
 {
     public LibraryLock libraryLock;
     public BookSwitch bookSwitch;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -23,5 +24,20 @@ public class CheckBossLock : MonoBehaviour
     void Update()
     {
         
+    }
+
+    private void OnTriggerEnter(Collider otherColldier)
+    {
+        if (otherColldier.tag == "Player")
+        {
+            if (libraryLock.isBossOpen == true)
+            {
+                bookSwitch.enabled = true;
+            }
+            else
+            {
+                bookSwitch.enabled = false;
+            }
+        }
     }
 }

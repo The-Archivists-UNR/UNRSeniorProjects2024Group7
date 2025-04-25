@@ -16,11 +16,8 @@ public class AttackImprovement : MonoBehaviour
     public int attackCounter;
 
     public TextMeshProUGUI attackText;
-    public OpheliaStats oStats;
 
     public TextMeshProUGUI attackPricetext;
-
-    public moneyMgr mMgr;
 
     int attackPrice = 50;
     string[] stringPrices = {"50", "100", "150", "200", "250", "Maxed"};
@@ -83,10 +80,10 @@ public class AttackImprovement : MonoBehaviour
 
     public void CheckMax()
     {
-        if (mMgr.currency >= attackPrice && firstMax == false && attackCounter == 0)
+        if (moneyMgr.inst.currency >= attackPrice && firstMax == false && attackCounter == 0)
         {
             print("I have increased");
-            mMgr.currency = mMgr.currency - attackPrice;
+            moneyMgr.inst.currency = moneyMgr.inst.currency - attackPrice;
             maxBuff++;
             attackPricetext.text = stringPrices[maxBuff];
             attackPrice = prices[maxBuff];
@@ -96,9 +93,9 @@ public class AttackImprovement : MonoBehaviour
             print(firstMax);
         }
 
-        if (mMgr.currency >= attackPrice && firstMax == true && secondMax == false && attackCounter == 1)
+        if (moneyMgr.inst.currency >= attackPrice && firstMax == true && secondMax == false && attackCounter == 1)
         {
-            mMgr.currency = mMgr.currency - attackPrice;
+            moneyMgr.inst.currency = moneyMgr.inst.currency - attackPrice;
             maxBuff++;
             attackPricetext.text = stringPrices[maxBuff];
             attackPrice = prices[maxBuff];
@@ -106,9 +103,9 @@ public class AttackImprovement : MonoBehaviour
             secondMax = true;
         }
 
-        if (mMgr.currency >= attackPrice && secondMax == true && thirdMax == false && attackCounter == 2)
+        if (moneyMgr.inst.currency >= attackPrice && secondMax == true && thirdMax == false && attackCounter == 2)
         {
-            mMgr.currency = mMgr.currency - attackPrice;
+            moneyMgr.inst.currency = moneyMgr.inst.currency - attackPrice;
             maxBuff++;
             attackPricetext.text = stringPrices[maxBuff];
             attackPrice = prices[maxBuff];
@@ -116,9 +113,9 @@ public class AttackImprovement : MonoBehaviour
             thirdMax = true;
         }
 
-        if (mMgr.currency >= attackPrice && thirdMax == true && fourthMax == false && attackCounter == 3)
+        if (moneyMgr.inst.currency >= attackPrice && thirdMax == true && fourthMax == false && attackCounter == 3)
         {
-            mMgr.currency = mMgr.currency - attackPrice;
+            moneyMgr.inst.currency = moneyMgr.inst.currency - attackPrice;
             maxBuff++;
             attackPricetext.text = stringPrices[maxBuff];
             attackPrice = prices[maxBuff];

@@ -12,11 +12,9 @@ public class HealthImprovement : MonoBehaviour
     public int healthCounter;
 
     public TextMeshProUGUI healthText;
-    public OpheliaStats oStats;
 
     public TextMeshProUGUI healthPricetext;
 
-    public moneyMgr mMgr;
 
     int healthPrice = 50;
     string[] stringPrices = {"50", "100", "150", "200", "250", "Maxed"};
@@ -82,10 +80,10 @@ public class HealthImprovement : MonoBehaviour
 
     public void CheckMax()
     {
-        if (mMgr.currency >= healthPrice && firstMax == false && healthCounter == 0)
+        if (moneyMgr.inst.currency >= healthPrice && firstMax == false && healthCounter == 0)
         {
             print("I have increased");
-            mMgr.currency = mMgr.currency - healthPrice;
+            moneyMgr.inst.currency = moneyMgr.inst.currency - healthPrice;
             maxBuff++;
             healthPricetext.text = stringPrices[maxBuff];
             healthPrice = prices[maxBuff];
@@ -95,9 +93,9 @@ public class HealthImprovement : MonoBehaviour
             print(firstMax);
         }
 
-        if (mMgr.currency >= healthPrice && firstMax == true && secondMax == false && healthCounter == 1)
+        if (moneyMgr.inst.currency >= healthPrice && firstMax == true && secondMax == false && healthCounter == 1)
         {
-            mMgr.currency = mMgr.currency - healthPrice;
+            moneyMgr.inst.currency = moneyMgr.inst.currency - healthPrice;
             maxBuff++;
             healthPricetext.text = stringPrices[maxBuff];
             healthPrice = prices[maxBuff];
@@ -105,9 +103,9 @@ public class HealthImprovement : MonoBehaviour
             secondMax = true;
         }
 
-        if (mMgr.currency >= healthPrice && secondMax == true && thirdMax == false && healthCounter == 2)
+        if (moneyMgr.inst.currency >= healthPrice && secondMax == true && thirdMax == false && healthCounter == 2)
         {
-            mMgr.currency = mMgr.currency - healthPrice;
+            moneyMgr.inst.currency = moneyMgr.inst.currency - healthPrice;
             maxBuff++;
             healthPricetext.text = stringPrices[maxBuff];
             healthPrice = prices[maxBuff];
@@ -115,9 +113,9 @@ public class HealthImprovement : MonoBehaviour
             thirdMax = true;
         }
 
-        if (mMgr.currency >= healthPrice && thirdMax == true && fourthMax == false && healthCounter == 3)
+        if (moneyMgr.inst.currency >= healthPrice && thirdMax == true && fourthMax == false && healthCounter == 3)
         {
-            mMgr.currency = mMgr.currency - healthPrice;
+            moneyMgr.inst.currency = moneyMgr.inst.currency - healthPrice;
             maxBuff++;
             healthPricetext.text = stringPrices[maxBuff];
             healthPrice = prices[maxBuff];

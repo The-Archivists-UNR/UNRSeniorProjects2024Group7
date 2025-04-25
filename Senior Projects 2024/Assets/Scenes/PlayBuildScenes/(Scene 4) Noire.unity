@@ -371,6 +371,55 @@ Transform:
   - {fileID: 522257604}
   m_Father: {fileID: 1425468396}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &52799188
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 52799189}
+  - component: {fileID: 52799190}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &52799189
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 52799188}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: -0.018499402, z: 0, w: 0.9998289}
+  m_LocalPosition: {x: -0.23, y: 0.31888878, z: 0.68}
+  m_LocalScale: {x: 5.555554, y: 5.555556, z: 5.555554}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1605608093}
+  m_LocalEulerAnglesHint: {x: 0, y: -2.12, z: 0}
+--- !u!114 &52799190
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 52799188}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4fbaa4fc4f16fd246a8ed7bd702cdb76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseDamage: 10
+  damageTag: Enemy
+  projectile: {fileID: 1471498516342936048, guid: 0b151066f84148d469c8f717914e59b8, type: 3}
+  spawn: {fileID: 52799189}
+  attackSound: Spell
 --- !u!1 &56074510
 GameObject:
   m_ObjectHideFlags: 0
@@ -15754,12 +15803,23 @@ PrefabInstance:
       propertyPath: easeHealthSlider
       value: 
       objectReference: {fileID: 2126284730975303716}
+    - target: {fileID: 9128288544560066442, guid: 69e87b0bde8e3884ba313fccca3d2b8e, type: 3}
+      propertyPath: weapons.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 9128288544560066442, guid: 69e87b0bde8e3884ba313fccca3d2b8e, type: 3}
+      propertyPath: weapons.Array.data[1]
+      value: 
+      objectReference: {fileID: 52799190}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 6006324263687146249, guid: 69e87b0bde8e3884ba313fccca3d2b8e, type: 3}
       insertIndex: -1
       addedObject: {fileID: 92840983}
+    - targetCorrespondingSourceObject: {fileID: 6006324263687146249, guid: 69e87b0bde8e3884ba313fccca3d2b8e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 52799189}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 69e87b0bde8e3884ba313fccca3d2b8e, type: 3}
 --- !u!114 &2008478487 stripped

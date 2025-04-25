@@ -7,11 +7,11 @@ public class CoinTextUpdator : MonoBehaviour
 {
 
     public TextMeshProUGUI coinText;
-    public moneyMgr moneyMgr;
+
     // Start is called before the first frame update
     void Start()
     {
-        coinText.text = moneyMgr.currency.ToString();
+        coinText.text = moneyMgr.inst.currency.ToString();
     }
 
     // Update is called once per frame
@@ -22,6 +22,6 @@ public class CoinTextUpdator : MonoBehaviour
 
     public void UpdateMoneyText()
     {
-        coinText.text = moneyMgr.currency.ToString();
+        coinText.text = moneyMgr.inst.currency.ToString();
     }
 }

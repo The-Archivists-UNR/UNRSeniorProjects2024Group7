@@ -2209,7 +2209,7 @@ MonoBehaviour:
   baseDamage: 5
   damageTag: Player
   projectile: {fileID: 1471498516342936048, guid: f2b9053c9aa9a96469b750df289845ec, type: 3}
-  attackSound: {fileID: 0}
+  attackSound: 
 --- !u!4 &122107227
 Transform:
   m_ObjectHideFlags: 0
@@ -5888,7 +5888,7 @@ MonoBehaviour:
   attackingTime: 0
   attackingTimeThreshold: 0.5
   attacking: 0
-  attackSoundID: 
+  attackSoundID: Sword Slash
 --- !u!114 &739308226
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5908,6 +5908,7 @@ MonoBehaviour:
   easeHealthSlider: {fileID: 260609266}
   weapons:
   - {fileID: 693195958}
+  - {fileID: 771675798}
   enemyAni: {fileID: 739308227}
   damageSoundID: Girl Hurt
 --- !u!95 &739308227 stripped
@@ -6095,6 +6096,55 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 754357059}
   m_CullTransparentMesh: 1
+--- !u!1 &771675797
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 771675799}
+  - component: {fileID: 771675798}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &771675798
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 771675797}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4fbaa4fc4f16fd246a8ed7bd702cdb76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseDamage: 10
+  damageTag: Enemy
+  projectile: {fileID: 1471498516342936048, guid: 0b151066f84148d469c8f717914e59b8, type: 3}
+  spawn: {fileID: 771675799}
+  attackSound: Spell
+--- !u!4 &771675799
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 771675797}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.283, z: 0.161}
+  m_LocalScale: {x: 3.3333335, y: 3.3333335, z: 3.3333335}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1176510062}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &776158124
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7963,7 +8013,10 @@ PrefabInstance:
       objectReference: {fileID: 9100000, guid: 26f9d458850327c41b708ed08c5a4458, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 3f9f19f30583a894a87ef8738575590c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 771675799}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 3f9f19f30583a894a87ef8738575590c, type: 3}
       insertIndex: -1
@@ -7987,6 +8040,11 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 693195959}
   m_SourcePrefab: {fileID: 100100000, guid: 3f9f19f30583a894a87ef8738575590c, type: 3}
+--- !u!4 &1176510062 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 3f9f19f30583a894a87ef8738575590c, type: 3}
+  m_PrefabInstance: {fileID: 1176510061}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1247979653
 GameObject:
   m_ObjectHideFlags: 0
@@ -13349,6 +13407,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1884483046}
+  - component: {fileID: 1884483047}
   m_Layer: 0
   m_Name: Managers
   m_TagString: Untagged
@@ -13380,6 +13439,18 @@ Transform:
   - {fileID: 195625351}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1884483047
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1884483045}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d72d27caf9fe3248a71d207f16e5948, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1919873511
 GameObject:
   m_ObjectHideFlags: 0

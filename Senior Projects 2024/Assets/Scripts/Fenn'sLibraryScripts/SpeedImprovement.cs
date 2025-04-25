@@ -12,11 +12,8 @@ public class SpeedImprovement : MonoBehaviour
     public int speedCounter;
 
     public TextMeshProUGUI speedText;
-    public OpheliaStats oStats;
 
     public TextMeshProUGUI speedPricetext;
-
-    public moneyMgr mMgr;
 
     int speedPrice = 50;
     string[] stringPrices = {"50", "100", "150", "200", "250", "Maxed"};
@@ -55,11 +52,11 @@ public class SpeedImprovement : MonoBehaviour
         if (speedCounter > 0)
         {
             float speedBuff = 1 + speedArray[speedCounter];
-            oStats.SpeedPercent = speedBuff;
+            OpheliaStats.inst.SpeedPercent = speedBuff;
         }
         if (speedCounter == 0)
         {
-            oStats.SpeedPercent = 1;
+            OpheliaStats.inst.SpeedPercent = 1;
         }
         speedText.text = speedTextArray[speedCounter];
     }
@@ -82,10 +79,10 @@ public class SpeedImprovement : MonoBehaviour
 
     public void CheckMax()
     {
-        if (mMgr.currency >= speedPrice && firstMax == false && speedCounter == 0)
+        if (moneyMgr.inst.currency >= speedPrice && firstMax == false && speedCounter == 0)
         {
             print("I have increased");
-            mMgr.currency = mMgr.currency - speedPrice;
+            moneyMgr.inst.currency = moneyMgr.inst.currency - speedPrice;
             maxBuff++;
             speedPricetext.text = stringPrices[maxBuff];
             speedPrice = prices[maxBuff];
@@ -95,9 +92,9 @@ public class SpeedImprovement : MonoBehaviour
             print(firstMax);
         }
 
-        if (mMgr.currency >= speedPrice && firstMax == true && secondMax == false && speedCounter == 1)
+        if (moneyMgr.inst.currency >= speedPrice && firstMax == true && secondMax == false && speedCounter == 1)
         {
-            mMgr.currency = mMgr.currency - speedPrice;
+            moneyMgr.inst.currency = moneyMgr.inst.currency - speedPrice;
             maxBuff++;
             speedPricetext.text = stringPrices[maxBuff];
             speedPrice = prices[maxBuff];
@@ -105,9 +102,9 @@ public class SpeedImprovement : MonoBehaviour
             secondMax = true;
         }
 
-        if (mMgr.currency >= speedPrice && secondMax == true && thirdMax == false && speedCounter == 2)
+        if (moneyMgr.inst.currency >= speedPrice && secondMax == true && thirdMax == false && speedCounter == 2)
         {
-            mMgr.currency = mMgr.currency - speedPrice;
+            moneyMgr.inst.currency = moneyMgr.inst.currency - speedPrice;
             maxBuff++;
             speedPricetext.text = stringPrices[maxBuff];
             speedPrice = prices[maxBuff];
@@ -115,9 +112,9 @@ public class SpeedImprovement : MonoBehaviour
             thirdMax = true;
         }
 
-        if (mMgr.currency >= speedPrice && thirdMax == true && fourthMax == false && speedCounter == 3)
+        if (moneyMgr.inst.currency >= speedPrice && thirdMax == true && fourthMax == false && speedCounter == 3)
         {
-            mMgr.currency = mMgr.currency - speedPrice;
+            moneyMgr.inst.currency = moneyMgr.inst.currency - speedPrice;
             maxBuff++;
             speedPricetext.text = stringPrices[maxBuff];
             speedPrice = prices[maxBuff];

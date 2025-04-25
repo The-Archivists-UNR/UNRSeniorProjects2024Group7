@@ -107,6 +107,10 @@ public class GameData
     public List<string> kidConvo;
     public List<string> detectiveConvo;
     public List<string> dudeConvo;
+    public int ghostRelationshipScore;
+    public int kidRelationshipScore;
+    public int detectiveRelationshipScore;
+    public int dudeRelationshipScore;
 
     public float ogHP;
     public float ogSpeed;

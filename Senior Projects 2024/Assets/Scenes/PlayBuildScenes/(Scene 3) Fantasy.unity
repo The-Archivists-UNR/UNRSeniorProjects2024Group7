@@ -4223,30 +4223,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fantasy Ophelia
       objectReference: {fileID: 0}
-    - target: {fileID: 4090524513400003311, guid: 6894343b6bae040418140c5238710a22, type: 3}
-      propertyPath: attackingTime
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4090524513400003311, guid: 6894343b6bae040418140c5238710a22, type: 3}
-      propertyPath: attackCooldown
-      value: 1.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4090524513400003311, guid: 6894343b6bae040418140c5238710a22, type: 3}
-      propertyPath: attackingTimeThreshold
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5243806062099436189, guid: 6894343b6bae040418140c5238710a22, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 5243806062099436189, guid: 6894343b6bae040418140c5238710a22, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 5243806062099436189, guid: 6894343b6bae040418140c5238710a22, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 5
-      objectReference: {fileID: 0}
     - target: {fileID: 5243806062099436189, guid: 6894343b6bae040418140c5238710a22, type: 3}
       propertyPath: m_LocalPosition.x
       value: -56.38
@@ -4288,10 +4264,6 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9204767450669261510, guid: 6894343b6bae040418140c5238710a22, type: 3}
-      propertyPath: speed
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 9204767450669261510, guid: 6894343b6bae040418140c5238710a22, type: 3}
       propertyPath: healthSlider
       value: 
       objectReference: {fileID: 3854486175269314301}
@@ -4300,18 +4272,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2126284730975303716}
     - target: {fileID: 9204767450669261510, guid: 6894343b6bae040418140c5238710a22, type: 3}
-      propertyPath: weapons.Array.data[0]
+      propertyPath: weapons.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 9204767450669261510, guid: 6894343b6bae040418140c5238710a22, type: 3}
+      propertyPath: weapons.Array.data[1]
       value: 
-      objectReference: {fileID: 341351743}
-    m_RemovedComponents:
-    - {fileID: 5032755399151777381, guid: 6894343b6bae040418140c5238710a22, type: 3}
-    m_RemovedGameObjects:
-    - {fileID: 388237439317467718, guid: 6894343b6bae040418140c5238710a22, type: 3}
+      objectReference: {fileID: 341351742}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 296377190324030764, guid: 6894343b6bae040418140c5238710a22, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 341351743}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6894343b6bae040418140c5238710a22, type: 3}
 --- !u!114 &341351739 stripped
 MonoBehaviour:
@@ -4340,26 +4311,28 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5243806062099436189, guid: 6894343b6bae040418140c5238710a22, type: 3}
   m_PrefabInstance: {fileID: 341351738}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &341351742 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 296377190324030764, guid: 6894343b6bae040418140c5238710a22, type: 3}
+--- !u!114 &341351742 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 715644779354377272, guid: 6894343b6bae040418140c5238710a22, type: 3}
   m_PrefabInstance: {fileID: 341351738}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &341351743
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4fbaa4fc4f16fd246a8ed7bd702cdb76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &341351743 stripped
 MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 2780555393866497782, guid: 6894343b6bae040418140c5238710a22, type: 3}
+  m_PrefabInstance: {fileID: 341351738}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 341351742}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 642ef9ec0eb842c47a5e8ea2d8bb63e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseDamage: 15
-  damageTag: Enemy
-  entity: {fileID: 341351740}
 --- !u!1 &346428252
 GameObject:
   m_ObjectHideFlags: 0

@@ -56,18 +56,21 @@ public class SaveMgr : MonoBehaviour
             List<string> memory = kid.dialogueTranscript;
             gameData.kidConvo = memory;
             gameData.kidMemory = kid.memory;
+            gameData.kidRelationshipScore = kid.relationshipScore;
         }
         if (detective != null)
         {
             List<string> memory = detective.dialogueTranscript;
             gameData.detectiveConvo = memory;
             gameData.detectiveMemory = detective.memory;
+            gameData.detectiveRelationshipScore = detective.relationshipScore;
         }
         if (ghost != null)
         {
             List<string> memory = ghost.dialogueTranscript;
             gameData.ghostConvo = memory;
             gameData.ghostMemory = ghost.memory;
+            gameData.ghostRelationshipScore = ghost.relationshipScore;
         }
 
         if (dude != null)
@@ -75,6 +78,7 @@ public class SaveMgr : MonoBehaviour
             List<string> memory = dude.dialogueTranscript;
             gameData.dudeConvo = memory;
             gameData.dudeMemory = dude.memory;
+            gameData.detectiveRelationshipScore = dude.relationshipScore;
         }
 
         if (OpheliaStats.inst != null)
@@ -143,25 +147,30 @@ public class SaveMgr : MonoBehaviour
         
         if (kid != null)
         {
-            Debug.Log("does it work");
+            
             kid.dialogueTranscript = gameData.kidConvo;
             kid.memory = gameData.kidMemory;
+            kid.relationshipScore = gameData.kidRelationshipScore;
         }
         if (detective != null)
         {
             detective.dialogueTranscript = gameData.detectiveConvo;
             detective.memory = gameData.detectiveMemory;
+            detective.relationshipScore = gameData.detectiveRelationshipScore;
         }
         if (ghost != null)
         {
+            Debug.Log("does it work");
             ghost.dialogueTranscript = gameData.ghostConvo;
             ghost.memory = gameData.ghostMemory;
+            ghost.relationshipScore = gameData.ghostRelationshipScore;
         }
 
         if (dude != null)
         {
             dude.dialogueTranscript = gameData.dudeConvo;
             dude.memory = gameData.dudeMemory;
+            dude.relationshipScore = gameData.dudeRelationshipScore;
         }
 
         if (OpheliaStats.inst != null)

@@ -1375,6 +1375,8 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 0a48a7895aaf12e49a8efea26ed3ed16, type: 3}
   - name: Spell
     clip: {fileID: 8300000, guid: bc31a48d6af1f3f4e8a184c48800209d, type: 3}
+  - name: Explosion
+    clip: {fileID: 8300000, guid: 1fd31868d68903d4f9e2c4a3b7ef98f3, type: 3}
   musicSource: {fileID: 468350157}
   sfxSource: {fileID: 448812516}
   level: 0
@@ -1640,8 +1642,8 @@ Camera:
   m_GameObject: {fileID: 729221500}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_ClearFlags: 2
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -3054,6 +3056,10 @@ MonoBehaviour:
     kidConvo: []
     detectiveConvo: []
     dudeConvo: []
+    ghostRelationshipScore: 0
+    kidRelationshipScore: 0
+    detectiveRelationshipScore: 0
+    dudeRelationshipScore: 0
     ogHP: 0
     ogSpeed: 0
     ogDamage: 0

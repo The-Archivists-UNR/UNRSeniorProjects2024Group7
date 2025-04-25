@@ -8,7 +8,7 @@ public class LibraryLock : MonoBehaviour
     public bool isFantasyCompleted = false;
     public bool isNoireCompleted = false;
     public bool isScifiCompleted = false;
-    [HideInInspector]
+    //[HideInInspector]
     public bool isBossOpen = false;
     
     public static LibraryLock inst;
@@ -44,5 +44,9 @@ public class LibraryLock : MonoBehaviour
     void Update()
     {
         checkValidity();
+        if(Input.GetKeyDown(KeyCode.Alpha9))
+        {
+            isBossOpen = true;
+        }
     }
 }

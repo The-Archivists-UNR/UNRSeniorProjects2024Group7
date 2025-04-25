@@ -12734,6 +12734,12 @@ MonoBehaviour:
   NPCSprite: {fileID: 21300000, guid: 855e20cc8d6357a4ca090566a62f129b, type: 3}
   spriteBox: {fileID: 1153955414}
   LLM: {fileID: 7169905935478613596}
+  currentNPC: 0
+  jBuff: {fileID: 0}
+  bBuff: {fileID: 0}
+  kBuff: {fileID: 0}
+  sBuff: {fileID: 0}
+  interactText: {fileID: 0}
 --- !u!135 &460937341
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -21069,15 +21075,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameData:
+    savedBefore: 0
     playerName: 
     enemiesKilled: 0
     timePlayed: 0
     ghostMemory: 
     kidMemory: 
     detectiveMemory: 
+    dudeMemory: 
     ghostConvo: []
     kidConvo: []
     detectiveConvo: []
+    dudeConvo: []
     ogHP: 0
     ogSpeed: 0
     ogDamage: 0
@@ -21090,12 +21099,21 @@ MonoBehaviour:
     attackMaxBuff: 0
     speedCounter: 0
     speedMaxBuff: 0
+    previouslyActiveJulie: 0
+    previouslyActiveKirk: 0
+    previouslyActiveOswald: 0
+    previouslyActiveBonnie: 0
+    currency: 0
+    isFantasyCompleted: 0
+    isNoireCompleted: 0
+    isScifiCompleted: 0
   useEncryption: 0
   saveName: slot1.game
   playerName: 
   kid: {fileID: 8822567508641887095}
   ghost: {fileID: 0}
   detective: {fileID: 1533691465088879265}
+  dude: {fileID: 0}
 --- !u!1 &724564827
 GameObject:
   m_ObjectHideFlags: 0
@@ -24130,7 +24148,7 @@ GameObject:
   - component: {fileID: 812981029}
   - component: {fileID: 812981030}
   m_Layer: 0
-  m_Name: Main Camera
+  m_Name: main
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -29064,6 +29082,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Collectibles: {fileID: 152101870}
+  panel: {fileID: 0}
   interactKey: e
   interactText: {fileID: 0}
 --- !u!4 &988048830 stripped
@@ -65603,6 +65622,12 @@ MonoBehaviour:
   NPCSprite: {fileID: 21300000, guid: 18ef0ddc45b202e469547bb19814d8a5, type: 3}
   spriteBox: {fileID: 1153955414}
   LLM: {fileID: 7169905935478613596}
+  currentNPC: 0
+  jBuff: {fileID: 0}
+  bBuff: {fileID: 0}
+  kBuff: {fileID: 0}
+  sBuff: {fileID: 0}
+  interactText: {fileID: 0}
 --- !u!1 &1541865084492269186
 GameObject:
   m_ObjectHideFlags: 0
@@ -97937,6 +97962,12 @@ MonoBehaviour:
   NPCSprite: {fileID: 21300000, guid: d4b2f5f6af0b2aa439fbd751528469f2, type: 3}
   spriteBox: {fileID: 1153955414}
   LLM: {fileID: 7169905935478613596}
+  currentNPC: 0
+  jBuff: {fileID: 0}
+  bBuff: {fileID: 0}
+  kBuff: {fileID: 0}
+  sBuff: {fileID: 0}
+  interactText: {fileID: 0}
 --- !u!1 &8822874166727504766
 GameObject:
   m_ObjectHideFlags: 0

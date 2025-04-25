@@ -33,6 +33,8 @@ public class SceneSwitch : MonoBehaviour
         {
             yield return null;
         }
+
+        SaveMgr.inst.LoadData();
     }
 
     //Sets the current scene to Main Menu

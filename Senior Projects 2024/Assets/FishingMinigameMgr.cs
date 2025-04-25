@@ -10,7 +10,7 @@ public class FishingMinigameMgr : MonoBehaviour
     bool playing;
     public GameObject menu;
     public GameObject menu2;
-    //public OpheliaStats stats;
+
     // Start is called before the first frame update
     void Start()
     {

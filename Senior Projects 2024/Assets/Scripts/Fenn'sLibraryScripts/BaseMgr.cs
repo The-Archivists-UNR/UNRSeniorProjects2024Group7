@@ -8,7 +8,6 @@ public class BaseMgr : MonoBehaviour
     public TextMeshProUGUI attack;
     public TextMeshProUGUI hp;
     public TextMeshProUGUI speed;
-    public OpheliaStats stats;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,8 +17,8 @@ public class BaseMgr : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        attack.text = stats.ogDamage.ToString();
-        hp.text = stats.ogHP.ToString();
-        speed.text = stats.ogSpeed.ToString();
+        attack.text = OpheliaStats.inst.ogDamage.ToString();
+        hp.text = OpheliaStats.inst.ogHP.ToString();
+        speed.text = OpheliaStats.inst.ogSpeed.ToString();
     }
 }

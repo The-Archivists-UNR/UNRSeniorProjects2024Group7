@@ -57,6 +57,11 @@ public class PlayerController : MonoBehaviour
                 playerAni.SetBool("isAttacking", false);
             }
         }
+
+        if(UnityEngine.Input.GetKeyDown(KeyCode.Q))
+        {
+            playerEnt.weapons[1].StartAttack();
+        }
     }
 
     public void MovePlayer(Vector2 input)

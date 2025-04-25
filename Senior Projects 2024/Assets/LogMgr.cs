@@ -27,6 +27,7 @@ public class LogMgr : MonoBehaviour
 
     public void OpenLog(NPCController npc)
     {
+        SaveMgr.inst.LoadData();
         contentScreen.SetActive(true);
         DisplayLog(npc);
         optionsScreen.SetActive(false);

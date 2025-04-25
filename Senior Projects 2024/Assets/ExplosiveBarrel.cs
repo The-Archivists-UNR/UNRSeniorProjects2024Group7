@@ -31,6 +31,7 @@ public class ExplosiveBarrel : Entity
             //enemyAni.SetTrigger("die");
             if (tag != "Player")
                 GameStatsMgr.inst.enemiesKilled++;
+            AudioMgr.Instance.PlaySFX("Explosion");
             StartCoroutine(PlayVFXGraphAndDestroy(explosion));
         }
     }
