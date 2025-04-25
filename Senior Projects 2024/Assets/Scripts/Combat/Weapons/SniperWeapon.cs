@@ -9,7 +9,7 @@ public class SniperWeapon : Weapon
 {
     public GameObject projectile; // prefab of the snipe projectile
     public Transform spawn; // spawn location of projectiles
-    public AudioSource attackSound; // sound made when weapon is shot
+    public string attackSound; // sound made when weapon is shot
 
     void Start()
     {
@@ -30,6 +30,6 @@ public class SniperWeapon : Weapon
         shot.y = spawn.position.y;
         newProjectile.GetComponent<Projectile>().direction = shot - spawn.position;
         if(attackSound != null)
-            AudioMgr.Instance.PlaySFX("Ranged Attack", attackSound);
+            AudioMgr.Instance.PlaySFX(attackSound);
     }
 }

@@ -362,9 +362,9 @@ MonoBehaviour:
   attackingTime: 0
   attackingTimeThreshold: 1
   attackCooldownThreshold: 5
-  distanceThreshold: 5
+  distanceThreshold: 20
   attacking: 0
-  attackSoundID: 
+  attackSoundID: Slash
 --- !u!114 &431268503957605243
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -385,7 +385,7 @@ MonoBehaviour:
   weapons:
   - {fileID: 5552112175838639750}
   enemyAni: {fileID: 1293015290462498038}
-  damageSoundID: 
+  damageSoundID: Alien Hurt
 --- !u!65 &5156749464993240353
 BoxCollider:
   m_ObjectHideFlags: 0

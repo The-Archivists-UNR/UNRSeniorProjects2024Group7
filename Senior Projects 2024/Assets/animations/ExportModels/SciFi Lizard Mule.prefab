@@ -127,9 +127,9 @@ MonoBehaviour:
   attackingTime: 0
   attackingTimeThreshold: 2
   attackCooldownThreshold: 3
-  distanceThreshold: 6
+  distanceThreshold: 20
   attacking: 0
-  attackSoundID: Dog Bark
+  attackSoundID: Bite
 --- !u!114 &4526953263697841693
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -149,7 +149,7 @@ MonoBehaviour:
   easeHealthSlider: {fileID: 3642022848467185657}
   weapons: []
   enemyAni: {fileID: 0}
-  damageSoundID: 
+  damageSoundID: Alien Hurt
 --- !u!65 &1518640919341018190
 BoxCollider:
   m_ObjectHideFlags: 0

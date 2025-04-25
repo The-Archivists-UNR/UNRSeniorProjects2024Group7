@@ -13,7 +13,7 @@ public class AOEWeapon : Weapon
     // Start is called before the first frame update
     public GameObject projectile;
     AOE entity;
-    public AudioSource attackSound;
+    public string attackSound;
 
     void Start()
     {
@@ -51,6 +51,6 @@ public class AOEWeapon : Weapon
         proj.direction.y = Mathf.Sin(throwAngle);
         proj.direction.Normalize();
         if(attackSound != null)
-            AudioMgr.Instance.PlaySFX("Ranged Attack", attackSound);
+            AudioMgr.Instance.PlaySFX(attackSound);
     }
 }

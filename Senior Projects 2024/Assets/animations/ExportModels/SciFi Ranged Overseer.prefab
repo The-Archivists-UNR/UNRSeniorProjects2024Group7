@@ -79,7 +79,7 @@ MonoBehaviour:
   damageTag: Player
   projectile: {fileID: 1471498516342936048, guid: 00cd64a102d0188408e9f9a9c00bbd1a, type: 3}
   spawn: {fileID: 4427515684559470853}
-  attackSound: {fileID: 0}
+  attackSound: Alien Spit
 --- !u!1 &748429711864376955
 GameObject:
   m_ObjectHideFlags: 0
@@ -1325,7 +1325,7 @@ MonoBehaviour:
   weapons:
   - {fileID: 6548165685457411165}
   enemyAni: {fileID: 6316862380097490602}
-  damageSoundID: 
+  damageSoundID: Alien Hurt
 --- !u!1 &6503314975807684018
 GameObject:
   m_ObjectHideFlags: 0

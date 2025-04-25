@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using UnityEngine.SceneManagement;
 
 //Author: Kat
 //the audio manager for the game
@@ -16,6 +17,7 @@ public class AudioMgr : MonoBehaviour
     public Sound[] musicSounds, sfxSounds;
     public AudioSource musicSource, sfxSource;
     public int level;
+    bool mute = false;
 
     public void Awake()
     {
@@ -44,6 +46,19 @@ public class AudioMgr : MonoBehaviour
         else if (level == 4)
             PlayMusic("FinalBoss");
     }
+
+    public void Update()
+    {
+        if (SceneManager.GetActiveScene().buildIndex == 6 || SceneManager.GetActiveScene().buildIndex == 12 || SceneManager.GetActiveScene().buildIndex == 11)
+        {
+            musicSource.mute = true;
+        }
+        else
+        {
+            musicSource.mute = mute;
+        }
+    }
+
     public void PlayMusic(string name)
     {
         //plays a given music clip from an array or throws an error message
@@ -93,6 +108,7 @@ public class AudioMgr : MonoBehaviour
     public void ToggleMusic()
     {
         musicSource.mute = !musicSource.mute;
+        mute = musicSource.mute;
     }
     public void ToggleSFX()
     {
@@ -101,11 +117,13 @@ public class AudioMgr : MonoBehaviour
 
     public void MusicVolume(float volume)
     {
-        musicSource.volume = volume;
+        if(musicSource != null)
+            musicSource.volume = volume;
     }
 
     public void sfxVolume(float volume)
     {
-        sfxSource.volume = volume;
+        if (sfxSource != null)
+            sfxSource.volume = volume;
     }
 }

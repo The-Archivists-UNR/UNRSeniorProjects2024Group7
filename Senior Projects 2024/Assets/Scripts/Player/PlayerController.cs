@@ -120,7 +120,7 @@ public class PlayerController : MonoBehaviour
 
     public void StartDash(Vector2 mousePos, Vector2 moveInput)
     {
-        AudioMgr.Instance.PlaySFX("Dash", dashSound);
+        AudioMgr.Instance.PlaySFX("Dash");
         if (dashCooldown < dashCooldownTimer)
         {
             Vector3 dashDirection;
