@@ -9,6 +9,7 @@ public class FishingMinigameMgr : MonoBehaviour
     bool playerReacted;
     bool playing;
     public GameObject menu;
+    public OpheliaStats stats;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,6 +23,7 @@ public class FishingMinigameMgr : MonoBehaviour
         {
             playerReacted = true;
             Debug.Log("Caught the fish!");
+            stats.ogHP += 5;
             // Do something here like play animation or give reward
         }
     }
