@@ -39,6 +39,8 @@ public class HealthImprovement : MonoBehaviour
     void Start()
     {
         healthText.text = healthTextArray[healthCounter];
+        healthPricetext.text = stringPrices[maxBuff];
+        healthPrice = prices[maxBuff];
 
     }
 
