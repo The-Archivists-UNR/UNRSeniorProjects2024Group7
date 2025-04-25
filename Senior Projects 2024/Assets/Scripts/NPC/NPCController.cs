@@ -46,6 +46,13 @@ public class NPCController : MonoBehaviour
 
     public LLMInteraction LLM;
 
+    public ItemType currentNPC;
+
+    public JulieBuff jBuff;
+    public BonnieBuff bBuff;
+    public KirkBuff kBuff;
+    public SamBuff sBuff;
+
     private bool playerIsNear = false;
     private bool inConversation = false;
     //private int count;
@@ -113,6 +120,24 @@ public class NPCController : MonoBehaviour
 
         if (memory == "") { LLM.getResponse(prompt, setAIText, AIReplyComplete); Debug.Log("1"); }
         else { LLM.getResponse(prompt + "\n here's what happened so far:\n" + memory, setAIText, AIReplyComplete); Debug.Log("2"); }
+
+        switch (currentNPC)
+        {
+            case ItemType.Julie:
+                jBuff.ChangeStats();
+                break;
+            case ItemType.Bonnie:
+                bBuff.ChangeStats();
+                break;
+            case ItemType.Kirk:
+                kBuff.ChangeStats();
+                break;
+            case ItemType.Sam:
+                sBuff.ChangeStats();
+                break;
+
+        }
+
     }
 
     private void onInputFieldSubmit(string message)
