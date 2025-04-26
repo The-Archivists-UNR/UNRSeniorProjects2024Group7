@@ -4428,7 +4428,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!108 &346428253
 Light:
   m_ObjectHideFlags: 0
@@ -8760,13 +8760,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 779954952}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.15186596, y: -0.29604936, z: 0.9418135, w: 0.04773749}
+  m_LocalRotation: {x: 0.109681346, y: -0.7155309, z: 0.68020105, w: 0.115378216}
   m_LocalPosition: {x: 0, y: 3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 145.1, y: -161.68, z: 0}
+  m_LocalEulerAnglesHint: {x: 87.1, y: -161.68, z: 0}
 --- !u!1 &793996153
 GameObject:
   m_ObjectHideFlags: 0
@@ -14540,6 +14540,7 @@ MonoBehaviour:
   gameOver: {fileID: 1473470374}
   gameWon: {fileID: 1917759660}
   loadNext: 0
+  inLastRoom: 0
   bossDead: 0
 --- !u!1 &1420820478
 GameObject:
@@ -19191,6 +19192,7 @@ MonoBehaviour:
   player: {fileID: 1845988748}
   roomItemPlacement: {fileID: 1838468662}
   opheliaWeapon: {fileID: 341351743}
+  sceneMusic: 
 --- !u!114 &1838468662
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20199,7 +20201,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 12.65
+  orthographic size: 12
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -20224,7 +20226,7 @@ Transform:
   m_GameObject: {fileID: 1927874131}
   serializedVersion: 2
   m_LocalRotation: {x: 0.3647056, y: 0.27984518, z: -0.11591566, w: 0.88047725}
-  m_LocalPosition: {x: -62.38, y: 14, z: -73.72}
+  m_LocalPosition: {x: -64.4, y: 16.9, z: -73.72}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

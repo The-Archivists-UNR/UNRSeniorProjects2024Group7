@@ -2989,6 +2989,8 @@ MonoBehaviour:
   doorDestination: {fileID: 1110292995}
   playerTag: Player
   interactKey: e
+  interactText: {fileID: 0}
+  destination: 0
 --- !u!1001 &143170341
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3475,8 +3477,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthCounter: 0
   healthText: {fileID: 2107966036}
-  oStats: {fileID: 1737859673}
-  otherButton: {fileID: 1730005383}
+  healthPricetext: {fileID: 0}
+  maxBuff: 0
+  coinText: {fileID: 0}
 --- !u!114 &163446211
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4675,8 +4678,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackCounter: 0
   attackText: {fileID: 429347326}
-  oStats: {fileID: 1737859673}
-  otherButton: {fileID: 1184155341}
+  attackPricetext: {fileID: 0}
+  maxBuff: 0
+  coinText: {fileID: 0}
 --- !u!114 &218924841
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9963,8 +9967,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speedCounter: 0
   speedText: {fileID: 718419348}
-  oStats: {fileID: 1737859673}
-  otherButton: {fileID: 1656236136}
+  speedPricetext: {fileID: 0}
+  maxBuff: 0
+  coinText: {fileID: 0}
 --- !u!114 &408304254
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11849,6 +11854,12 @@ MonoBehaviour:
   NPCSprite: {fileID: 21300000, guid: 855e20cc8d6357a4ca090566a62f129b, type: 3}
   spriteBox: {fileID: 1153955414}
   LLM: {fileID: 7169905935478613596}
+  currentNPC: 0
+  jBuff: {fileID: 0}
+  bBuff: {fileID: 0}
+  kBuff: {fileID: 0}
+  sBuff: {fileID: 0}
+  interactText: {fileID: 0}
 --- !u!135 &460937341
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -13330,6 +13341,8 @@ MonoBehaviour:
   doorDestination: {fileID: 849668597}
   playerTag: Player
   interactKey: e
+  interactText: {fileID: 0}
+  destination: 0
 --- !u!1001 &547130220
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -17590,6 +17603,8 @@ MonoBehaviour:
   doorDestination: {fileID: 1501936033}
   playerTag: Player
   interactKey: e
+  interactText: {fileID: 0}
+  destination: 0
 --- !u!1 &691310581
 GameObject:
   m_ObjectHideFlags: 0
@@ -18995,21 +19010,49 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameData:
+    savedBefore: 0
     playerName: 
     enemiesKilled: 0
     timePlayed: 0
     ghostMemory: 
     kidMemory: 
     detectiveMemory: 
+    dudeMemory: 
     ghostConvo: []
     kidConvo: []
     detectiveConvo: []
+    dudeConvo: []
+    ghostRelationshipScore: 0
+    kidRelationshipScore: 0
+    detectiveRelationshipScore: 0
+    dudeRelationshipScore: 0
+    ogHP: 0
+    ogSpeed: 0
+    ogDamage: 0
+    HpPercent: 0
+    SpeedPercent: 0
+    AttackPercent: 0
+    healthCounter: 0
+    healthMaxBuff: 0
+    attackCounter: 0
+    attackMaxBuff: 0
+    speedCounter: 0
+    speedMaxBuff: 0
+    previouslyActiveJulie: 0
+    previouslyActiveKirk: 0
+    previouslyActiveOswald: 0
+    previouslyActiveBonnie: 0
+    currency: 0
+    isFantasyCompleted: 0
+    isNoireCompleted: 0
+    isScifiCompleted: 0
   useEncryption: 0
   saveName: slot1.game
   playerName: 
   kid: {fileID: 8822567508641887095}
   ghost: {fileID: 0}
   detective: {fileID: 1533691465088879265}
+  dude: {fileID: 0}
 --- !u!1 &724564827
 GameObject:
   m_ObjectHideFlags: 0
@@ -19171,6 +19214,8 @@ MonoBehaviour:
   doorDestination: {fileID: 859420193}
   playerTag: Player
   interactKey: e
+  interactText: {fileID: 0}
+  destination: 0
 --- !u!1 &729994154
 GameObject:
   m_ObjectHideFlags: 0
@@ -22756,6 +22801,8 @@ MonoBehaviour:
   doorDestination: {fileID: 1300191039}
   playerTag: Player
   interactKey: e
+  interactText: {fileID: 0}
+  destination: 0
 --- !u!1001 &846139134
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -25168,6 +25215,124 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: e9fbc6bde886f83429ac24356bbff961, type: 3}
   m_PrefabInstance: {fileID: 912157663}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &912568038
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 912568041}
+  - component: {fileID: 912568040}
+  - component: {fileID: 912568039}
+  m_Layer: 0
+  m_Name: Point Light
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &912568039
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 912568038}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 474bcb49853aa07438625e644c072ee6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Version: 3
+  m_UsePipelineSettings: 1
+  m_AdditionalLightsShadowResolutionTier: 2
+  m_LightLayerMask: 1
+  m_RenderingLayers: 1
+  m_CustomShadowLayers: 0
+  m_ShadowLayerMask: 1
+  m_ShadowRenderingLayers: 1
+  m_LightCookieSize: {x: 1, y: 1}
+  m_LightCookieOffset: {x: 0, y: 0}
+  m_SoftShadowQuality: 0
+--- !u!108 &912568040
+Light:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 912568038}
+  m_Enabled: 1
+  serializedVersion: 10
+  m_Type: 2
+  m_Shape: 0
+  m_Color: {r: 0.37846866, g: 1, b: 0.33490568, a: 1}
+  m_Intensity: 1.46
+  m_Range: 1.88
+  m_SpotAngle: 30
+  m_InnerSpotAngle: 21.80208
+  m_CookieSize: 10
+  m_Shadows:
+    m_Type: 0
+    m_Resolution: -1
+    m_CustomResolution: -1
+    m_Strength: 1
+    m_Bias: 0.05
+    m_NormalBias: 0.4
+    m_NearPlane: 0.2
+    m_CullingMatrixOverride:
+      e00: 1
+      e01: 0
+      e02: 0
+      e03: 0
+      e10: 0
+      e11: 1
+      e12: 0
+      e13: 0
+      e20: 0
+      e21: 0
+      e22: 1
+      e23: 0
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    m_UseCullingMatrixOverride: 0
+  m_Cookie: {fileID: 0}
+  m_DrawHalo: 0
+  m_Flare: {fileID: 0}
+  m_RenderMode: 0
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RenderingLayerMask: 1
+  m_Lightmapping: 4
+  m_LightShadowCasterMode: 0
+  m_AreaSize: {x: 1, y: 1}
+  m_BounceIntensity: 1
+  m_ColorTemperature: 6570
+  m_UseColorTemperature: 0
+  m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
+  m_UseBoundingSphereOverride: 0
+  m_UseViewFrustumForShadowCasterCull: 1
+  m_ShadowRadius: 0
+  m_ShadowAngle: 0
+--- !u!4 &912568041
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 912568038}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -182.115, y: 2.81, z: 118.135}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &915102947
 GameObject:
   m_ObjectHideFlags: 0
@@ -26928,7 +27093,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Collectibles: {fileID: 152101870}
+  panel: {fileID: 0}
   interactKey: e
+  interactText: {fileID: 0}
 --- !u!4 &988048830 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 431024, guid: e7a9a9223389ed54e84182a60e3aaa03, type: 3}
@@ -27178,6 +27345,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb09b806e2e7a004489156bcf3c780d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  interactableText: {fileID: 0}
+  interactText: {fileID: 0}
+  displayedPhrase: 
   sceneChosen: 2
   sceneSwitch: {fileID: 517846931}
 --- !u!1001 &999099048
@@ -29250,6 +29420,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 910120803ef4fc640ae51ef7e862d77a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  oStats: {fileID: 0}
+  type: 0
+  CMgr: {fileID: 0}
 --- !u!1 &1088957689
 GameObject:
   m_ObjectHideFlags: 0
@@ -30682,6 +30855,8 @@ MonoBehaviour:
   doorDestination: {fileID: 1567620786}
   playerTag: Player
   interactKey: e
+  interactText: {fileID: 0}
+  destination: 0
 --- !u!1 &1124537580
 GameObject:
   m_ObjectHideFlags: 0
@@ -32187,8 +32362,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackCounter: 0
   attackText: {fileID: 429347326}
-  oStats: {fileID: 1737859673}
-  otherButton: {fileID: 218924840}
+  attackPricetext: {fileID: 0}
+  maxBuff: 0
+  coinText: {fileID: 0}
 --- !u!114 &1184155342
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -39771,6 +39947,8 @@ MonoBehaviour:
   doorDestination: {fileID: 1082109763}
   playerTag: Player
   interactKey: e
+  interactText: {fileID: 0}
+  destination: 0
 --- !u!1 &1459596656
 GameObject:
   m_ObjectHideFlags: 0
@@ -41982,6 +42160,8 @@ MonoBehaviour:
   doorDestination: {fileID: 641944407}
   playerTag: Player
   interactKey: e
+  interactText: {fileID: 0}
+  destination: 0
 --- !u!1 &1550999902
 GameObject:
   m_ObjectHideFlags: 0
@@ -42883,6 +43063,8 @@ MonoBehaviour:
   doorDestination: {fileID: 1845003713}
   playerTag: Player
   interactKey: e
+  interactText: {fileID: 0}
+  destination: 0
 --- !u!1001 &1584854189
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -43616,6 +43798,8 @@ MonoBehaviour:
   doorDestination: {fileID: 505569463}
   playerTag: Player
   interactKey: e
+  interactText: {fileID: 0}
+  destination: 0
 --- !u!1 &1608472046
 GameObject:
   m_ObjectHideFlags: 0
@@ -44197,6 +44381,8 @@ MonoBehaviour:
   doorDestination: {fileID: 367081444}
   playerTag: Player
   interactKey: e
+  interactText: {fileID: 0}
+  destination: 0
 --- !u!1001 &1621288226
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -44819,8 +45005,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speedCounter: 0
   speedText: {fileID: 718419348}
-  oStats: {fileID: 1737859673}
-  otherButton: {fileID: 408304253}
+  speedPricetext: {fileID: 0}
+  maxBuff: 0
+  coinText: {fileID: 0}
 --- !u!114 &1656236137
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -45642,6 +45829,8 @@ MonoBehaviour:
   doorDestination: {fileID: 319732024}
   playerTag: Player
   interactKey: e
+  interactText: {fileID: 0}
+  destination: 0
 --- !u!1 &1691153185
 GameObject:
   m_ObjectHideFlags: 0
@@ -46457,6 +46646,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 910120803ef4fc640ae51ef7e862d77a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  oStats: {fileID: 0}
+  type: 0
+  CMgr: {fileID: 0}
 --- !u!4 &1714905376 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: 11712cacaa7a29a4da7070bf78c815cd, type: 3}
@@ -46856,8 +47048,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthCounter: 0
   healthText: {fileID: 2107966036}
-  oStats: {fileID: 1737859673}
-  otherButton: {fileID: 163446210}
+  healthPricetext: {fileID: 0}
+  maxBuff: 0
+  coinText: {fileID: 0}
 --- !u!114 &1730005384
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -47639,6 +47832,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 910120803ef4fc640ae51ef7e862d77a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  oStats: {fileID: 0}
+  type: 0
+  CMgr: {fileID: 0}
 --- !u!1 &1758096863
 GameObject:
   m_ObjectHideFlags: 0
@@ -48077,6 +48273,8 @@ MonoBehaviour:
   doorDestination: {fileID: 1800598574}
   playerTag: Player
   interactKey: e
+  interactText: {fileID: 0}
+  destination: 0
 --- !u!1001 &1772802365
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -48182,6 +48380,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb09b806e2e7a004489156bcf3c780d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  interactableText: {fileID: 0}
+  interactText: {fileID: 0}
+  displayedPhrase: 
   sceneChosen: 4
   sceneSwitch: {fileID: 517846931}
 --- !u!135 &1772802369
@@ -50842,6 +51043,8 @@ MonoBehaviour:
   doorDestination: {fileID: 2069854}
   playerTag: Player
   interactKey: e
+  interactText: {fileID: 0}
+  destination: 0
 --- !u!1 &1840390847
 GameObject:
   m_ObjectHideFlags: 0
@@ -55175,6 +55378,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb09b806e2e7a004489156bcf3c780d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  interactableText: {fileID: 0}
+  interactText: {fileID: 0}
+  displayedPhrase: 
   sceneChosen: 3
   sceneSwitch: {fileID: 517846931}
 --- !u!135 &2083473961
@@ -63609,6 +63815,12 @@ MonoBehaviour:
   NPCSprite: {fileID: 0}
   spriteBox: {fileID: 0}
   LLM: {fileID: 0}
+  currentNPC: 0
+  jBuff: {fileID: 0}
+  bBuff: {fileID: 0}
+  kBuff: {fileID: 0}
+  sBuff: {fileID: 0}
+  interactText: {fileID: 0}
 --- !u!135 &919132149383878267
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -67021,6 +67233,12 @@ MonoBehaviour:
   NPCSprite: {fileID: 21300000, guid: 18ef0ddc45b202e469547bb19814d8a5, type: 3}
   spriteBox: {fileID: 1153955414}
   LLM: {fileID: 7169905935478613596}
+  currentNPC: 0
+  jBuff: {fileID: 0}
+  bBuff: {fileID: 0}
+  kBuff: {fileID: 0}
+  sBuff: {fileID: 0}
+  interactText: {fileID: 0}
 --- !u!1 &1541865084492269186
 GameObject:
   m_ObjectHideFlags: 0
@@ -71681,6 +71899,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 910120803ef4fc640ae51ef7e862d77a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  oStats: {fileID: 0}
+  type: 0
+  CMgr: {fileID: 0}
 --- !u!1 &2342965482115351777
 GameObject:
   m_ObjectHideFlags: 0
@@ -111664,6 +111885,12 @@ MonoBehaviour:
   NPCSprite: {fileID: 21300000, guid: d4b2f5f6af0b2aa439fbd751528469f2, type: 3}
   spriteBox: {fileID: 1153955414}
   LLM: {fileID: 7169905935478613596}
+  currentNPC: 0
+  jBuff: {fileID: 0}
+  bBuff: {fileID: 0}
+  kBuff: {fileID: 0}
+  sBuff: {fileID: 0}
+  interactText: {fileID: 0}
 --- !u!1 &8822874166727504766
 GameObject:
   m_ObjectHideFlags: 0
@@ -114433,3 +114660,4 @@ SceneRoots:
   - {fileID: 234038182}
   - {fileID: 1790771558}
   - {fileID: 221548480}
+  - {fileID: 912568041}
