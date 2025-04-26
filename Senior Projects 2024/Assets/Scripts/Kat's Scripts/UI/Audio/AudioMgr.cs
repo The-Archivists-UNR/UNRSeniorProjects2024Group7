@@ -115,15 +115,16 @@ public class AudioMgr : MonoBehaviour
         sfxSource.mute = !sfxSource.mute;
     }
 
-    public void MusicVolume(float volume)
+    public void MusicVolume(float Mvolume)
     {
         if(musicSource != null)
-            musicSource.volume = volume;
+            musicSource.volume = Mvolume;
     }
 
-    public void sfxVolume(float volume)
+    public void sfxVolume(float Svolume)
     {
         if (sfxSource != null)
-            sfxSource.volume = volume;
+            sfxSource.volume = Svolume;
     }
+
 }
