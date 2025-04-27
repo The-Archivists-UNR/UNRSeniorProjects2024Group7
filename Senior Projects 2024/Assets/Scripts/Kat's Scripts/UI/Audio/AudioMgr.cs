@@ -23,13 +23,13 @@ public class AudioMgr : MonoBehaviour
     {
         if (Instance == null)
         {
+            print("its not getting destroyed :)");
             Instance = this;
-            DontDestroyOnLoad(gameObject);
+            DontDestroyOnLoad(this.gameObject);
         }
         else
-        {
-            Destroy(gameObject);
-        }
+            print("its getting destroyed :/");
+            Destroy(this);
     }
 
     public void Start()
