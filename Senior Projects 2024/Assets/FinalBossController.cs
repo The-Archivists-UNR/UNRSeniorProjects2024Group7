@@ -14,6 +14,10 @@ public class FinalBossController : MonoBehaviour
     public int numEnemies;
     public List<int> crystalWaves;
     public List<Crystal> crystalObjects;
+    public GameObject boss;
+
+    public PanelMover gameOver;
+    public PanelMover gameWon;
 
     bool crystalSet;
 
@@ -54,7 +58,22 @@ public class FinalBossController : MonoBehaviour
             if (enemies[i] == null)
                 enemies.RemoveAt(i);
         }
+
+        if (currentWave == numWaves)
+        {
+            gameWon.isVisible = true;
+            boss.SetActive(false);
+            //Time.timeScale = 0;
+        }
+        if (PlayerMgr.inst.player.health <= 0)
+        {
+            gameOver.isVisible = true;
+            //Time.timeScale = 0;
+        }
     }
+
+
+    public bool bossDead = false;
 
     public void IncreaseWaveFromCrystal()
     {

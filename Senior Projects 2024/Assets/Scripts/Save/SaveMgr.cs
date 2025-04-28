@@ -234,6 +234,13 @@ public class SaveMgr : MonoBehaviour
     {
         saveName = "slot" + saveSelect.inst.saveSlotNum + ".game";
         gameData = new GameData();
+        moneyMgr.inst.currency = 300;
+        OpheliaStats.inst.ogDamage = 15;
+        OpheliaStats.inst.ogSpeed = 15;
+        OpheliaStats.inst.ogHP = 100;
+        OpheliaStats.inst.HpPercent = 1;
+        OpheliaStats.inst.SpeedPercent = 1;
+        OpheliaStats.inst.AttackPercent = 1;
         gameData.playerName = playerName;
         string path = Path.Combine(Application.persistentDataPath, "saves");
         Debug.Log(path);

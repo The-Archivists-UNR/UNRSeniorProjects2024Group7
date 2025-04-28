@@ -7479,13 +7479,17 @@ MonoBehaviour:
   - {fileID: 194841026}
   enemies: []
   currentWave: 0
-  numWaves: 12
+  numWaves: 6
   numEnemies: 0
-  crystalWaves: 03000000070000000b000000
+  crystalWaves: 010000000300000005000000
   crystalObjects:
   - {fileID: 1810684764}
   - {fileID: 626859584}
   - {fileID: 412537410}
+  boss: {fileID: 546206458}
+  gameOver: {fileID: 546206460}
+  gameWon: {fileID: 1028081070}
+  bossDead: 0
 --- !u!4 &1090731015
 Transform:
   m_ObjectHideFlags: 0
@@ -11487,7 +11491,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1618753114
 RectTransform:
   m_ObjectHideFlags: 0
