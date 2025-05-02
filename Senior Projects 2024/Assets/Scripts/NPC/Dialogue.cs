@@ -62,21 +62,21 @@ public class Dialogue : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Return))
-        {
-            if (!llmConvo)
-            {
-                if (scriptedTextComponent.text == codedlines[index])
-                {
-                    NextLine();
-                }
-                else
-                {
-                    StopAllCoroutines();
-                    scriptedTextComponent.text = codedlines[index];
-                }
-            }
-        }
+        //if (Input.GetKeyDown(KeyCode.Return))
+        //{
+        //    if (!llmConvo)
+        //    {
+        //        if (scriptedTextComponent.text == codedlines[index])
+        //        {
+        //            NextLine();
+        //        }
+        //        else
+        //        {
+        //            StopAllCoroutines();
+        //            scriptedTextComponent.text = codedlines[index];
+        //        }
+        //    }
+        //}
     }
 
     

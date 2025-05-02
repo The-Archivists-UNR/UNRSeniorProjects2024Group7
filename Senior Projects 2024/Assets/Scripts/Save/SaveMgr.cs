@@ -55,21 +55,21 @@ public class SaveMgr : MonoBehaviour
         {
             List<string> memory = kid.dialogueTranscript;
             gameData.kidConvo = memory;
-            gameData.kidMemory = kid.memory;
+            //gameData.kidMemory = kid.memory;
             gameData.kidRelationshipScore = kid.relationshipScore;
         }
         if (detective != null)
         {
             List<string> memory = detective.dialogueTranscript;
             gameData.detectiveConvo = memory;
-            gameData.detectiveMemory = detective.memory;
+            //gameData.detectiveMemory = detective.memory;
             gameData.detectiveRelationshipScore = detective.relationshipScore;
         }
         if (ghost != null)
         {
             List<string> memory = ghost.dialogueTranscript;
             gameData.ghostConvo = memory;
-            gameData.ghostMemory = ghost.memory;
+            //gameData.ghostMemory = ghost.memory;
             gameData.ghostRelationshipScore = ghost.relationshipScore;
         }
 
@@ -77,7 +77,7 @@ public class SaveMgr : MonoBehaviour
         {
             List<string> memory = dude.dialogueTranscript;
             gameData.dudeConvo = memory;
-            gameData.dudeMemory = dude.memory;
+            //gameData.dudeMemory = dude.memory;
             gameData.detectiveRelationshipScore = dude.relationshipScore;
         }
 
@@ -149,27 +149,27 @@ public class SaveMgr : MonoBehaviour
         {
             
             kid.dialogueTranscript = gameData.kidConvo;
-            kid.memory = gameData.kidMemory;
+            //kid.memory = gameData.kidMemory;
             kid.relationshipScore = gameData.kidRelationshipScore;
         }
         if (detective != null)
         {
             detective.dialogueTranscript = gameData.detectiveConvo;
-            detective.memory = gameData.detectiveMemory;
+            //detective.memory = gameData.detectiveMemory;
             detective.relationshipScore = gameData.detectiveRelationshipScore;
         }
         if (ghost != null)
         {
-            Debug.Log("does it work");
+            //Debug.Log("does it work");
             ghost.dialogueTranscript = gameData.ghostConvo;
-            ghost.memory = gameData.ghostMemory;
+            //ghost.memory = gameData.ghostMemory;
             ghost.relationshipScore = gameData.ghostRelationshipScore;
         }
 
         if (dude != null)
         {
             dude.dialogueTranscript = gameData.dudeConvo;
-            dude.memory = gameData.dudeMemory;
+            //dude.memory = gameData.dudeMemory;
             dude.relationshipScore = gameData.dudeRelationshipScore;
         }
 
@@ -234,6 +234,13 @@ public class SaveMgr : MonoBehaviour
     {
         saveName = "slot" + saveSelect.inst.saveSlotNum + ".game";
         gameData = new GameData();
+        moneyMgr.inst.currency = 300;
+        OpheliaStats.inst.ogDamage = 15;
+        OpheliaStats.inst.ogSpeed = 15;
+        OpheliaStats.inst.ogHP = 100;
+        OpheliaStats.inst.HpPercent = 1;
+        OpheliaStats.inst.SpeedPercent = 1;
+        OpheliaStats.inst.AttackPercent = 1;
         gameData.playerName = playerName;
         string path = Path.Combine(Application.persistentDataPath, "saves");
         Debug.Log(path);

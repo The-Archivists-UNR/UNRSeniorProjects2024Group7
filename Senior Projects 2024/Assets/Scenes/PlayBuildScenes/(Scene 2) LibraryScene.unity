@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028437, g: 0.22571525, b: 0.3069233, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028387, g: 0.22571471, b: 0.30692238, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -7753,10 +7753,8 @@ MonoBehaviour:
   prompt: You are a 27 year old man who loves to read sci fi. You are currently located
     in a run down old library looking for thrilling new books to read. You are approached
     by the librarian who is attempting to revive the library. Limit your responses
-    to 30 words. Exclude quotation marks.
+    to 40 words. Exclude quotation marks.
   dialogueTranscript: []
-  recentTranscript: []
-  memory: 
   nameText: {fileID: 1608472048}
   scoreText: {fileID: 705130025}
   AIText: {fileID: 757835284}
@@ -15148,11 +15146,9 @@ MonoBehaviour:
     to help save the library. Ophelia should help library patrons find the books
     they are looking for and break the curse on those books so the readers don't
     get trapped inside the books. She can break the curse on a book by entering it
-    and defeating all of the monsters. Limit your responses to 30 words. Do not include
+    and defeating all of the monsters. Limit your responses to 40 words. Do not include
     quotation marks.
   dialogueTranscript: []
-  recentTranscript: []
-  memory: 
   nameText: {fileID: 1608472048}
   scoreText: {fileID: 705130025}
   AIText: {fileID: 757835284}
@@ -74571,14 +74567,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Bonnie
   relationshipScore: 0
-  prompt: Pretend to be an elderly woman, a retired detective, searching the library
-    to collect old newspapers about the murder of an old friend. Her name was Sam
-    and she was mudered in the library. You don't know who did it or why, so you
-    are looking for information. Limit your responses to 30 words. Exclude quotation
-    marks.
+  prompt: Pretend to be an elderly woman named Bonnie, a retired detective, searching
+    the library to collect old newspapers about the murder of an old friend. Her
+    name was Sam and she was mudered in the library. You don't know who did it or
+    why, so you are looking for information. Limit your responses to 40 words. Exclude
+    quotation marks.
   dialogueTranscript: []
-  recentTranscript: []
-  memory: 
   nameText: {fileID: 1608472048}
   scoreText: {fileID: 705130025}
   AIText: {fileID: 757835284}
@@ -106927,11 +106921,9 @@ MonoBehaviour:
   relationshipScore: 0
   prompt: Pretend to be an adventerous little kid named Julie who has wandered into
     an abandoned library. Ask Ophelia who she is and ask her to help you find a book.
-    Your favorite types of stories are fairy tales. Limit your response to 30 words
+    Your favorite types of stories are fairy tales. Limit your response to 40 words
     and exclude quotation marks.
   dialogueTranscript: []
-  recentTranscript: []
-  memory: 
   nameText: {fileID: 1608472048}
   scoreText: {fileID: 705130025}
   AIText: {fileID: 757835284}
