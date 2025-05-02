@@ -5,7 +5,7 @@
 
 <p align=center>
 
-<img src="./title%20screen%20spellbound.png" width="100%">
+<img src="./title%20screen%20spellboundfinalv2.png" width="100%">
 
 </p>
 
