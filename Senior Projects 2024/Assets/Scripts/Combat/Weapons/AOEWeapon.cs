@@ -51,6 +51,6 @@ public class AOEWeapon : Weapon
         proj.direction.y = Mathf.Sin(throwAngle);
         proj.direction.Normalize();
         if(attackSound != null)
-            AudioMgr.Instance.PlaySFX(attackSound);
+            AudioMgr.inst.PlaySFX(attackSound);
     }
 }

@@ -25,13 +25,13 @@ public class ExplosiveBarrel : Entity
     {
         health -= damage;
         health = Mathf.Min(health, maxHealth);
-        AudioMgr.Instance.PlaySFX(damageSoundID, AudioMgr.Instance.sfxSource);
+        AudioMgr.inst.PlaySFX(damageSoundID, AudioMgr.inst.sfxSource);
         if (health <= 0)
         {
             //enemyAni.SetTrigger("die");
             if (tag != "Player")
                 GameStatsMgr.inst.enemiesKilled++;
-            AudioMgr.Instance.PlaySFX("Explosion");
+            AudioMgr.inst.PlaySFX("Explosion");
             StartCoroutine(PlayVFXGraphAndDestroy(explosion));
         }
     }

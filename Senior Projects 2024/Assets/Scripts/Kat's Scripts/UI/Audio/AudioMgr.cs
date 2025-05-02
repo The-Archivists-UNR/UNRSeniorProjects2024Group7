@@ -13,22 +13,20 @@ using UnityEngine.SceneManagement;
 // and boss battles
 public class AudioMgr : MonoBehaviour
 {
-    public static AudioMgr Instance;
+    public static AudioMgr inst;
     public Sound[] musicSounds, sfxSounds;
     public AudioSource musicSource, sfxSource;
     public int level;
     bool mute = false;
 
-    public void Awake()
+    void Awake()
     {
-        if (Instance == null)
+        if (inst == null)
         {
-            print("its not getting destroyed :)");
-            Instance = this;
+            inst = this;
             DontDestroyOnLoad(this.gameObject);
         }
         else
-            print("its getting destroyed :/");
             Destroy(this);
     }
 

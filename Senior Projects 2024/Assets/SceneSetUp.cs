@@ -15,7 +15,7 @@ public class SceneSetUp : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        AudioMgr.Instance.PlayMusic(sceneMusic);
+        AudioMgr.inst.PlayMusic(sceneMusic);
         Entity opheliaEntity = player.GetComponent<Entity>();
         OpheliaStats.inst.AppplyStats(opheliaEntity, opheliaWeapon);
         LevelCreator.inst.CreateLevel();

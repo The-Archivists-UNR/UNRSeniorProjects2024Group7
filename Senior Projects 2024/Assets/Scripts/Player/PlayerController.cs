@@ -125,7 +125,7 @@ public class PlayerController : MonoBehaviour
 
     public void StartDash(Vector2 mousePos, Vector2 moveInput)
     {
-        AudioMgr.Instance.PlaySFX("Dash");
+        AudioMgr.inst.PlaySFX("Dash");
         if (dashCooldown < dashCooldownTimer)
         {
             Vector3 dashDirection;
@@ -158,7 +158,7 @@ public class PlayerController : MonoBehaviour
             playerAni.SetBool("isAttacking", true);
             // print("here");
             attacking = true;
-            AudioMgr.Instance.PlaySFX(attackSoundID, AudioMgr.Instance.sfxSource);
+            AudioMgr.inst.PlaySFX(attackSoundID, AudioMgr.inst.sfxSource);
             attackCooldownTimer = 0;
         }
     }

@@ -57,7 +57,7 @@ public class NoireKnifeAI : EnemyAI
         if (Vector3.Distance(player.transform.position, transform.position) < distanceThreshold && attackCooldown > attackCooldownThreshold)
         {
             animator.SetBool("isAttacking", true);
-            AudioMgr.Instance.PlaySFX(attackSoundID);
+            AudioMgr.inst.PlaySFX(attackSoundID);
             attackCooldown = 0;
         }
     }

@@ -50,7 +50,7 @@ public class Entity : MonoBehaviour
     {
         health -= damage;
         health = Mathf.Min(health, maxHealth);
-        AudioMgr.Instance.PlaySFX(damageSoundID, AudioMgr.Instance.sfxSource);
+        AudioMgr.inst.PlaySFX(damageSoundID, AudioMgr.inst.sfxSource);
         if (health <= 0){
             //enemyAni.SetTrigger("die");
             if (tag != "Player")

@@ -84,7 +84,7 @@ public class FastButLight : EnemyAI
         base.Dash(dashStartPosiiton, dashEndPosiiton);
         if (!dashing)
         {
-            AudioMgr.Instance.PlaySFX("Dash", dashSound);
+            AudioMgr.inst.PlaySFX("Dash", dashSound);
             dashCounter++;
             this.dashStartPosiiton = transform.position;
             this.dashEndPosiiton = transform.position + (player.position - transform.position).normalized * Random.Range(minRange,maxRange);

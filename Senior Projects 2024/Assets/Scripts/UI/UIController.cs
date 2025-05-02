@@ -31,24 +31,24 @@ public class UIController : MonoBehaviour
     }
     public void ToggleMusic()
     {
-        AudioMgr.Instance.ToggleMusic();
+        AudioMgr.inst.ToggleMusic();
     }
  
     public void ToggleSFX()
     {
-        AudioMgr.Instance.ToggleSFX();
+        AudioMgr.inst.ToggleSFX();
     }
     public void MusicVolume()
     {
         float volume = _musicSlider.value;
-        AudioMgr.Instance.MusicVolume(_musicSlider.value);
+        AudioMgr.inst.MusicVolume(_musicSlider.value);
         PlayerPrefs.SetFloat("musicVolume", volume);
     }
 
     public void SfxVolume()
     {
         float volume = _sfxSlider.value;
-        AudioMgr.Instance.sfxVolume(_sfxSlider.value);
+        AudioMgr.inst.sfxVolume(_sfxSlider.value);
         PlayerPrefs.SetFloat("sfxVolume", volume);
     }
 

@@ -11,7 +11,7 @@ public class SaveLibrary : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        AudioMgr.Instance.PlayMusic("Library");
+        AudioMgr.inst.PlayMusic("Library");
         SaveMgr.inst.kid = kid;
         SaveMgr.inst.ghost = ghost;
         SaveMgr.inst.dude = dude;

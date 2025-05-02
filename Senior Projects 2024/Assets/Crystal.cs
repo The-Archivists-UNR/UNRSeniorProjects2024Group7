@@ -31,7 +31,7 @@ public class Crystal : Entity
         {
             health -= damage;
             health = Mathf.Min(health, maxHealth);
-            AudioMgr.Instance.PlaySFX(damageSoundID, AudioMgr.Instance.sfxSource);
+            AudioMgr.inst.PlaySFX(damageSoundID, AudioMgr.inst.sfxSource);
             if (health <= 0)
             {
                 FinalBossController.inst.IncreaseWaveFromCrystal();

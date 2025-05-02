@@ -32,7 +32,7 @@ public class SlowerWeapon : Weapon
     {
         attacking = true;
         stabbing = true;
-        AudioMgr.Instance.PlaySFX("Sword Slash", attackSound);
+        AudioMgr.inst.PlaySFX("Sword Slash", attackSound);
     }
 
     //handles the wind up and thrust animations of the enemy’s attack.

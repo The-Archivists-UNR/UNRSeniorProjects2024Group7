@@ -66,7 +66,7 @@ public class FishingMinigameMgr : MonoBehaviour
     {
         Vector3 originalPos = bobber.localPosition;
         float timer = 0f;
-        AudioMgr.Instance.PlaySFX("Bob");
+        AudioMgr.inst.PlaySFX("Bob");
 
         while (timer < duration)
         {
@@ -87,7 +87,7 @@ public class FishingMinigameMgr : MonoBehaviour
         Vector3 dippedPos = originalPos + new Vector3(0, -dipAmount, 0);
 
         float t = 0f;
-        AudioMgr.Instance.PlaySFX("Bite");
+        AudioMgr.inst.PlaySFX("Bite");
 
         // Sudden downward motion
         while (t < dipDuration)

@@ -30,7 +30,7 @@ public class BigGuyWeapon : Weapon
     {
         attacking = true;
         windUp = true;
-        AudioMgr.Instance.PlaySFX("Sword Slash", attackSound);
+        AudioMgr.inst.PlaySFX("Sword Slash", attackSound);
         playerAni.SetTrigger("attack");
     }
 

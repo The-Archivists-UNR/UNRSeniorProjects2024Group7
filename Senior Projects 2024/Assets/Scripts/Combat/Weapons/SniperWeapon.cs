@@ -30,6 +30,6 @@ public class SniperWeapon : Weapon
         shot.y = spawn.position.y;
         newProjectile.GetComponent<Projectile>().direction = shot - spawn.position;
         if(attackSound != null)
-            AudioMgr.Instance.PlaySFX(attackSound);
+            AudioMgr.inst.PlaySFX(attackSound);
     }
 }
