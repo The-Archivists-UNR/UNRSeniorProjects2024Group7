@@ -15,7 +15,7 @@ public class CheckBossLock : MonoBehaviour
         }
         else
         {
-            bookSwitch.enabled = false;
+            bookSwitch.enabled = true;
         }
     }
 
@@ -35,7 +35,7 @@ public class CheckBossLock : MonoBehaviour
             }
             else
             {
-                bookSwitch.enabled = false;
+                bookSwitch.enabled = true;
             }
         }
     }
