@@ -27,10 +27,11 @@ Hi! We are group 7: Fenn Edmonds, Liam Francisco, Lanielle Pavlik, and Kat Wayma
 - created the save system
 
 ## Lanielle
-- handled calls to language model
+- handled API calls to language model
+- saved transcripts of conversations
 - designed prompts so model behaves like different characters
 - checked appropriateness of user input
-- handled updates to relationship scores
+- updated relationship scores based on conversation pleasantness
 
 ## Kat
 - created individual shaders to match level's theme.
