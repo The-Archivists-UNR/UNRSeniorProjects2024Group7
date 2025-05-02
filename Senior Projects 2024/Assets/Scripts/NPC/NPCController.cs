@@ -1,4 +1,4 @@
-//Authored by Lanielle(LLM Interaction)
+//Authored by Lanielle(LLM Interaction), and Fenn(buffs)
 /* TO DO
  * add/use count as interaction limit
  * can setAIText and AIReplyComplete be merged?
@@ -32,9 +32,7 @@ public class NPCController : MonoBehaviour
     public List<string> dialogueTranscript;
     public List<string> recentTranscript;
     public string memory;
-    //public Vector3 spawnPos;
     //public string scoreSavingFile;
-    //public Boolean willingToTalk = true;
 
     public TextMeshProUGUI nameText;
     public TextMeshProUGUI scoreText;
@@ -58,8 +56,8 @@ public class NPCController : MonoBehaviour
 
     public TextMeshProUGUI interactText;
     //private int count;
-    //private bool llmConvo = false;
 
+    //set up memory and enter key listener
     void Start()
     {
         memory = "";
@@ -69,13 +67,11 @@ public class NPCController : MonoBehaviour
         playerText.Select();
     }
 
+    //check for e key
     void Update()
     {
         if (!playerIsNear) { return; }
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            StartDialogue();
-        }
+        if (Input.GetKeyDown(KeyCode.E)) { StartDialogue(); }
     }
 
     public void EndDialogue()
@@ -85,43 +81,31 @@ public class NPCController : MonoBehaviour
         if (inConversation)
         {
             string transcript = "";
-            foreach (string str in recentTranscript) { transcript += str + "\n"; }
+            //foreach (string str in recentTranscript) { transcript += str + "\n"; }
             Debug.Log(transcript);
-
-            //make a special function in llm dialogue for this case so it will not be remembered
-            //LLM.getResponse("How pleasant is Ophelia in this transcript on a scale from 1 to 10? " +
-            //        "Respond with only the number." + transcript, setRating);
-            LLM.getResponse("please summarize the following transcript: \n" + transcript, setNPCMemory);
+            LLM.getResponse("please summarize the following transcript: \n" + recentTranscript, setNPCMemory);
             inConversation = false;
         }
-
-        //change the following to call a numResponsesThisNPCIsWillingToGive variable that gets decremented
-        //count = 0;
-        //npc.willingToTalk = true;
-
-
     }
 
     private void StartDialogue()
     {
-        // TO DO: DO NOT ALLOW THE REMAINDER OF THIS FUNCTION TO RUN IF PLAYER IS
-        // ENGAGED IN HARDCODED QUEST DIALOGUE
         if (inConversation) { return; }
+
+        //set up for conversation
+        GameEventsManager.instance.playerEvents.DisablePlayerMovement();
         nameText.text = name;
         spriteBox.sprite = NPCSprite;
         textbox.isVisible = true;
         inConversation = true;
         scoreText.text = "Relationship: " + relationshipScore;
-
-        //modify the following based on npc and quests?
-        GameEventsManager.instance.miscEvents.PatronTalked();
-        GameEventsManager.instance.playerEvents.DisablePlayerMovement();
         playerText.text = "";
-        //llmConvo = true;
 
-        if (memory == "") { LLM.getResponse(prompt, setAIText, AIReplyComplete); Debug.Log("1"); }
-        else { LLM.getResponse(prompt + "\n here's what happened so far:\n" + memory, setAIText, AIReplyComplete); Debug.Log("2"); }
+        //send different prompt if this is the first interaction, otherwise, include memory
+        if (memory == "") { LLM.getResponse(prompt, setAIText, AIReplyComplete); }
+        else { LLM.getResponse(prompt + "\n here's what happened so far:\n" + memory, setAIText, AIReplyComplete); }
 
+        //update stat corresponding to character
         switch (currentNPC)
         {
             case ItemType.Julie:
@@ -137,9 +121,7 @@ public class NPCController : MonoBehaviour
                 print("statcalled2");
                 sBuff.ChangeStats();
                 break;
-
         }
-
     }
 
     private void onInputFieldSubmit(string message)
@@ -166,13 +148,18 @@ public class NPCController : MonoBehaviour
 
     private void setAIText(string text)
     {
+        //if rude or incoherent (llm has been told to say "TRUE" in those cases)
         if (text.Contains("TRUE"))
         {
             relationshipScore -= 1;
+            scoreText.text = "Relationship: " + relationshipScore;
             AIText.text = "I'm not sure I understand.";
+            dialogueTranscript.RemoveAt(dialogueTranscript.Count);
+            recentTranscript.RemoveAt(recentTranscript.Count);
+            
+            //debuff applied
             switch (currentNPC)
             {
-               
                 case ItemType.Julie:
                     print("statcalled");
                     jBuff.NegStat();
@@ -187,7 +174,6 @@ public class NPCController : MonoBehaviour
                     print("statcalled");
                     sBuff.NegStat();
                     break;
-
             }
         }
         else
