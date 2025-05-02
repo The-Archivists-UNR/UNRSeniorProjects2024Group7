@@ -15,14 +15,14 @@ public class FrontEntrance : MonoBehaviour
     //Call upon the game event manager to add my events
     private void OnEnable()
     {
-        print("Here1");
+        //print("Here1");
         GameEventsManager.instance.inputEvents.onSubmitPressed += SubmitPressed;
     }
 
     private void OnDisable()
     {
         GameEventsManager.instance.inputEvents.onSubmitPressed -= SubmitPressed;
-        print("Here2");
+        //print("Here2");
     }
 
 
@@ -42,7 +42,7 @@ public class FrontEntrance : MonoBehaviour
         if (!playerIsNear)
         {
 
-            print("Here3");
+            //print("Here3");
             return;
         }
         //interactable = true;

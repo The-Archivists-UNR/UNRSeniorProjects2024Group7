@@ -34,14 +34,14 @@ public class LLMInteraction : MonoBehaviour
         apiKey = jsonApiKey.key;
         chatHistory = new Content[] { };
 
-        var safetySettings = new List<SafetySetting> {
-            new SafetySetting { category = "HARM_CATEGORY_HARASSMENT", threshold = "BLOCK_MEDIUM_AND_ABOVE" },
-            new SafetySetting { category = "HARM_CATEGORY_HATE_SPEECH", threshold = "BLOCK_MEDIUM_AND_ABOVE" },
-            new SafetySetting { category = "HARM_CATEGORY_SEXUALLY_EXPLICIT", threshold = "BLOCK_LOW_AND_ABOVE" },
-            new SafetySetting { category = "HARM_CATEGORY_DANGEROUS_CONTENT", threshold = "BLOCK_MEDIUM_AND_ABOVE" }
-        };
+        //var safetySettings = new List<SafetySetting> {
+        //    new SafetySetting { category = "HARM_CATEGORY_HARASSMENT", threshold = "BLOCK_MEDIUM_AND_ABOVE" },
+        //    new SafetySetting { category = "HARM_CATEGORY_HATE_SPEECH", threshold = "BLOCK_MEDIUM_AND_ABOVE" },
+        //    new SafetySetting { category = "HARM_CATEGORY_SEXUALLY_EXPLICIT", threshold = "BLOCK_LOW_AND_ABOVE" },
+        //    new SafetySetting { category = "HARM_CATEGORY_DANGEROUS_CONTENT", threshold = "BLOCK_MEDIUM_AND_ABOVE" }
+        //};
 
-        StartCoroutine(SendPromptRequestToGemini("", safetySettings));
+        //StartCoroutine(SendPromptRequestToGemini("", safetySettings));
     }
 
     public void getResponse(string message, Callback<string> handleOutput = null, EmptyCallback onComplete = null)
@@ -56,63 +56,64 @@ public class LLMInteraction : MonoBehaviour
     }
 
 
-    private IEnumerator SendPromptRequestToGemini(string promptText, List<SafetySetting> safetySettings, Callback<string> handleOutput = null, EmptyCallback onComplete = null)
-    {
-        //Debug.Log("sentPrompt called");
-        string url = $"{apiEndpoint}?key={apiKey}";
-        string settings = JsonUtility.ToJson(safetySettings);
-        string jsonData = "{\"contents\": [{\"parts\": [{\"text\": \"{" + promptText + "}\"}]}], \"safetySettings\": " + settings + "}";
-        byte[] jsonToSend = new System.Text.UTF8Encoding().GetBytes(jsonData);
+    //private IEnumerator SendPromptRequestToGemini(string promptText, List<SafetySetting> safetySettings, Callback<string> handleOutput = null, EmptyCallback onComplete = null)
+    //{
+    //    //Debug.Log("sentPrompt called");
+    //    string url = $"{apiEndpoint}?key={apiKey}";
+    //    string settings = JsonUtility.ToJson(safetySettings);
+    //    string jsonData = "{\"contents\": [{\"parts\": [{\"text\": \"{" + promptText + "}\"}]}], \"safetySettings\": " + settings + "}";
+    //    byte[] jsonToSend = new System.Text.UTF8Encoding().GetBytes(jsonData);
 
-        // Create a UnityWebRequest with the JSON data
-        using (UnityWebRequest www = new UnityWebRequest(url, "POST"))
-        {
-            www.uploadHandler = new UploadHandlerRaw(jsonToSend);
-            www.downloadHandler = new DownloadHandlerBuffer();
-            www.SetRequestHeader("Content-Type", "application/json");
+    //    // Create a UnityWebRequest with the JSON data
+    //    using (UnityWebRequest www = new UnityWebRequest(url, "POST"))
+    //    {
+    //        www.uploadHandler = new UploadHandlerRaw(jsonToSend);
+    //        www.downloadHandler = new DownloadHandlerBuffer();
+    //        www.SetRequestHeader("Content-Type", "application/json");
 
-            yield return www.SendWebRequest();
+    //        yield return www.SendWebRequest();
 
-            if (www.result != UnityWebRequest.Result.Success) {
-                Debug.LogError("error");
-                Debug.Log(www.error); 
-            }
-            else
-            {
-                Debug.Log("EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE");
-                Response response = JsonUtility.FromJson<Response>(www.downloadHandler.text);
-                if (response.promptFeedback != null && !string.IsNullOrEmpty(response.promptFeedback.blockReason))
-                {
-                    Debug.LogWarning($"Prompt blocked by Gemini. Reason: {response.promptFeedback.blockReason}");
-                    //HANDLING GOES HERE
-                }
-                else if (response.candidates.Length > 0 && response.candidates[0].content.parts.Length > 0)
-                {
-                    //This is the response to your request
-                    string text = response.candidates[0].content.parts[0].text;
-                    Debug.Log(text);
+    //        if (www.result != UnityWebRequest.Result.Success) {
+    //            Debug.LogError("error");
+    //            Debug.Log(www.error); 
+    //        }
+    //        else
+    //        {
+    //            Debug.Log("EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE");
+    //            Response response = JsonUtility.FromJson<Response>(www.downloadHandler.text);
+    //            if (response.promptFeedback != null && !string.IsNullOrEmpty(response.promptFeedback.blockReason))
+    //            {
+    //                Debug.LogWarning($"Prompt blocked by Gemini. Reason: {response.promptFeedback.blockReason}");
+    //                //HANDLING GOES HERE
+    //            }
+    //            else if (response.candidates.Length > 0 && response.candidates[0].content.parts.Length > 0)
+    //            {
+    //                //This is the response to your request
+    //                string text = response.candidates[0].content.parts[0].text;
+    //                Debug.Log(text);
 
-                    if (handleOutput != null) handleOutput(text);
-                    if (onComplete != null) onComplete();
-                }
-                else
-                {
-                    Debug.Log("No text found.");
-                }
-            }
-        }
-    }
+    //                if (handleOutput != null) handleOutput(text);
+    //                if (onComplete != null) onComplete();
+    //            }
+    //            else
+    //            {
+    //                Debug.Log("No text found.");
+    //            }
+    //        }
+    //    }
+    //}
 
 
     private IEnumerator SendChatRequestToGemini(string newMessage, List<SafetySetting> safetySettings, Callback<string> handleOutput = null, EmptyCallback onComplete = null)
     {
         string url = $"{apiEndpoint}?key={apiKey}";
+        string prompt = newMessage;
         Content userContent = new Content
         {
             role = "user",
             parts = new Part[]
             {
-                    new Part { text = "If the following dialogue is rude or incoherent respond with only the word \"TRUE\", other wise respond normally.\n\n"+newMessage }
+                    new Part { text = prompt }
             }
         };
 
@@ -136,20 +137,16 @@ public class LLMInteraction : MonoBehaviour
             if (www.result != UnityWebRequest.Result.Success) { Debug.LogError(www.error); }
             else
             {
-                Debug.Log("Chat request complete!");
+                Debug.Log("Chat request complete! Prompt Sent: \n\n"+prompt);
                 Response response = JsonUtility.FromJson<Response>(www.downloadHandler.text);
-                /////////////////////////
-                Debug.Log(www.downloadHandler.text);
 
                 if (response.promptFeedback != null && !string.IsNullOrEmpty(response.promptFeedback.blockReason))
                 {
                     Debug.LogWarning($"Prompt blocked by Gemini. Reason: {response.promptFeedback.blockReason}");
-                    //HANDLING GOES HERE
                 }
                 else if (response.candidates.Length > 0 && response.candidates[0].content.parts.Length > 0)
                 {
-                    //This is the response to your request
-                    string reply = response.candidates[0].content.parts[0].text;
+                    string reply = response.candidates[0].content.parts[0].text.Trim();
                     Content botContent = new Content
                     {
                         role = "model",
