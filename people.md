@@ -12,10 +12,11 @@ Hi! We are group 7: Fenn Edmonds, Liam Francisco, Lanielle Pavlik, and Kat Wayma
 ## Fenn
 - Modeled non-playable characters for the library
 - Modeled most Noire Level enemies (sans the dog)
-- Modeled all Ophelia models
+- Modeled all Ophelia models minus fantasy level
 - Implemented health bars
 - Implemented Items
-- Created animations for modeled characters
+- Implemented stat buffs and currency
+- Implemented animations for modeled characters
 - Worked on all the UI
 
 ## Liam
