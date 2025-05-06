@@ -111,7 +111,7 @@ public class NPCController : MonoBehaviour
 
         //don't regenerate a response if the LLM said something and the user hasn't responded to it
         if (dialogueTranscript.Count == 0) { LLM.getResponse(prompt, setAIText, AIReplyComplete); }
-        else { AIText.text = dialogueTranscript[dialogueTranscript.Count - 1].Substring(name.Length+2); AIReplyComplete(); }
+        else { AIText.text = dialogueTranscript[(dialogueTranscript.Count/2)*2].Substring(name.Length+2); AIReplyComplete(); }
 
         //update stat corresponding to character
         switch (currentNPC)

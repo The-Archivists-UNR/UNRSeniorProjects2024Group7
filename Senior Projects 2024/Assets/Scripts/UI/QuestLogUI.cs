@@ -37,11 +37,11 @@ public class QuestLogUI : MonoBehaviour
     {
         if (UIpanel.isVisible == true)
         {
-            HideUI();
+            //HideUI();
         }
         else
         {
-            ShowUI();
+            //ShowUI();
         }
     }
 
